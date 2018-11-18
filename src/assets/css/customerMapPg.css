@@ -1,0 +1,154 @@
+#root {
+    margin: 0;
+    width: 100vw;
+    height: 100vh; 
+}
+
+.topContainer {
+    width: 100%;
+    height: 30%; 
+    background-color: #EFEFEF
+}
+
+.logoHeader {
+    background-color: #053E66;
+    height: 30%;
+    color: white; 
+    font-family: 'Stylish';
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 12vmin; 
+}
+
+.foodSearchHeader {
+    height: 35%; 
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.foodSearchBar {
+    width: 70%; 
+    height: 100%; 
+}
+
+.searchButton {
+    width: 30%;
+    height: 100%;  
+}
+
+.inputFood {
+    text-align: center;
+}
+
+.searchButton {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.search {
+    background-color: #577d9c;
+    color: black;
+}
+
+.btn:hover, .btn-large:hover, .btn-small:hover {
+    background-color: #053E66; 
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1.2px solid #053E66;
+    box-shadow: 0 1px 0 0 #053E66;
+    margin: 0;
+    padding: 0;
+    color: black; 
+    width: 100%;
+}
+
+input[type=text]:not(.browser-default) {
+    border-bottom: 1.2px solid black;
+    width: 100%;
+}
+
+.legendHeader {
+    height: 35%; 
+    display: flex;
+    flex-wrap: wrap;
+}
+.toggleDisplayContainer {
+    width: 40%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggleDisplay {
+    display: flex;
+    flex-direction: row;
+    height: 85%;
+    width: 95%;
+}
+.mapButton {
+    width: 50%;
+    height:100%;
+    background-color: black;
+    color: white;
+    border: black 1px solid; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.listButton {
+    width: 50%;
+    height:100%;
+    background-color: white;
+    border: black 1px solid; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.legendTimeContainer {
+    width: 60%; 
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #577d9c;
+}
+
+.legendTime {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+.greenTime {
+    width: 15%;
+    height: 50%;
+    background: green;
+    border-radius: 50%
+}
+.yellowTime {
+    width: 15%;
+    height: 50%;
+    background: yellow;
+    border-radius: 50%
+}
+.redTime {
+    width: 15%;
+    height: 50%;
+    background: red;
+    border-radius: 50%
+}
+
+.bottomContainer {
+    width: 100%;
+    height: 70%; 
+}
+
+.bottomContainer > img {
+    width: 100%; 
+}

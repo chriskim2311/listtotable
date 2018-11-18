@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import '../assets/css/landingPage.css';
 import tfLogo from '../assets/images/logo.png';
+import { Link } from 'react-router-dom';
 
 class LandingPage extends Component{
     render() {  
         return (
-            <React.Fragment>
+            <React.Fragment> 
                 <div className='tfContainer'>
                     <div className="tf">Table Finder</div>
                 </div>
                 <div className='clientContainer'>
-                    <div className= "client" id='customer'>Customer</div>
+                    <Link className ="client" id="customer" to="/customer-map">Customer</Link>
                     <img className ="tfLogo" src={tfLogo}/>
-                    <div className="client" id='restaurant'>Restaurant</div>
+                    <Link className ="client" id="restaurant" to="/restaurant-login">Restaurant</Link>
                 </div>
             </React.Fragment>
         )

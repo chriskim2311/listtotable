@@ -1,14 +1,9 @@
-import React, {Component} from 'react';
-import Test from './test';
-import LandingPage from './landingPage';
+import React, { Component } from 'react';
 import '../assets/css/landingPage.css';
 import tfLogo from '../assets/images/logo.png';
-import {Route} from 'react-router-dom';
 
-
-class App extends Component {
-
-    render() {
+class LandingPage extends Component{
+    render() {  
         return (
             <React.Fragment>
                 <div className='tfContainer'>
@@ -19,11 +14,9 @@ class App extends Component {
                     <img className ="tfLogo" src={tfLogo}/>
                     <div className="client" id='restaurant'>Restaurant</div>
                 </div>
-                {/* <div className="app">
-                    <Test/>
-                </div> */}
             </React.Fragment>
         )
     }
-} 
-export default App;
+}
+
+export default LandingPage;  

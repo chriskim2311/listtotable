@@ -1,6 +1,12 @@
 import React, { Component } from 'react'; 
-import '../assets/css/CustomerMapPg.css';
+import '../assets/css/customerMapPg.css';
 import map from '../assets/images/Map.png';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize';
+import greenTimer from '../assets/images/greenTime.png';
+import redTimer from '../assets/images/redTime.png';
+import yellowTimer from '../assets/images/yellowTime.png';
+
 
 class CustomerMapPg extends Component {
 
@@ -21,10 +27,15 @@ class CustomerMapPg extends Component {
                     <div className="legendHeader">
                         <div className="legendTimeContainer">
                             <div className="legendTime">
-                                <div className="greenTime"></div>
-                                <div className="yellowTime"></div>
-                                <div className="redTime"></div>
+                                <img className="greenTime" src={greenTimer}/>
+                                <img className="yellowTime" src={redTimer}/>
+                                <img className="redTime" src={yellowTimer}/>
                             </div>  
+                            <div className="legendDetails">
+                                <div className="clockInfo">0-30</div>
+                                <div className="clockInfo">30-60</div>
+                                <div className="clockInfo">60+</div>
+                            </div>
                         </div>
                         <div className="toggleDisplayContainer">
                             <div className="toggleDisplay">

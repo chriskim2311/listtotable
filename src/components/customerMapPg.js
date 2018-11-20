@@ -56,8 +56,8 @@ class CustomerMapPg extends Component {
                         <div className="legendTimeContainer">
                             <div className="legendTime">
                                 <img className="greenTime" src={greenTimer}/>
-                                <img className="yellowTime" src={redTimer}/>
-                                <img className="redTime" src={yellowTimer}/>
+                                <img className="yellowTime" src={yellowTimer}/>
+                                <img className="redTime" src={redTimer}/>
                             </div>  
                             <div className="legendDetails">
                                 <div className="clockInfo">0-30</div>

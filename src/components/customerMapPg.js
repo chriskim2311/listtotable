@@ -8,12 +8,16 @@ import redTimer from '../assets/images/redTime.png';
 import yellowTimer from '../assets/images/yellowTime.png';
 
 
+import Header from './header';
+
 class CustomerMapPg extends Component {
 
     render() {
         return (
             <React.Fragment>
+
                 <div className="topContainer">
+
                     <div className="logoHeader">Table Finder</div>
                     <div className="foodSearchHeader">
                         <div className="foodSearchBar">

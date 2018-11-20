@@ -5,6 +5,7 @@ import '../assets/css/landingPage.css';
 import tfLogo from '../assets/images/logo.png';
 import {Route} from 'react-router-dom';
 import CustomerMapPg from './customerMapPg';
+import Header from './header';
 
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
     render() {
         return (
             <React.Fragment>
+                <Header/>
                 <Route exact path="/" component={LandingPage} />
                 <Route path="/customer-map" component={CustomerMapPg} />
                 <Route path="/restaurant-login" />

@@ -1,13 +1,15 @@
 import React, { Component } from 'react'; 
 import '../assets/css/CustomerMapPg.css';
 import map from '../assets/images/Map.png';
-
+import Header from './header';
 class CustomerMapPg extends Component {
 
     render() {
         return (
             <React.Fragment>
+
                 <div className="topContainer">
+
                     <div className="logoHeader">Table Finder</div>
                     <div className="foodSearchHeader">
                         <div className="foodSearchBar">

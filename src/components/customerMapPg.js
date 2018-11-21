@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import '../assets/css/CustomerMapPg.css';
+import '../assets/css/customerMapPg.css';
 import map from '../assets/images/Map.png';
 
 class CustomerMapPg extends Component {

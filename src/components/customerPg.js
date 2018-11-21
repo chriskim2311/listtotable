@@ -1,19 +1,23 @@
 import React, { Component } from 'react'; 
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
-import '../assets/css/customerMapPg.css';
+import '../assets/css/customerPg.css';
 import greenTimer from '../assets/images/greenTime.png';
 import redTimer from '../assets/images/redTime.png';
 import yellowTimer from '../assets/images/yellowTime.png';
 import { Link } from 'react-router-dom';
 import Header from './header';
+import MapView from './mapView';
+import ListView from './listView';
 
-class SearchBar extends Component {
+class CustomerPg extends Component {
     constructor(props) {
         super(props);
 
         this.state={
-            restaurantName: '' 
+            restaurantName: '',
+            map: true,
+            list: false
         }
 
     }   
@@ -24,12 +28,28 @@ class SearchBar extends Component {
             restaurantName:''
         })
     }
+
+    toggleMap = () => {
+        this.setState({
+            map: true,
+            list: false
+        })
+    }
+
+    toggleList = () => {
+        this.setState({
+            map: false,
+            list: true
+        })
+    }
+
+
     render() {
-        console.log('info being changed', this.state)
+        console.log('info being changed', this.props)
+        const { map, list } = this.state
         return (
             <React.Fragment>
                 <div className="topContainer">
-
                     <Header/>
                     <div className="foodSearchHeader">
                         <div className="foodSearchBar">
@@ -63,9 +83,13 @@ class SearchBar extends Component {
                         </div>
                         <div className="toggleDisplayContainer">
                             <div className="toggleDisplay">
-                                <div className="mapButton">MAP</div>
-                                <Link to="/customer/List" className="listButton">LIST</Link>
+                                <div onClick={this.toggleMap} className={map ? 'mapButton': 'mapButton1'}>MAP</div>
+                                <div onClick={this.toggleList} className={list ? 'listButton1': 'listButton' }>LIST</div>
                             </div>
+                        </div>
+                        {/* bottom half will render the map or list dependent on the true/false value */}
+                        <div className="bottomContainer">
+                            {map ? <MapView/>: <ListView/>}
                         </div>
                     </div>
                 </div>
@@ -74,4 +98,4 @@ class SearchBar extends Component {
     }
 }
 
-export default SearchBar;
+export default CustomerPg;

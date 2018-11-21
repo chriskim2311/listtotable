@@ -6,8 +6,6 @@ import greenTimer from '../assets/images/greenTime.png';
 import redTimer from '../assets/images/redTime.png';
 import yellowTimer from '../assets/images/yellowTime.png';
 import { Link } from 'react-router-dom';
-
-
 import Header from './header';
 
 class SearchBar extends Component {
@@ -32,7 +30,7 @@ class SearchBar extends Component {
             <React.Fragment>
                 <div className="topContainer">
 
-                    <div className="logoHeader">Table Finder</div>
+                    <Header/>
                     <div className="foodSearchHeader">
                         <div className="foodSearchBar">
                             <form onSubmit={this.handleSearchItem}>

@@ -1,5 +1,7 @@
+
 import React from 'react';
 import SearchBar from './searchBar'; 
+
 import map from '../assets/images/Map.png';
 
 function CustomerMapPg() {

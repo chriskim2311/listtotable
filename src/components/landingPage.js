@@ -13,7 +13,9 @@ class LandingPage extends Component{
                 <div className='clientContainer'>
                     <Link className ="client" id="customer" to="/customer-map">Customer</Link>
                     <img className ="tfLogo" src={tfLogo}/>
-                    <Link className ="client" id="restaurant" to="/restaurant/login">Restaurant</Link>
+
+                    <Link className ="client" id="restaurant" to="/login">Restaurant</Link>
+
                 </div>
             </React.Fragment>
         )

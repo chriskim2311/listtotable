@@ -6,8 +6,6 @@ import 'materialize-css/dist/js/materialize';
 import greenTimer from '../assets/images/greenTime.png';
 import redTimer from '../assets/images/redTime.png';
 import yellowTimer from '../assets/images/yellowTime.png';
-
-
 import Header from './header';
 
 class CustomerMapPg extends Component {
@@ -15,10 +13,8 @@ class CustomerMapPg extends Component {
     render() {
         return (
             <React.Fragment>
-
                 <div className="topContainer">
-
-                    <div className="logoHeader">Table Finder</div>
+                    <Header/>
                     <div className="foodSearchHeader">
                         <div className="foodSearchBar">
                             <form><input className="inputFood" type="text" value="" placeholder="Search for Food"/></form>

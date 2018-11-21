@@ -10,17 +10,6 @@
     background-color: #EFEFEF
 }
 
-.logoHeader {
-    background-color: #053E66;
-    height: 30%;
-    color: white; 
-    font-family: 'Stylish';
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    font-size: 12vmin; 
-}
-
 .foodSearchHeader {
     height: 35%; 
     display: flex;

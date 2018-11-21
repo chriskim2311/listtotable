@@ -50,7 +50,6 @@ class CustomerPg extends Component {
         return (
             <React.Fragment>
                 <div className="topContainer">
-
                     <Header/>
                     <div className="foodSearchHeader">
                         <div className="foodSearchBar">

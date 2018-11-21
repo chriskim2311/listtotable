@@ -4,6 +4,8 @@ import LandingPage from './landingPage';
 import '../assets/css/landingPage.css';
 import tfLogo from '../assets/images/logo.png';
 import {Route} from 'react-router-dom';
+import BusyHours from "./busy_hours"
+import Geolocation from "./geolocation"
 
 
 class App extends Component {
@@ -15,14 +17,18 @@ class App extends Component {
                     <div className="tf">Table Finder</div>
                 </div>
                 <div className='clientContainer'>
-                    <div className= "client" id='customer'>Customer</div>
+                    <div className= "client" id='customer' >Customer</div>
                     <img className ="tfLogo" src={tfLogo}/>
                     <div className="client" id='restaurant'>Restaurant</div>
+                    {/* <Geolocation/>
+                    <BusyHours/> */}
+                    
                 </div>
                 {/* <div className="app">
                     <Test/>
                 </div> */}
             </React.Fragment>
+
         )
     }
 } 

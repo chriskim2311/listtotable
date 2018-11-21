@@ -17,9 +17,11 @@ class App extends Component {
             <React.Fragment>
                 <Route exact path="/" component={LandingPage} />
                 <Route path="/customer-map" component={CustomerMapPg} />
+
                 <Route path="/login" component={RTopMenu}/>
                 
                 
+
                 {/* <div className="app">
                     <Test/>
                 </div> */}

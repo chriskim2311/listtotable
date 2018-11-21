@@ -1,19 +1,22 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-
-const noShow = ['/'];
+import '../assets/css/header.css';
+import menu from "../assets/images/headermenu.svg";
 
 function Header(props){
-    console.log('Header Props:', props);
-    const { pathname } = props.location;
-    if(noShow.includes(pathname)) return null;
-    if(pathname.indexOf('restaurant')) return null;
-
     return (
         <React.Fragment>
-            <h1>I'm the header</h1>
+            <div className="header">
+                <div className="header-logo-container">
+                    <div className="header-text">TF</div>
+                </div>
+                <div className="header-menu-container">
+                    <div className="header-menu-image">
+                        <img src = {menu} />
+                    </div>
+                </div>
+            </div>
         </React.Fragment>
     )
 }
 
-export default withRouter(Header);
+export default Header;

@@ -1,0 +1,41 @@
+
+.header{
+    width: 100%;
+    display: block;
+    background-color: #053E66;
+}
+
+.header-logo-container{
+    width: 75%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+
+.header-text{
+    top: 20%;
+    text-align: center;
+    position: relative;
+    font-size: 10vmin;
+    color: white;
+}
+
+.header-menu-container{
+    width: 23%;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.header-menu-image{
+    width: 75%;
+    height: 65%;
+    position: relative;
+    top: 30%;
+    left: 25%;
+}
+
+.header-menu-image img{
+    width: 75%;
+}

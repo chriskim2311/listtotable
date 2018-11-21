@@ -6,9 +6,6 @@ import '../assets/css/customerMapPg.css';
 import greenTimer from '../assets/images/greenTime.png';
 import redTimer from '../assets/images/redTime.png';
 import yellowTimer from '../assets/images/yellowTime.png';
-import { Link } from 'react-router-dom';
-
-
 import Header from './header';
 
 class CustomerMapPg extends Component {
@@ -31,10 +28,8 @@ class CustomerMapPg extends Component {
         console.log('info being changed', this.state)
         return (
             <React.Fragment>
-
                 <div className="topContainer">
-
-                    <div className="logoHeader">Table Finder</div>
+                    <Header/>
                     <div className="foodSearchHeader">
                         <div className="foodSearchBar">
                             <form onSubmit={this.handleSearchItem}>

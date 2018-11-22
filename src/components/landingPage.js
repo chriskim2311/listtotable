@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 class LandingPage extends Component{
     render() {  
-        debugger
         return (
             <React.Fragment> 
                 <div className='tfContainer'>

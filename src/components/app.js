@@ -7,7 +7,8 @@ import '../assets/css/landingPage.css';
 import tfLogo from '../assets/images/logo.png';
 import {Route} from 'react-router-dom';
 import CustomerMapPg from './customerMapPg';
-import RTopMenu from './r_arrowAndMenu';
+
+import Login from './login';
 
 
 class App extends Component {
@@ -18,7 +19,8 @@ class App extends Component {
                 <Route exact path="/" component={LandingPage} />
                 <Route path="/customer-map" component={CustomerMapPg} />
 
-                <Route path="/login" component={RTopMenu}/>
+            
+                <Route path="/login" component={Login}/>
                 
                 
 

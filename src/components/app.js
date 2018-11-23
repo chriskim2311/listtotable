@@ -9,6 +9,8 @@ import {Route} from 'react-router-dom';
 import Login from './login';
 import ListMenu from './list_menu';
 import Waiting from './waiting';
+import RCheckIn from './r_check-in';
+import Seated from './seated';
 import CustomerPg from './customerPg';
 
 
@@ -23,6 +25,8 @@ class App extends Component {
             
                 <Route path="/login" component={Login}/>
                 <Route path="/waiting" component={Waiting}/>
+                <Route path="/check-in" component={RCheckIn}/>
+                <Route path="/seated" component={Seated}/>
                 
 
 

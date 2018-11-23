@@ -6,10 +6,9 @@ import LandingPage from './landingPage';
 import '../assets/css/landingPage.css';
 import tfLogo from '../assets/images/logo.png';
 import {Route} from 'react-router-dom';
-
-
-
 import Login from './login';
+import ListMenu from './list_menu';
+import Waiting from './waiting';
 import CustomerPg from './customerPg';
 
 
@@ -23,7 +22,7 @@ class App extends Component {
 
             
                 <Route path="/login" component={Login}/>
-                
+                <Route path="/waiting" component={Waiting}/>
                 
 
 

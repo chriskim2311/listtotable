@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import RTopMenu from './r_arrowAndMenu';
+
 
 export default props => {
     return (
@@ -14,7 +14,7 @@ export default props => {
                     <Link to="/seated" className="btn blue">SEATED</Link>
                 </div>
                 <div className="col s4 right-align ">
-                    <Link to="/checkin" className="btn blue">CHECK-IN</Link>
+                    <Link to="/check-in" className="btn blue">CHECK-IN</Link>
                 </div>
             </div>
         </div>

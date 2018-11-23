@@ -88,11 +88,9 @@ class CustomerPg extends Component {
                             </div>
                         </div>
                         {/* bottom half will render the map or list dependent on the true/false value */}
-                        <div className="bottomContainer">
-                            {map ? <MapView/>: <ListView/>}
-                        </div>
                     </div>
                 </div>
+                {map ? <MapView/>: <ListView/>}
             </React.Fragment>
         )
     }

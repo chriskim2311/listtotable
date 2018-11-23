@@ -5,7 +5,10 @@ function MapView(){
 
     return (
         <React.Fragment>
-                  <img src={map}/>
+            <div className="mapBottomContainer">
+                <img src={map}/>
+            </div>
+                  
         </React.Fragment>
     )
 }

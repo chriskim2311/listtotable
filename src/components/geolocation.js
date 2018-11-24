@@ -1,56 +1,160 @@
 import React, {Component} from 'react'
 import axios from 'axios';
 
-// navigator.geolocation.getCurrentPosition(success.bind(this), error);
-
-
 
 class Geolocation extends Component{
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         inputValue: '' 
+    //     }
+    // }
+    
 // getLocation()
  componentDidMount() {
     // function getLocation() {
+        // console.log(inputValue)
     var map;
     var service;
     var infowindow; 
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showRestaurants);
-        } else { 
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    // }
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showRestaurants);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
     
+}
     function showRestaurants(position) {
         var latitude= position.coords.latitude; 
         var longitude= position.coords.longitude;
         console.log(latitude,longitude)
+        
 
         var centerLocation = new google.maps.LatLng(latitude, longitude);
-
-
-        map = new google.maps.Map({
-            // document.getElementById('map'), add this before the bracket 
-            center: centerLocation,
-            zoom: 12
+        console.log(centerLocation)
+        map = new google.maps.Map(document.getElementById('map'),  {
+            center: {lat:latitude, lng: longitude},
+            zoom: 14
         });
+    
+        new google.maps.Marker({
+            map: map,
+            position: {lat:latitude, lng: longitude},
+        });
+
+        // var keyword = {this.props.inputValue}
         var request= {
             location: centerLocation,
             radius: '1500',
             type: ['restaurant'],
-            keyword: 'steak'
+            keyword: ''
         }
         service = new google.maps.places.PlacesService(map);
-        service.nearbySearch(request, callback);
+        service.nearbySearch(request, restaurantIconRender);
       }
       
-      function callback(results, status) {
+      function restaurantIconRender(results, status) {
+        var bounds = new google.maps.LatLngBounds();
           console.log(results)
           initMap()
         // if (status == google.maps.places.PlacesServiceStatus.OK) {
-        //   for (var i = 0; i < results.length; i++) {
-        //     var place = results[i];
-        //     createMarker(results[i]);
-        //   }
-        }
+          for (var i = 0; i < results.length; i++) {
+              var placeId = String(results[i].place_id);
+                console.log(placeId)
+
+
+            axios.post('http://place.kim-chris.com/busy-hours', {
+                
+                place_id: placeId,
+            }).then(resp => {
+                console.log(resp)
+                var date = new Date()
+                var day  = date.getDay();
+                var time = (date.getHours())-6;
+                // debugger
+                var busyHour = resp.data.data.week[day].hours[time].percentage
+                var location = resp.data.data.location
+                console.log(location)
+                console.log(busyHour)
+                    
+                if(busyHour < 40) {
+                    createMarkerGreen(location)
+
+                }
+                else if(busyHour > 41 && busyHour <75) {
+                    createMarkerYellow(location)
+                }
+                else if(busyHour >76) {
+                    createMarkerRed(location)
+                }
+
+                else {
+                    createMarkerGreen(location)
+                }
+                function createMarkerRed(place) {
+                    var image = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25)
+                      };
+                    //   var color = {redTimer}
+                    var icon = {url: 'https://i.imgur.com/i9AQAax.png',
+                    scaledSize: new google.maps.Size(25,25)};
+                    // var placeLoc = place.geometry.location;
+                    var marker = new google.maps.Marker({
+                      map: map,
+                      icon :icon,
+                      position: place
+                    });
+            
+                }
+                function createMarkerYellow(place) {
+                    var image = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25)
+                      };
+                    //   var color = {yellowTimer}
+                    var icon = {url: "https://i.imgur.com/LkWlV0u.png",
+                    scaledSize: new google.maps.Size(25,25)};
+                    // var placeLoc = place.geometry.location;
+                    var marker = new google.maps.Marker({
+                      map: map,
+                      icon :icon,
+                      position: place
+                    });
+            
+                }
+                function createMarkerGreen(place) {
+                    var image = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25)
+                      };
+                    //   var color= <img src= {greenTimer}/>
+                    var icon = {url: 'https://i.imgur.com/nnUcYpC.png',
+                    scaledSize: new google.maps.Size(25,25)};
+                    // var placeLoc = place.geometry.location;
+                    var marker = new google.maps.Marker({
+                      map: map,
+                      icon :icon,
+                      position: place
+                    });
+            
+                }
+
+
+               
+            })
+          }
+
+          
+    }
 
         function initMap(){
         var origin1 = new google.maps.LatLng(33.634908, -117.74050670000001);
@@ -75,38 +179,15 @@ class Geolocation extends Component{
         
         function callback2(response, status) {
             console.log(response)
-          // See Parsing the Results for
-          // the basics of a callback function.
+
         }
     }
-
-
-
-
-
-
-
-
       }
-    
-
-
-    //     var type= 'american'
-    //     console.log(latitude, longitude)
-    //     const resp= await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=2000&type=restaurant&keyword=${type}&key=AIzaSyD7hQZInXf3Y5U9UMI_K5bmxfNiUro1cls`)
-    //     console.log('item response:', resp)
-
-
-    //     }
-    // }
-
-      
-
-
         render(){
             return (
                 <div>
-                    <h1 className="center">View To Do Item</h1>
+                    <div id="map"></div>
+                  
                 </div>
             )
         }
@@ -114,37 +195,6 @@ class Geolocation extends Component{
     export default Geolocation
    
 
-
-
-//     if (navigator.geolocation){
-   
-//      function success(position) {
-//        var latitude  = position.coords.latitude;
-//        var longitude = position.coords.longitude;
-//        this.serverRequest =
-//          axios.get(`https://api.darksky.net/forecast/APIKEY/`+latitude+`,`+longitude+`?units=auto`)
-//            .then(result => {
-//              this.setState({
-//                daily: result.data.daily.data,
-//                loading: false,
-//                error: null
-//              });
-//            })
-//          .catch(err => {
-//            // Something went wrong. Save the error in state and re-render.
-//            this.setState({
-//              loading: false,
-//              error: err
-//            });
-//          });
-//      };
-//      function error() {
-//        console.log( 'geolocation error' )
-//      };
-//      navigator.geolocation.getCurrentPosition(success, error);
-//     }
-//    }
-// }
 
 
 

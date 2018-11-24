@@ -3,6 +3,7 @@ import '../assets/css/landingPage.css';
 import tfLogo from '../assets/images/logo.png';
 import { Link } from 'react-router-dom';
 
+
 class LandingPage extends Component{
     render() {  
         return (

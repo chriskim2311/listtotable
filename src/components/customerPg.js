@@ -92,6 +92,7 @@ class CustomerPg extends Component {
                         {/* {map ? <Geolocation/>: <ListView/>} */}
                         {/* bottom half will render the map or list dependent on the true/false value */}
 
+
                 </div>
 
                 </div> 
@@ -99,6 +100,8 @@ class CustomerPg extends Component {
                     {map ? <Geolocation inputValue={this.state.restaurantName}/>: <ListView/>}
                 </div>
                 
+           
+
             </React.Fragment>
         )
     }

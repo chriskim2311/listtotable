@@ -7,8 +7,10 @@ import redTimer from '../assets/images/redTime.png';
 import yellowTimer from '../assets/images/yellowTime.png';
 import { Link } from 'react-router-dom';
 import Header from './header';
-import MapView from './mapView';
+// import MapView from './mapView';
 import ListView from './listView';
+import Geolocation from './geolocation'
+import Restaurant from './restaurants'
 
 class CustomerPg extends Component {
     constructor(props) {
@@ -65,7 +67,7 @@ class CustomerPg extends Component {
                         </div>
                         <div className="searchButton">
                             <button onClick={this.handleSearchItem} className="search btn-small">Search</button>
-                        </div>
+                        </div> 
                         
                     </div>
                     <div className="legendHeader">
@@ -87,12 +89,16 @@ class CustomerPg extends Component {
                                 <div onClick={this.toggleList} className={list ? 'listButton1': 'listButton' }>LIST</div>
                             </div>
                         </div>
+                        {/* {map ? <Geolocation/>: <ListView/>} */}
                         {/* bottom half will render the map or list dependent on the true/false value */}
-                        <div className="bottomContainer">
-                            {map ? <MapView/>: <ListView/>}
-                        </div>
-                    </div>
+
                 </div>
+
+                </div> 
+                <div className="bottomContainer" id="map">
+                    {map ? <Geolocation inputValue={this.state.restaurantName}/>: <ListView/>}
+                </div>
+                
             </React.Fragment>
         )
     }

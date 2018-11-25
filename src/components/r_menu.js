@@ -21,27 +21,30 @@ export default () => {
                     </div>
                     <div className="row">
                         <div className="menuRow col">
-                            <div className="container ">
+                            <div className="container s12">
                                 <Link to="/">
-                                    <img className="circle responsive-img" src={home} alt=""/>
+                                    <img className="s2 circle responsive-img" src={home} alt=""/>
+                                    <h3 className="s8"> homepage</h3>
                                 </Link>
                             </div>
                         </div>
                     </div>
-                    <div className="row">
+                    {/* <div className="row">
                         <div className="menuRow col">
                             <div className="container ">
                                 <Link to="/">
-                                <img className="circle responsive-img" src={account} alt=""/>
+                                <img className="s2 circle responsive-img" src={account} alt=""/>
+                                <h3 className="s8">account</h3>
                                 </Link>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="row">
                         <div className="menuRow col">
                             <div className="container ">
                                 <Link to="/check-in">
-                                    <img className="circle responsive-img" src={checkIn} alt=""/>
+                                    <img className="s2 circle responsive-img" src={checkIn} alt=""/>
+                                    <h3 className="s8">check-in</h3>
                                 </Link>
                             </div>
                         </div>
@@ -50,7 +53,8 @@ export default () => {
                         <div className="menuRow col">
                             <div className="container ">
                                 <Link to="/waiting">
-                                    <img className="circle responsive-img" src={waiting} alt=""/>
+                                    <img className="s2 circle responsive-img" src={waiting} alt=""/>
+                                    <h3 className="s8">waiting</h3>
                                 </Link>
                             </div>
                         </div>
@@ -59,7 +63,8 @@ export default () => {
                         <div className="menuRow col">
                             <div className="container ">
                                 <Link to="/seated">
-                                    <img className="circle responsive-img" src={seated} alt=""/>
+                                    <img className="s2 circle responsive-img" src={seated} alt=""/>
+                                    <h3 className="s8">seated</h3>
                                 </Link>
                             </div>
                         </div>

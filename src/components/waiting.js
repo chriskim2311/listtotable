@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RTopMenu from './r_arrowAndMenu';
 import ListMenu from './list_menu';
+import CustometInfo from './customer_info';
 
 class Waiting extends Component {
     render(){
@@ -8,7 +9,7 @@ class Waiting extends Component {
             <div>
                 <RTopMenu/>
                 <ListMenu/>
-                <h1>Waiting List</h1>
+                <CustometInfo/>
             </div>
         )
     }

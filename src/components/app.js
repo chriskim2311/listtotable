@@ -6,6 +6,9 @@ import LandingPage from './landingPage';
 import '../assets/css/landingPage.css';
 import tfLogo from '../assets/images/logo.png';
 import {Route} from 'react-router-dom';
+
+import ReservationInfo from "./reservationInfo";
+
 import Login from './login';
 import ListMenu from './list_menu';
 import Waiting from './waiting';
@@ -16,11 +19,16 @@ import RMenu from './r_menu';
 import CustomerPg from './customerPg';
 
 
+
 class App extends Component {
     render() {
         return (
             <React.Fragment>
                 <Route exact path="/" component={LandingPage} />
+
+                
+                <Route path="/reservation-info" component={ReservationInfo}/>
+
 
                 
 
@@ -35,6 +43,7 @@ class App extends Component {
 
 
                 <Route path="/customer-map" component={CustomerPg} />
+
 
                 {/* <div className="app">
                     <Test/>

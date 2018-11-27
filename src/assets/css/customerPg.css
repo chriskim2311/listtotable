@@ -166,7 +166,7 @@ a {
 }
 
 
-.mapBottomContainer {
+.BottomContainer {
     width: 100%;
     height: 70%; 
 }
@@ -181,6 +181,14 @@ a {
     display: flex;
     flex-wrap: wrap;
     justify-content:space-around;
+}
+.hidden {
+    display: none;
+}
+
+.mapBottomContainer {
+    width: 100%;
+    height: 100%;
 }
 
 /* #map {

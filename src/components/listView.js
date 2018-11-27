@@ -1,84 +1,137 @@
-import React, {Component} from 'react'; 
+import React, { Component } from 'react';
 import '../assets/css/listView.css'
 import greenTimer from '../assets/images/greenTime.png';
 import redTimer from '../assets/images/redTime.png';
 import yellowTimer from '../assets/images/yellowTime.png';
 import addButton from '../assets/images/plus.png';
 
-class ListView extends Component{
-    constructor(props) {
-        super(props)
+class ListView extends Component {
+    // constructor(props) {
+    //     super(props)
+
+    //     console.log('propsss:', props)
+    // }
+
+
+
+
+
+
+
+    restaurantListRender() {
+        //     if(coords == null) {
+        //         return
+        //     }
+
+        //     var coords = this.props.retrieveRestaurantData
+        //     var locations = coords.map((current) => {
+        //         const latLng= current.geometry.location;
+
+        //         navigator.geolocation.getCurrentPosition((position) => {
+        //             success(position);
+        //          });
+        //          function success(position, latLng){
+        //          var latitude = position.coords.latitude;
+        //          var longitude = position.coords.longitude;
+
+        //          var origin1 = new google.maps.LatLng(latitude,longitude);
+        //          var destination1 = new google.maps.LatLng(destination);
+
+        //          var service = new google.maps.DistanceMatrixService();
+        //          service.getDistanceMatrix(
+        //              {
+        //                  origins: [origin1],
+        //                  destinations: [destination1],
+        //                  travelMode: 'DRIVING',
+        //                  drivingOptions: {
+        //                      departureTime: new Date(Date.now()),  // for the time N milliseconds from now.
+        //                      trafficModel: 'bestguess'
+        //                  },
+        //                  unitSystem: google.maps.UnitSystem.IMPERIAL,
+        //                  avoidHighways: false,
+        //                  avoidTolls: true,
+        //              }, callback2);
+
+        //          function callback2(response, status) {
+        //              return response
+
+        //          }
+        //      }
+        //  }  
+
+
+
+
+
+
+
+
+
+
+
+        // debugger;
+        var results = this.props.retrieveRestaurantData
+        console.log('RESULTS:', results)
+        if (results == null) {
+            return
+        }
+
+        console.log('restaurantszzzzz:', restaurants)
+        const restaurants = results.map((current) => {
+            const price = current.price_level;
+            const address = current.vicinity;
+            const name = current.name;
+            const rating = current.rating;
+
+
+            // const destination = current.geometry.location
+
+
+
+            if (price >= 2) {
+                return (
+                    <div className="restaurantBubble">
+                        <div className="headerTitle">{name}</div>
+                        <div className="bottomInfo">
+                            <div className="timeInfo"><img src={greenTimer} /></div>
+                            <div className="restaurantInfoContainer">
+                                <div className="restaurantInfo">
+                                    <div className="starsDistanceInfo">
+                                        <div className="stars"><span className="boldText">Stars: </span> {rating}</div>
+                                        <div className="distance"><span className="boldText">Distance: </span> </div>
+                                    </div>
+                                    <div className="icons">
+                                        <div className="dollarSigns">{price}$</div>
+                                        <div className="addButton">
+                                            <img src={addButton} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="address"><span className="boldText">Address: </span> {address}</div>
+                            </div>
+                        </div>
+                    </div>
+                )
+
+
+            }
+        })
+
+        return restaurants
     }
-    render(){
+
+
+
+    render() {
+
         return (
-            <div className="listBottomContainer">
-                <div className="restaurantBubble">
-                    <div className="headerTitle">Taco Sinaloa</div>
-                    <div className="bottomInfo">
-                        <div className="timeInfo"><img src= {greenTimer}/></div>
-                        <div className="restaurantInfoContainer">
-                            <div className="restaurantInfo">
-                                <div className="starsDistanceInfo">
-                                    <div className="stars"><span className="boldText">Stars: </span> 4.5</div>
-                                    <div className="distance"><span className="boldText">Distance: </span> 5mi</div>
-                                </div>
-                                <div className="icons">
-                                    <div className="dollarSigns">$$$</div>
-                                    <div className="addButton">
-                                        <img src= {addButton}/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="address"><span className="boldText">Address: </span> 9200 Irvine Center Dr #200, Irvine, CA 92618 </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="restaurantBubble">
-                    <div className="headerTitle">Taco Sinaloa</div>
-                    <div className="bottomInfo">
-                        <div className="timeInfo"><img src= {greenTimer}/></div>
-                        <div className="restaurantInfoContainer">
-                            <div className="restaurantInfo">
-                                <div className="starsDistanceInfo">
-                                    <div className="stars"><span className="boldText">Stars: </span> 4.5</div>
-                                    <div className="distance"><span className="boldText">Distance: </span> 5mi</div>
-                                </div>
-                                <div className="icons">
-                                    <div className="dollarSigns">$$$</div>
-                                    <div className="addButton">
-                                        <img src= {addButton}/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="address"><span className="boldText">Address: </span> 9200 Irvine Center Dr #200, Irvine, CA 92618 </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="restaurantBubble">
-                    <div className="headerTitle">Taco Sinaloa</div>
-                    <div className="bottomInfo">
-                        <div className="timeInfo"><img src= {greenTimer}/></div>
-                        <div className="restaurantInfoContainer">
-                            <div className="restaurantInfo">
-                                <div className="starsDistanceInfo">
-                                    <div className="stars"><span className="boldText">Stars: </span> 4.5</div>
-                                    <div className="distance"><span className="boldText">Distance: </span> 5mi</div>
-                                </div>
-                                <div className="icons">
-                                    <div className="dollarSigns">$$$</div>
-                                    <div className="addButton">
-                                        <img src= {addButton}/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="address"><span className="boldText">Address: </span> 9200 Irvine Center Dr #200, Irvine, CA 92618 </div>
-                        </div>
-                    </div>
-                </div>
+            <div className={`listBottomContainer ${this.props.list ? "" : "hidden"}`}>
+                {this.restaurantListRender()}
             </div>
-            
+
         )
     }
 }
+
 
 export default ListView; 

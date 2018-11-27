@@ -10,7 +10,6 @@ import Header from './header';
 // import MapView from './mapView';
 import ListView from './listView';
 import Geolocation from './geolocation'
-import Restaurant from './restaurants'
 
 class CustomerPg extends Component {
     constructor(props) {
@@ -96,7 +95,7 @@ class CustomerPg extends Component {
                 </div>
 
                 </div> 
-                <div className="bottomContainer" id="map">
+                <div className="mapBottomContainer" id="map">
                     {map ? <Geolocation inputValue={this.state.restaurantName}/>: <ListView/>}
                 </div>
                 

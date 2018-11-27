@@ -12,7 +12,9 @@ class ReservationInfo extends Component{
 
         this.state = {
             name: '',
-            number: ''
+            number: '',
+            comments: '',
+            count: 1
         }
     }
 
@@ -25,6 +27,18 @@ class ReservationInfo extends Component{
         });
         console.log('New Customer:', this.state);
     };
+
+    handleIncrement(){
+        this.setState({
+            count: this.state.count +1
+        })
+    }
+
+    handleDecrement(){
+        this.setState({
+            count: this.state.count -1
+        })
+    }
 
     render (){
         console.log('info being changed', this.state);
@@ -64,13 +78,22 @@ class ReservationInfo extends Component{
                     </div>
 
                     <div className="tableInfoContainer">
-                        <div className="removeTableBox">
+                        <button
+                            className="decrementButton"
+                            onClick={() => this.handleDecrement()}
+                        >
                             <img src={removeButton}/>
-                        </div>
-                        <div className="tableInputBox">1</div>
-                        <div className="addTableBox">
+                        </button>
+
+                        <div className="tableInputBox">{this.state.count}</div>
+
+                        <button
+                            className="incrementButton"
+                            value={this.state.count}
+                            onClick={() => this.handleIncrement()}
+                        >
                             <img src={addButton}/>
-                        </div>
+                        </button>
                     </div>
 
                     <div className="commentsContainer">

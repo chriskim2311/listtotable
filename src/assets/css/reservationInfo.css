@@ -67,21 +67,6 @@
     display: inline-block;
     width: 40%;
     height: 100%;
-}
-
-.addTableBox{
-    display: inline-block;
-    width: 30%;
-    height: 100%;
-}
-
-.removeTableBox{
-    display: inline-block;
-    width: 30%;
-    height: 100%;
-}
-
-.tableInputBox{
     vertical-align: top;
     text-align: center;
     font-size: 13vmin;
@@ -89,27 +74,29 @@
     border-radius: 15px;
 }
 
-.addTableBox{
+.incrementButton{
+    display: inline-block;
+    width: 30%;
+    height: 100%;
     vertical-align: top;
     position: relative;
 }
 
-.addTableBox img{
+.incrementButton img{
     position: relative;
-    width: 60%;
-    top: 25%;
-    left: 20%;
+    width: 75%;
 }
 
-.removeTableBox{
+.decrementButton{
+    display: inline-block;
+    width: 30%;
+    height: 100%;
     position: relative;
 }
 
-.removeTableBox img{
+.decrementButton img{
     position: relative;
-    width: 60%;
-    top: 25%;
-    left: 20%;
+    width: 75%;
 }
 
 .commentsContainer{

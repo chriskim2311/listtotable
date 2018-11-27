@@ -10,7 +10,6 @@ import Header from './header';
 // import MapView from './mapView';
 import ListView from './listView';
 import Geolocation from './geolocation'
-import Restaurant from './restaurants'
 import '../assets/css/customerPg.css';
 
 class CustomerPg extends Component {
@@ -113,7 +112,6 @@ class CustomerPg extends Component {
 
 
                     </div>
-
                 </div>
                 <div className="BottomContainer">
                     <Geolocation map={map} retrieveRestaurantData={this.retrieveRestaurantData} />

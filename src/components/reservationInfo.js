@@ -4,7 +4,7 @@ import 'materialize-css/dist/js/materialize';
 import '../assets/css/reservationInfo.css';
 import addButton from "../assets/images/addbutton.svg";
 import removeButton from "../assets/images/removebutton.svg";
-import Header from './header';
+// import Header from './header';
 
 class ReservationInfo extends Component{
     constructor(props){
@@ -44,7 +44,7 @@ class ReservationInfo extends Component{
         console.log('info being changed', this.state);
         return (
             <React.Fragment>
-                <Header/>
+                
                 <div className="mainContainer">
 
                     <div className="restaurantTitleBox">

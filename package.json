@@ -23,16 +23,17 @@
     "@google/maps": "^0.5.5",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
-    "materialize-css": "^1.0.0",
     "busy-hours": "0.0.5",
     "cors": "^2.8.5",
     "es6-promise": "^4.2.5",
+    "materialize-css": "^1.0.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-google-maps": "^9.4.5",
-    "react-redux": "^5.0.7",
+    "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
-    "redux": "^4.0.0"
+    "redux": "^4.0.1",
+    "redux-form": "^7.4.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

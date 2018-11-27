@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import greenTimer from '../assets/images/greenTime.png';
-import redTimer from '../assets/images/redTime.png';
-import yellowTimer from '../assets/images/yellowTime.png';
+// import greenTimer from '../assets/images/greenTime.png';
+// import redTimer from '../assets/images/redTime.png';
+// import yellowTimer from '../assets/images/yellowTime.png';
 
 
 const { compose } = require("recompose");

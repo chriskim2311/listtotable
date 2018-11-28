@@ -6,7 +6,7 @@ let SignUpForm = props => {
     return(
         <form onSubmit={handleSubmit}>
             <div className="row">
-                <div className="input-field col s8 offset-s2 center-align plase">
+                <div className="input-field col s8 offset-s2 center-align ">
                     <Field name="businessName" component="input" type="text" placeholder=" Best Restaurant"/>  
                     <label htmlFor="businessName">Enter Your Business Name</label>
                 </div>

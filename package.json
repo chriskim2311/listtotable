@@ -26,6 +26,7 @@
     "busy-hours": "0.0.5",
     "cors": "^2.8.5",
     "es6-promise": "^4.2.5",
+    "material-icons": "^0.2.3",
     "materialize-css": "^1.0.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",

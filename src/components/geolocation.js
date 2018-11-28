@@ -17,13 +17,13 @@ class Geolocation extends Component {
         var infowindow;
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
-                showRestaurants(position, this.props.retrieveRestaurantData);
+                showRestaurants(position, this.props.retrieveRestaurantData, this.props.handleSearchItem);
             });
         } else {
             x.innerHTML = "Geolocation is not supported by this browser.";
 
         }
-        function showRestaurants(position, retrieveRestaurantData) {
+        function showRestaurants(position, retrieveRestaurantData, handleSearchItem) {
             var latitude = position.coords.latitude;
             var longitude = position.coords.longitude;
             console.log(latitude, longitude)
@@ -39,13 +39,13 @@ class Geolocation extends Component {
                 map: map,
                 position: { lat: latitude, lng: longitude },
             });
-
+            console.log("HANDLE:", handleSearchItem)
             // var keyword = {this.props.inputValue}
             var request = {
                 location: centerLocation,
                 radius: '2000',
                 type: ['restaurant'],
-                keyword: 'american'
+                keyword: ""
             }
             service = new google.maps.places.PlacesService(map);
             service.nearbySearch(request, (results, status) => {

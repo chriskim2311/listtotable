@@ -3,7 +3,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 import '../assets/css/reservationInfo.css';
 import addButton from "../assets/images/addbutton.svg";
-import removeButton from "../assets/images/removebutton.svg";
+import removeButton from "../assets/images/removeButton.svg";
 
 class CheckInForm extends Component{
     constructor(props){
@@ -34,42 +34,50 @@ class CheckInForm extends Component{
     }
 
     handleDecrement(){
-        this.setState({
-            count: this.state.count -1
-        })
+        if(this.state.count === 1){
+            this.setState({
+                count: 1
+            })
+        }
+        else{
+            this.setState({
+                count: this.state.count -1
+            })
+        }
+
     }
 
     render (){
         console.log('info being changed', this.state);
         return (
             <React.Fragment>
-                <div className="mainContainer">
+                <div className="container">
 
-                    <form className="formBox" onSubmit={this.handleSubmit}>
-                        <div className="input-field enterNameSearchBox">
-                            <input
-                                className="enterNameSearchField"
-                                type="text"
-                                value={this.state.name}
-                                onChange={event => this.setState({name: event.target.value})}
-                            />
-                            <label>Enter Name</label>
-                        </div>
+                    <form onSubmit={this.handleSubmit}>
+                         <div className="row">
+                             <div className="input-field col s10 center-align offset-s1">
+                                 <input
+                                     type="text"
+                                     value={this.state.name}
+                                     onChange={event => this.setState({name: event.target.value})}
+                                 />
+                                 <label>Enter Name</label>
+                             </div>
+                         </div>
 
-                        <div className="input-field enterNumberSearchBox">
-                            <input
-                                className="enterNumberSearchField"
-                                type="text"
-                                value={this.state.number}
-                                onChange={event => this.setState({number: event.target.value})}
-                            />
-                            <label>Enter Number</label>
+                        <div className="row">
+                            <div className="input-field col s10 center-align offset-s1">
+                                <input
+                                    type="text"
+                                    value={this.state.number}
+                                    onChange={event => this.setState({number: event.target.value})}
+                                />
+                                <label>Enter Number</label>
+                            </div>
                         </div>
                     </form>
 
-                    <div className="tableSizeBox">
-                        <div className="tableSizeTitle">Table Size</div>
-                    </div>
+                    <div className="tableSizeTitle">Table Size</div>
 
                     <div className="tableInfoContainer">
                         <button

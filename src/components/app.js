@@ -39,7 +39,6 @@ class App extends Component {
                 <Route path="/seated" component={Seated}/>
                 <Route path="/signup" component={SignUp}/>
                 <Route path="/r_menu" component={RMenu}/>
-                
 
 
                 <Route path="/customer-map" component={CustomerPg} />

@@ -43,9 +43,7 @@ class App extends Component {
                 <Route path="/r_menu" component={RMenu}/>
                 <Route path="/about" component={About}/>
                 <Route path="/team" component={Team}/>
-                
-
-
+         
                 <Route path="/customer-map" component={CustomerPg} />
 
 

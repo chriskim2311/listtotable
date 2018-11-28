@@ -17,6 +17,10 @@ import Seated from './seated';
 import SignUp from './signup';
 import RMenu from './r_menu';
 import CustomerPg from './customerPg';
+import Team from './team';
+import About from './about';
+
+
 
 
 
@@ -24,23 +28,22 @@ class App extends Component {
     render() {
         return (
             <React.Fragment>
+                
+
                 <Route exact path="/" component={LandingPage} />
 
                 
                 <Route path="/reservation-info" component={ReservationInfo}/>
 
-
-                
-
-            
                 <Route path="/login" component={Login}/>
                 <Route path="/waiting" component={Waiting}/>
                 <Route path="/check-in" component={RCheckIn}/>
                 <Route path="/seated" component={Seated}/>
                 <Route path="/signup" component={SignUp}/>
                 <Route path="/r_menu" component={RMenu}/>
-
-
+                <Route path="/about" component={About}/>
+                <Route path="/team" component={Team}/>
+         
                 <Route path="/customer-map" component={CustomerPg} />
 
 

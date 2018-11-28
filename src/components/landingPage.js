@@ -5,6 +5,18 @@ import { Link } from 'react-router-dom';
 
 
 class LandingPage extends Component{
+    geolocation = ()=>{
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            console.log(position)
+            
+        })
+        }
+     else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+
+    }
+}
     render() {  
         return (
             <React.Fragment> 

@@ -26,10 +26,9 @@ class Geolocation extends Component {
         function showRestaurants(position, retrieveRestaurantData, handleSearchItem) {
             var latitude = position.coords.latitude;
             var longitude = position.coords.longitude;
-            console.log(latitude, longitude)
-
+            // console.log(latitude, longitude)
             var centerLocation = new google.maps.LatLng(latitude, longitude);
-            console.log(centerLocation)
+            // console.log(centerLocation)
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: latitude, lng: longitude },
                 zoom: 13
@@ -39,7 +38,7 @@ class Geolocation extends Component {
                 map: map,
                 position: { lat: latitude, lng: longitude },
             });
-            console.log("HANDLE:", handleSearchItem)
+            // console.log("HANDLE:", handleSearchItem)
             // var keyword = {this.props.inputValue}
             var request = {
                 location: centerLocation,
@@ -57,14 +56,14 @@ class Geolocation extends Component {
             var bounds = new google.maps.LatLngBounds();
             retrieveRestaurantData(results);
 
-            console.log(results)
+            // console.log(results)
   
             for (var i = 0; i < results.length; i++) {
                 var priceLevel = results[i].price_level
 
                 if (priceLevel >= 2) {
                     var placeId = String(results[i].place_id);
-                    console.log(placeId)
+                    // console.log(placeId)
 
 
                     axios.post('http://place.kim-chris.com/busy-hours', {
@@ -170,7 +169,7 @@ class Geolocation extends Component {
 
     }
     render() {
-        console.log("Props:", this.props)
+        // console.log("Props:", this.props)
         return (
             <div id="map" className={`mapBottomContainer ${this.props.map ? "" : "hidden"}`}></div>
         )

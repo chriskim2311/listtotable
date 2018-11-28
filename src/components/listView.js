@@ -76,13 +76,13 @@ class ListView extends Component {
             return
         }
 
-        console.log('restaurantszzzzz:', restaurants)
+        
         const restaurants = results.map((current) => {
             const price = current.price_level;
             const address = current.vicinity;
             const name = current.name;
             const rating = current.rating;
-
+         
 
             // const destination = current.geometry.location
 

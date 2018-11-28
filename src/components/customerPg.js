@@ -10,6 +10,7 @@ import Header from './header';
 // import MapView from './mapView';
 import ListView from './listView';
 import Geolocation from './geolocation'
+import Navigation from './hamburgerAndBack'
 import '../assets/css/customerPg.css';
 
 class CustomerPg extends Component {
@@ -39,9 +40,9 @@ class CustomerPg extends Component {
     handleSearchItem = () => {
         event.preventDefault();
         console.log('info has been submitted', this.state)
-        this.setState({
-            restaurantName: ''
-        })
+        // this.setState({
+        //     restaurantName: ''
+        // })
     }
 
     toggleMap = () => {
@@ -70,7 +71,7 @@ class CustomerPg extends Component {
         return (
             <React.Fragment>
                 <div className="topContainer">
-                    <Header />
+                <Navigation/>
                     <div className="foodSearchHeader">
                         <div className="foodSearchBar">
                             <form onSubmit={this.handleSearchItem}>
@@ -114,7 +115,7 @@ class CustomerPg extends Component {
                     </div>
                 </div>
                 <div className="BottomContainer">
-                    <Geolocation map={map} retrieveRestaurantData={this.retrieveRestaurantData} />
+                    <Geolocation map={map} retrieveRestaurantData={this.retrieveRestaurantData} handleSearchItem= {this.state.restaurantName} />
                     <ListView list={list} retrieveRestaurantData={this.state.restaurantData} />
                 </div>
 

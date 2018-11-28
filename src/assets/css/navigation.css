@@ -1,0 +1,161 @@
+
+.navbar {
+	height: 3.5em;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-sizing: border-box;
+	padding: 0 0.9em;
+    background-color: #024771;
+    font-size: 1.4rem;
+}
+
+.navbar ul {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	flex-flow: column wrap;
+	background-color: #024771;
+	border-radius: 50%;
+	transform: translate(100%, 0);
+	transition: transform 0.75s cubic-bezier(0.77, 0.2, 0.05, 1),
+		border-radius 0.75s cubic-bezier(0.77, 0.2, 0.05, 1);
+	z-index: 1;
+}
+
+.navbar ul.show {
+	transform: none;
+	border-radius: 0;
+}
+
+.navbar ul li {
+	margin: 0.5em auto;
+	width: 100%;
+	text-align: center;
+	
+}
+
+.navbar ul li:hover {
+	background-color: rgb(201, 212, 201);
+}
+
+ .navbar ul li a {
+	color: #ffffff;
+	font-size: 2em;
+	font-weight: lighter; 
+}
+
+.burger-menu,
+.brand {
+	z-index: 11;
+}
+
+.brand {
+	font-size: 1.8em;
+	padding: 0.4em;
+	font-style: italic;
+	border-radius: 100%;
+	width: 1.5em;
+	height: 1.5em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #70837f
+}
+
+.burger-menu {
+	height: 1em;
+	width: 2em;
+	box-sizing: border-box;
+	position: relative;
+	cursor: pointer;
+	
+}
+ .back-button{
+	cursor: pointer;	
+}
+
+.burger-menu span {
+	width: 100%;
+	height: 2px;
+	background-color: currentColor;
+	display: block;
+	position: absolute;
+
+	transition: transform 1s cubic-bezier(0.180, 0.75, 0.41, 1.275),
+		background-color 1s cubic-bezier(0.180, 0.75, 0.41, 1.275);
+}
+ .burger-menu span:nth-child(1) {
+	top: 0;
+}
+
+.burger-menu span:nth-child(2) {
+	top: 50%;
+}
+
+ .burger-menu span:nth-child(3) {
+	top: 100%;
+}
+
+.burger-menu.close span {
+	background-color: #ffffff;
+}
+
+.burger-menu.close span:nth-child(1) {
+	transform: rotateZ(45deg);
+	top: 50%;
+}
+
+ .burger-menu.close span:nth-child(2) {
+	transform: scale(0);
+}
+ .burger-menu.close span:nth-child(3) {
+	transform: rotateZ(-45deg);
+	top: 50%;
+}
+
+.landing-burger{
+	display: flex;
+	justify-content: flex-end;
+}
+
+@media only screen and (max-width: 576px){
+	.large-nav-title{
+		display:none
+	}
+}
+
+
+@media only screen and (min-width: 576px){
+	.navbar ul{
+		width: 35vw;
+		left: 65%;
+	}
+	.small-nav-title{
+		display: none;
+	}
+	.large-nav-title{
+		display: block;
+		font-size: 2em;
+	}
+	
+}
+.invisible-nav-show{
+	display: block;
+    position: absolute;
+    width: 65vw;
+    top: 8vh;
+    background-color: transparent;
+    opacity: .5;
+    height: 193vh;
+    left: 0vw;
+}
+
+.invisible-nav-close{
+	display: none;
+}

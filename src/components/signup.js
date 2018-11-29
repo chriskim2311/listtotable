@@ -10,7 +10,7 @@ class SignUp extends Component {
     }
     render(){
         return(
-            <div>
+            <div className="container">
                 <RTopMenu/>
                 
                 

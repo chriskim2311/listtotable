@@ -4,6 +4,7 @@ import greenTimer from '../assets/images/greenTime.png';
 import redTimer from '../assets/images/redTime.png';
 import yellowTimer from '../assets/images/yellowTime.png';
 import addButton from '../assets/images/plus.png';
+import { Link } from 'react-router-dom';
 
 class ListView extends Component {
     // constructor(props) {
@@ -76,6 +77,8 @@ class ListView extends Component {
             return
         }
 
+
+
         
         const restaurants = results.map((current) => {
             const price = current.price_level;
@@ -102,9 +105,9 @@ class ListView extends Component {
                                     </div>
                                     <div className="icons">
                                         <div className="dollarSigns">{price}$</div>
-                                        <div className="addButton">
+                                        <Link to="/reservation-info" className="addButton">
                                             <img src={addButton} />
-                                        </div>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className="address"><span className="boldText">Address: </span> {address}</div>
@@ -115,7 +118,7 @@ class ListView extends Component {
 
 
             }
-        })
+        });
 
         return restaurants
     }

@@ -50,7 +50,7 @@ class Navigation extends Component {
                 </div>
 
                 <ul className={this.state.showNavMenu ? "show" : ""} onClick={this.toggleMenu}>
-                    <li>
+                <li>
                         <Link to="/">Home</Link>
                     </li>
                     <li>

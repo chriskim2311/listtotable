@@ -24,11 +24,9 @@ class CustomerPg extends Component {
             list: false,
             restaurantData: null,
             search: false,
-            searchTerm: ''
-           
-           
+            searchTerm: '',
+            mapRef: null
         }
-
     }
 
 
@@ -36,10 +34,11 @@ class CustomerPg extends Component {
         console.log("State has been updated from the function passed through geolocation ", this.state.restaurantData);
     }
 
-    retrieveRestaurantData = (results) => {
+    retrieveRestaurantData = (results, map) => {
         // debugger;
         this.setState({
-            restaurantData: [...results]
+            restaurantData: [...results],
+            mapRef: map
         })
     }
 
@@ -133,7 +132,7 @@ class CustomerPg extends Component {
                         restaurantType={restaurantType} 
                         retrieveRestaurantData={this.retrieveRestaurantData} 
                         clearSearch={this.clearSearchItem} />
-                    <ListView list={list} retrieveRestaurantData={this.state.restaurantData} />
+                    <ListView list={list} mapRef={this.state.mapRef} retrieveRestaurantData={this.state.restaurantData} />
                 </div>
 
 

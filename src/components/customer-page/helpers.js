@@ -48,13 +48,14 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
         }
         service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, (results, status) => {
-            restaurantIconRender(results, status, retrieveRestaurantData);
+            restaurantIconRender(results, status, retrieveRestaurantData, map);
         });
     }
 
-    function restaurantIconRender(results, status, retrieveRestaurantData) {
+    function restaurantIconRender(results, status, retrieveRestaurantData, map) {
         var bounds = new google.maps.LatLngBounds();
-        retrieveRestaurantData(results);
+        console.log('is it doing the thing?', map)
+        retrieveRestaurantData(results, map);
 
         // console.log(results)
 

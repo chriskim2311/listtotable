@@ -15,7 +15,20 @@ class ListView extends Component {
     // }
 
 
-
+    getGooglePhotos = (mapRef, placeID) => {
+        var service;
+        var request = {
+            placeId: placeID
+        }
+        service = new google.maps.places.PlacesService(mapRef);
+        service.getDetails(request, (results, status) => {
+            retrieveRestaurantPhoto(results, status)
+        });
+        function retrieveRestaurantPhoto(results, status) {
+            console.log('Photos', results.photos);
+        }
+        
+    }
 
 
 
@@ -86,13 +99,12 @@ class ListView extends Component {
             const address = current.vicinity;
             const name = current.name;
             const rating = current.rating;
-         
+            const places = current.place_id;
 
             // const destination = current.geometry.location
 
-
-
             if (price >= 2) {
+                this.getGooglePhotos(this.props.mapRef, places);
                 return (
                     <div className="restaurantBubble">
                         <div className="headerTitle">{name}</div>

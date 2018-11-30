@@ -12,7 +12,7 @@ class CustomerInfo extends Component {
 
         const customerList = partys.map((current, index) => {
             const name = current.name;
-            const partyOf = current.partuOf
+            const partyOf = current.partyOf
             const phone = current.phoneNumber
         
             return(

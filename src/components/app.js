@@ -16,7 +16,7 @@ import RCheckIn from './r_check-in';
 import Seated from './seated';
 import SignUp from './signup';
 import RMenu from './r_menu';
-import CustomerPg from './customerPg';
+import CustomerPg from './customer-page';
 import Team from './team';
 import About from './about';
 

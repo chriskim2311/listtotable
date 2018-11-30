@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import '../assets/css/listView.css'
-import greenTimer from '../assets/images/greenTime.png';
-import redTimer from '../assets/images/redTime.png';
-import yellowTimer from '../assets/images/yellowTime.png';
-import addButton from '../assets/images/plus.png';
+import '../../assets/css/listView.css'
+import greenTimer from '../../assets/images/greenTime.png';
+import redTimer from '../../assets/images/redTime.png';
+import yellowTimer from '../../assets/images/yellowTime.png';
+import addButton from '../../assets/images/plus.png';
 import { Link } from 'react-router-dom';
+
 
 class ListView extends Component {
     // constructor(props) {

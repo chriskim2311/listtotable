@@ -2,29 +2,35 @@ import React, { Component } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 
-import greenTimer from '../assets/images/greenTime.png';
-import redTimer from '../assets/images/redTime.png';
-import yellowTimer from '../assets/images/yellowTime.png';
+import greenTimer from '../../assets/images/greenTime.png';
+import redTimer from '../../assets/images/redTime.png';
+import yellowTimer from '../../assets/images/yellowTime.png';
 import { Link } from 'react-router-dom';
-import Header from './header';
+import Header from '../header';
 // import MapView from './mapView';
 import ListView from './listView';
 import Geolocation from './geolocation'
-import Navigation from './hamburgerAndBack'
-import '../assets/css/customerPg.css';
+import Navigation from '../hamburgerAndBack'
+import { renderBusyTimes } from './helpers';
+import '../../assets/css/customerPg.css';
 
 class CustomerPg extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            restaurantName: '',
+            restaurantType: '',
             map: true,
             list: false,
-            restaurantData: null
+            restaurantData: null,
+            search: false,
+            searchTerm: ''
+           
+           
         }
 
     }
+
 
     componentDidUpdate() {
         console.log("State has been updated from the function passed through geolocation ", this.state.restaurantData);
@@ -40,9 +46,15 @@ class CustomerPg extends Component {
     handleSearchItem = () => {
         event.preventDefault();
         console.log('info has been submitted', this.state)
-        // this.setState({
-        //     restaurantName: ''
-        // })
+        renderBusyTimes(this.state.restaurantType  , this.retrieveRestaurantData)
+       
+    }
+
+    clearSearchItem = () => {
+        this.setState({
+            search: false,
+            restaurantType: ''
+        })
     }
 
     toggleMap = () => {
@@ -67,7 +79,7 @@ class CustomerPg extends Component {
     render() {
         console.log('info being changed', this.props)
         console.log("Current state: ", this.state)
-        const { map, list } = this.state
+        const { map, list, restaurantType, search } = this.state
         return (
             <React.Fragment>
                 <div className="topContainer">
@@ -78,8 +90,8 @@ class CustomerPg extends Component {
                                 <input
                                     className="inputFood"
                                     type="text"
-                                    value={this.state.restaurantName}
-                                    onChange={(e) => { this.setState({ restaurantName: e.target.value }) }}
+                                    value={this.state.restaurantType}
+                                    onChange={(e) => { this.setState({ restaurantType: e.target.value }) }}
                                     placeholder="Search for Restaurants"
                                 />
                             </form>
@@ -97,9 +109,9 @@ class CustomerPg extends Component {
                                 <img className="redTime" src={redTimer} />
                             </div>
                             <div className="legendDetails">
-                                <div className="clockInfo">0-30</div>
-                                <div className="clockInfo">30-60</div>
-                                <div className="clockInfo">60+</div>
+                                <div className="clockInfo">Not Busy</div>
+                                <div className="clockInfo">Busy</div>
+                                <div className="clockInfo">Very Busy</div>
                             </div>
                         </div>
                         <div className="toggleDisplayContainer">
@@ -115,7 +127,12 @@ class CustomerPg extends Component {
                     </div>
                 </div>
                 <div className="BottomContainer">
-                    <Geolocation map={map} retrieveRestaurantData={this.retrieveRestaurantData} handleSearchItem= {this.state.restaurantName} />
+                    <Geolocation 
+                        map={map} 
+                        search={search} 
+                        restaurantType={restaurantType} 
+                        retrieveRestaurantData={this.retrieveRestaurantData} 
+                        clearSearch={this.clearSearchItem} />
                     <ListView list={list} retrieveRestaurantData={this.state.restaurantData} />
                 </div>
 

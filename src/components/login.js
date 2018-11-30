@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import RTopMenu from './r_arrowAndMenu';
+
 import LogInForm from './login-form';
+import RTopMenu from './r_arrowAndMenu';
+
+
 
 
 class Login extends Component {
@@ -12,11 +15,10 @@ class Login extends Component {
         return (
             <div>
                 <RTopMenu/>
-                <h1 className="text center">LOGO</h1>
                 <LogInForm onSubmit={this.submit}/>
-                <div className="row">
-                    <div className="col s4 offset-s4 center -align ">
-                        <Link to="/signup" className="btn grey">Sign Up</Link>
+                <div className="row center">
+                    <div className="col s4 offset-s4 ">
+                        <Link to="/signup" className="btn grey ">Sign Up</Link>
                     </div>
                 </div>
                     

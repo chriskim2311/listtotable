@@ -17,8 +17,8 @@ let LogInForm = props => {
                     <label htmlFor="password">Password</label>
                 </div>
             </div>
-            <div className="row">
-                <button className="col s2 offset-s5" type="submit center-align">Submit</button>
+            <div className="row center-align">
+                <button className="btn waves-effect waves-light" type="submit"> Submit </button>
             </div>
             
         </form>

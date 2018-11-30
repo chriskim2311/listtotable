@@ -85,6 +85,8 @@ class ListView extends Component {
             const address = current.vicinity;
             const name = current.name;
             const rating = current.rating;
+
+            console.log('Current :', current.id);
          
 
             // const destination = current.geometry.location
@@ -105,7 +107,7 @@ class ListView extends Component {
                                     </div>
                                     <div className="icons">
                                         <div className="dollarSigns">{price}$</div>
-                                        <Link to="/reservation-info" className="addButton">
+                                        <Link to={`/reservation-info/${name}/${current.place_id}`} className="addButton">
                                             <img src={addButton} />
                                         </Link>
                                     </div>
@@ -122,7 +124,6 @@ class ListView extends Component {
 
         return restaurants
     }
-
 
 
     render() {

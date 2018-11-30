@@ -33,7 +33,7 @@ class App extends Component {
                 <Route exact path="/" component={LandingPage} />
 
                 
-                <Route path="/reservation-info" component={ReservationInfo}/>
+                <Route path="/reservation-info/:name/:id" component={ReservationInfo}/>
 
                 <Route path="/login" component={Login}/>
                 <Route path="/waiting" component={Waiting}/>

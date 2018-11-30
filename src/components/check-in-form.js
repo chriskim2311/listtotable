@@ -10,38 +10,48 @@ class CheckInForm extends Component{
         super(props);
 
         this.state = {
-            name: '',
-            number: '',
-            comments: '',
-            count: 1
+            clientName: '',
+            clientNumber: '',
+            clientComments: '',
+            clientGroupSize: 1
         }
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
+
+        //CLIENT AND RESTAURANT DATA OBJECT
+        const dataToSend = {
+            ...this.state,
+            restaurantName: this.props.restaurantName,
+            restaurantID: this.props.restaurantID
+        };
+        console.log('NEW CLIENT:', dataToSend);
+
         this.setState({
-            name: '',
-            number: '',
-            comments: ''
+            clientName: '',
+            clientNumber: '',
+            clientComments: '',
+            clientGroupSize: 1
         });
-        console.log('New Customer:', this.state);
+
     };
 
     handleIncrement(){
         this.setState({
-            count: this.state.count +1
+            clientGroupSize: this.state.clientGroupSize +1
         })
     }
 
     handleDecrement(){
-        if(this.state.count === 1){
+        if(this.state.clientGroupSize === 1){
             this.setState({
-                count: 1
+                clientGroupSize: 1
             })
         }
         else{
             this.setState({
-                count: this.state.count -1
+                clientGroupSize: this.state.clientGroupSize -1
             })
         }
 
@@ -58,8 +68,8 @@ class CheckInForm extends Component{
                              <div className="input-field col s10 center-align offset-s1">
                                  <input
                                      type="text"
-                                     value={this.state.name}
-                                     onChange={event => this.setState({name: event.target.value})}
+                                     value={this.state.clientName}
+                                     onChange={event => this.setState({clientName: event.target.value})}
                                  />
                                  <label>Enter Name</label>
                              </div>
@@ -69,8 +79,8 @@ class CheckInForm extends Component{
                             <div className="input-field col s10 center-align offset-s1">
                                 <input
                                     type="text"
-                                    value={this.state.number}
-                                    onChange={event => this.setState({number: event.target.value})}
+                                    value={this.state.clientNumber}
+                                    onChange={event => this.setState({clientNumber: event.target.value})}
                                 />
                                 <label>Enter Number</label>
                             </div>
@@ -87,11 +97,11 @@ class CheckInForm extends Component{
                             <img src={removeButton}/>
                         </button>
 
-                        <div className="tableInputBox">{this.state.count}</div>
+                        <div className="tableInputBox">{this.state.clientGroupSize}</div>
 
                         <button
                             className="incrementButton"
-                            value={this.state.count}
+                            value={this.state.clientGroupSize}
                             onClick={() => this.handleIncrement()}
                         >
                             <img src={addButton}/>
@@ -102,8 +112,8 @@ class CheckInForm extends Component{
                         <textarea
                             className="commentsBox"
                             placeholder="Comments"
-                            value={this.state.comments}
-                            onChange={event => this.setState({comments: event.target.value})}
+                            value={this.state.clientComments}
+                            onChange={event => this.setState({clientComments: event.target.value})}
                         >
                         </textarea>
                     </div>

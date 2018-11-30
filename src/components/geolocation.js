@@ -63,7 +63,7 @@ class Geolocation extends Component {
 
                 if (priceLevel >= 2) {
                     var placeId = String(results[i].place_id);
-                    // console.log(placeId)
+                    // console.log("Place ID:", placeId)
 
 
                     axios.post('http://place.kim-chris.com/busy-hours', {

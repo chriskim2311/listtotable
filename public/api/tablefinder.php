@@ -22,6 +22,7 @@ switch($action) {
     case 'restaurant_users':
         require_once('restaurant_users/getAll.php');
         require_once('restaurant_users/insert.php');
+        require_once('restaurant_users/login.php');
         break;
 
     case 'parties':

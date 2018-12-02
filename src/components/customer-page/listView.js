@@ -84,7 +84,7 @@ class ListView extends Component {
                                     </div>
                                     <div className="icons">
                                         <div className="dollarSigns">{price}$</div>
-                                        <Link to="/reservation-info" className="addButton">
+                                        <Link to={`/reservation-info/${name}/${current.place_id}`} className="addButton">
                                             <img src={addButton} />
                                         </Link>
                                     </div>
@@ -104,7 +104,6 @@ class ListView extends Component {
 
         return restaurants;
     }
-
     render() {
         return (
             <div className={`listBottomContainer ${this.props.list ? "" : "hidden"}`}>

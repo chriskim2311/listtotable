@@ -34,45 +34,48 @@ class ListView extends Component {
 
 
     restaurantListRender() {
-        //     if(coords == null) {
-        //         return
-        //     }
+        var distanceCords =[]
 
-        //     var coords = this.props.retrieveRestaurantData
-        //     var locations = coords.map((current) => {
-        //         const latLng= current.geometry.location;
+                navigator.geolocation.getCurrentPosition((position) => {
+                    success(position);
+                 });
+                 function success(position){
+                     console.log(position)
+                     var coords = this.props.retrieveRestaurantData
+                     console.log("COORDS:", coords)
+                    var locations = coords.map((current) => {
+                    const latLng= current.geometry.location;
+                 var latitude = position.coords.latitude;
+                 var longitude = position.coords.longitude;
 
-        //         navigator.geolocation.getCurrentPosition((position) => {
-        //             success(position);
-        //          });
-        //          function success(position, latLng){
-        //          var latitude = position.coords.latitude;
-        //          var longitude = position.coords.longitude;
+                 var origin1 = new google.maps.LatLng(latitude,longitude);
+                 var destination1 = new google.maps.LatLng(latLng);
 
-        //          var origin1 = new google.maps.LatLng(latitude,longitude);
-        //          var destination1 = new google.maps.LatLng(destination);
+                 var service = new google.maps.DistanceMatrixService();
+                 service.getDistanceMatrix(
+                     {
+                         origins: [origin1],
+                         destinations: [destination1],
+                         travelMode: 'DRIVING',
+                         drivingOptions: {
+                             departureTime: new Date(Date.now()),  // for the time N milliseconds from now.
+                             trafficModel: 'bestguess'
+                         },
+                         unitSystem: google.maps.UnitSystem.IMPERIAL,
+                         avoidHighways: false,
+                         avoidTolls: true,
+                     }, callback2);
 
-        //          var service = new google.maps.DistanceMatrixService();
-        //          service.getDistanceMatrix(
-        //              {
-        //                  origins: [origin1],
-        //                  destinations: [destination1],
-        //                  travelMode: 'DRIVING',
-        //                  drivingOptions: {
-        //                      departureTime: new Date(Date.now()),  // for the time N milliseconds from now.
-        //                      trafficModel: 'bestguess'
-        //                  },
-        //                  unitSystem: google.maps.UnitSystem.IMPERIAL,
-        //                  avoidHighways: false,
-        //                  avoidTolls: true,
-        //              }, callback2);
+                 function callback2(response, status) {
+                     console.log(response)
 
-        //          function callback2(response, status) {
-        //              return response
-
-        //          }
-        //      }
-        //  }  
+                 }
+             
+                })
+            }
+        
+        
+        
 
 
 
@@ -135,6 +138,9 @@ class ListView extends Component {
 
         return restaurants
     }
+
+    
+
 
 
     render() {

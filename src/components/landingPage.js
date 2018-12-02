@@ -5,19 +5,33 @@ import { Link } from 'react-router-dom';
 
 
 class LandingPage extends Component{
-    geolocation = ()=>{
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentLocation: ''
+            
+        }
+    }
+
+
+
+   geolocation= () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
-            console.log(position)
+            this.setState= {
+                currentLocation: position
             
-        })
+         } })
         }
      else {
         x.innerHTML = "Geolocation is not supported by this browser.";
 
     }
+    console.log("current",this.state.currentLocation)
 }
     render() {  
+        this.geolocation()
+    
         return (
             <React.Fragment> 
                 <div className='tfContainer'>

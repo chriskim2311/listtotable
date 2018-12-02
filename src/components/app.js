@@ -6,9 +6,7 @@ import LandingPage from './landingPage';
 import '../assets/css/landingPage.css';
 import tfLogo from '../assets/images/logo.png';
 import {Route} from 'react-router-dom';
-
 import ReservationInfo from "./reservationInfo";
-
 import Login from './login';
 import ListMenu from './list_menu';
 import Waiting from './waiting';

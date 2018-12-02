@@ -1,4 +1,6 @@
 import axios from 'axios';
+import addButton from '../../assets/images/plus.png';
+import { Link } from 'react-router-dom';
 
 export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSearch) {
     const restaurantInput = restaurantType;
@@ -6,6 +8,7 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
     var map;
     var service;
     var infowindow;
+    
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
             showRestaurants(position, retrieveRestaurantData,clearSearch)
@@ -46,6 +49,7 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
             type: ['restaurant'],
             keyword: restaurantInput
         }
+        infowindow = new google.maps.InfoWindow();
         service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, (results, status) => {
             restaurantIconRender(results, status, retrieveRestaurantData, map);
@@ -64,56 +68,47 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
 
             if (priceLevel >= 2) {
                 var placeId = String(results[i].place_id);
-                // console.log(placeId)
+                var place = results[i]
+                console.log("PLACEEEE:",place)
 
 
                 axios.post('http://place.kim-chris.com/busy-hours', {
 
                     place_id: placeId,
                 }).then(resp => {
-                    console.log(resp)
+                    console.log("placeeeee:", resp)
+                    
                     var date = new Date()
                     var day = date.getDay();
                     var time = (date.getHours()) - 6;
+                    var results = resp
                     // debugger
                     var busyHour = resp.data.data.week[day].hours[time].percentage
                     var location = resp.data.data.location
                     console.log(location)
                     console.log(busyHour)
+                    var config = {
+                        map, location, results, placeId
+                    }
 
                     if (busyHour < 30) {
-                        createColoredMarker(map, location,'green')
-
+                        config.color = 'green';
+                    } else if (busyHour > 31 && busyHour < 59) {
+                        config.color = 'yellow';
+                    } else if (busyHour > 60) {
+                        config.color = 'red';
+                    } else {
+                        config.color = 'red';
                     }
-                    else if (busyHour > 31 && busyHour < 59) {
-                        createColoredMarker(map, location, 'yellow');
-                    }
-                    else if (busyHour > 60) {
-                        createColoredMarker(map, location, 'red');
-                    }
-
-                    else {
-                        createColoredMarker(map, location, 'red');
-                    }
-                    
-
-
-
-                })
+                    createColoredMarker(config);
+                });
             }
-
         }
     }
 
+    function createColoredMarker(config) {
+        const { map,location, results, color, placeId } = config;
 
-    function createColoredMarker(map, place, color) {
-        var image = {
-            url: place.icon,
-            size: new google.maps.Size(71, 71),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(17, 34),
-            scaledSize: new google.maps.Size(25, 25)
-        };
         var iconUrl = null;
 
         switch(color) {
@@ -132,13 +127,26 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
             url: iconUrl,
             scaledSize: new google.maps.Size(25, 25)
         };
-        // var placeLoc = place.geometry.location;
         var marker = new google.maps.Marker({
             map: map,
             icon: icon,
-            position: place
+            position: location
         });
+        google.maps.event.addListener(marker, 'click', function() {
+            var name = results.data.data.name
+            var address = results.data.data.formatted_address
 
+            infowindow.setContent(
+      '<p>Name: ' + name + '</p>' +
+      '<p>Address: ' + address + '</p>' +
+      `<a href="/reservation-info/${name}/${placeId}">Check In!</button>`);
+      infowindow.open(map, this);
+        })
+       
     }
-
 }
+
+
+
+
+

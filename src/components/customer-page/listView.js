@@ -6,32 +6,13 @@ import yellowTimer from '../../assets/images/yellowTime.png';
 import addButton from '../../assets/images/plus.png';
 import { Link } from 'react-router-dom';
 
+import ListViewPhotos from './listViewPhotos';
+
 
 class ListView extends Component {
-    // constructor(props) {
-    //     super(props)
-
-    //     console.log('propsss:', props)
-    // }
-
-
-    getGooglePhotos = (mapRef, placeID) => {
-        var service;
-        var request = {
-            placeId: placeID
-        }
-        service = new google.maps.places.PlacesService(mapRef);
-        service.getDetails(request, (results, status) => {
-            retrieveRestaurantPhoto(results, status)
-        });
-        function retrieveRestaurantPhoto(results, status) {
-            console.log('Photos', results.photos);
-        }
-        
+    constructor(props) {
+        super(props)
     }
-
-
-
 
     restaurantListRender() {
         //     if(coords == null) {
@@ -74,25 +55,11 @@ class ListView extends Component {
         //      }
         //  }  
 
-
-
-
-
-
-
-
-
-
-
-        // debugger;
         var results = this.props.retrieveRestaurantData
-        console.log('RESULTS:', results)
+        // console.log('RESULTS:', results)
         if (results == null) {
             return
         }
-
-
-
         
         const restaurants = results.map((current) => {
             const price = current.price_level;
@@ -101,10 +68,9 @@ class ListView extends Component {
             const rating = current.rating;
             const places = current.place_id;
 
-            // const destination = current.geometry.location
-
             if (price >= 2) {
-                this.getGooglePhotos(this.props.mapRef, places);
+                // console.log('Results', current)
+                // console.log('getGooglePhoto', this.state)
                 return (
                     <div className="restaurantBubble">
                         <div className="headerTitle">{name}</div>
@@ -126,6 +92,9 @@ class ListView extends Component {
                                 <div className="address"><span className="boldText">Address: </span> {address}</div>
                             </div>
                         </div>
+                        <div className="bottomPicInfo carousel carousel-slider">
+                            <ListViewPhotos mapRef={this.props.mapRef} placeId={places} />
+                        </div>
                     </div>
                 )
 
@@ -133,12 +102,9 @@ class ListView extends Component {
             }
         });
 
-        return restaurants
+        return restaurants;
     }
-
-
     render() {
-
         return (
             <div className={`listBottomContainer ${this.props.list ? "" : "hidden"}`}>
                 {this.restaurantListRender()}
@@ -147,6 +113,5 @@ class ListView extends Component {
         )
     }
 }
-
 
 export default ListView; 

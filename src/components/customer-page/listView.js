@@ -92,7 +92,7 @@ class ListView extends Component {
                                 <div className="address"><span className="boldText">Address: </span> {address}</div>
                             </div>
                         </div>
-                        <div className="bottomPicInfo carousel carousel-slider">
+                        <div className="bottomPicInfo">
                             <ListViewPhotos mapRef={this.props.mapRef} placeId={places} />
                         </div>
                     </div>

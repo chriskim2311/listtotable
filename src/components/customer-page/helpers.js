@@ -58,7 +58,6 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
 
     function restaurantIconRender(results, status, retrieveRestaurantData, map) {
         var bounds = new google.maps.LatLngBounds();
-        console.log('is it doing the thing?', map)
         retrieveRestaurantData(results, map);
 
         // console.log(results)

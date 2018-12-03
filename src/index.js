@@ -5,18 +5,11 @@ import { Provider } from 'react-redux';
 import App from './components/app';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
-// import { reducer as formReducer } from 'redux-form';
-// import waitingReducer from './reducers/waiting_list_reducer';
+import think from './middleware/think';
+import types from './actions/types';
 
 
-
-// const rootReducer = combineReducers({
-//     form: formReducer,
-//     waitingList: waitingReducer
-// });
-
-
-const store = createStore(rootReducer, {}, applyMiddleware());
+const store = createStore(rootReducer, {}, applyMiddleware(think));
 
 ReactDOM.render(
     <Provider store={store}>

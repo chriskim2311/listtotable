@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import RTopMenu from './r_arrowAndMenu';
 import SignUpForm from './sign-up_form';
 
@@ -10,12 +10,10 @@ class SignUp extends Component {
     }
     render(){
         return(
-            <div className="container">
-                <RTopMenu/>
-                
-                
+            <Fragment>
+                <RTopMenu/>       
                 <SignUpForm onSubmit={this.submit} />
-            </div>
+            </Fragment>
             
         );
     }

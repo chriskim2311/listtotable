@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {Link} from 'react-router-dom';
 import '../assets/css/r_menu.css';
 import logo from '../assets/images/r_logo.png';
@@ -12,8 +12,8 @@ import home from '../assets/images/home.png'
 
 export default () => {
     return (
-        <div>
-            <div className="container">
+        <Fragment>
+            
             <div className="row container ">
                 <div className=" col s10 r_menu">
                     <div className="center">
@@ -85,8 +85,8 @@ export default () => {
                     </div>
                 </div>
             </div>
-            </div>
             
-        </div>
+            
+        </Fragment>
     )
 }

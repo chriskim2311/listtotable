@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom'
 
 import LogInForm from './login-form';
@@ -13,7 +13,7 @@ class Login extends Component {
     }
     render(){
         return (
-            <div>
+            <Fragment>
                 <RTopMenu/>
                 <LogInForm onSubmit={this.submit}/>
                 <div className="row center">
@@ -21,9 +21,7 @@ class Login extends Component {
                         <Link to="/signup" className="btn grey ">Sign Up</Link>
                     </div>
                 </div>
-                    
-             
-            </div>
+            </Fragment>
             
                
         )

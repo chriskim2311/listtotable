@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 import '../assets/css/reservationInfo.css';
@@ -60,7 +60,7 @@ class CheckInForm extends Component{
     render (){
         console.log('info being changed', this.state);
         return (
-            <React.Fragment>
+            <Fragment>
                 <div className="container">
 
                     <form onSubmit={this.handleSubmit}>
@@ -128,7 +128,7 @@ class CheckInForm extends Component{
                     </div>
 
                 </div>
-            </React.Fragment>
+            </Fragment>
         )
     }
 }

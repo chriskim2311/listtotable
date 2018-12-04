@@ -4,6 +4,8 @@ import 'materialize-css/dist/js/materialize';
 import '../assets/css/reservationInfo.css';
 import addButton from "../assets/images/addbutton.svg";
 import removeButton from "../assets/images/removeButton.svg";
+import Axios from '../../../frontend/to-do-list/node_modules/axios';
+import axios from 'axios';
 
 class CheckInForm extends Component{
     constructor(props){
@@ -34,6 +36,14 @@ class CheckInForm extends Component{
             clientComments: '',
             clientGroupSize: 1
         });
+
+        axios.post('http://place.kim-chris.com/message/confirm',{
+            restaurant: this.props.restaurantName,
+            phone_number: this.state.clientNumber
+        }).then(resp => {
+            console.log("CHECKED INNNN:", resp)})
+        
+    
 
     };
 

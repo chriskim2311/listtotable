@@ -25,7 +25,8 @@ class CustomerPg extends Component {
             restaurantData: null,
             search: false,
             searchTerm: '',
-            mapRef: null
+            mapRef: null,
+            currentLocation: null
         }
     }
 
@@ -34,19 +35,20 @@ class CustomerPg extends Component {
         console.log("State has been updated from the function passed through geolocation ", this.state.restaurantData);
     }
 
-    retrieveRestaurantData = (results, map) => {
+    retrieveRestaurantData = (results, map, centerLocation) => {
         // debugger;
         this.setState({
             restaurantData: [...results],
-            mapRef: map
+            mapRef: map,
+            currentLocation: centerLocation
         })
     }
 
     handleSearchItem = () => {
         event.preventDefault();
         console.log('info has been submitted', this.state)
-        renderBusyTimes(this.state.restaurantType  , this.retrieveRestaurantData)
-       
+        renderBusyTimes(this.state.restaurantType, this.retrieveRestaurantData)
+
     }
 
     clearSearchItem = () => {
@@ -82,7 +84,7 @@ class CustomerPg extends Component {
         return (
             <React.Fragment>
                 <div className="topContainer">
-                <Navigation/>
+                    <Navigation />
                     <div className="foodSearchHeader">
                         <div className="foodSearchBar">
                             <form onSubmit={this.handleSearchItem}>
@@ -126,13 +128,16 @@ class CustomerPg extends Component {
                     </div>
                 </div>
                 <div className="BottomContainer">
-                    <Geolocation 
-                        map={map} 
-                        search={search} 
-                        restaurantType={restaurantType} 
-                        retrieveRestaurantData={this.retrieveRestaurantData} 
+                    <Geolocation
+                        map={map}
+                        search={search}
+                        restaurantType={restaurantType}
+                        retrieveRestaurantData={this.retrieveRestaurantData}
                         clearSearch={this.clearSearchItem} />
-                    <ListView list={list} mapRef={this.state.mapRef} retrieveRestaurantData={this.state.restaurantData} />
+                    <ListView list={list}
+                        currentLocation={this.state.currentLocation}
+                        mapRef={this.state.mapRef}
+                        retrieveRestaurantData={this.state.restaurantData} />
                 </div>
 
 

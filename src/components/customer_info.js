@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios'
 
 
 class CustomerInfo extends Component {
+
+
+    handleNotify(){
+        // const phoneNumber = this.props.waiting_list[0].phoneNumber;
+        // const restaurantName = null;
+        axios.post('http://place.kim-chris.com/message/notify',{
+            restaurant: "RESTAURANT_NAME",
+            phone_number: "6615474865"
+        }).then(resp => {
+            console.log("CHECKED INNNN:", resp)})
+    }
     
     renderCustomerListOnDom(){
         const partys = this.props.waiting_list;
+        console.log(partys)
         if(!partys){
             return
         }
@@ -30,7 +43,8 @@ class CustomerInfo extends Component {
                         </div>
                         <div className="col s2 ">
                             <p>
-                                <button>notify</button>
+                                <button
+                                 onClick={this.handleNotify}>notify</button>
                             </p>
                             
                         </div>

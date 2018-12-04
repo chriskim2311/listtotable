@@ -14,64 +14,122 @@ class ListView extends Component {
         super(props)
     }
 
-    restaurantListRender() {
-        var distanceCords =[]
+    
+     restaurantListRender() {
+  
+        // var coords = this.props.retrieveRestaurantData
+        // if(coords == null) {
+        //     return
+        // }
+        // console.log("PROPPPPPSSSS:", this.props)
+        // var distanceCoords =[]
 
-                navigator.geolocation.getCurrentPosition((position) => {
-                    success(position);
-                 });
-                 function success(position){
-                     console.log(position)
-                     var coords = this.props.retrieveRestaurantData
-                     console.log("COORDS:", coords)
-                    var locations = coords.map((current) => {
-                    const latLng= current.geometry.location;
-                 var latitude = position.coords.latitude;
-                 var longitude = position.coords.longitude;
+        //      console.log("COORDS:", coords)
+        //     coords.map((current) => {
+        //         const price = current.price_level
+        //         if(price >=2){
 
-                 var origin1 = new google.maps.LatLng(latitude,longitude);
-                 var destination1 = new google.maps.LatLng(latLng);
+                
+        //     const latLng= current.geometry.location;
+        //     const currentLocation = this.props.currentLocation
+        //     const lat1= currentLocation.lat();
+        //     const long1= currentLocation.lng();
+        //     const lat2= latLng.lat();
+        //     const long2 = latLng.lng();
+        //     // console.log("LATLONG:", lat1, long2)
 
-                 var service = new google.maps.DistanceMatrixService();
-                 service.getDistanceMatrix(
-                     {
-                         origins: [origin1],
-                         destinations: [destination1],
-                         travelMode: 'DRIVING',
-                         drivingOptions: {
-                             departureTime: new Date(Date.now()),  // for the time N milliseconds from now.
-                             trafficModel: 'bestguess'
-                         },
-                         unitSystem: google.maps.UnitSystem.IMPERIAL,
-                         avoidHighways: false,
-                         avoidTolls: true,
-                     }, callback2);
-
-                 function callback2(response, status) {
-                     console.log(response)
-
-                 }
-             
-                })
-            }
-        
-        
-        
-
+        //  var origin1 = {lat:lat1, lng:long1};
+        //  console.log("ORIGIN:", origin1)
+        //  var destination1 = {lat:lat2, lng:long2}
+        //  var service = new google.maps.DistanceMatrixService();
+        //  service.getDistanceMatrix(
+        //      {
+        //          origins: [origin1],
+        //          destinations: [destination1],
+        //          travelMode: 'DRIVING',
+        //          drivingOptions: {
+        //              departureTime: new Date(Date.now()),  // for the time N milliseconds from now.
+        //              trafficModel: 'bestguess'
+        //          },
+        //          unitSystem: google.maps.UnitSystem.IMPERIAL,
+        //          avoidHighways: false,
+        //          avoidTolls: true,
+        //      }, callback2);
+        //     }
+        //  function callback2(response, status) {
+        //      console.log("DISTANCEEEEE:",response)
+        //      var distance = response.rows[0].elements[0].distance
+        //      distanceCoords.push(distance);
+        //  }
+        // console.log("DISTANCE CORDS:", distanceCoords)
+        // })
+    // } 
+    
         var results = this.props.retrieveRestaurantData
-        // console.log('RESULTS:', results)
+        var distanceCoords = []
         if (results == null) {
             return
         }
+        if(distanceCoords == null) {
+            return
+        }
+
+    
         
-        const restaurants = results.map((current) => {
+        const restaurants = results.map( (current) => {
+            var distance = null;
+            // var distance = null
+
+            // for(let i= 0; i<distanceCoords.length; i++){
+                   
+            //     var distance = distanceCoords[i].rows[0].elements[0].distance
+            // }
             const price = current.price_level;
             const address = current.vicinity;
             const name = current.name;
             const rating = current.rating;
             const places = current.place_id;
-
+            
             if (price >= 2) {
+            const latLng= current.geometry.location;
+            const currentLocation = this.props.currentLocation
+            const lat1= currentLocation.lat();
+            const long1= currentLocation.lng();
+            const lat2= latLng.lat();
+            const long2 = latLng.lng();
+            // console.log("LATLONG:", lat1, long2)
+
+            var origin1 = {lat:lat1, lng:long1};
+            //  console.log("ORIGIN:", origin1)
+            var destination1 = {lat:lat2, lng:long2}
+            var service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix(
+                {
+                    origins: [origin1],
+                    destinations: [destination1],
+                    travelMode: 'DRIVING',
+                    drivingOptions: {
+                        departureTime: new Date(Date.now()),  // for the time N milliseconds from now.
+                        trafficModel: 'bestguess'
+                    },
+                    unitSystem: google.maps.UnitSystem.IMPERIAL,
+                    avoidHighways: false,
+                    avoidTolls: true,
+                }, callback2);
+
+                
+            
+         function callback2(response, status) {
+            //  console.log("DISTANCEEEEE:",response)
+            
+            distance = response.rows[0].elements[0].distance
+            
+            
+
+             distanceCoords.push(distance);
+             return distance
+         }    
+        console.log("DISTANCE CORDS:", distanceCoords)
                 // console.log('Results', current)
                 // console.log('getGooglePhoto', this.state)
                 return (
@@ -83,7 +141,7 @@ class ListView extends Component {
                                 <div className="restaurantInfo">
                                     <div className="starsDistanceInfo">
                                         <div className="stars"><span className="boldText">Stars: </span> {rating}</div>
-                                        <div className="distance"><span className="boldText">Distance: </span> </div>
+                                        <div className="distance"><span className="boldText">Distance: </span>{distance} </div>
                                     </div>
                                     <div className="icons">
                                         <div className="dollarSigns">{price}$</div>
@@ -100,21 +158,22 @@ class ListView extends Component {
                         </div>
                     </div>
                 )
+                }
 
-
-            }
-        });
-
-        return restaurants;
+                }
+    
+        )
+        return restaurants
     }
     render() {
         return (
             <div className={`listBottomContainer ${this.props.list ? "" : "hidden"}`}>
                 {this.restaurantListRender()}
+                
             </div>
-
-        )
+            )
+        }
+    
     }
-}
 
 export default ListView; 

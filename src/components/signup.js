@@ -5,14 +5,12 @@ import SignUpForm from './sign-up_form';
 
 
 class SignUp extends Component {
-    submit = values =>{
-        console.log('values:', values );
-    }
+   
     render(){
         return(
             <Fragment>
                 <RTopMenu/>       
-                <SignUpForm onSubmit={this.submit} />
+                <SignUpForm />
             </Fragment>
             
         );

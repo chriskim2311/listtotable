@@ -5,18 +5,17 @@ import { Provider } from 'react-redux';
 import App from './components/app';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
-// import { reducer as formReducer } from 'redux-form';
-// import waitingReducer from './reducers/waiting_list_reducer';
+import think from './middleware/think';
+import types from './actions/types';
 
 
+const store = createStore(rootReducer, {}, applyMiddleware(think));
 
-// const rootReducer = combineReducers({
-//     form: formReducer,
-//     waitingList: waitingReducer
-// });
-
-
-const store = createStore(rootReducer, {}, applyMiddleware());
+if(localStorage.getItem('token')){
+    store.dispatch({
+        type: types.LOG_IN
+    })
+}
 
 ReactDOM.render(
     <Provider store={store}>

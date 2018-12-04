@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import {Field, reduxForm } from 'redux-form';
-import connect from 'react-redux';
+import {connect} from 'react-redux';
 import input from './forms_input';
 
 
 class SignUpForm extends Component {
-    handleSignup = (values) =>{
+    handleSignUp = (values) =>{
         console.log('sign up', values);
         
     }
@@ -15,7 +15,7 @@ class SignUpForm extends Component {
     const { handleSubmit, signUpError } = this.props
     return(
         <Fragment>
-        <form onSubmit={handleSubmit(this.handleSignup)}>
+        <form onSubmit={handleSubmit(this.handleSignUp)}>
             <div className="row">
                 <div className="input-field col s8 offset-s2 center-align ">
                     <Field name="businessName" component="input" type="text"/>  

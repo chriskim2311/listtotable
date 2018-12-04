@@ -33,6 +33,7 @@
     height: 45%; 
     width: 100%;
     display: flex;
+    overflow-x: auto;
 }
 
 .bottomPicInfo > img {

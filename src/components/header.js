@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import '../assets/css/header.css';
 import menu from "../assets/images/headermenu.svg";
 
 function Header(props){
     return (
-        <React.Fragment>
+        <Fragment>
             <div className="header">
                 <div className="header-logo-container">
                     <div className="header-text">TF</div>
@@ -15,7 +15,7 @@ function Header(props){
                     </div>
                 </div>
             </div>
-        </React.Fragment>
+        </Fragment>
     )
 }
 

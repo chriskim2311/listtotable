@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 // import { Link } from 'react-router-dom';
 // import menu from '../assets/images/hamburgerm.png';
 // import arrow from '../assets/images/arrowLeft.png';
 // import '../assets/css/r_header.css';
 import "../assets/css/navigation.css";
 import { NavLink, withRouter, Link } from "react-router-dom";
+import RNavMenu from './r_menu';
 
 
 class Navigation extends Component {
@@ -32,52 +33,37 @@ class Navigation extends Component {
 
     render() {
         return (
-            <nav className={this.props.location.pathname === "/" ? "navbar is-primary is-text-darker landing-burger" : "navbar is-primary is-text-darker"}>
-                <i className="large material-icons back-button" onClick={this.goBack}>
-                    arrow_back
-					</i>
+            <Fragment>
+                <nav className={this.props.location.pathname === "/" ? "navbar is-primary is-text-darker landing-burger" : "navbar is-primary is-text-darker"}>
+                    <i className="large material-icons back-button" onClick={this.goBack}>
+                        arrow_back
+                        </i>
 
 
-                {this.props.location.pathname === "/" ? null : (<NavLink to="/">
-                    
-                </NavLink>)}
+                    {this.props.location.pathname === "/" ? null : (<NavLink to="/">
+                        
+                    </NavLink>)}
 
-                <div
-                    className={this.state.showNavMenu ? "burger-menu close" : "burger-menu"}
-                    onClick={this.toggleMenu}
-                >
-                    <span />
-                    <span />
-                    <span />
-                </div>
+                    <div
+                        className={this.state.showNavMenu ? "burger-menu close" : "burger-menu"}
+                        onClick={this.toggleMenu}
+                    >
+                        <span />
+                        <span />
+                        <span />
+                    </div>
 
-                <ul className={this.state.showNavMenu ? "show" : ""} onClick={this.toggleMenu}>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/login">Login</Link>
-                    </li>
-                    <li>
-                        <Link to="/check-in">Check-In</Link>
-                    </li>
-                    <li>
-                        <Link to="/seated">Seated</Link>
-                    </li>
-                    <li>
-                        <Link to="/waiting">Waiting</Link>
-                    </li>
-                    <li>
-                        <Link to="/signup">Sign Up</Link>
-                    </li>
-                </ul>
-               
-                <div className={this.state.showNavMenu ? "invisible-nav-show" : "invisible-nav-close"}
-                    onClick={this.toggleMenu}
-                >
+                    <ul className={this.state.showNavMenu ? "show" : ""} onClick={this.toggleMenu}>
+                        <RNavMenu/>
+                    </ul>
+                
+                    <div className={this.state.showNavMenu ? "invisible-nav-show" : "invisible-nav-close"}
+                        onClick={this.toggleMenu}
+                    >
 
-                </div>
-            </nav>
+                    </div>
+                </nav>
+            </Fragment>
         );
     }
 }

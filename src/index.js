@@ -11,6 +11,12 @@ import types from './actions/types';
 
 const store = createStore(rootReducer, {}, applyMiddleware(think));
 
+if(localStorage.getItem('token')){
+    store.dispatch({
+        type: types.LOG_IN
+    })
+}
+
 ReactDOM.render(
     <Provider store={store}>
         <Router>

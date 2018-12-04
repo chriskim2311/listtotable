@@ -11,13 +11,13 @@ export function signUp(){
 
 }
 
-export function logIn(partner){
+export function userLogIn(partner){
     console.log("user log in called:");
     return async function(dispatch){
         try{
             // const resp =await axios.get('./server_login_resp', partner);
             // console.log('Sign in Response', resp);
-            const resp = false;
+            const resp = true;
 
             // localStorage.setItem('token', resp.data.token);
             
@@ -33,9 +33,14 @@ export function logIn(partner){
             }
         } catch(err){
             console.log("Server error");
-            
-        }
-        
-        
+        }   
+    }
+}
+
+export function userLogOut(){
+    localStorage.removeItem('token');
+
+    return {
+        type: types.LOG_OUT
     }
 }

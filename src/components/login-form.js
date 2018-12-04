@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import {Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import Input from './forms_input';
-import { logIn } from '../actions'
+import { userLogIn } from '../actions'
 
 class LogInForm extends Component {
     handleLogIn = (values) => {
@@ -64,5 +64,5 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps, {
-    logIn: logIn
+    logIn: userLogIn
 })(LogInForm);

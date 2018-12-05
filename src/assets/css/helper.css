@@ -1,0 +1,11 @@
+.marker {
+    display:flex;
+}
+.infoContainer {
+    width: 60%;
+}
+
+.photoMarker {
+    width: 40%;
+    height: 50%;
+}

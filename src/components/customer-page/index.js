@@ -82,10 +82,8 @@ class CustomerPg extends Component {
 
 
     render() {
-       
-        
-        console.log('info being changed', this.props)
-        console.log("Current state: ", this.state)
+        // console.log('info being changed', this.props)
+        // console.log("Current state: ", this.state)
         const { map, list, restaurantType, search } = this.state
         return (
             <React.Fragment>

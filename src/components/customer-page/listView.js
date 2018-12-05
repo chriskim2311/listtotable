@@ -10,7 +10,11 @@ class ListView extends Component {
     state = {
         restaurants: null
     }
-
+    restaurantListRender() {
+        var results = this.props.retrieveRestaurantData
+        // console.log('RESULTS:', results)
+        if (results == null) {
+            return
     async componentDidUpdate(prevProps) {
         console.log('========PREV PROPS=========', prevProps);
         console.log('========PROPS=========', this.props);
@@ -66,7 +70,6 @@ class ListView extends Component {
                         iconUrl = 'https://i.imgur.com/i9AQAax.png';
                         break;
                 }
-
                 return (
                     <div className="restaurantBubble">
                         <div className="headerTitle">{name}</div>
@@ -88,7 +91,7 @@ class ListView extends Component {
                                 <div className="address"><span className="boldText">Address: </span> {address}</div>
                             </div>
                         </div>
-                        <div className="bottomPicInfo" id="photos">
+                        <div className="bottomPicInfo carousel carousel-slider">
                             <ListViewPhotos mapRef={this.props.mapRef} placeId={places} />
                         </div>
                     </div>

@@ -10,15 +10,22 @@ class ListViewPhotos extends Component {
     }
 
     componentDidMount() {
+        debugger
         const { mapRef, placeId } = this.props;
 
         this.getGooglePhotos(mapRef, placeId);
     }
-    // componentWillUnmount(){
-    //  this.ListViewPhotos.destroy()
 
-    // }
-
+    componentDidUpdate(prevProps, prevState){
+        console.log('Previous Props', prevProps)
+        console.log('Current Props', this.props)
+        const { mapRef, placeId } = this.props;
+        const prevPlaceId = prevProps.placeId;
+        
+        if (placeId !== prevPlaceId) {
+            this.getGooglePhotos(mapRef, placeId);
+        }
+    }
     getGooglePhotos = (mapRef, placeID) => {
         var service;
         var request = {
@@ -33,6 +40,7 @@ class ListViewPhotos extends Component {
 
     savePhotosFromGoogle = (results, status) => {
         var photosArray = results['photos']
+        console.log(results['name'])
         console.log('Photos in retrieve function', photosArray);
 
         this.setState({
@@ -53,7 +61,7 @@ class ListViewPhotos extends Component {
     render() {
         ++this.childKey;
         const { photos } = this.state;
-
+        debugger;
         if (!photos) {
             return (
                 <div>Loading photo data...</div>

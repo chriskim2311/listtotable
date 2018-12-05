@@ -15,6 +15,7 @@ class ListViewPhotos extends Component {
 
         this.getGooglePhotos(mapRef, placeId);
     }
+
     componentDidUpdate(prevProps, prevState){
         console.log('Previous Props', prevProps)
         console.log('Current Props', this.props)
@@ -24,9 +25,7 @@ class ListViewPhotos extends Component {
         if (placeId !== prevPlaceId) {
             this.getGooglePhotos(mapRef, placeId);
         }
-        
     }
-
     getGooglePhotos = (mapRef, placeID) => {
         var service;
         var request = {
@@ -60,6 +59,7 @@ class ListViewPhotos extends Component {
     }
 
     render() {
+        ++this.childKey;
         const { photos } = this.state;
         debugger;
         if (!photos) {

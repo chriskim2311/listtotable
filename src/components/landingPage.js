@@ -15,27 +15,27 @@ class LandingPage extends Component{
 
 
 
-   geolocation= () => {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            this.setState= {
-                currentLocation: position
+//    geolocation= () => {
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition((position) => {
+//             this.setState= {
+//                 currentLocation: position
             
-         } })
-        }
-     else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+//          } })
+//         }
+//      else {
+//         x.innerHTML = "Geolocation is not supported by this browser.";
 
-    }
-    console.log("current",this.state.currentLocation)
-}
+//     }
+//     console.log("current",this.state.currentLocation)
+// }
     render() {  
-        this.geolocation()
+        // this.geolocation()
     
         return (
             <React.Fragment> 
                 <div className='tfContainer'>
-                    <div className="tf">Table Finder</div>
+                    <div className="tf">List To Table</div>
                 </div>
                 <div className='clientContainer'>
                     <Link className ="client" id="customer" to="/customer-map">Customer</Link>

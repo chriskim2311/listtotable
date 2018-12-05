@@ -12,6 +12,8 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
     
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
+            // console.log("FIRSTPOSITION:", position)
+            // retrieveRestaurantData(position),
             showRestaurants(position, retrieveRestaurantData,clearSearch)
             
         });
@@ -53,13 +55,13 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
         infowindow = new google.maps.InfoWindow();
         service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, (results, status) => {
-            restaurantIconRender(results, status, retrieveRestaurantData, map);
+            restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation);
         });
     }
 
-    function restaurantIconRender(results, status, retrieveRestaurantData, map) {
+    function restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation) {
         var bounds = new google.maps.LatLngBounds();
-        retrieveRestaurantData(results, map);
+        retrieveRestaurantData(results, map, centerLocation);
 
         console.log('RESUlTS', results)
 
@@ -149,7 +151,6 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
                         `<button> <a href="/reservation-info/${name}/${placeId}">Check In!</button>` +
                     '</div>' + 
                 '</div>'       
-
       );
       infowindow.open(map, this);
         })

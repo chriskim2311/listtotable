@@ -1,11 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios'
 
 
 class CustomerInfo extends Component {
+
+
+    handleNotify(){
+        // const phoneNumber = this.props.waiting_list[0].phoneNumber;
+        // const restaurantName = null;
+        axios.post('http://place.kim-chris.com/message/notify',{
+            restaurant: "RESTAURANT_NAME",
+            phone_number: "6615474865"
+        }).then(resp => {
+            console.log("CHECKED INNNN:", resp)})
+    }
     
     renderCustomerListOnDom(){
         const partys = this.props.waiting_list;
+        console.log(partys)
         if(!partys){
             return
         }
@@ -30,7 +43,8 @@ class CustomerInfo extends Component {
                         </div>
                         <div className="col s2 ">
                             <p>
-                                <button>notify</button>
+                                <button
+                                 onClick={this.handleNotify}>notify</button>
                             </p>
                             
                         </div>
@@ -55,134 +69,9 @@ class CustomerInfo extends Component {
 
 
         return(
-            <div>
+            <Fragment>
                 {this.renderCustomerListOnDom()}
-                {/* <div className="row blue">
-                    <div className="col s1">
-                        <p>1</p>
-                    </div>
-                    <div className="col s4">
-                        <ul>
-                            <li>{name}</li>
-                            <li>{partyOf}</li>
-                            <li>{phone}</li>
-                        </ul>
-                    </div>
-                    <div className="col s2 ">
-                        <p>
-                            <button>notify</button>
-                        </p>
-                    </div>
-                    <div className="col s2">
-                        <p>
-                            <button>seat</button>
-                        </p>
-                    </div>
-                    <div className="col s1">
-                        <p>del</p>
-                    </div>
-                </div> */}
-                {/* <div className="row blue">
-                    <div className="col s1">
-                        <p>2</p>
-                    </div>
-                    <div className="col s4">
-                        <ul>
-                            <li>Name</li>
-                            <li>party of 5</li>
-                            <li>773-777-7777</li>
-                        </ul>
-                    </div>
-                    <div className="col s2 ">
-                        <p>
-                            <button>notify</button>
-                        </p>
-                    </div>
-                    <div className="col s2">
-                        <p>
-                            <button>seat</button>
-                        </p>
-                    </div>
-                    <div className="col s1">
-                        <p>del</p>
-                    </div>
-                </div>
-                <div className="row blue">
-                    <div className="col s1">
-                        <p>3</p>
-                    </div>
-                    <div className="col s4">
-                        <ul>
-                            <li>Name</li>
-                            <li>party of 5</li>
-                            <li>773-777-7777</li>
-                        </ul>
-                    </div>
-                    <div className="col s2 ">
-                        <p>
-                            <button>notify</button>
-                        </p>
-                    </div>
-                    <div className="col s2">
-                        <p>
-                            <button>seat</button>
-                        </p>
-                    </div>
-                    <div className="col s1">
-                        <p>del</p>
-                    </div>
-                </div>
-                <div className="row blue">
-                    <div className="col s1">
-                        <p>4</p>
-                    </div>
-                    <div className="col s4">
-                        <ul>
-                            <li>Name</li>
-                            <li>party of 5</li>
-                            <li>773-777-7777</li>
-                        </ul>
-                    </div>
-                    <div className="col s2 ">
-                        <p>
-                            <button>notify</button>
-                        </p>
-                    </div>
-                    <div className="col s2">
-                        <p>
-                            <button>seat</button>
-                        </p>
-                    </div>
-                    <div className="col s1">
-                        <p>del</p>
-                    </div>
-                </div>
-                <div className="row blue">
-                    <div className="col s1">
-                        <p>5</p>
-                    </div>
-                    <div className="col s4">
-                        <ul>
-                            <li>Name</li>
-                            <li>party of 5</li>
-                            <li>773-777-7777</li>
-                        </ul>
-                    </div>
-                    <div className="col s2 ">
-                        <p>
-                            <button>notify</button>
-                        </p>
-                    </div>
-                    <div className="col s2">
-                        <p>
-                            <button>seat</button>
-                        </p>
-                    </div>
-                    <div className="col s1">
-                        <p>del</p>
-                    </div>
-                </div> */}
-            </div>
+            </Fragment>
         )
     }
 }

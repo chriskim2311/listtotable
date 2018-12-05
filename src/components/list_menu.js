@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom';
 
 
 export default props => {
     return (
-        <div>
+        <Fragment>
             
             <div className="row container">
                 <div className="col s4 left-align ">
@@ -17,6 +17,6 @@ export default props => {
                     <Link to="/check-in" className="btn blue">CHECK-IN</Link>
                 </div>
             </div>
-        </div>
+        </Fragment>
     )
 }

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "../assets/css/navigation.css";
 import { NavLink, withRouter, Link } from "react-router-dom";
 
@@ -29,50 +29,60 @@ class Navigation extends Component {
 
     render() {
         return (
-            <nav className={this.props.location.pathname === "/" ? "navbar is-primary is-text-darker landing-burger" : "navbar is-primary is-text-darker"}>
-                <i className="large material-icons back-button" onClick={this.goBack}>
-                    arrow_back
-					</i>
+            <Fragment>
+                <nav className={this.props.location.pathname === "/" ? "navbar is-primary is-text-darker landing-burger" : "navbar is-primary is-text-darker"}>
+                    <i className="large material-icons back-button" onClick={this.goBack}>
+                        arrow_back
+                        </i>
+
 
 
                 {this.props.location.pathname === "/" ? null : (<NavLink to="/">
-                    <h1 className="small-nav-title">TF</h1>
-                    <h1 className="large-nav-title">Table Finder</h1>
+                    <h1 className="small-nav-title">LTT</h1>
+                    <h1 className="large-nav-title">List To Table</h1>
                 </NavLink>)}
 
-                <div
-                    className={this.state.showNavMenu ? "burger-menu close" : "burger-menu"}
-                    onClick={this.toggleMenu}
-                >
-                    <span />
-                    <span />
-                    <span />
-                </div>
+//                     {this.props.location.pathname === "/" ? null : (<NavLink to="/">
+//                         <h1 className="small-nav-title">TF</h1>
+//                         <h1 className="large-nav-title">Table Finder</h1>
+//                     </NavLink>)}
 
-                <ul className={this.state.showNavMenu ? "show" : ""} onClick={this.toggleMenu}>
-                <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/customer-map">Map</Link>
-                    </li>
-                    <li>
-                        <Link to="/reservation-info">Check-In</Link>
-                    </li>
-                    <li>
-                        <Link to="/about">About</Link>
-                    </li>
-                    <li>
-                        <Link to="/team">Team</Link>
-                    </li>
-                </ul>
 
-                <div className={this.state.showNavMenu ? "invisible-nav-show" : "invisible-nav-close"}
-                    onClick={this.toggleMenu}
-                >
+                    <div
+                        className={this.state.showNavMenu ? "burger-menu close" : "burger-menu"}
+                        onClick={this.toggleMenu}
+                    >
+                        <span />
+                        <span />
+                        <span />
+                    </div>
 
-                </div>
-            </nav>
+                    <ul className={this.state.showNavMenu ? "show" : ""} onClick={this.toggleMenu}>
+                    <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/customer-map">Map</Link>
+                        </li>
+                        <li>
+                            <Link to="/reservation-info">Check-In</Link>
+                        </li>
+                        <li>
+                            <Link to="/about">About</Link>
+                        </li>
+                        <li>
+                            <Link to="/team">Team</Link>
+                        </li>
+                    </ul>
+
+                    <div className={this.state.showNavMenu ? "invisible-nav-show" : "invisible-nav-close"}
+                        onClick={this.toggleMenu}
+                    >
+
+                    </div>
+                </nav>
+            </Fragment>
+            
         );
     }
 }

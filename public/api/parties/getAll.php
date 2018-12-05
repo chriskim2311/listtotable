@@ -1,5 +1,5 @@
 <?php
-$query = "SELECT * FROM Parties";
+$query = "SELECT * FROM parties";
 
 $result = mysqli_query($conn, $query);
 

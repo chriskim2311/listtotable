@@ -1,6 +1,6 @@
 <?php
 
-$query = "SELECT * FROM Clients";
+$query = "SELECT * FROM clients";
 
 $result = mysqli_query($conn, $query);
 

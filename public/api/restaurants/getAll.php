@@ -1,6 +1,6 @@
 <?php
 
-$query = "SELECT * FROM Restaurants";
+$query = "SELECT * FROM restaurants";
 
 $result = mysqli_query($conn, $query);
 

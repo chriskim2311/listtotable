@@ -6,7 +6,7 @@ export default props => {
     return (
         <Fragment>
             
-            <div className="row container">
+            <div className="row">
                 <div className="col s4 left-align ">
                     <Link to="/waiting" className="btn blue">WAITING</Link>
                 </div>

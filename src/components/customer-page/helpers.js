@@ -1,10 +1,11 @@
 import axios from 'axios';
 import addButton from '../../assets/images/plus.png';
 import { Link } from 'react-router-dom';
+import '../../assets/css/helper.css';
 
 export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSearch) {
     const restaurantInput = restaurantType;
-    console.log('PROPS:',restaurantType)
+    // console.log('PROPS:',restaurantType)
     var map;
     var service;
     var infowindow;
@@ -60,7 +61,7 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
         var bounds = new google.maps.LatLngBounds();
         retrieveRestaurantData(results, map);
 
-        // console.log(results)
+        console.log('RESUlTS', results)
 
         for (var i = 0; i < results.length; i++) {
             var priceLevel = results[i].price_level
@@ -68,26 +69,27 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
             if (priceLevel >= 2) {
                 var placeId = String(results[i].place_id);
                 var place = results[i]
-                console.log("PLACEEEE:",place)
+                var photo = results[i]['photos'][0].getUrl()
+
+                // console.log("PLACEEEE:",place)
 
 
                 axios.post('http://place.kim-chris.com/busy-hours', {
 
                     place_id: placeId,
                 }).then(resp => {
-                    console.log("placeeeee:", resp)
+                    // console.log("placeeeee:", resp)
                     
                     var date = new Date()
                     var day = date.getDay();
                     var time = (date.getHours()) - 6;
                     var results = resp
-                    // debugger
                     var busyHour = resp.data.data.week[day].hours[time].percentage
                     var location = resp.data.data.location
-                    console.log(location)
-                    console.log(busyHour)
+                    // console.log(location)
+                    // console.log(busyHour)
                     var config = {
-                        map, location, results, placeId
+                        map, location, results, placeId, photo
                     }
 
                     if (busyHour < 30) {
@@ -106,7 +108,8 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
     }
 
     function createColoredMarker(config) {
-        const { map,location, results, color, placeId } = config;
+        // console.log('Config:', config)
+        const { map,location, results, color, placeId, photo } = config;
 
         var iconUrl = null;
 
@@ -132,13 +135,22 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
             position: location
         });
         google.maps.event.addListener(marker, 'click', function() {
+            // var photo = photo
+            console.log('photo', photo)
             var name = results.data.data.name
             var address = results.data.data.formatted_address
 
             infowindow.setContent(
-      '<p>Name: ' + name + '</p>' +
-      '<p>Address: ' + address + '</p>' +
-      `<a href="/reservation-info/${name}/${placeId}">Check In!</button>`);
+                '<div class="marker">' + 
+                    `<img src='${photo}' class="photoMarker" >` + 
+                    '<div class="infoContainer">' +
+                        '<span>Name: ' + name + '</span>' +
+                        '<p>Address: ' + address + '</p>' +
+                        `<button> <a href="/reservation-info/${name}/${placeId}">Check In!</button>` +
+                    '</div>' + 
+                '</div>'       
+
+      );
       infowindow.open(map, this);
         })
        

@@ -15,48 +15,45 @@ class ListView extends Component {
     }
 
     restaurantListRender() {
-        var distanceCords =[]
+        //     if(coords == null) {
+        //         return
+        //     }
 
-                navigator.geolocation.getCurrentPosition((position) => {
-                    success(position);
-                 });
-                 function success(position){
-                     console.log(position)
-                     var coords = this.props.retrieveRestaurantData
-                     console.log("COORDS:", coords)
-                    var locations = coords.map((current) => {
-                    const latLng= current.geometry.location;
-                 var latitude = position.coords.latitude;
-                 var longitude = position.coords.longitude;
+        //     var coords = this.props.retrieveRestaurantData
+        //     var locations = coords.map((current) => {
+        //         const latLng= current.geometry.location;
 
-                 var origin1 = new google.maps.LatLng(latitude,longitude);
-                 var destination1 = new google.maps.LatLng(latLng);
+        //         navigator.geolocation.getCurrentPosition((position) => {
+        //             success(position);
+        //          });
+        //          function success(position, latLng){
+        //          var latitude = position.coords.latitude;
+        //          var longitude = position.coords.longitude;
 
-                 var service = new google.maps.DistanceMatrixService();
-                 service.getDistanceMatrix(
-                     {
-                         origins: [origin1],
-                         destinations: [destination1],
-                         travelMode: 'DRIVING',
-                         drivingOptions: {
-                             departureTime: new Date(Date.now()),  // for the time N milliseconds from now.
-                             trafficModel: 'bestguess'
-                         },
-                         unitSystem: google.maps.UnitSystem.IMPERIAL,
-                         avoidHighways: false,
-                         avoidTolls: true,
-                     }, callback2);
+        //          var origin1 = new google.maps.LatLng(latitude,longitude);
+        //          var destination1 = new google.maps.LatLng(destination);
 
-                 function callback2(response, status) {
-                     console.log(response)
+        //          var service = new google.maps.DistanceMatrixService();
+        //          service.getDistanceMatrix(
+        //              {
+        //                  origins: [origin1],
+        //                  destinations: [destination1],
+        //                  travelMode: 'DRIVING',
+        //                  drivingOptions: {
+        //                      departureTime: new Date(Date.now()),  // for the time N milliseconds from now.
+        //                      trafficModel: 'bestguess'
+        //                  },
+        //                  unitSystem: google.maps.UnitSystem.IMPERIAL,
+        //                  avoidHighways: false,
+        //                  avoidTolls: true,
+        //              }, callback2);
 
-                 }
-             
-                })
-            }
-        
-        
-        
+        //          function callback2(response, status) {
+        //              return response
+
+        //          }
+        //      }
+        //  }  
 
         var results = this.props.retrieveRestaurantData
         // console.log('RESULTS:', results)
@@ -74,6 +71,7 @@ class ListView extends Component {
             if (price >= 2) {
                 // console.log('Results', current)
                 // console.log('getGooglePhoto', this.state)
+                
                 return (
                     <div className="restaurantBubble">
                         <div className="headerTitle">{name}</div>
@@ -95,7 +93,7 @@ class ListView extends Component {
                                 <div className="address"><span className="boldText">Address: </span> {address}</div>
                             </div>
                         </div>
-                        <div className="bottomPicInfo">
+                        <div className="bottomPicInfo carousel carousel-slider">
                             <ListViewPhotos mapRef={this.props.mapRef} placeId={places} />
                         </div>
                     </div>

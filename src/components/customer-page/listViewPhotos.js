@@ -14,6 +14,10 @@ class ListViewPhotos extends Component {
 
         this.getGooglePhotos(mapRef, placeId);
     }
+    // componentWillUnmount(){
+    //  this.ListViewPhotos.destroy()
+
+    // }
 
     getGooglePhotos = (mapRef, placeID) => {
         var service;
@@ -47,6 +51,7 @@ class ListViewPhotos extends Component {
     }
 
     render() {
+        ++this.childKey;
         const { photos } = this.state;
 
         if (!photos) {

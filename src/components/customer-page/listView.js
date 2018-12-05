@@ -1,142 +1,77 @@
 import React, { Component } from 'react';
 import '../../assets/css/listView.css'
-import greenTimer from '../../assets/images/greenTime.png';
-import redTimer from '../../assets/images/redTime.png';
-import yellowTimer from '../../assets/images/yellowTime.png';
 import addButton from '../../assets/images/plus.png';
 import { Link } from 'react-router-dom';
-
+import { getRestaurantData } from './busyHours'
 import ListViewPhotos from './listViewPhotos';
 
 
 class ListView extends Component {
-    constructor(props) {
-        super(props)
+    state = {
+        restaurants: null
     }
 
-    
-     restaurantListRender() {
-  
-        // var coords = this.props.retrieveRestaurantData
-        // if(coords == null) {
-        //     return
-        // }
-        // console.log("PROPPPPPSSSS:", this.props)
-        // var distanceCoords =[]
+    async componentDidUpdate(prevProps) {
+        console.log('========PREV PROPS=========', prevProps);
+        console.log('========PROPS=========', this.props);
+        const prevData = prevProps.retrieveRestaurantData;
+        const data = this.props.retrieveRestaurantData;
 
-        //      console.log("COORDS:", coords)
-        //     coords.map((current) => {
-        //         const price = current.price_level
-        //         if(price >=2){
 
-                
-        //     const latLng= current.geometry.location;
-        //     const currentLocation = this.props.currentLocation
-        //     const lat1= currentLocation.lat();
-        //     const long1= currentLocation.lng();
-        //     const lat2= latLng.lat();
-        //     const long2 = latLng.lng();
-        //     // console.log("LATLONG:", lat1, long2)
+        if ((!prevData && data) || ((prevData && data) && prevData.length !== data.length)) {
+            const list = await this.buildRestaurantsList(data);
 
-        //  var origin1 = {lat:lat1, lng:long1};
-        //  console.log("ORIGIN:", origin1)
-        //  var destination1 = {lat:lat2, lng:long2}
-        //  var service = new google.maps.DistanceMatrixService();
-        //  service.getDistanceMatrix(
-        //      {
-        //          origins: [origin1],
-        //          destinations: [destination1],
-        //          travelMode: 'DRIVING',
-        //          drivingOptions: {
-        //              departureTime: new Date(Date.now()),  // for the time N milliseconds from now.
-        //              trafficModel: 'bestguess'
-        //          },
-        //          unitSystem: google.maps.UnitSystem.IMPERIAL,
-        //          avoidHighways: false,
-        //          avoidTolls: true,
-        //      }, callback2);
-        //     }
-        //  function callback2(response, status) {
-        //      console.log("DISTANCEEEEE:",response)
-        //      var distance = response.rows[0].elements[0].distance
-        //      distanceCoords.push(distance);
-        //  }
-        // console.log("DISTANCE CORDS:", distanceCoords)
-        // })
-    // } 
-    
-        var results = this.props.retrieveRestaurantData
-        var distanceCoords = []
-        if (results == null) {
-            return
+            console.log('LIST OF ELEMENTS:', list);
         }
-        if(distanceCoords == null) {
-            return
-        }
+    }
 
-    
-        
-        const restaurants = results.map( (current) => {
-            var distance = null;
-            // var distance = null
+    async buildRestaurantsList(results) {
+        const list = await Promise.all(results.map(async (current) => {
 
-            // for(let i= 0; i<distanceCoords.length; i++){
-                   
-            //     var distance = distanceCoords[i].rows[0].elements[0].distance
-            // }
             const price = current.price_level;
             const address = current.vicinity;
             const name = current.name;
             const rating = current.rating;
             const places = current.place_id;
-            
+            const location = this.props.currentLocation
+            const latLng = current.geometry.location;
+
             if (price >= 2) {
-            const latLng= current.geometry.location;
-            const currentLocation = this.props.currentLocation
-            const lat1= currentLocation.lat();
-            const long1= currentLocation.lng();
-            const lat2= latLng.lat();
-            const long2 = latLng.lng();
-            // console.log("LATLONG:", lat1, long2)
+                const restaurantData = await getRestaurantData(places, latLng, location)
 
-            var origin1 = {lat:lat1, lng:long1};
-            //  console.log("ORIGIN:", origin1)
-            var destination1 = {lat:lat2, lng:long2}
-            var service = new google.maps.DistanceMatrixService();
-            service.getDistanceMatrix(
-                {
-                    origins: [origin1],
-                    destinations: [destination1],
-                    travelMode: 'DRIVING',
-                    drivingOptions: {
-                        departureTime: new Date(Date.now()),  // for the time N milliseconds from now.
-                        trafficModel: 'bestguess'
-                    },
-                    unitSystem: google.maps.UnitSystem.IMPERIAL,
-                    avoidHighways: false,
-                    avoidTolls: true,
-                }, callback2);
+                // console.log("HOURSSSS",busyHour)
+                const busyHour = restaurantData.busyHour
+                const distance = restaurantData.distance
+                var color = ''
+                var iconUrl = null;
 
-                
-            
-         function callback2(response, status) {
-            //  console.log("DISTANCEEEEE:",response)
-            
-            distance = response.rows[0].elements[0].distance
-            
-            
 
-             distanceCoords.push(distance);
-             return distance
-         }    
-        console.log("DISTANCE CORDS:", distanceCoords)
-                // console.log('Results', current)
-                // console.log('getGooglePhoto', this.state)
+                if (busyHour < 30) {
+                    color = 'green';
+                } else if (busyHour > 31 && busyHour < 59) {
+                    color = 'yellow';
+                } else if (busyHour > 60) {
+                    color = 'red';
+                } else {
+                    color = 'red';
+                }
+                switch (color) {
+                    case 'green':
+                        iconUrl = 'https://i.imgur.com/nnUcYpC.png';
+                        break;
+                    case 'yellow':
+                        iconUrl = 'https://i.imgur.com/LkWlV0u.png';
+                        break;
+                    case 'red':
+                        iconUrl = 'https://i.imgur.com/i9AQAax.png';
+                        break;
+                }
+
                 return (
                     <div className="restaurantBubble">
                         <div className="headerTitle">{name}</div>
                         <div className="bottomInfo">
-                            <div className="timeInfo"><img src={greenTimer} /></div>
+                            <div className="timeInfo"><img src={iconUrl} /></div>
                             <div className="restaurantInfoContainer">
                                 <div className="restaurantInfo">
                                     <div className="starsDistanceInfo">
@@ -153,27 +88,51 @@ class ListView extends Component {
                                 <div className="address"><span className="boldText">Address: </span> {address}</div>
                             </div>
                         </div>
-                        <div className="bottomPicInfo">
+                        <div className="bottomPicInfo" id="photos">
                             <ListViewPhotos mapRef={this.props.mapRef} placeId={places} />
                         </div>
                     </div>
                 )
-                }
+            }
 
-                }
-    
-        )
-        return restaurants
+            return null;
+        }));
+
+        console.log('=======LIST========', list);
+
+        this.setState({
+            restaurants: list
+        });
     }
+
+    restaurantListRender() {
+
+        const { restaurants } = this.state;
+
+
+        var distanceCoords = []
+        if (!restaurants) {
+            return null;
+        }
+        if (distanceCoords == null) {
+            return null;
+        }
+
+        return restaurants;
+    }
+
     render() {
+        ++this.childKey;
+
+
         return (
             <div className={`listBottomContainer ${this.props.list ? "" : "hidden"}`}>
                 {this.restaurantListRender()}
-                
+
             </div>
-            )
-        }
-    
+        )
     }
+
+}
 
 export default ListView; 

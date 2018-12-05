@@ -12,9 +12,31 @@ export async function getRestaurantData(places, latLng, location) {
         busyHour: ""
     }
 
-    if (resp.data.data && resp.data.data.week && resp.data.data.week[day] && resp.data.data.week[day].hours[time] && resp.data.data.week[day].hours[time].percentage) {
-        restaurantData.busyHour = resp.data.data.week[day].hours[time].percentage;
+    var nav = function(input, path){
+        var curr = input;
+
+        if (!(path instanceof Array))
+            path = Array.prototype.slice.call(arguments, 1);
+
+        for (var i = 0; i < path.length; i++)
+        {
+            curr = curr[path[i]];
+            if (typeof curr != "object")
+            {
+                if (i == path.length - 1)
+                    return curr;
+                return null;
+            }
+        }
+
+        return curr;
     }
+
+    restaurantData.busyHour = nav(resp, "data", "data", "week", day, "hours", time, "percentage") || restaurantData.busyHour;
+
+    //if (resp.data.data && resp.data.data.week && resp.data.data.week[day] && resp.data.data.week[day].hours[time] && resp.data.data.week[day].hours[time].percentage) {
+    //    restaurantData.busyHour = resp.data.data.week[day].hours[time].percentage;
+   // }
     const currentLocation = location
     const lat1 = currentLocation.lat();
     const long1 = currentLocation.lng();

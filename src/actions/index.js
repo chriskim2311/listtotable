@@ -10,7 +10,22 @@ export function userPutNameOnWaitingList(){
 export function userSignUp(partner){
     return async function (dispatch) {
         try {
-            const resp = await axios.post('http://table.michaeljchu.com/api/tablefinder.php?action=restaurants_users&method=insert', partner)
+            // const resp = await axios.post('http://table.michaeljchu.com/api/tablefinder.php?action=restaurants_users&method=insert', {
+            //         data: partner,
+            //         headers: {
+            //             'Content-Type': 'application/x-www-form-urlencoded'
+            //         }
+            //     });
+
+            const resp = await axios({
+                method: 'post',
+                url: 'http://table.michaeljchu.com/api/tablefinder.php?action=restaurant_users&method=insert',
+                data: partner,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+
             console.log('Sign up response:', resp)
             debugger;
             if (resp) {
@@ -33,7 +48,7 @@ export function userLogIn(partner){
     console.log("user log in called:");
     return async function(dispatch){
         try{
-            const resp =await axios.get('http://table.michaeljchu.com/api/tablefinder.php?action=restaurants_users&method=login', partner);
+            const resp =await axios.get('http://table.michaeljchu.com/api/tablefinder.php?action=restaurant_users&method=login', partner);
             console.log('Sign in Response', resp);
             
 

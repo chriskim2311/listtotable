@@ -22,22 +22,20 @@ class SignUpForm extends Component {
                         <Field name="businessName" size="s8 offset-s2" label="Business Name" component={Input}/>
                     </div>
                     <div className="row sign_up_row">
-                        <Field name="businessEmail" label="Business Email" size="s7" component={Input} />
-                        <Field name="businessPhone" label="Phone Number" size="s5" component={Input}/>
-                    </div>
-                    <div className="row sign_up_row">
                         
                         <Field name="businessAddress" label="Business Address" size="s12" component={Input}/>
                     </div>
                     <div className="row sign_up_row">
-                        <Field name="login" label="Create Login" size="s4 offset-s4" component={Input}/>
+                        <Field name="email" label="Business Email" size="s6" component={Input} />
+                        <Field name="phone" label="Phone Number" size="s6" component={Input}/>  
                     </div> 
                     <div className="row sign_up_row">
                         <Field name="password" label="Create Password" type="password" size="s6" component={Input}/>
-                        <Field name="ConfirmPassword" label="Confirm Password" type="password" size="s6" component={Input}/>
+                        <Field name="confirmPassword" label="Confirm Password" type="password" size="s6" component={Input}/>
                     </div>
-                    <div className="row center">
-                        <button className="btn waves-effect waves-light" type="submit">Submit</button>
+                    <div className="row center sign_up_row">
+                        <button className="btn waves-effect waves-light blue darken-3" type="submit">Submit</button>
+                        <p className="red-text text-darken-2">{signUpError}</p>
                     </div>
                 
                 </form>
@@ -48,11 +46,20 @@ class SignUpForm extends Component {
 }
 
 function validate(values){
-    const { confirmPassword, email, password } = values;
+    const { confirmPassword, email, password, phone, businessName, businessAddress} = values;
     const error = {};
     
     if(!email){
         error.email = 'Please enter Your email'
+    }
+    if(!phone){
+        error.phone = 'Please enter phone number'
+    }
+    if(!businessName){
+        error.businessName = 'Please enter Business Name'
+    }
+    if(!businessAddress){
+        error.businessAddress = 'Please enter Business address'
     }
 
     if(!password){

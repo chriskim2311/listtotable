@@ -138,9 +138,11 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
             var address = results.data.data.formatted_address
 
             infowindow.setContent(
+       
       '<p>Name: ' + name + '</p>' +
       '<p>Address: ' + address + '</p>' +
-      `<a href="/reservation-info/${name}/${placeId}">Check In!</button>`);
+      "<button>"+`<a href="/reservation-info/${name}/${placeId}">Check In!</button>`
+      );
       infowindow.open(map, this);
         })
        

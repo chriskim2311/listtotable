@@ -13,6 +13,8 @@ import Geolocation from './geolocation'
 import Navigation from '../hamburgerAndBack'
 import { renderBusyTimes } from './helpers';
 import '../../assets/css/customerPg.css';
+import ReactDOM from 'react-dom'
+
 
 class CustomerPg extends Component {
     constructor(props) {
@@ -47,7 +49,9 @@ class CustomerPg extends Component {
     handleSearchItem = () => {
         event.preventDefault();
         console.log('info has been submitted', this.state)
+        ReactDOM.unmountComponentAtNode(document.getElementById('bottom'));
         renderBusyTimes(this.state.restaurantType, this.retrieveRestaurantData)
+        
 
     }
 
@@ -78,6 +82,8 @@ class CustomerPg extends Component {
 
 
     render() {
+       
+        
         console.log('info being changed', this.props)
         console.log("Current state: ", this.state)
         const { map, list, restaurantType, search } = this.state
@@ -127,7 +133,7 @@ class CustomerPg extends Component {
 
                     </div>
                 </div>
-                <div className="BottomContainer">
+                <div id="bottom" className="BottomContainer">
                     <Geolocation
                         map={map}
                         search={search}
@@ -137,7 +143,8 @@ class CustomerPg extends Component {
                     <ListView list={list}
                         currentLocation={this.state.currentLocation}
                         mapRef={this.state.mapRef}
-                        retrieveRestaurantData={this.state.restaurantData} />
+                        retrieveRestaurantData={this.state.restaurantData}
+                        key={this.childKey} />
                 </div>
 
 

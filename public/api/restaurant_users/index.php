@@ -8,7 +8,7 @@ switch($method) {
         break;
 
     case 'insert':
-        require_once('./insert.php');
+        require_once('insert.php');
         break;
 
     case 'delete':

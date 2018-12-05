@@ -1,8 +1,4 @@
 import React, { Component, Fragment } from 'react';
-// import { Link } from 'react-router-dom';
-// import menu from '../assets/images/hamburgerm.png';
-// import arrow from '../assets/images/arrowLeft.png';
-// import '../assets/css/r_header.css';
 import "../assets/css/navigation.css";
 import { NavLink, withRouter, Link } from "react-router-dom";
 import RNavMenu from './r_menu';

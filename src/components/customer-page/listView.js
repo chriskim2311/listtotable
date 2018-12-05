@@ -10,11 +10,6 @@ class ListView extends Component {
     state = {
         restaurants: null
     }
-    restaurantListRender() {
-        var results = this.props.retrieveRestaurantData
-        // console.log('RESULTS:', results)
-        if (results == null) {
-            return
     async componentDidUpdate(prevProps) {
         console.log('========PREV PROPS=========', prevProps);
         console.log('========PROPS=========', this.props);

@@ -71,6 +71,7 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
             if (priceLevel >= 2) {
                 var placeId = String(results[i].place_id);
                 var place = results[i]
+                var photo = results[i]['photos'][0].getUrl()
                 
                 // console.log("PLACEEEE:",place)
                 
@@ -80,7 +81,6 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
                     place_id: placeId,
                 }).then( (resp) => {
                     // console.log("placeeeee:", resp)
-                    var photo = results[i]['photos'][0].getUrl()
                     console.log('Phootooooooos:', photo)
                     var date = new Date()
                     var day = date.getDay();
@@ -110,7 +110,7 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
     }
 
     function createColoredMarker(config) {
-        // console.log('Config:', config)
+        console.log('Config:', config)
         const { map,location, results, color, placeId, photo } = config;
 
         var iconUrl = null;

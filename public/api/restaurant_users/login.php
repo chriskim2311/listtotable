@@ -6,9 +6,9 @@ $username = addslashes($_POST['username']);
 $password = sha1($_POST['password']);
 
 $query = "SELECT * FROM restaurant_users WHERE username = '$username' AND password = '$password'";
+print($query);
 
-
-$result = mysqli_query($db, $query);
+$result = mysqli_query($conn, $query);
 if($result){
     if(mysqli_num_rows($result) > 0){
         $row = mysqli_fetch_assoc($result);
@@ -16,13 +16,13 @@ if($result){
         $loginQuery = "INSERT INTO connections SET token='$token', r_users_ID'{$row['ID']}'";
         mysqli_query($db, $loginQuery);
         setcookie('phpcookie', $token, time() + (86400 * 30), "/"); // 86400 = 1 day
-        print("you are logged in ");
-        //$_SESSION['userID'] = $row;
+        $_SESSION['userID'] = $row;
+        $output['success'] = true;
     } else {
-        print("you are not logged in");
+        $output['errors'] = 'Login unsuccessful';
     }
 } else {
-    print("DB error");
+    $output['errors'] = 'DB Error';
 }
 
 function makeToken($length = 20){

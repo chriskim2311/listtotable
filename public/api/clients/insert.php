@@ -1,14 +1,15 @@
 <?php
 
-$first_name = $_POST['first_name'];
-$last_name = $_POST['last_name'];
+$client_name = $_POST['client_name'];
 $phone_number = $_POST['phone_number'];
+$restaurant_id = $_POST['restaurant_id'];
+$restaurant_name = $_POST['restaurant_name'];
 $wait_start = $_POST['wait_start'];
 $wait_end = $_POST['wait_end'];
 $table_size = $_POST['table_size'];
 $comments = $_POST['comments'];
 
-$query = "INSERT INTO clients (first_name, last_name, phone_number, wait_start, wait_end, table_size, comments) VALUES ('$first_name', '$last_name', '$phone_number', '$wait_start', '$wait_end', '$table_size', '$comments')";
+$query = "INSERT INTO clients (client_name, phone_number, restaurant_id, restaurant_name, wait_start, wait_end, table_size, comments) VALUES ('$client_name', '$phone_number', '$restaurant_id','$restaurant_name','$wait_start', '$wait_end', '$table_size', '$comments')";
 
 if (mysqli_query($conn, $query)){
 $output['success'] = true;

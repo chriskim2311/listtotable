@@ -13,6 +13,8 @@ import Geolocation from './geolocation'
 import Navigation from '../hamburgerAndBack'
 import { renderBusyTimes } from './helpers';
 import '../../assets/css/customerPg.css';
+import ReactDOM from 'react-dom'
+
 
 class CustomerPg extends Component {
     constructor(props) {
@@ -25,7 +27,8 @@ class CustomerPg extends Component {
             restaurantData: null,
             search: false,
             searchTerm: '',
-            mapRef: null
+            mapRef: null,
+            currentLocation: null
         }
     }
 
@@ -34,19 +37,22 @@ class CustomerPg extends Component {
         console.log("State has been updated from the function passed through geolocation ", this.state.restaurantData);
     }
 
-    retrieveRestaurantData = (results, map) => {
+    retrieveRestaurantData = (results, map, centerLocation) => {
         // debugger;
         this.setState({
             restaurantData: [...results],
-            mapRef: map
+            mapRef: map,
+            currentLocation: centerLocation
         })
     }
 
     handleSearchItem = () => {
         event.preventDefault();
         console.log('info has been submitted', this.state)
-        renderBusyTimes(this.state.restaurantType  , this.retrieveRestaurantData)
-       
+        ReactDOM.unmountComponentAtNode(document.getElementById('bottom'));
+        renderBusyTimes(this.state.restaurantType, this.retrieveRestaurantData)
+        
+
     }
 
     clearSearchItem = () => {
@@ -76,13 +82,13 @@ class CustomerPg extends Component {
 
 
     render() {
-        console.log('info being changed', this.props)
-        console.log("Current state: ", this.state)
+        // console.log('info being changed', this.props)
+        // console.log("Current state: ", this.state)
         const { map, list, restaurantType, search } = this.state
         return (
             <React.Fragment>
                 <div className="topContainer">
-                <Navigation/>
+                    <Navigation />
                     <div className="foodSearchHeader">
                         <div className="foodSearchBar">
                             <form onSubmit={this.handleSearchItem}>
@@ -125,14 +131,18 @@ class CustomerPg extends Component {
 
                     </div>
                 </div>
-                <div className="BottomContainer">
-                    <Geolocation 
-                        map={map} 
-                        search={search} 
-                        restaurantType={restaurantType} 
-                        retrieveRestaurantData={this.retrieveRestaurantData} 
+                <div id="bottom" className="BottomContainer">
+                    <Geolocation
+                        map={map}
+                        search={search}
+                        restaurantType={restaurantType}
+                        retrieveRestaurantData={this.retrieveRestaurantData}
                         clearSearch={this.clearSearchItem} />
-                    <ListView list={list} mapRef={this.state.mapRef} retrieveRestaurantData={this.state.restaurantData} />
+                    <ListView list={list}
+                        currentLocation={this.state.currentLocation}
+                        mapRef={this.state.mapRef}
+                        retrieveRestaurantData={this.state.restaurantData}
+                        key={this.childKey} />
                 </div>
 
 

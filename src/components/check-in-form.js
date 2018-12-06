@@ -4,6 +4,8 @@ import 'materialize-css/dist/js/materialize';
 import '../assets/css/reservationInfo.css';
 import addButton from "../assets/images/addbutton.svg";
 import removeButton from "../assets/images/removeButton.svg";
+import Axios from '../../../frontend/to-do-list/node_modules/axios';
+import axios from 'axios';
 
 class CheckInForm extends Component{
     constructor(props){
@@ -26,7 +28,31 @@ class CheckInForm extends Component{
             restaurantName: this.props.restaurantName,
             restaurantID: this.props.restaurantID
         };
+        const sendData = {
+            first_name: this.state.clientName,
+            last_name: this.state.clientName,
+            phone_number: this.state.clientNumber,
+            table_size: "5",
+            wait_end: '2018-11-22 06:00:00',
+            wait_start: '2018-11-22 06:00:00'
+            }
         console.log('NEW CLIENT:', dataToSend);
+        axios({
+            url: 'http://table.michaeljchu.com/api/tablefinder.php',
+            method: 'POST',
+            data: sendData,
+            params: {
+                actions: 'clients',
+                method: 'insert'
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+ 
+            
+        }).then(resp =>{
+            console.log("SENT DATA:",resp)
+        })
 
         this.setState({
             clientName: '',
@@ -34,8 +60,21 @@ class CheckInForm extends Component{
             clientComments: '',
             clientGroupSize: 1
         });
+        
+
+        axios.post('http://place.kim-chris.com/message/confirm',{
+            restaurant: this.props.restaurantName,
+            phone_number: this.state.clientNumber
+        }).then(resp => {
+            console.log("CHECKED INNNN:", resp)})
+        
+    
 
     };
+//     handleSendData(dataToSend){
+
+// }
+
 
     handleIncrement(){
         this.setState({

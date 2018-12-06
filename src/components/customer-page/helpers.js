@@ -1,13 +1,19 @@
 import axios from 'axios';
+import addButton from '../../assets/images/plus.png';
+import { Link } from 'react-router-dom';
+import '../../assets/css/helper.css';
 
 export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSearch) {
     const restaurantInput = restaurantType;
-    console.log('PROPS:',restaurantType)
+    // console.log('PROPS:',restaurantType)
     var map;
     var service;
     var infowindow;
+    
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
+            // console.log("FIRSTPOSITION:", position)
+            // retrieveRestaurantData(position),
             showRestaurants(position, retrieveRestaurantData,clearSearch)
             
         });
@@ -46,74 +52,67 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
             type: ['restaurant'],
             keyword: restaurantInput
         }
+        infowindow = new google.maps.InfoWindow();
         service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, (results, status) => {
-            restaurantIconRender(results, status, retrieveRestaurantData, map);
+            restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation);
         });
     }
 
-    function restaurantIconRender(results, status, retrieveRestaurantData, map) {
+    function restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation) {
         var bounds = new google.maps.LatLngBounds();
-        console.log('is it doing the thing?', map)
-        retrieveRestaurantData(results, map);
+        retrieveRestaurantData(results, map, centerLocation);
 
-        // console.log(results)
+        console.log('RESUlTS', results)
 
         for (var i = 0; i < results.length; i++) {
             var priceLevel = results[i].price_level
 
             if (priceLevel >= 2) {
                 var placeId = String(results[i].place_id);
-                // console.log(placeId)
-
-
+                var place = results[i]
+                var photo = results[i]['photos'][0].getUrl()
+                
+                // console.log("PLACEEEE:",place)
+                
+                
                 axios.post('http://place.kim-chris.com/busy-hours', {
 
                     place_id: placeId,
-                }).then(resp => {
-                    console.log(resp)
+                }).then( (resp) => {
+                    // console.log("placeeeee:", resp)
+                    console.log('Phootooooooos:', photo)
                     var date = new Date()
                     var day = date.getDay();
                     var time = (date.getHours()) - 6;
-                    // debugger
+                    var results = resp
                     var busyHour = resp.data.data.week[day].hours[time].percentage
                     var location = resp.data.data.location
-                    console.log(location)
-                    console.log(busyHour)
+                    // console.log(location)
+                    // console.log(busyHour)
+                    var config = {
+                        map, location, results, placeId, photo
+                    }
 
                     if (busyHour < 30) {
-                        createColoredMarker(map, location,'green')
-
+                        config.color = 'green';
+                    } else if (busyHour > 31 && busyHour < 59) {
+                        config.color = 'yellow';
+                    } else if (busyHour > 60) {
+                        config.color = 'red';
+                    } else {
+                        config.color = 'red';
                     }
-                    else if (busyHour > 31 && busyHour < 59) {
-                        createColoredMarker(map, location, 'yellow');
-                    }
-                    else if (busyHour > 60) {
-                        createColoredMarker(map, location, 'red');
-                    }
-
-                    else {
-                        createColoredMarker(map, location, 'red');
-                    }
-                    
-
-
-
-                })
+                    createColoredMarker(config);
+                });
             }
-
         }
     }
 
+    function createColoredMarker(config) {
+        console.log('Config:', config)
+        const { map,location, results, color, placeId, photo } = config;
 
-    function createColoredMarker(map, place, color) {
-        var image = {
-            url: place.icon,
-            size: new google.maps.Size(71, 71),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(17, 34),
-            scaledSize: new google.maps.Size(25, 25)
-        };
         var iconUrl = null;
 
         switch(color) {
@@ -132,13 +131,38 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
             url: iconUrl,
             scaledSize: new google.maps.Size(25, 25)
         };
-        // var placeLoc = place.geometry.location;
         var marker = new google.maps.Marker({
             map: map,
             icon: icon,
-            position: place
+            position: location
         });
+        google.maps.event.addListener(marker, 'click', function() {
+            // var photo = photo
+            console.log('photo', photo)
+            var name = results.data.data.name
+            var address = results.data.data.formatted_address
 
+            infowindow.setContent(
+                '<div class="marker">' + 
+                    '<div class="photoCheckInBox">' +
+                        `<img src='${photo}' class="photoMarker" >` + 
+                        `<button> <a href="/reservation-info/${name}/${placeId}">Check In!</button>` + 
+                    '</div>' +
+                    '<div class="infoBorder">' +
+                        '<div class="infoContainer">' + 
+                            '<span class="bold"> Name: ' + '</span>' + '<span>' + name + '</span>' +
+                            '<p> <span class="bold"> Address: </span>' + address + '</p>' +
+                        '</div>' +
+                    '</div>' + 
+                '</div>'       
+      );
+      infowindow.open(map, this);
+        })
+       
     }
-
 }
+
+
+
+
+

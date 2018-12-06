@@ -6,7 +6,6 @@ import LandingPage from './landingPage';
 import '../assets/css/landingPage.css';
 import tfLogo from '../assets/images/logo.png';
 import {Route} from 'react-router-dom';
-
 import ReservationInfo from "./reservationInfo";
 import CustomLocationForm from "./customer-page/customLocationForm";
 
@@ -20,6 +19,7 @@ import RMenu from './r_menu';
 import CustomerPg from './customer-page';
 import Team from './team';
 import About from './about';
+import auth from '../hoc/auth';
 
 
 
@@ -36,11 +36,11 @@ class App extends Component {
 
                 <Route path="/reservation-info/:name/:id" component={ReservationInfo}/>
 
-                <Route path="/login" component={Login}/>
-                <Route path="/waiting" component={Waiting}/>
-                <Route path="/check-in" component={RCheckIn}/>
-                <Route path="/seated" component={Seated}/>
-                <Route path="/signup" component={SignUp}/>
+                <Route path="/login" component={auth(Login, '/waiting', false)}/>
+                <Route path="/waiting" component={auth(Waiting)}/>
+                <Route path="/check-in" component={auth(RCheckIn)}/>
+                <Route path="/seated" component={auth(Seated)}/>
+                <Route path="/signup" component={auth(SignUp, '/waiting', false)}/>
                 <Route path="/r_menu" component={RMenu}/>
                 <Route path="/about" component={About}/>
                 <Route path="/team" component={Team}/>

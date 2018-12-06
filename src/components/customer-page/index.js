@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
-
+import CustomLocationForm from './customLocationForm'
 import greenTimer from '../../assets/images/greenTime.png';
 import redTimer from '../../assets/images/redTime.png';
 import yellowTimer from '../../assets/images/yellowTime.png';
@@ -28,7 +28,28 @@ class CustomerPg extends Component {
             search: false,
             searchTerm: '',
             mapRef: null,
-            currentLocation: null
+            currentLocation: null,
+            geolocation: null,
+            position: null
+        }
+    }
+
+    currentGeolocation() {
+        console.log("HELLLOOOO")
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                //    renderBusyTimes(position, retrieveRestaurantData,clearSearch)
+                this.setState({
+                    geolocation: true,
+                    position: position
+                })
+            });
+        } else {
+            this.setState({
+                geolocation: false
+            })
+            x.innerHTML = "Geolocation is not supported by this browser.";
+
         }
     }
 
@@ -49,9 +70,9 @@ class CustomerPg extends Component {
     handleSearchItem = () => {
         event.preventDefault();
         console.log('info has been submitted', this.state)
-        ReactDOM.unmountComponentAtNode(document.getElementById('bottom'));
+        // ReactDOM.unmountComponentAtNode(document.getElementById('bottom'));
         renderBusyTimes(this.state.restaurantType, this.retrieveRestaurantData)
-        
+
 
     }
 
@@ -82,72 +103,84 @@ class CustomerPg extends Component {
 
 
     render() {
+
         // console.log('info being changed', this.props)
         // console.log("Current state: ", this.state)
         const { map, list, restaurantType, search } = this.state
         return (
-            <React.Fragment>
-                <div className="topContainer">
-                    <Navigation />
-                    <div className="foodSearchHeader">
-                        <div className="foodSearchBar">
-                            <form onSubmit={this.handleSearchItem}>
-                                <input
-                                    className="inputFood"
-                                    type="text"
-                                    value={this.state.restaurantType}
-                                    onChange={(e) => { this.setState({ restaurantType: e.target.value }) }}
-                                    placeholder="Search for Restaurants"
-                                />
-                            </form>
-                        </div>
-                        <div className="searchButton">
-                            <button onClick={this.handleSearchItem} className="search btn-small">Search</button>
-                        </div>
+           
 
+
+            < React.Fragment >
+            <div className="topContainer">
+                <Navigation />
+                <div className="foodSearchHeader">
+                    <div className="foodSearchBar">
+                        <form onSubmit={this.handleSearchItem}>
+                            <input
+                                className="inputFood"
+                                type="text"
+                                value={this.state.restaurantType}
+                                onChange={(e) => { this.setState({ restaurantType: e.target.value }) }}
+                                placeholder="Search for Restaurants"
+                            />
+                        </form>
                     </div>
-                    <div className="legendHeader">
-                        <div className="legendTimeContainer">
-                            <div className="legendTime">
-                                <img className="greenTime" src={greenTimer} />
-                                <img className="yellowTime" src={yellowTimer} />
-                                <img className="redTime" src={redTimer} />
-                            </div>
-                            <div className="legendDetails">
-                                <div className="clockInfo">Not Busy</div>
-                                <div className="clockInfo">Busy</div>
-                                <div className="clockInfo">Very Busy</div>
-                            </div>
-                        </div>
-                        <div className="toggleDisplayContainer">
-                            <div className="toggleDisplay">
-                                <div onClick={this.toggleMap} className={map ? 'mapButton' : 'mapButton1'}>MAP</div>
-                                <div onClick={this.toggleList} className={list ? 'listButton1' : 'listButton'}>LIST</div>
-                            </div>
-                        </div>
-                        {/* {map ? <Geolocation/>: <ListView/>} */}
-                        {/* bottom half will render the map or list dependent on the true/false value */}
-
-
+                    <div className="searchButton">
+                        <button onClick={this.handleSearchItem} className="search btn-small">Search</button>
                     </div>
+
                 </div>
-                <div id="bottom" className="BottomContainer">
-                    <Geolocation
-                        map={map}
-                        search={search}
-                        restaurantType={restaurantType}
-                        retrieveRestaurantData={this.retrieveRestaurantData}
-                        clearSearch={this.clearSearchItem} />
-                    <ListView list={list}
-                        currentLocation={this.state.currentLocation}
-                        mapRef={this.state.mapRef}
-                        retrieveRestaurantData={this.state.restaurantData}
-                        key={this.childKey} />
+                <div className="legendHeader">
+                    <div className="legendTimeContainer">
+                        <div className="legendTime">
+                            <img className="greenTime" src={greenTimer} />
+                            <img className="yellowTime" src={yellowTimer} />
+                            <img className="redTime" src={redTimer} />
+                        </div>
+                        <div className="legendDetails">
+                            <div className="clockInfo">Not Busy</div>
+                            <div className="clockInfo">Busy</div>
+                            <div className="clockInfo">Very Busy</div>
+                        </div>
+                    </div>
+                    <div className="toggleDisplayContainer">
+                        <div className="toggleDisplay">
+                            <div onClick={this.toggleMap} className={map ? 'mapButton' : 'mapButton1'}>MAP</div>
+                            <div onClick={this.toggleList} className={list ? 'listButton1' : 'listButton'}>LIST</div>
+                        </div>
+                    </div>
+                    {/* {map ? <Geolocation/>: <ListView/>} */}
+                    {/* bottom half will render the map or list dependent on the true/false value */}
+
+
                 </div>
+            </div>
+            <div id="map" className="BottomContainer">
+            {this.currentGeolocation()}
+                {
+                    this.state.geolocation ?
+                        <div>
+                            <Geolocation
+                                map={map}
+                                search={search}
+                                restaurantType={restaurantType}
+                                retrieveRestaurantData={this.retrieveRestaurantData}
+                                clearSearch={this.clearSearchItem}
+                                position={this.state.position} />
+                            <ListView list={list}
+                                currentLocation={this.state.currentLocation}
+                                mapRef={this.state.mapRef}
+                                retrieveRestaurantData={this.state.restaurantData}
+                                key={this.childKey} />
+                        </div>
+                        :
+                        <CustomLocationForm />
+                }
 
+            </div>
 
-
-            </React.Fragment>
+            </React.Fragment >
         )
     }
 }

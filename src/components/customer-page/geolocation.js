@@ -23,8 +23,10 @@ class Geolocation extends Component {
     //     }
     // }
     componentDidMount() {
+        const position = this.props.postion;
+        const restaurantType = this.state.restaurantType;
         
-        renderBusyTimes(this.state.restaurantType, this.props.retrieveRestaurantData);
+        renderBusyTimes(restaurantType, this.props.retrieveRestaurantData, position);
 
     }
     render() {

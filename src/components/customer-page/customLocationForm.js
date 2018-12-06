@@ -1,6 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
+import {renderBusyTimes} from  './helpers'
+import '../../assets/css/customerPg.css';
 
 class CustomLocationForm extends Component{
     constructor(props){
@@ -8,6 +10,7 @@ class CustomLocationForm extends Component{
 
         this.state = {
             cityLocation: '',
+            location: null
         };
 
         this.autocomplete = null;
@@ -28,37 +31,62 @@ class CustomLocationForm extends Component{
         });
     };
 
-    handleSubmit = (event) => {
+    handleSubmit= (event) =>{
+        console.log("STATE:", this.state)
+        // debugger;
         event.preventDefault();
-        this.getLatLong();
-
-        const dataToSend = {
-            ...this.state,
-        };
-
-        this.setState({
-            cityLocation: '',
-        });
-
-        console.log(dataToSend);
-    };
-
-    getLatLong = () => {
         const geocoder = new google.maps.Geocoder();
         const address = this.state.cityLocation;
-        const location = {};
-
+        // const location = {};
         geocoder.geocode({'address': address}, function(results, status) {
+            const locations = {};
             if (status === 'OK') {
+
+                console.log("RESULTS", results)
                 var lat = results[0].geometry.location.lat();
                 var long = results[0].geometry.location.lng();
                 location.lat = lat;
-                location.long = long;
+                location.lng = long;
                 console.log(lat, long);
-                console.log(location);
+                // console.log(location);
+                // this.setState({
+                //     location: results
+                // })
+             renderBusyTimes(locations)
             }
+            // console.log(locations)
+            // renderBusyTimes(locations)
+        });
+       
+        // console.log("LOCATION", location)
+        this.setState({
+            cityLocation: '',
         });
     };
+
+//    getLatLong(){
+      
+//         const geocoder = new google.maps.Geocoder();
+//         const address = this.state.cityLocation;
+//         const location = {};
+
+//         geocoder.geocode({'address': address}, function(results, status) {
+//             // const location = {};
+//             if (status === 'OK') {
+//                 var lat = results[0].geometry.location.lat();
+//                 var long = results[0].geometry.location.lng();
+//                 location.lat = lat;
+//                 location.lng = long;
+//                 console.log(lat, long);
+//                 console.log(location);
+//              renderBusyTimes(location)
+//             }
+//             // this.setState({
+//             //     location: location
+//             // })
+//         });
+
+//     };
 
     render(){
         console.log('info being changed', this.state);

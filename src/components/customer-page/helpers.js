@@ -3,24 +3,25 @@ import addButton from '../../assets/images/plus.png';
 import { Link } from 'react-router-dom';
 import '../../assets/css/helper.css';
 
-export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSearch) {
+export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSearch, position, locations) {
     const restaurantInput = restaurantType;
-    // console.log('PROPS:',restaurantType)
+    // console.log('PROPS:',this.state.location)
+    // console.log("RESULTS", locations)
     var map;
     var service;
     var infowindow;
     
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            // console.log("FIRSTPOSITION:", position)
-            // retrieveRestaurantData(position),
-            showRestaurants(position, retrieveRestaurantData,clearSearch)
+    // if (navigator.geolocation) {
+    //     navigator.geolocation.getCurrentPosition((position) => {
+    //         // console.log("FIRSTPOSITION:", position)
+    //         // retrieveRestaurantData(position),
+    //         showRestaurants(position, retrieveRestaurantData,clearSearch)
             
-        });
-    } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+    //     });
+    // } else {
+    //     x.innerHTML = "Geolocation is not supported by this browser.";
 
-    }
+    // }
 
     // function searchFlag(clearSearch) {
     //     this.setState= {
@@ -28,12 +29,25 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
     //     }
     //     console.log("FLAG:", this.state)
     // }
-    function showRestaurants(position, retrieveRestaurantData,clearSearch) {
-        
+    debugger
+        if(position){
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
-        // console.log(latitude, longitude)
         var centerLocation = new google.maps.LatLng(latitude, longitude);
+        // console.log(latitude, longitude)
+        }
+        if(locations){
+            // var lat = results[0].geometry.location.lat();
+            // var long = results[0].geometry.location.lng();
+            // locations.lat = lat;
+            // locations.lng = long;
+            console.log("LOCATIONS", locations)
+            var latitude = locations.lat;
+            var longitude = locations.lng;
+            var centerLocation = new google.maps.LatLng(latitude, longitude);
+            console.log("COOORRDSSSS", latitude, longitude)
+        }
+        // var centerLocation = new google.maps.LatLng(latitude, longitude);
         // console.log(centerLocation)
         map = new google.maps.Map(document.getElementById('map'), {
             center: { lat: latitude, lng: longitude },
@@ -57,7 +71,6 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
         service.nearbySearch(request, (results, status) => {
             restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation);
         });
-    }
 
     function restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation) {
         var bounds = new google.maps.LatLngBounds();

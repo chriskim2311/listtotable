@@ -7,6 +7,8 @@ import '../assets/css/landingPage.css';
 import tfLogo from '../assets/images/logo.png';
 import {Route} from 'react-router-dom';
 import ReservationInfo from "./reservationInfo";
+import CustomLocationForm from "./customer-page/customLocationForm";
+
 import Login from './login';
 import ListMenu from './list_menu';
 import Waiting from './waiting';
@@ -27,11 +29,11 @@ class App extends Component {
     render() {
         return (
             <React.Fragment>
-                
 
                 <Route exact path="/" component={LandingPage} />
 
-                
+                <Route path="/customLocationForm" component={CustomLocationForm}/>
+
                 <Route path="/reservation-info/:name/:id" component={ReservationInfo}/>
 
                 <Route path="/login" component={auth(Login, '/waiting', false)}/>

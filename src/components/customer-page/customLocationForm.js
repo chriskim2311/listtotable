@@ -48,7 +48,7 @@ class CustomLocationForm extends Component{
                 location.lat = lat;
                 location.lng = long;
                 console.log(lat, long);
-                // console.log(location);
+                console.log(location);
                 // this.setState({
                 //     location: results
                 // })

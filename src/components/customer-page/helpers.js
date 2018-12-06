@@ -29,7 +29,7 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
     //     }
     //     console.log("FLAG:", this.state)
     // }
-    debugger
+    
         if(position){
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;

@@ -8,7 +8,6 @@ import tfLogo from '../assets/images/logo.png';
 import {Route} from 'react-router-dom';
 
 import ReservationInfo from "./reservationInfo";
-
 import CustomLocationForm from "./customer-page/customLocationForm";
 
 import Login from './login';

@@ -71,17 +71,17 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
             if (priceLevel >= 2) {
                 var placeId = String(results[i].place_id);
                 var place = results[i]
-                var photo = results[i]['photos'][0].getUrl()
-
+                
                 // console.log("PLACEEEE:",place)
-
-
+                
+                
                 axios.post('http://place.kim-chris.com/busy-hours', {
 
                     place_id: placeId,
-                }).then(resp => {
+                }).then( (resp) => {
                     // console.log("placeeeee:", resp)
-                    
+                    var photo = results[i]['photos'][0].getUrl()
+                    console.log('Phootooooooos:', photo)
                     var date = new Date()
                     var day = date.getDay();
                     var time = (date.getHours()) - 6;
@@ -144,11 +144,15 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
 
             infowindow.setContent(
                 '<div class="marker">' + 
-                    `<img src='${photo}' class="photoMarker" >` + 
-                    '<div class="infoContainer">' +
-                        '<span>Name: ' + name + '</span>' +
-                        '<p>Address: ' + address + '</p>' +
-                        `<button> <a href="/reservation-info/${name}/${placeId}">Check In!</button>` +
+                    '<div class="photoCheckInBox">' +
+                        `<img src='${photo}' class="photoMarker" >` + 
+                        `<button> <a href="/reservation-info/${name}/${placeId}">Check In!</button>` + 
+                    '</div>' +
+                    '<div class="infoBorder">' +
+                        '<div class="infoContainer">' + 
+                            '<span class="bold"> Name: ' + '</span>' + '<span>' + name + '</span>' +
+                            '<p> <span class="bold"> Address: </span>' + address + '</p>' +
+                        '</div>' +
                     '</div>' + 
                 '</div>'       
       );

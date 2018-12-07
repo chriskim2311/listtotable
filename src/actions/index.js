@@ -48,7 +48,7 @@ export function userLogIn(partner){
     console.log("user log in called:");
     return async function(dispatch){
         try{
-            const resp =await axios.get('http://table.michaeljchu.com/api/tablefinder.php?action=restaurant_users&method=login', partner);
+            const resp =await axios.post('http://table.michaeljchu.com/api/tablefinder.php?action=restaurant_users&method=login', partner);
             console.log('Sign in Response', resp);
             
 
@@ -77,3 +77,28 @@ export function userLogOut(){
         type: types.LOG_OUT
     }
 }
+
+export function getWaitingListData(){
+    const resp = axios.post('http://table.michaeljchu.com/api/tablefinder.php?action=clients&method=getAll');
+    console.log('server resp after api call', resp);
+    return{
+        type: types.GET_WAITING_LIST_DATA,
+        payload: resp
+    }
+}
+// axios.post(
+//     ).then(resp =>{
+//         console.log("NEW DATAAAA", resp)
+
+//         const data = resp.data.clients
+//         console.log("DATAAAA:", data)
+//         var customerList = data.map((current, index) => {
+
+//             const name = current.client_name;
+//             const partyOf = current.table_size;
+//             const phone = current.phone_number;
+//         console.log(name, partyOf, phone)
+       
+//         console.log(customerList)
+//         })
+//     })

@@ -26,8 +26,7 @@ class SignUpForm extends Component {
                         <Field name="businessAddress" label="Business Address" size="s12" component={Input}/>
                     </div>
                     <div className="row sign_up_row">
-                        <Field name="email" label="Business Email" size="s6" component={Input} />
-                        <Field name="phone" label="Phone Number" size="s6" component={Input}/>  
+                        <Field name="email" label="Business Email" size="s6 offset-s3" component={Input} />  
                     </div> 
                     <div className="row sign_up_row">
                         <Field name="password" label="Create Password" type="password" size="s6" component={Input}/>
@@ -52,12 +51,11 @@ function validate(values){
     if(!email){
         error.email = 'Please enter Your email'
     }
-    if(!phone){
-        error.phone = 'Please enter phone number'
-    }
+   
     if(!businessName){
         error.businessName = 'Please enter Business Name'
     }
+
     if(!businessAddress){
         error.businessAddress = 'Please enter Business address'
     }

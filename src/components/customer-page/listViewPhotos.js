@@ -10,7 +10,7 @@ class ListViewPhotos extends Component {
     }
 
     componentDidMount() {
-        debugger
+        
         const { mapRef, placeId } = this.props;
 
         this.getGooglePhotos(mapRef, placeId);
@@ -61,7 +61,6 @@ class ListViewPhotos extends Component {
     render() {
         ++this.childKey;
         const { photos } = this.state;
-        // debugger;
         if (!photos) {
             return (
                 <div>Loading photo data...</div>

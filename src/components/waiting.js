@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import RTopMenu from './r_arrowAndMenu';
 import ListMenu from './list_menu';
-import CustometInfo from './customer_info';
+import CustomerInfo from './customer_info';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize';
 
 class Waiting extends Component {
     render(){
@@ -9,7 +11,7 @@ class Waiting extends Component {
             <Fragment>
                 <RTopMenu/>
                 <ListMenu/>
-                <CustometInfo/>
+                <CustomerInfo/>
             </Fragment>
         )
     }

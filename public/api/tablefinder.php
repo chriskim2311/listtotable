@@ -1,7 +1,7 @@
 <?php
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
-// header("Access-Control-Allow-Origin: *");
+
 
 require_once('config/mysqlConnect.php');
 

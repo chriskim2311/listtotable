@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios'
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize';
 
 
 class CustomerInfo extends Component {
@@ -15,8 +17,26 @@ class CustomerInfo extends Component {
         }).then(resp => {
             console.log("CHECKED INNNN:", resp)})
     }
+
     
     renderCustomerListOnDom(){
+        axios.post(
+            'http://table.michaeljchu.com/api/tablefinder.php?action=clients&method=getAll').then(resp =>{
+                console.log("NEW DATAAAA", resp)
+
+                const data = resp.data.clients
+                console.log("DATAAAA:", data)
+                var customerList = data.map((current, index) => {
+
+                    const name = current.client_name;
+                    const partyOf = current.table_size;
+                    const phone = current.phone_number;
+                console.log(name, partyOf, phone)
+               
+                console.log(customerList)
+                })
+            })
+
         const partys = this.props.waiting_list;
         console.log(partys)
         if(!partys){
@@ -61,13 +81,11 @@ class CustomerInfo extends Component {
             )
         })
         return customerList;
-    }
-   
+    
+        }
+    
     render(){
-        console.log(this.props.waiting_list)
-        
-
-
+        // console.log(this.props.waiting_list)
         return(
             <Fragment>
                 {this.renderCustomerListOnDom()}
@@ -75,6 +93,7 @@ class CustomerInfo extends Component {
         )
     }
 }
+
 
 function mapStateToProps(state){
     console.log('Redux State:', state);

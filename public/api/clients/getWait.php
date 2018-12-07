@@ -1,6 +1,6 @@
 <?php
 
-$query = "SELECT * FROM clients WHERE status = 'waiting' AND status = 'notified'";
+$query = "SELECT * FROM clients WHERE status > 1";
 
 $result = mysqli_query($conn, $query);
 

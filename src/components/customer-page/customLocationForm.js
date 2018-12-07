@@ -39,20 +39,20 @@ class CustomLocationForm extends Component{
         const address = this.state.cityLocation;
         // const location = {};
         geocoder.geocode({'address': address}, function(results, status) {
-            const locations = {};
+            const restaurantType = {};
             if (status === 'OK') {
 
                 console.log("RESULTS", results)
                 var lat = results[0].geometry.location.lat();
                 var long = results[0].geometry.location.lng();
-                location.lat = lat;
-                location.lng = long;
+                restaurantType.lat = lat;
+                restaurantType.lng = long;
                 console.log(lat, long);
-                console.log(location);
+                // console.log(location);
                 // this.setState({
                 //     location: results
                 // })
-             renderBusyTimes(locations)
+             renderBusyTimes(restaurantType)
             }
             // console.log(locations)
             // renderBusyTimes(locations)

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import '../../assets/css/helper.css';
 
 export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSearch, position, locations) {
+   
+   
     const restaurantInput = restaurantType;
     // console.log('PROPS:',this.state.location)
     // console.log("RESULTS", locations)

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios'
+import { getWaitingListData } from '../actions';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 
@@ -20,25 +21,10 @@ class CustomerInfo extends Component {
 
     
     renderCustomerListOnDom(){
-        axios.post(
-            'http://table.michaeljchu.com/api/tablefinder.php?action=clients&method=getAll').then(resp =>{
-                console.log("NEW DATAAAA", resp)
-
-                const data = resp.data.clients
-                console.log("DATAAAA:", data)
-                var customerList = data.map((current, index) => {
-
-                    const name = current.client_name;
-                    const partyOf = current.table_size;
-                    const phone = current.phone_number;
-                console.log(name, partyOf, phone)
-               
-                console.log(customerList)
-                })
-            })
+       
 
         const partys = this.props.waiting_list;
-        console.log(partys)
+        console.log('partys from server on customerinfo page',partys)
         if(!partys){
             return
         }
@@ -85,7 +71,7 @@ class CustomerInfo extends Component {
         }
     
     render(){
-        // console.log(this.props.waiting_list)
+        console.log('render on customerinfo', getWaitingListData()) //I called this function here just to see if I can get data 
         return(
             <Fragment>
                 {this.renderCustomerListOnDom()}
@@ -103,4 +89,7 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps)(CustomerInfo);
+export default connect(mapStateToProps,{
+    
+    waitingListData: getWaitingListData
+})(CustomerInfo);

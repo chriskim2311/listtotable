@@ -1,5 +1,8 @@
 <?php
 
+$postdata = file_get_contents("php://input");
+$_POST = json_decode($postdata, true);
+
 $client_name = $_POST['client_name'];
 $phone_number = $_POST['phone_number'];
 $restaurant_id = $_POST['restaurant_id'];

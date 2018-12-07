@@ -29,12 +29,14 @@ class CheckInForm extends Component{
             restaurantID: this.props.restaurantID
         };
         const sendData = {
-            first_name: this.state.clientName,
-            last_name: this.state.clientName,
+           client_name: this.state.clientName,
             phone_number: this.state.clientNumber,
-            table_size: "5",
+            table_size: this.state.clientGroupSize,
+            restaurant_name: this.props.restaurantName,
+            restaurant_id: this.props.restaurantID,
             wait_end: '2018-11-22 06:00:00',
-            wait_start: '2018-11-22 06:00:00'
+            wait_start: '2018-11-22 06:00:00',
+            comments:this.state.clientComments
             }
         console.log('NEW CLIENT:', dataToSend);
         axios({
@@ -42,7 +44,7 @@ class CheckInForm extends Component{
             method: 'POST',
             data: sendData,
             params: {
-                actions: 'clients',
+                action: 'clients',
                 method: 'insert'
             },
             headers: {

@@ -61,7 +61,7 @@ class ListViewPhotos extends Component {
     render() {
         ++this.childKey;
         const { photos } = this.state;
-        debugger;
+        // debugger;
         if (!photos) {
             return (
                 <div>Loading photo data...</div>

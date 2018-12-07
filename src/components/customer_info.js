@@ -15,53 +15,103 @@ class CustomerInfo extends Component {
         }).then(resp => {
             console.log("CHECKED INNNN:", resp)})
     }
+
     
     renderCustomerListOnDom(){
-        const partys = this.props.waiting_list;
-        console.log(partys)
-        if(!partys){
-            return
-        }
+        axios.post(
+            'http://table.michaeljchu.com/api/tablefinder.php?action=clients&method=getAll').then(resp =>{
+                console.log("NEW DATAAAA", resp)
 
-        const customerList = partys.map((current, index) => {
-            const name = current.name;
-            const partyOf = current.partyOf
-            const phone = current.phoneNumber
-        
-            return(
-                <div key={index}>
-                    <div className="row blue">
-                        <div className="col s1">
-                            <p>1</p>
+
+                const customerList = resp.map((current, index) => {
+                    const name = current.name;
+                    const partyOf = current.partyOf
+                    const phone = current.phoneNumber
+                
+                    return(
+                        <div key={index}>
+                            <div className="row blue">
+                                <div className="col s1">
+                                    <p>1</p>
+                                </div>
+                                <div className="col s4">
+                                    <ul>
+                                        <li>{name}</li>
+                                        <li>{partyOf}</li>
+                                        <li>{phone}</li>
+                                    </ul>
+                                </div>
+                                <div className="col s2 ">
+                                    <p>
+                                        <button
+                                         onClick={this.handleNotify}>notify</button>
+                                    </p>
+                                    
+                                </div>
+                                <div className="col s2">
+                                    <p>
+                                        <button>seat</button>
+                                    </p>
+                                </div>
+                                <div className="col s1">
+                                    <p>del</p>
+                                </div>
+                            </div>
                         </div>
-                        <div className="col s4">
-                            <ul>
-                                <li>{name}</li>
-                                <li>{partyOf}</li>
-                                <li>{phone}</li>
-                            </ul>
-                        </div>
-                        <div className="col s2 ">
-                            <p>
-                                <button
-                                 onClick={this.handleNotify}>notify</button>
-                            </p>
-                            
-                        </div>
-                        <div className="col s2">
-                            <p>
-                                <button>seat</button>
-                            </p>
-                        </div>
-                        <div className="col s1">
-                            <p>del</p>
-                        </div>
-                    </div>
-                </div>
+                    )
+                })
+                return customerList;
+            }
             )
-        })
-        return customerList;
-    }
+
+            
+
+
+        // const partys = this.props.waiting_list;
+        // console.log(partys)
+        // if(!partys){
+        //     return
+        // }
+
+    //     const customerList = partys.map((current, index) => {
+    //         const name = current.name;
+    //         const partyOf = current.partyOf
+    //         const phone = current.phoneNumber
+        
+    //         return(
+    //             <div key={index}>
+    //                 <div className="row blue">
+    //                     <div className="col s1">
+    //                         <p>1</p>
+    //                     </div>
+    //                     <div className="col s4">
+    //                         <ul>
+    //                             <li>{name}</li>
+    //                             <li>{partyOf}</li>
+    //                             <li>{phone}</li>
+    //                         </ul>
+    //                     </div>
+    //                     <div className="col s2 ">
+    //                         <p>
+    //                             <button
+    //                              onClick={this.handleNotify}>notify</button>
+    //                         </p>
+                            
+    //                     </div>
+    //                     <div className="col s2">
+    //                         <p>
+    //                             <button>seat</button>
+    //                         </p>
+    //                     </div>
+    //                     <div className="col s1">
+    //                         <p>del</p>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         )
+    //     })
+    //     return customerList;
+    // }
    
     render(){
         console.log(this.props.waiting_list)

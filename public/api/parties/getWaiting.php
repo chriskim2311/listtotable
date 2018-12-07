@@ -1,6 +1,6 @@
 <?php
 
-$query = "SELECT * FROM parties WHERE status > 1";
+$query = "SELECT * FROM parties WHERE status = 2";
 
 $result = mysqli_query($conn, $query);
 

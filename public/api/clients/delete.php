@@ -7,6 +7,7 @@ $wait_start = $_POST['wait_start'];
 $wait_end = $_POST['wait_end'];
 $table_size = $_POST['table_size'];
 $comments = $_POST['comments'];
+$status = $_POST['status'];
 
 
 $query = "DELETE FROM clients WHERE client_name = $client_name";

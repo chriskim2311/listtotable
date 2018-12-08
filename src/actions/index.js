@@ -106,3 +106,11 @@ export function getWaitingListData(){
 //         console.log(customerList)
 //         })
 //     })
+
+export function customerCheckIn () {
+
+    return {
+        type: types.CHECK_IN
+        
+    }
+} 

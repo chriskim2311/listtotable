@@ -7,7 +7,7 @@ import '../assets/css/landingPage.css';
 import tfLogo from '../assets/images/logo.png';
 import {Route} from 'react-router-dom';
 import ReservationInfo from "./reservationInfo";
-import CustomLocationForm from "./customer-page/customLocationForm";
+// import CustomLocationForm from "./customer-page/customLocationForm";
 
 import Login from './login';
 import ListMenu from './list_menu';
@@ -32,7 +32,7 @@ class App extends Component {
 
                 <Route exact path="/" component={LandingPage} />
 
-                <Route path="/customLocationForm" component={CustomLocationForm}/>
+                {/*<Route path="/customLocationForm" component={CustomLocationForm}/>*/}
 
                 <Route path="/reservation-info/:name/:id" component={ReservationInfo}/>
 

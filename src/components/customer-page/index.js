@@ -14,6 +14,7 @@ import Navigation from '../hamburgerAndBack'
 import { renderBusyTimes } from './helpers';
 import '../../assets/css/customerPg.css';
 import ReactDOM from 'react-dom'
+import CustomLocationForm from './customLocationForm';
 
 
 class CustomerPg extends Component {
@@ -31,6 +32,7 @@ class CustomerPg extends Component {
             currentLocation: null
         }
     }
+
 
 
     componentDidUpdate() {
@@ -132,17 +134,21 @@ class CustomerPg extends Component {
                     </div>
                 </div>
                 <div id="bottom" className="BottomContainer">
-                    <Geolocation
-                        map={map}
-                        search={search}
-                        restaurantType={restaurantType}
-                        retrieveRestaurantData={this.retrieveRestaurantData}
-                        clearSearch={this.clearSearchItem} />
-                    <ListView list={list}
-                        currentLocation={this.state.currentLocation}
-                        mapRef={this.state.mapRef}
-                        retrieveRestaurantData={this.state.restaurantData}
-                        key={this.childKey} />
+                            <div>
+                                <Geolocation
+                                    map={map}
+                                    search={search}
+                                    restaurantType={restaurantType}
+                                    retrieveRestaurantData={this.retrieveRestaurantData}
+                                    clearSearch={this.clearSearchItem} />
+                                <ListView list={list}
+                                      currentLocation={this.state.currentLocation}
+                                      mapRef={this.state.mapRef}
+                                      retrieveRestaurantData={this.state.restaurantData}
+                                      key={this.childKey} />
+                            </div>
+
+
                 </div>
 
 

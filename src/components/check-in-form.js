@@ -4,7 +4,7 @@ import 'materialize-css/dist/js/materialize';
 import '../assets/css/reservationInfo.css';
 import addButton from "../assets/images/addbutton.svg";
 import removeButton from "../assets/images/removeButton.svg";
-import Axios from '../../../frontend/to-do-list/node_modules/axios';
+import ConfirmationModal from "./confirmationModal";
 import axios from 'axios';
 
 class CheckInForm extends Component{
@@ -15,11 +15,12 @@ class CheckInForm extends Component{
             clientName: '',
             clientNumber: '',
             clientComments: '',
-            clientGroupSize: 1
+            clientGroupSize: 1,
+            dataSaved: false
         }
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         event.preventDefault();
 
         //CLIENT AND RESTAURANT DATA OBJECT
@@ -35,9 +36,10 @@ class CheckInForm extends Component{
             table_size: "5",
             wait_end: '2018-11-22 06:00:00',
             wait_start: '2018-11-22 06:00:00'
-            }
+            };
         console.log('NEW CLIENT:', dataToSend);
-        axios({
+
+        const tableResp = await axios({
             url: 'http://table.michaeljchu.com/api/tablefinder.php',
             method: 'POST',
             data: sendData,
@@ -50,26 +52,25 @@ class CheckInForm extends Component{
             }
  
             
-        }).then(resp =>{
-            console.log("SENT DATA:",resp)
-        })
+        });
+
+        console.log("SENT DATA:",tableResp);
 
         this.setState({
             clientName: '',
             clientNumber: '',
             clientComments: '',
-            clientGroupSize: 1
+            clientGroupSize: 1,
+            dataSaved: true
         });
         
 
-        axios.post('http://place.kim-chris.com/message/confirm',{
+        const placeResp = await axios.post('http://place.kim-chris.com/message/confirm',{
             restaurant: this.props.restaurantName,
             phone_number: this.state.clientNumber
-        }).then(resp => {
-            console.log("CHECKED INNNN:", resp)})
-        
-    
+        });
 
+        console.log("CHECKED INNNN:", placeResp);
     };
 //     handleSendData(dataToSend){
 
@@ -98,6 +99,8 @@ class CheckInForm extends Component{
 
     render (){
         console.log('info being changed', this.state);
+        const { dataSaved } = this.state;
+
         return (
             <Fragment>
                 <div className="container">
@@ -164,6 +167,7 @@ class CheckInForm extends Component{
                             type="submit"
                             name="action"
                         >SUBMIT</button>
+                        <ConfirmationModal  saved={dataSaved}/>
                     </div>
 
                 </div>
@@ -173,3 +177,5 @@ class CheckInForm extends Component{
 }
 
 export default CheckInForm;
+
+

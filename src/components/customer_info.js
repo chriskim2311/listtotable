@@ -7,6 +7,10 @@ import 'materialize-css/dist/js/materialize';
 
 
 class CustomerInfo extends Component {
+    componentDidMount(){
+        console.log('data after componentdid mount', this.props)
+        this.props.waitingListData();
+    }
 
 
     handleNotify(){
@@ -30,9 +34,9 @@ class CustomerInfo extends Component {
         }
 
         const customerList = partys.map((current, index) => {
-            const name = current.name;
-            const partyOf = current.partyOf
-            const phone = current.phoneNumber
+            const name = current.client_name;
+            const partyOf = current.table_size
+            const phone = current.phone_number
         
             return(
                 <div key={index}>
@@ -71,7 +75,7 @@ class CustomerInfo extends Component {
         }
     
     render(){
-        console.log('render on customerinfo', getWaitingListData()) //I called this function here just to see if I can get data 
+        
         return(
             <Fragment>
                 {this.renderCustomerListOnDom()}

@@ -26,8 +26,9 @@ const DEFAULT_STATE = {
 export default (state=DEFAULT_STATE, action) =>{
     switch(action.type){
         case types.GET_WAITING_LIST_DATA:
-        console.log('data from server wia redux on waiting list reducer page', action.payload);
-            return
+            console.log('Waiting Action:', action);
+
+            return {...state, waitingList: action.clients}
         default:
         return state;
     }

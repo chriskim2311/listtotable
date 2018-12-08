@@ -79,11 +79,15 @@ export function userLogOut(){
 }
 
 export function getWaitingListData(){
-    const resp = axios.post('http://table.michaeljchu.com/api/tablefinder.php?action=clients&method=getAll');
-    console.log('server resp after api call', resp);
-    return{
-        type: types.GET_WAITING_LIST_DATA,
-        payload: resp
+    return async function(dispatch){
+        const resp = await axios.post('http://table.michaeljchu.com/api/tablefinder.php?action=clients&method=getAll');
+        
+        console.log('server resp after api call', resp);
+        
+        dispatch({
+            type: types.GET_WAITING_LIST_DATA,
+            clients: resp.data.clients
+        });
     }
 }
 // axios.post(

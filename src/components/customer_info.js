@@ -8,7 +8,7 @@ import 'materialize-css/dist/js/materialize';
 
 class CustomerInfo extends Component {
     componentDidMount(){
-        console.log('data after componentdid mount', this.props)
+        // console.log('data after componentdid mount', this.props)
         this.props.waitingListData();
     }
 
@@ -20,7 +20,8 @@ class CustomerInfo extends Component {
             restaurant: "RESTAURANT_NAME",
             phone_number: "6615474865"
         }).then(resp => {
-            console.log("CHECKED INNNN:", resp)})
+            // console.log("CHECKED INNNN:", resp)
+        })
     }
 
     
@@ -28,7 +29,7 @@ class CustomerInfo extends Component {
        
 
         const partys = this.props.waiting_list;
-        console.log('partys from server on customerinfo page',partys)
+        // console.log('partys from server on customerinfo page',partys)
         if(!partys){
             return
         }
@@ -42,7 +43,7 @@ class CustomerInfo extends Component {
                 <div key={index}>
                     <div className="row blue">
                         <div className="col s1">
-                            <p>1</p>
+                            <p>{index +1}</p>
                         </div>
                         <div className="col s4">
                             <ul>
@@ -86,7 +87,7 @@ class CustomerInfo extends Component {
 
 
 function mapStateToProps(state){
-    console.log('Redux State:', state);
+    // console.log('Redux State:', state);
 
     return {
         waiting_list: state.waitingList.waitingList

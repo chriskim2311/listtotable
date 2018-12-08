@@ -20,14 +20,14 @@ switch($method) {
         break;
 
     case 'update':
-        require_once('update');
+        require_once('update.php');
         break;
 
     case 'getSeated':
-        require_once('getSeated');
+        require_once('getSeated.php');
         break;
 
     case 'getWaiting':
-        require_once('getWaiting');
+        require_once('getWaiting.php');
         break;
 }

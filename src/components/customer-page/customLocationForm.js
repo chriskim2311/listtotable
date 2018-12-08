@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
+import renderBusyTimes from './helpers';
 
 class CustomLocationForm extends Component{
     constructor(props){

@@ -1,6 +1,6 @@
 <?php
 
-$query = "SELECT * FROM clients WHERE status = 3";
+$query = "SELECT * FROM clients WHERE status = 2";
 
 $result = mysqli_query($conn, $query);
 

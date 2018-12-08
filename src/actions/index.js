@@ -82,7 +82,7 @@ export function getWaitingListData(){
     return async function(dispatch){
         const resp = await axios.post('/api/tablefinder.php?action=clients&method=getAll');
         
-        console.log('server resp after api call', resp);
+        // console.log('server resp after api call', resp);
         
         dispatch({
             type: types.GET_WAITING_LIST_DATA,
@@ -90,6 +90,20 @@ export function getWaitingListData(){
         });
     }
 }
+
+export function getSeatedListData(){
+    return async function(dispatch){
+        const resp = await axios.post('/api/tablefinder.php?action=clients&method=getSeated');
+        
+        // console.log('getSeated acsios call response', resp);
+        
+        dispatch({
+            type: types.GET_SEATED_LIST_DATA,
+            clients: resp.data.clients
+        });
+    }
+}
+
 // axios.post(
 //     ).then(resp =>{
 //         console.log("NEW DATAAAA", resp)

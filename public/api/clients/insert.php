@@ -1,7 +1,7 @@
 <?php
 
-$postdata = file_get_contents("php://input");
-$_POST = json_decode($postdata, true);
+// $postdata = file_get_contents("php://input");
+// $_POST = json_decode($postdata, true);
 
 $client_name = $_POST['client_name'];
 $phone_number = $_POST['phone_number'];
@@ -14,6 +14,8 @@ $comments = $_POST['comments'];
 $status = $_POST['status'];
 
 $query = "INSERT INTO clients (client_name, phone_number, restaurant_id, restaurant_name, wait_start, wait_end, table_size, comments, status) VALUES ('$client_name', '$phone_number', '$restaurant_id','$restaurant_name','$wait_start', '$wait_end', '$table_size', '$comments', '$status')";
+
+echo $query;
 
 if (mysqli_query($conn, $query)){
 $output['success'] = true;

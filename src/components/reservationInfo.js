@@ -19,6 +19,6 @@ class ReservationInfo extends Component{
         )
     }
 }
-
+ 
 export default ReservationInfo;
 

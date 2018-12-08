@@ -1,9 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios'
+import { getWaitingListData } from '../actions';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize';
 
 
 class CustomerInfo extends Component {
+    componentDidMount(){
+        console.log('data after componentdid mount', this.props)
+        this.props.waitingListData();
+    }
 
 
     handleNotify(){
@@ -15,18 +22,21 @@ class CustomerInfo extends Component {
         }).then(resp => {
             console.log("CHECKED INNNN:", resp)})
     }
+
     
     renderCustomerListOnDom(){
+       
+
         const partys = this.props.waiting_list;
-        console.log(partys)
+        console.log('partys from server on customerinfo page',partys)
         if(!partys){
             return
         }
 
         const customerList = partys.map((current, index) => {
-            const name = current.name;
-            const partyOf = current.partyOf
-            const phone = current.phoneNumber
+            const name = current.client_name;
+            const partyOf = current.table_size
+            const phone = current.phone_number
         
             return(
                 <div key={index}>
@@ -61,13 +71,11 @@ class CustomerInfo extends Component {
             )
         })
         return customerList;
-    }
-   
+    
+        }
+    
     render(){
-        console.log(this.props.waiting_list)
         
-
-
         return(
             <Fragment>
                 {this.renderCustomerListOnDom()}
@@ -75,6 +83,7 @@ class CustomerInfo extends Component {
         )
     }
 }
+
 
 function mapStateToProps(state){
     console.log('Redux State:', state);
@@ -84,4 +93,7 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps)(CustomerInfo);
+export default connect(mapStateToProps,{
+    
+    waitingListData: getWaitingListData
+})(CustomerInfo);

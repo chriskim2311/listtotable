@@ -5,6 +5,7 @@ import '../assets/css/reservationInfo.css';
 import addButton from "../assets/images/addbutton.svg";
 import removeButton from "../assets/images/removeButton.svg";
 import ConfirmationModal from "./confirmationModal";
+// import Axios from '../../../frontend/to-do-list/node_modules/axios';
 import axios from 'axios';
 
 class CheckInForm extends Component{
@@ -17,6 +18,7 @@ class CheckInForm extends Component{
             clientComments: '',
             clientGroupSize: 1,
             dataSaved: false
+            //status: ''
         }
     }
 
@@ -30,21 +32,23 @@ class CheckInForm extends Component{
             restaurantID: this.props.restaurantID
         };
         const sendData = {
-            first_name: this.state.clientName,
-            last_name: this.state.clientName,
+            client_name: this.state.clientName,
             phone_number: this.state.clientNumber,
-            table_size: "5",
+            restaurant_id: this.props.restaurantID,
+            restaurant_name: this.props.restaurantName,
+            wait_start: '2018-11-22 06:00:00',
             wait_end: '2018-11-22 06:00:00',
-            wait_start: '2018-11-22 06:00:00'
-            };
+            table_size: this.state.clientGroupSize,
+            comments:this.state.clientComments,
+
         console.log('NEW CLIENT:', dataToSend);
 
         const tableResp = await axios({
-            url: 'http://table.michaeljchu.com/api/tablefinder.php',
+            url: '/api/tablefinder.php',
             method: 'POST',
             data: sendData,
             params: {
-                actions: 'clients',
+                action: 'clients',
                 method: 'insert'
             },
             headers: {
@@ -63,7 +67,6 @@ class CheckInForm extends Component{
             clientGroupSize: 1,
             dataSaved: true
         });
-        
 
         const placeResp = await axios.post('http://place.kim-chris.com/message/confirm',{
             restaurant: this.props.restaurantName,

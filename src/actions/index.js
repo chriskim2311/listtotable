@@ -19,7 +19,7 @@ export function userSignUp(partner){
 
             const resp = await axios({
                 method: 'post',
-                url: 'http://table.michaeljchu.com/api/tablefinder.php?action=restaurant_users&method=insert',
+                url: '/api/tablefinder.php?action=restaurant_users&method=insert',
                 data: partner,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -48,7 +48,7 @@ export function userLogIn(partner){
     console.log("user log in called:");
     return async function(dispatch){
         try{
-            const resp =await axios.post('http://table.michaeljchu.com/api/tablefinder.php?action=restaurant_users&method=login', partner);
+            const resp =await axios.post('/api/tablefinder.php?action=restaurant_users&method=login', partner);
             console.log('Sign in Response', resp);
             
 
@@ -80,7 +80,7 @@ export function userLogOut(){
 
 export function getWaitingListData(){
     return async function(dispatch){
-        const resp = await axios.post('http://table.michaeljchu.com/api/tablefinder.php?action=clients&method=getAll');
+        const resp = await axios.post('/api/tablefinder.php?action=clients&method=getAll');
         
         console.log('server resp after api call', resp);
         

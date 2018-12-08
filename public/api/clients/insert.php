@@ -1,7 +1,7 @@
 <?php
 
-// $postdata = file_get_contents("php://input");
-// $_POST = json_decode($postdata, true);
+$postdata = file_get_contents("php://input");
+$_POST = json_decode($postdata, true);
 
 $client_name = $_POST['client_name'];
 $phone_number = $_POST['phone_number'];
@@ -11,9 +11,9 @@ $wait_start = $_POST['wait_start'];
 $wait_end = $_POST['wait_end'];
 $table_size = $_POST['table_size'];
 $comments = $_POST['comments'];
-$status = $_POST['status'];
+// $status = $_POST['status'];
 
-$query = "INSERT INTO clients (client_name, phone_number, restaurant_id, restaurant_name, wait_start, wait_end, table_size, comments, status) VALUES ('$client_name', '$phone_number', '$restaurant_id','$restaurant_name','$wait_start', '$wait_end', '$table_size', '$comments', '$status')";
+$query = "INSERT INTO clients (client_name, phone_number, restaurant_id, restaurant_name, wait_start, wait_end, table_size, comments ) VALUES ('$client_name', '$phone_number', '$restaurant_id','$restaurant_name','$wait_start', '$wait_end', '$table_size', '$comments' )";
 
 echo $query;
 

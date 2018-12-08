@@ -4,7 +4,7 @@ import 'materialize-css/dist/js/materialize';
 import '../assets/css/reservationInfo.css';
 import addButton from "../assets/images/addbutton.svg";
 import removeButton from "../assets/images/removeButton.svg";
-import Axios from '../../../frontend/to-do-list/node_modules/axios';
+// import Axios from '../../../frontend/to-do-list/node_modules/axios';
 import axios from 'axios';
 
 class CheckInForm extends Component{
@@ -38,11 +38,11 @@ class CheckInForm extends Component{
             wait_end: '2018-11-22 06:00:00',
             table_size: this.state.clientGroupSize,
             comments:this.state.clientComments,
-            status: this.state.status
+            // status: this.state.status
             }
         console.log('NEW CLIENT:', dataToSend);
         axios({
-            url: 'http://table.michaeljchu.com/api/tablefinder.php',
+            url: '/api/tablefinder.php',
             method: 'POST',
             data: sendData,
             params: {

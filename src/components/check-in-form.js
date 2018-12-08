@@ -15,7 +15,8 @@ class CheckInForm extends Component{
             clientName: '',
             clientNumber: '',
             clientComments: '',
-            clientGroupSize: 1
+            clientGroupSize: 1,
+            status: ''
         }
     }
 
@@ -29,14 +30,15 @@ class CheckInForm extends Component{
             restaurantID: this.props.restaurantID
         };
         const sendData = {
-           client_name: this.state.clientName,
+            client_name: this.state.clientName,
             phone_number: this.state.clientNumber,
-            table_size: this.state.clientGroupSize,
-            restaurant_name: this.props.restaurantName,
             restaurant_id: this.props.restaurantID,
-            wait_end: '2018-11-22 06:00:00',
+            restaurant_name: this.props.restaurantName,
             wait_start: '2018-11-22 06:00:00',
-            comments:this.state.clientComments
+            wait_end: '2018-11-22 06:00:00',
+            table_size: this.state.clientGroupSize,
+            comments:this.state.clientComments,
+            status: this.state.status
             }
         console.log('NEW CLIENT:', dataToSend);
         axios({
@@ -62,7 +64,6 @@ class CheckInForm extends Component{
             clientComments: '',
             clientGroupSize: 1
         });
-        
 
         axios.post('http://place.kim-chris.com/message/confirm',{
             restaurant: this.props.restaurantName,

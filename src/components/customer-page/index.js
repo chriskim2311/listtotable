@@ -134,7 +134,6 @@ class CustomerPg extends Component {
                     </div>
                 </div>
                 <div id="bottom" className="BottomContainer">
-                            <div>
                                 <Geolocation
                                     map={map}
                                     search={search}
@@ -146,7 +145,6 @@ class CustomerPg extends Component {
                                       mapRef={this.state.mapRef}
                                       retrieveRestaurantData={this.state.restaurantData}
                                       key={this.childKey} />
-                            </div>
 
 
                 </div>

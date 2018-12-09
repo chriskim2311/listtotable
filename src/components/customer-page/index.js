@@ -13,6 +13,7 @@ import Geolocation from './geolocation'
 import Navigation from '../hamburgerAndBack'
 import { renderBusyTimes } from './helpers';
 import '../../assets/css/customerPg.css';
+import ConfirmationModal from '../confirmationModal';
 // import ReactDOM from 'react-dom'
 
 
@@ -71,7 +72,9 @@ class CustomerPg extends Component {
         event.preventDefault();
         console.log('info has been submitted', this.state)
         var restaurantType = null;
-        const config = {restaurantType}
+        var position = null
+        const config = {restaurantType, position}
+        config.position = this.state.position
         config.restaurantType = this.state.restaurantType
         renderBusyTimes(config, this.retrieveRestaurantData)
 

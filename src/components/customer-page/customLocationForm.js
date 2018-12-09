@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
-import '../../assets/css/customerPg.css';
+
 
 class CustomLocationForm extends Component{
     constructor(props){

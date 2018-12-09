@@ -4,7 +4,8 @@ import 'materialize-css/dist/js/materialize';
 import '../assets/css/reservationInfo.css';
 import addButton from "../assets/images/addbutton.svg";
 import removeButton from "../assets/images/removeButton.svg";
-import Axios from '../../../frontend/to-do-list/node_modules/axios';
+import ConfirmationModal from "./confirmationModal";
+// import Axios from '../../../frontend/to-do-list/node_modules/axios';
 import axios from 'axios';
 
 class CheckInForm extends Component{
@@ -15,11 +16,13 @@ class CheckInForm extends Component{
             clientName: '',
             clientNumber: '',
             clientComments: '',
-            clientGroupSize: 1
+            clientGroupSize: 1,
+            dataSaved: false,
+            // status: ''
         }
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         event.preventDefault();
 
         //CLIENT AND RESTAURANT DATA OBJECT
@@ -29,20 +32,23 @@ class CheckInForm extends Component{
             restaurantID: this.props.restaurantID
         };
         const sendData = {
-            first_name: this.state.clientName,
-            last_name: this.state.clientName,
+            client_name: this.state.clientName,
             phone_number: this.state.clientNumber,
-            table_size: "5",
+            restaurant_id: this.props.restaurantID,
+            restaurant_name: this.props.restaurantName,
+            wait_start: '2018-11-22 06:00:00',
             wait_end: '2018-11-22 06:00:00',
-            wait_start: '2018-11-22 06:00:00'
-            }
+            table_size: this.state.clientGroupSize,
+            comments:this.state.clientComments,
+        };
         console.log('NEW CLIENT:', dataToSend);
-        axios({
-            url: 'http://table.michaeljchu.com/api/tablefinder.php',
+
+        const tableResp = await axios({
+            url: '/api/tablefinder.php',
             method: 'POST',
             data: sendData,
             params: {
-                actions: 'clients',
+                action: 'clients',
                 method: 'insert'
             },
             headers: {
@@ -50,26 +56,24 @@ class CheckInForm extends Component{
             }
  
             
-        }).then(resp =>{
-            console.log("SENT DATA:",resp)
-        })
+        });
+
+        console.log("SENT DATA:",tableResp);
 
         this.setState({
             clientName: '',
             clientNumber: '',
             clientComments: '',
-            clientGroupSize: 1
+            clientGroupSize: 1,
+            dataSaved: true
         });
-        
 
-        axios.post('http://place.kim-chris.com/message/confirm',{
+        const placeResp = await axios.post('http://place.kim-chris.com/message/confirm',{
             restaurant: this.props.restaurantName,
             phone_number: this.state.clientNumber
-        }).then(resp => {
-            console.log("CHECKED INNNN:", resp)})
-        
-    
+        });
 
+        console.log("CHECKED INNNN:", placeResp);
     };
 //     handleSendData(dataToSend){
 
@@ -98,6 +102,8 @@ class CheckInForm extends Component{
 
     render (){
         console.log('info being changed', this.state);
+        const { dataSaved } = this.state;
+
         return (
             <Fragment>
                 <div className="container">
@@ -164,6 +170,7 @@ class CheckInForm extends Component{
                             type="submit"
                             name="action"
                         >SUBMIT</button>
+                        <ConfirmationModal  saved={dataSaved}/>
                     </div>
 
                 </div>
@@ -173,3 +180,5 @@ class CheckInForm extends Component{
 }
 
 export default CheckInForm;
+
+

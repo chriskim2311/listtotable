@@ -19,7 +19,7 @@ export function userSignUp(partner){
 
             const resp = await axios({
                 method: 'post',
-                url: 'http://table.michaeljchu.com/api/tablefinder.php?action=restaurant_users&method=insert',
+                url: '/api/tablefinder.php?action=restaurant_users&method=insert',
                 data: partner,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -48,7 +48,7 @@ export function userLogIn(partner){
     console.log("user log in called:");
     return async function(dispatch){
         try{
-            const resp =await axios.get('http://table.michaeljchu.com/api/tablefinder.php?action=restaurant_users&method=login', partner);
+            const resp =await axios.post('/api/tablefinder.php?action=restaurant_users&method=login', partner);
             console.log('Sign in Response', resp);
             
 
@@ -77,3 +77,46 @@ export function userLogOut(){
         type: types.LOG_OUT
     }
 }
+
+export function getWaitingListData(){
+    return async function(dispatch){
+        const resp = await axios.post('/api/tablefinder.php?action=clients&method=getAll');
+        
+        // console.log('server resp after api call', resp);
+        
+        dispatch({
+            type: types.GET_WAITING_LIST_DATA,
+            clients: resp.data.clients
+        });
+    }
+}
+
+export function getSeatedListData(){
+    return async function(dispatch){
+        const resp = await axios.post('/api/tablefinder.php?action=clients&method=getSeated');
+        
+        // console.log('getSeated acsios call response', resp);
+        
+        dispatch({
+            type: types.GET_SEATED_LIST_DATA,
+            clients: resp.data.clients
+        });
+    }
+}
+
+// axios.post(
+//     ).then(resp =>{
+//         console.log("NEW DATAAAA", resp)
+
+//         const data = resp.data.clients
+//         console.log("DATAAAA:", data)
+//         var customerList = data.map((current, index) => {
+
+//             const name = current.client_name;
+//             const partyOf = current.table_size;
+//             const phone = current.phone_number;
+//         console.log(name, partyOf, phone)
+       
+//         console.log(customerList)
+//         })
+//     })

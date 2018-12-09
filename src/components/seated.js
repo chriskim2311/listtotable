@@ -1,17 +1,78 @@
 import React, { Component, Fragment } from 'react';
 import RTopMenu from './r_arrowAndMenu';
 import ListMenu from './list_menu';
+import { connect } from 'react-redux';
+import { getSeatedListData } from '../actions';
 
 class Seated extends Component {
+
+    componentDidMount(){
+       
+        this.props.getSeatedListData();
+    }
+
+    renderSeatedCustomerListOnDom(){
+        const partys = this.props.seated_list
+        console.log('Seatred partys:', partys)
+        
+        if(!partys){
+            return
+        }
+
+        const seatedCustomerList = partys.map((current, index) => {
+            const name = current.client_name;
+            const partyOf = current.table_size;
+            const phone = current.phone_number;
+            
+            return(
+                <div key={index}>
+                    <div className="row green">
+                        <div className="col s1">
+                            <p>{index + 1}</p>
+                        </div>
+                        <div className="col s4">
+                            <ul>
+                                <li>{name}</li>
+                                <li>{partyOf}</li>
+                                <li>{phone}</li>
+                            </ul>
+                        </div>
+                        <div className="col s1">
+                            <p>del</p>
+                        </div>
+                    </div>
+
+                </div>
+            )
+        })
+        return seatedCustomerList;
+
+    }
+
+
     render(){
         return(
             <Fragment>
                 <RTopMenu/>
                 <ListMenu/>
-                <h1>Seated List</h1>
+                {this.renderSeatedCustomerListOnDom()}
             </Fragment>
             
         )
     }
 }
-export default Seated;
+
+
+
+function mapStateToProps(state){
+    console.log('redux state for seated:', state)
+
+    return {
+        seated_list: state.waitingList.seatedList
+    }
+    
+}
+
+export default connect(mapStateToProps, {
+    getSeatedListData: getSeatedListData
+})(Seated);

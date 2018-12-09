@@ -98,9 +98,9 @@ export function renderBusyTimes(config, retrieveRestaurantData) {
             if (priceLevel >= 2) {
                 var placeId = String(results[i].place_id);
                 var place = results[i]
-                var photo = results[i]['photos'][0].getUrl()
                 
                 // console.log("PLACEEEE:",place)
+                let photo = results[i]['photos'][0].getUrl()
                 
                 
                 axios.post('http://place.kim-chris.com/busy-hours', {

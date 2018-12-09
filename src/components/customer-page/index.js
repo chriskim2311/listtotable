@@ -14,6 +14,7 @@ import Navigation from '../hamburgerAndBack'
 import { renderBusyTimes } from './helpers';
 import '../../assets/css/customerPg.css';
 import ReactDOM from 'react-dom'
+import CustomLocationForm from './customLocationForm';
 
 
 class CustomerPg extends Component {
@@ -50,6 +51,7 @@ class CustomerPg extends Component {
 
         }
     }
+
 
 
     componentDidUpdate() {
@@ -158,6 +160,7 @@ class CustomerPg extends Component {
 
 
                 </div>
+
             </div>
             <div id = 'map ' className="BottomContainer" >
             {this.currentGeolocation()}
@@ -184,6 +187,7 @@ class CustomerPg extends Component {
                         geolocationAttained={this.geolocationAttained}
                         />
                 }
+
 
             </div>
 

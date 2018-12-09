@@ -56,7 +56,11 @@ class CheckInForm extends Component{
  
             
         });
-
+        
+        const placeResp =  axios.post('http://place.kim-chris.com/message/confirm',{
+            restaurant: this.props.restaurantName,
+            phone_number: this.state.clientNumber
+        });
         console.log("SENT DATA:",tableResp);
 
         this.setState({
@@ -67,10 +71,7 @@ class CheckInForm extends Component{
             dataSaved: true
         });
 
-        const placeResp = await axios.post('http://place.kim-chris.com/message/confirm',{
-            restaurant: this.props.restaurantName,
-            phone_number: this.state.clientNumber
-        });
+       
 
         console.log("CHECKED INNNN:", placeResp);
     };

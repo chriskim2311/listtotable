@@ -3,12 +3,19 @@ import addButton from '../../assets/images/plus.png';
 import { Link } from 'react-router-dom';
 import '../../assets/css/helper.css';
 
-export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSearch, position, locations) {
+export function renderBusyTimes(config, retrieveRestaurantData) {
    
-   
-    const restaurantInput = restaurantType;
+//    const restaurantInput = config.restaurantType
+//    const position = config.position
+//    const locations = config.locations
+
+    // const restaurantInput = restaurantType;
     // console.log('PROPS:',this.state.location)
     // console.log("RESULTS", locations)
+    var retrieveRestaurantData = retrieveRestaurantData
+
+
+    console.log(config)
     var map;
     var service;
     var infowindow;
@@ -31,10 +38,15 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
     //     }
     //     console.log("FLAG:", this.state)
     // }
-    
+    showRestaurants(config, retrieveRestaurantData);
+    function showRestaurants(config, retrieveRestaurantData){
+        const restaurantInput = config.restaurantType
+        const position = config.position
+        const locations = config.locations
+     
         if(position){
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
+        var latitude = position.lat || position.coords.latitude;
+        var longitude = position.lng || position.coords.longitude;
         var centerLocation = new google.maps.LatLng(latitude, longitude);
         // console.log(latitude, longitude)
         }
@@ -66,14 +78,14 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
             location: centerLocation,
             radius: '2000',
             type: ['restaurant'],
-            keyword: restaurantInput
+            keyword: restaurantInput || ""
         }
         infowindow = new google.maps.InfoWindow();
         service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, (results, status) => {
             restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation);
         });
-
+    }
     function restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation) {
         var bounds = new google.maps.LatLngBounds();
         retrieveRestaurantData(results, map, centerLocation);
@@ -125,7 +137,6 @@ export function renderBusyTimes(restaurantType, retrieveRestaurantData, clearSea
     }
 
     function createColoredMarker(config) {
-        console.log('Config:', config)
         const { map,location, results, color, placeId, photo } = config;
 
         var iconUrl = null;

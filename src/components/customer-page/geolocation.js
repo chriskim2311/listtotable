@@ -23,16 +23,25 @@ class Geolocation extends Component {
     //     }
     // }
     componentDidMount() {
-        const position = this.props.postion;
-        const restaurantType = this.state.restaurantType;
+        // const position = this.props.postion;
+        // const restaurantType = this.state.restaurantType;
+        const position = null;
+        const restaurantType = null;
+
+        const config = {position, restaurantType}
+        config.position = this.props.position;
+        config.restaurantType = this.state.restaurantType;
+        // config[this.props.retrieveRestaurantData] = this.props.retrieveRestaurantData
         
-        renderBusyTimes(restaurantType, this.props.retrieveRestaurantData, position);
+        // renderBusyTimes(restaurantType, this.props.retrieveRestaurantData, position);
+        renderBusyTimes(config, this.props.retrieveRestaurantData)
+
 
     }
     render() {
-        // console.log("Props:", this.props)
+        console.log("map props:", this.props)
         return (
-            <div id="map" className={`mapBottomContainer ${this.props.map ? "" : "hidden"}`}></div>
+            <div id = "map" className={`mapBottomContainer ${this.props.map ? "" : "hidden"}`}></div>
         )
     }
 }

@@ -1,7 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
-import {renderBusyTimes} from  './helpers'
 import '../../assets/css/customerPg.css';
 
 class CustomLocationForm extends Component{
@@ -32,63 +31,41 @@ class CustomLocationForm extends Component{
     };
 
     handleSubmit= (event) =>{
+        var config= {}
+        console.log("custom location props",this.props);
         console.log("STATE:", this.state)
         // debugger;
         event.preventDefault();
         const geocoder = new google.maps.Geocoder();
         const address = this.state.cityLocation;
+        const {retrieveRestaurantData, geolocationAttained} = this.props;
         // const location = {};
         geocoder.geocode({'address': address}, function(results, status) {
-            const restaurantType = {};
+            const locations = {};
             if (status === 'OK') {
 
                 console.log("RESULTS", results)
                 var lat = results[0].geometry.location.lat();
                 var long = results[0].geometry.location.lng();
-                restaurantType.lat = lat;
-                restaurantType.lng = long;
+                locations.lat = lat;
+                locations.lng = long;
                 console.log(lat, long);
-                // console.log(location);
-                // this.setState({
-                //     location: results
-                // })
-             renderBusyTimes(restaurantType)
+                config= {locations}
+                config.locations = locations
+                console.log(locations)
+                console.log(config)
+
+            geolocationAttained(locations);
             }
-            // console.log(locations)
-            // renderBusyTimes(locations)
         });
-       
-        // console.log("LOCATION", location)
         this.setState({
             cityLocation: '',
         });
     };
 
-//    getLatLong(){
-      
-//         const geocoder = new google.maps.Geocoder();
-//         const address = this.state.cityLocation;
-//         const location = {};
-
-//         geocoder.geocode({'address': address}, function(results, status) {
-//             // const location = {};
-//             if (status === 'OK') {
-//                 var lat = results[0].geometry.location.lat();
-//                 var long = results[0].geometry.location.lng();
-//                 location.lat = lat;
-//                 location.lng = long;
-//                 console.log(lat, long);
-//                 console.log(location);
-//              renderBusyTimes(location)
-//             }
-//             // this.setState({
-//             //     location: location
-//             // })
-//         });
-
-//     };
-
     render(){
+        
+        console.log("custom location props",this.props);
         console.log('info being changed', this.state);
         return (
             <Fragment>

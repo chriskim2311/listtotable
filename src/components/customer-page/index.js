@@ -35,10 +35,8 @@ class CustomerPg extends Component {
     }
 
     currentGeolocation() {
-        console.log("HELLLOOOO")
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
-                //    renderBusyTimes(position, retrieveRestaurantData,clearSearch)
                 this.setState({
                     geolocation: true,
                     position: position
@@ -70,8 +68,10 @@ class CustomerPg extends Component {
     handleSearchItem = () => {
         event.preventDefault();
         console.log('info has been submitted', this.state)
-        // ReactDOM.unmountComponentAtNode(document.getElementById('bottom'));
-        renderBusyTimes(this.state.restaurantType, this.retrieveRestaurantData)
+        var restaurantType = null;
+        const config = {restaurantType}
+        config.restaurantType = this.state.restaurantType
+        renderBusyTimes(config, this.retrieveRestaurantData)
 
 
     }
@@ -97,15 +97,18 @@ class CustomerPg extends Component {
             map: false,
             list: true
         })
-        // document.getElementById('hide').className('mapBottomContainer')
-        // document.getElementById('list').ClassName('hide')
+
+    }
+
+    geolocationAttained = (location) => {
+        this.setState({
+            geolocation: true,
+            position: location,
+        })
     }
 
 
     render() {
-
-        // console.log('info being changed', this.props)
-        // console.log("Current state: ", this.state)
         const { map, list, restaurantType, search } = this.state
         return (
            
@@ -156,7 +159,7 @@ class CustomerPg extends Component {
 
                 </div>
             </div>
-            <div id="map" className="BottomContainer">
+            <div id = 'map ' className="BottomContainer" >
             {this.currentGeolocation()}
                 {
                     this.state.geolocation ?
@@ -168,14 +171,18 @@ class CustomerPg extends Component {
                                 retrieveRestaurantData={this.retrieveRestaurantData}
                                 clearSearch={this.clearSearchItem}
                                 position={this.state.position} />
-                            <ListView list={list}
+                            <ListView 
+                                list={list}
                                 currentLocation={this.state.currentLocation}
                                 mapRef={this.state.mapRef}
                                 retrieveRestaurantData={this.state.restaurantData}
                                 key={this.childKey} />
                         </div>
                         :
-                        <CustomLocationForm />
+                        <CustomLocationForm
+                        retrieveRestaurantData={this.retrieveRestaurantData}
+                        geolocationAttained={this.geolocationAttained}
+                        />
                 }
 
             </div>

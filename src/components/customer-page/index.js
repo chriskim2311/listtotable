@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 import CustomLocationForm from './customLocationForm'
 import greenTimer from '../../assets/images/greenTime.png';
 import redTimer from '../../assets/images/redTime.png';
 import yellowTimer from '../../assets/images/yellowTime.png';
-import { Link } from 'react-router-dom';
-import Header from '../header';
+// import { Link } from 'react-router-dom';
+// import Header from '../header';
 // import MapView from './mapView';
 import ListView from './listView';
 import Geolocation from './geolocation'
 import Navigation from '../hamburgerAndBack'
 import { renderBusyTimes } from './helpers';
 import '../../assets/css/customerPg.css';
-import ReactDOM from 'react-dom'
-import CustomLocationForm from './customLocationForm';
+// import ReactDOM from 'react-dom'
+
 
 
 class CustomerPg extends Component {
@@ -116,7 +116,7 @@ class CustomerPg extends Component {
            
 
 
-            < React.Fragment >
+            < Fragment >
             <div className="topContainer">
                 <Navigation />
                 <div className="foodSearchHeader">
@@ -166,7 +166,7 @@ class CustomerPg extends Component {
             {this.currentGeolocation()}
                 {
                     this.state.geolocation ?
-                        <div>
+                    <Fragment>
                             <Geolocation
                                 map={map}
                                 search={search}
@@ -180,7 +180,8 @@ class CustomerPg extends Component {
                                 mapRef={this.state.mapRef}
                                 retrieveRestaurantData={this.state.restaurantData}
                                 key={this.childKey} />
-                        </div>
+                       </Fragment>
+                        
                         :
                         <CustomLocationForm
                         retrieveRestaurantData={this.retrieveRestaurantData}
@@ -191,7 +192,7 @@ class CustomerPg extends Component {
 
             </div>
 
-            </React.Fragment >
+            </Fragment >
         )
     }
 }

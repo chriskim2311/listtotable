@@ -106,3 +106,6 @@
 .boldText {
     font-weight: 700;
 }
+.hidden {
+    display: none
+}

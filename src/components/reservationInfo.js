@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CheckInForm from './r_check_in_forms';
+import CheckInForm from './check-in-form';
 import CheckInRestaurantName from "./check-in-restaurant-name";
 import Navigation from "./hamburgerAndBack"
 

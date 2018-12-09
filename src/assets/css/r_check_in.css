@@ -1,0 +1,39 @@
+.tableSizeTitle{
+    text-align: center;
+    font-size: 7vmin;
+}
+.incrementButton{
+    display: inline-block;
+    width: 30%;
+    height: 100%;
+    vertical-align: top;
+    position: relative;
+}
+
+.incrementButton img{
+    position: relative;
+    width: 75%;
+}
+
+.decrementButton{
+    display: inline-block;
+    width: 30%;
+    height: 100%;
+    position: relative;
+}
+
+.decrementButton img{
+    position: relative;
+    width: 75%;
+}
+
+.commentsContainer{
+    margin: 0 10%;
+    height: 20%;
+}
+
+.commentsBox{
+    height: 100%;
+    font-size: 5vmin;
+    text-align: center;
+}

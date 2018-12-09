@@ -8,5 +8,7 @@ export default {
     SIGN_UP: 'sign_up',
     SIGN_UP_ERROR: 'sign_up_error',
     CHECK_IN: 'check_in',
-    CHECK_IN_ERROR: 'check_in_error'
+    CHECK_IN_ERROR: 'check_in_error',
+    INCREMENT: 'increment',
+    DECREMENT: 'decrement'
 }

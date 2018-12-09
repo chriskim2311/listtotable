@@ -107,10 +107,41 @@ export function getWaitingListData(){
 //         })
 //     })
 
-export function customerCheckIn () {
+export function customerCheckInIncrement () {
 
     return {
-        type: types.CHECK_IN
-        
+        type: types.INCREMENT
     }
 } 
+
+export function customerCheckInDecrement () {
+
+    return {
+        type: types.DECREMENT
+}
+}
+
+export function customerCheckIn(sendData) {
+    return async function (dispatch) {
+        try {
+            const resp = await axios({
+                url: '/api/tablefinder.php',
+                method: 'POST',
+                data: sendData,
+                params: {
+                    action: 'clients',
+                    method: 'insert'
+                },
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+            dispatch ({
+                type: types.CHECK_IN,
+                payload: resp
+            })
+        } catch(err) {
+            console.log(err);
+        }
+    }
+}

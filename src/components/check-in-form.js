@@ -17,7 +17,7 @@ class CheckInForm extends Component{
             clientNumber: '',
             clientComments: '',
             clientGroupSize: 1,
-            dataSaved: false
+            dataSaved: true
             //status: ''
         }
     }

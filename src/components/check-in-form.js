@@ -17,8 +17,7 @@ class CheckInForm extends Component{
             clientNumber: '',
             clientComments: '',
             clientGroupSize: 1,
-            dataSaved: true
-            //status: ''
+            dataSaved: false,
         }
     }
 
@@ -40,7 +39,7 @@ class CheckInForm extends Component{
             wait_end: '2018-11-22 06:00:00',
             table_size: this.state.clientGroupSize,
             comments:this.state.clientComments,
-        }
+        };
         console.log('NEW CLIENT:', dataToSend);
 
         const tableResp = await axios({

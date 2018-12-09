@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$postdata = file_get_contents('php://input');
+$_POST = json_decode($postdata, true);
 
 $username = addslashes($_POST['username']);
 $password = sha1($_POST['password']);

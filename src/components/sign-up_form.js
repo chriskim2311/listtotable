@@ -8,12 +8,21 @@ import { userSignUp } from '../actions';
 
 class SignUpForm extends Component {
     handleSignUp = (values) =>{
-        console.log('Sign up', values);
-        this.props.signUp(values);
+        const obj = {
+            restaurant_ID: "8",
+            username: "yardhause",
+            email: values.email,
+            password: values.password,
+            status: 'waiting',
+            comments: 'hello'
+        }
+
+
+        console.log('Sign up', obj);
+        this.props.signUp(obj);
     }
     render(){
 
-     
     const { handleSubmit, signUpError } = this.props
         return(
             <Fragment>

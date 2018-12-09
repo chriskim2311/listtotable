@@ -1,11 +1,7 @@
 import types from './types';
 import axios from 'axios';
 
-export function userPutNameOnWaitingList(){
-    return {
-        type: types.PUT_NAME_ON_WAITING_LIST
-    }
-}
+
 
 export function userSignUp(partner){
     return async function (dispatch) {
@@ -27,7 +23,7 @@ export function userSignUp(partner){
             });
 
             console.log('Sign up response:', resp)
-            debugger;
+           
             if (resp) {
                 dispatch({
                     type: types.SIGN_UP

@@ -87,7 +87,7 @@ function mapStateToProps(state){
 }
 
 SignUpForm = reduxForm({
-    form: 'sing-up',
+    form: 'sign-up',
     validate: validate
 })(SignUpForm);
 

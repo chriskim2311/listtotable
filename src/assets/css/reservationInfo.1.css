@@ -1,0 +1,70 @@
+
+.tableSizeTitle{
+    text-align: center;
+    font-size: 7vmin;
+}
+
+.tableInfoContainer{
+    margin: 3% 20%;
+    height: 13%;
+}
+
+.tableInputBox{
+    display: inline-block;
+    width: 40%;
+    height: 100%;
+    vertical-align: top;
+    text-align: center;
+    font-size: 13vmin;
+    border: solid 1px black;
+    border-radius: 15px;
+}
+
+.incrementButton{
+    display: inline-block;
+    width: 30%;
+    height: 100%;
+    vertical-align: top;
+    position: relative;
+}
+
+.incrementButton img{
+    position: relative;
+    width: 75%;
+}
+
+.decrementButton{
+    display: inline-block;
+    width: 30%;
+    height: 100%;
+    position: relative;
+}
+
+.decrementButton img{
+    position: relative;
+    width: 75%;
+}
+
+.commentsContainer{
+    margin: 0 10%;
+    height: 20%;
+}
+
+.commentsBox{
+    height: 100%;
+    font-size: 5vmin;
+    text-align: center;
+}
+
+.submitButtonBox{
+    display: block;
+    position: relative;
+    margin: 0 10%;
+    height: 15%;
+}
+
+.submitButton{
+    position: relative;
+    top: 20%;
+    left: 30%;
+}

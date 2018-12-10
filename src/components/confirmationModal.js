@@ -22,6 +22,7 @@ class ConfirmationModal extends Component {
     }
 
     render(){
+        console.log('confirmation modal: ', this.props)
         if(this.state.isOpen){
             return (
                 <div className="basic-modal" onClick={this.close}>

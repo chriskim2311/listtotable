@@ -7,7 +7,9 @@ import removeButton from "../assets/images/removeButton.svg";
 import {customerCheckInIncrement} from '../actions';
 import {customerCheckInDecrement} from '../actions';
 import {customerCheckIn} from '../actions';
-import ConfirmationModal from "./confirmationModal";
+import {sendCustomerText} from '../actions';
+import {managePopUp} from '../actions'
+import RConfirmationModal from "./r_confirmationModal"
 
 
 class RestaurantCheckInForm extends Component {
@@ -36,6 +38,9 @@ class RestaurantCheckInForm extends Component {
         }
         console.log('Sending this data over', sendData)
         this.props.submitCheckIn(sendData)
+        this.props.managePopUp()
+        console.log('info send to confrim modal,', this.props.openConfirmation)
+        this.props.sendCustomerText(sendData)
     }
     render(){
         const { handleSubmit } = this.props
@@ -72,6 +77,7 @@ class RestaurantCheckInForm extends Component {
                     </div>
                     <div className="col s6 center">
                         <button onClick={handleSubmit(this.completeCheckIn)}className="btn blue">Submit</button>
+                        <RConfirmationModal/>
                     </div>
                 </form>
             </div>
@@ -88,12 +94,14 @@ RestaurantCheckInForm = reduxForm({
 
 function mapStateToProps(state) {
     return {
-        tableSize: state.customer.table_size
+        tableSize: state.customer.table_size,
     }
 }
 
 export default connect(mapStateToProps, {
     Increment: customerCheckInIncrement,
     Decrement: customerCheckInDecrement,
-    submitCheckIn: customerCheckIn
+    submitCheckIn: customerCheckIn, 
+    sendCustomerText: sendCustomerText,
+    managePopUp: managePopUp
 })(RestaurantCheckInForm)

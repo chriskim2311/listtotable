@@ -143,7 +143,13 @@ export function customerCheckInDecrement () {
 
     return {
         type: types.DECREMENT
+    }
 }
+
+export function managePopUp() {
+    return { 
+        type: types.CHECK_IN
+    }
 }
 
 export function customerCheckIn(sendData) {
@@ -162,11 +168,32 @@ export function customerCheckIn(sendData) {
                 }
             });
             dispatch ({
-                type: types.CHECK_IN,
+                // type: types.CHECK_IN,
                 payload: resp
             })
         } catch(err) {
-            console.log(err);
+            console.log('Axios server error');
+        }
+    }
+}
+
+export function sendCustomerText(sendData){
+    console.log('send text', sendData)
+    const {phone_number, restaurant_name} = sendData
+    console.log(phone_number, restaurant_name)
+    return async function (dispatch) {
+        try {
+            const resp = await axios.post({
+                url: 'http://place.kim-chris.com/message/confirm',
+                restaurant: restaurant_name,
+                phone_number: phone_number
+            });
+            dispatch ({
+                // type: types.CHECK_IN,
+                payload: resp 
+            })
+        } catch(err) {
+            console.log('customer text error')
         }
     }
 }

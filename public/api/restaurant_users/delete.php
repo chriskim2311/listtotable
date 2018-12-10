@@ -1,12 +1,10 @@
 <?php
 $restaurant_ID = $_POST['restaurant_ID'];
-$username = $_POST['username'];
 $email = $_POST['email'];
 $password = sha1($_POST['password']);
-$status = $_POST['status'];
-$last_accessed = $_POST['last_accessed'];
+$restaurant_name = $_POST['restaurant_name'];
 $created = $_POST['created'];
-$comments = $_POST['comments'];
+$restaurant_address = $_POST['restaurant_address'];
 
 
 $query = "DELETE FROM restaurant_users WHERE status = $status";

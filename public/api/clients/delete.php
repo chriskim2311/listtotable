@@ -1,13 +1,13 @@
 <?php
 $client_name = $_POST['client_name'];
-$phone_number = $_POST['phone_number'];
+$phone_number = intval($_POST['phone_number']);
 $restaurant_id = $_POST['restaurant_id'];
-$restaurant_name = $_POST['restaurant_name'];
+$restaurant_name = addslashes($_POST['restaurant_name']);
 $wait_start = $_POST['wait_start'];
+$wait_notify = $_POST['wait_notify'];
 $wait_end = $_POST['wait_end'];
 $table_size = $_POST['table_size'];
 $comments = $_POST['comments'];
-$status = $_POST['status'];
 
 
 $query = "DELETE FROM clients WHERE client_name = $client_name";

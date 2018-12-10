@@ -9,8 +9,8 @@ import { userSignUp } from '../actions';
 class SignUpForm extends Component {
     handleSignUp = (values) =>{
         const obj = {
-            restaurant_ID: "8",
-            username: "yardhause",
+            restaurant_ID: "9",
+            username: "yardhouse",
             email: values.email,
             password: values.password,
             status: 'waiting',

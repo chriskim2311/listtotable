@@ -91,10 +91,25 @@ export function getSeatedListData(){
     return async function(dispatch){
         const resp = await axios.post('/api/tablefinder.php?action=clients&method=getSeated');
         
-        // console.log('getSeated acsios call response', resp);
+        console.log('getSeated acsios call response', resp);
         
         dispatch({
             type: types.GET_SEATED_LIST_DATA,
+            clients: resp.data.clients
+        });
+        
+        
+    }
+    
+}
+export function getNotifiedListData(){
+    return async function(dispatch){
+        const resp = await axios.post('/api/tablefinder.php?action=clients&method=getNotified');
+        
+        console.log('getNotified acsios call response', resp);
+        
+        dispatch({
+            type: types.GET_NOTIFIED_LIST_DATA,
             clients: resp.data.clients
         });
     }

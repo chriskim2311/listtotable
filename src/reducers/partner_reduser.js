@@ -1,7 +1,7 @@
 import types from '../actions/types';
 
 const DEFAULT_STATE = {
-    auth: true,
+    auth: false,
     logInError: '',
     signUpError: '',
 };

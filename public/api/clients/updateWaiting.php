@@ -10,7 +10,7 @@ $status = $_POST['status'];
 
 
 $query = "UPDATE clients SET status = 2 WHERE phone_number = '$phone_number'";
-
+$output['query'] = $query;
 if (mysqli_query($conn, $query)){
     $output['success'] = true;
 } else {

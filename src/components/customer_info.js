@@ -1,16 +1,27 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios'
-import { getWaitingListData, getNotifiedListData, changeNotifyStatus } from '../actions';
+
+import { getWaitingListData, getNotifiedListData, changeNotifyStatus, deleteListItem } from '../actions';
+
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 
 
 class CustomerInfo extends Component {
     componentDidMount(){
+        const waitingObj = {
+            restaurant_id:'ChIJleVgXPnn3IARUGDd-mGJHYw',
+            status: 1
+        }
+
+        const notifiedObj = {
+            restaurant_id:'ChIJleVgXPnn3IARUGDd-mGJHYw',
+            status: 2
+        }
         // console.log('data after componentdid mount', this.props)
-        this.props.notifiedListData();
-        this.props.waitingListData();
+        this.props.notifiedListData(notifiedObj);
+        this.props.waitingListData(waitingObj);
     }
 
     // componentWillUpdate(){
@@ -41,7 +52,9 @@ class CustomerInfo extends Component {
     renderNotifiedListOnDom(){
         // console.log('+++++++++ props:', this.props)
         const notified = this.props.notified_list;
+
         // console.log('partys from server on customerinfo page',notified)
+
         if(!notified){
             return
         }
@@ -76,7 +89,7 @@ class CustomerInfo extends Component {
                                 <button>seat</button>
                             </p>
                         </div>
-                        <div className="col s1">
+                        <div className="col s1" onClick={()=> this.props.deleteListItem(phone)}>
                             <p>del</p>
                         </div>
                     </div>
@@ -89,7 +102,8 @@ class CustomerInfo extends Component {
        
 
         const partys = this.props.waiting_list;
-        // console.log('partys from server on customerinfo page',partys)
+        // console.log('partys on customerinfo page',partys)
+
         if(!partys){
             return
         }
@@ -126,7 +140,7 @@ class CustomerInfo extends Component {
                                 <button>seat</button>
                             </p>
                         </div>
-                        <div className="col s1">
+                        <div className="col s1" onClick={()=> this.props.deleteListItem(phone)}>
                             <p>del</p>
                         </div>
                     </div>
@@ -164,7 +178,7 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps,{
-    
+    deleteListItem: deleteListItem,
     waitingListData: getWaitingListData,
     notifiedListData: getNotifiedListData,
     updateNotified: changeNotifyStatus

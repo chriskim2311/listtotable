@@ -11,5 +11,6 @@ export default {
     CHECK_IN: 'check_in',
     CHECK_IN_ERROR: 'check_in_error',
     INCREMENT: 'increment',
-    DECREMENT: 'decrement'
+    DECREMENT: 'decrement',
+    DELETE_CUSTOMER: 'delete_customer'
 }

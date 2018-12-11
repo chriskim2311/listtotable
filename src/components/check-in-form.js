@@ -41,8 +41,6 @@ class CheckInForm extends Component{
 
         const peopleAhead = response.data.clients.length;
 
-
-
         const sendData = {
             client_name: this.state.clientName,
             phone_number: this.state.clientNumber,
@@ -88,13 +86,22 @@ class CheckInForm extends Component{
             tablesAhead: peopleAhead
         });
 
-       
-
         console.log("CHECKED INNNN:", placeResp);
     };
 //     handleSendData(dataToSend){
 
 // }
+
+    modalReset = () =>{
+        this.setState({
+            clientName: '',
+            clientNumber: '',
+            clientComments: '',
+            clientGroupSize: 1,
+            dataSaved: false,
+            tablesAhead: null
+        });
+    };
 
 
     handleIncrement(){
@@ -187,7 +194,11 @@ class CheckInForm extends Component{
                             type="submit"
                             name="action"
                         >SUBMIT</button>
-                        <ConfirmationModal  saved={dataSaved} tablesAhead={this.state.tablesAhead}/>
+                        <ConfirmationModal
+                            saved={dataSaved}
+                            tablesAhead={this.state.tablesAhead}
+                            modalReset={this.modalReset}
+                        />
                     </div>
 
                 </div>

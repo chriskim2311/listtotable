@@ -50,7 +50,7 @@ export function userLogIn(partner){
             
 
             localStorage.setItem('token', resp.data.token);
-            debugger;
+           
 
             const login = resp.data.success;
 
@@ -79,12 +79,9 @@ export function userLogOut(){
     }
 }
 
-export function getWaitingListData(){
+export function getWaitingListData(param){
     return async function(dispatch){
-        const resp = await axios.post('/api/tablefinder.php?action=clients&method=getWaiting',
-        {restaurant_id: "ChIJleVgXPnn3IARUGDd-mGJHYw",
-            status: 1
-            });
+        const resp = await axios.post('/api/tablefinder.php?action=clients&method=getWaiting', param);
         
         console.log('server resp after api call', resp);
         
@@ -95,9 +92,9 @@ export function getWaitingListData(){
     }
 }
 
-export function getSeatedListData(){
+export function getSeatedListData(param){
     return async function(dispatch){
-        const resp = await axios.post('/api/tablefinder.php?action=clients&method=getSeated');
+        const resp = await axios.post('/api/tablefinder.php?action=clients&method=getSeated', param);
         
         console.log('Seated call response', resp);
         
@@ -110,9 +107,9 @@ export function getSeatedListData(){
     }
     
 }
-export function getNotifiedListData(){
+export function getNotifiedListData(param){
     return async function(dispatch){
-        const resp = await axios.post('/api/tablefinder.php?action=clients&method=getNotified');
+        const resp = await axios.post('/api/tablefinder.php?action=clients&method=getNotified', param);
         
         console.log('Notified call response:', resp);
         
@@ -122,6 +119,7 @@ export function getNotifiedListData(){
         });
     }
 }
+
 
 export function changeNotifyStatus(restaurantName, ID, phone){
     return async function(dispatch){
@@ -152,9 +150,22 @@ export function changeNotifyStatus(restaurantName, ID, phone){
 
 //         dispatch({
 
-//         })
-//     }
-// }
+export function deleteListItem(phone) {
+    console.log("DELETE PHONE #: ", phone);
+    return async function(dispatch) {
+        const resp = await axios.post('/api/tablefinder.php?action=clients&method=delete', 
+        {
+            phone_number: phone
+        });
+        
+
+
+        dispatch({
+            type: types.DELETE_CUSTOMER
+            
+        })
+    }
+}
 
 // axios.post(
 //     ).then(resp =>{

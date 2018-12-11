@@ -34,7 +34,8 @@ switch($method) {
     case 'updateWaiting':
         require_once('updateWaiting.php');
         break;
-    case 'updateNotifued':
+
+    case 'updateNotified':
         require_once('updateNotified.php');
         break;
 

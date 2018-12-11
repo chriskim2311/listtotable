@@ -8,9 +8,10 @@ $wait_notify = $_POST['wait_notify'];
 $wait_end = $_POST['wait_end'];
 $table_size = $_POST['table_size'];
 $comments = $_POST['comments'];
+$status = $_POST['status'];
 
 
-$query = "UPDATE clients SET table_size = '$table_size' WHERE client_name = '$client_name'";
+$query = "UPDATE clients SET status = 3 WHERE phone_number = '$phone_number'";
 
 if (mysqli_query($conn, $query)){
     $output['success'] = true;

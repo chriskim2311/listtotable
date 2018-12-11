@@ -11,7 +11,6 @@ class RConfirmationModal extends Component {
     };
 
     render(){
-        console.log('confirmation modal:', this.props.openConfirmation)
         if(this.props.openConfirmation){
             return (
                 <div className="basic-modal" onClick={this.close}>

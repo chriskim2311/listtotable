@@ -1,8 +1,5 @@
 <?php
 
-$postdata = file_get_contents('php://input');
-$_POST = json_decode($postdata, true);
-
 $restaurant_ID = $_POST['restaurant_ID'];
 $email = $_POST['email'];
 $password = sha1($_POST['password']);

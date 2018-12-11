@@ -50,7 +50,7 @@ export function userLogIn(partner){
             
 
             localStorage.setItem('token', resp.data.token);
-            debugger;
+           
 
             const login = resp.data.success;
 
@@ -120,15 +120,21 @@ export function getNotifiedListData(param){
     }
 }
 
-// export function deleteListItem() {
-//     return async function(dispatch) {
-//         const resp = await axios.delete('')
+export function deleteListItem(phone) {
+    console.log("DELETE PHONE #: ", phone);
+    return async function(dispatch) {
+        const resp = await axios.post('/api/tablefinder.php?action=clients&method=delete', 
+        {
+            phone_number: phone
+        });
+        
 
-//         dispatch({
-
-//         })
-//     }
-// }
+        dispatch({
+            type: types.DELETE_CUSTOMER
+            
+        })
+    }
+}
 
 // axios.post(
 //     ).then(resp =>{

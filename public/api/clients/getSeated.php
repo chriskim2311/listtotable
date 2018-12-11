@@ -1,6 +1,6 @@
 <?php
 
-$query = "SELECT restaurant_id = '$restaurant_id' FROM clients WHERE status = 3";
+$query = "SELECT * FROM clients WHERE status = 3 AND restaurant_id = '$restaurant_id'";
 
 $result = mysqli_query($conn, $query);
 

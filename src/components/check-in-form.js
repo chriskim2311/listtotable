@@ -18,6 +18,7 @@ class CheckInForm extends Component{
             clientComments: '',
             clientGroupSize: 1,
             dataSaved: false,
+            tablesAhead: null
         }
     }
 
@@ -30,6 +31,18 @@ class CheckInForm extends Component{
             restaurantName: this.props.restaurantName,
             restaurantID: this.props.restaurantID
         };
+
+        const response = await axios.post('/api/tablefinder.php?action=clients&method=getWaiting',
+            {restaurant_id: this.props.restaurant_id,
+            status: 1
+            });
+
+        console.log(response);
+
+        const peopleAhead = response.data.clients.length;
+
+
+
         const sendData = {
             client_name: this.state.clientName,
             phone_number: this.state.clientNumber,
@@ -63,12 +76,14 @@ class CheckInForm extends Component{
         });
         console.log("SENT DATA:",tableResp);
 
+
         this.setState({
             clientName: '',
             clientNumber: '',
             clientComments: '',
             clientGroupSize: 1,
-            dataSaved: true
+            dataSaved: true,
+            tablesAhead: peopleAhead
         });
 
        
@@ -170,7 +185,7 @@ class CheckInForm extends Component{
                             type="submit"
                             name="action"
                         >SUBMIT</button>
-                        <ConfirmationModal  saved={dataSaved}/>
+                        <ConfirmationModal  saved={dataSaved} tablesAhead={this.state.tablesAhead}/>
                     </div>
 
                 </div>

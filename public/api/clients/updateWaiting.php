@@ -9,6 +9,7 @@ $ID = ($_POST['ID']);
 $status = $_POST['status'];
 
 
+
 $query = "UPDATE clients SET status = 2 WHERE ID = '$ID'";
 
 if (mysqli_query($conn, $query)){

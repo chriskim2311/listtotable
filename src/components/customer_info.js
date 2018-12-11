@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios'
-import { getWaitingListData, getNotifiedListData, deleteListItem } from '../actions';
+
+import { getWaitingListData, getNotifiedListData, changeNotifyStatus, deleteListItem } from '../actions';
+
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 
@@ -27,11 +29,21 @@ class CustomerInfo extends Component {
     // }
 
     handleNotify(){
+
+        // console.log("PHONEEEE", key)
         // const phoneNumber = this.props.waiting_list[0].phoneNumber;
+        axios.post('/api/tablefinder.php?action=clients&method=updateNotified',
+            phone
+        
+        );
+        
+        // console.log(' UPDATE Notified call response:', resp);
+        // const restaurantID 
+        // this.props.notifiedListData(phone);
         // const restaurantName = null;
         axios.post('http://place.kim-chris.com/message/notify',{
             restaurant: "RESTAURANT_NAME",
-            phone_number: "6615474865"
+            phone_number: phone 
         }).then(resp => {
             // console.log("CHECKED INNNN:", resp)
         })
@@ -40,7 +52,9 @@ class CustomerInfo extends Component {
     renderNotifiedListOnDom(){
         // console.log('+++++++++ props:', this.props)
         const notified = this.props.notified_list;
-        console.log('partys from server on customerinfo page',notified)
+
+        // console.log('partys from server on customerinfo page',notified)
+
         if(!notified){
             return
         }
@@ -66,7 +80,7 @@ class CustomerInfo extends Component {
                         <div className="col s2 ">
                             <p>
                                 <button
-                                 onClick={this.handleNotify}>notify</button>
+                                 onClick={this.handleNotifyssss}>notify</button>
                             </p>
                             
                         </div>
@@ -98,6 +112,8 @@ class CustomerInfo extends Component {
             const name = current.client_name;
             const partyOf = current.table_size
             const phone = current.phone_number
+            const restaurantName = current.restaurant_name;
+            const ID = current.ID;
         
             return(
                 <div key={index}>
@@ -115,7 +131,7 @@ class CustomerInfo extends Component {
                         <div className="col s2 ">
                             <p>
                                 <button
-                                 onClick={this.handleNotify}>notify</button>
+                                 onClick={()=>this.props.updateNotified(restaurantName, ID, phone)}>notify</button>
                             </p>
                             
                         </div>
@@ -164,5 +180,7 @@ function mapStateToProps(state){
 export default connect(mapStateToProps,{
     deleteListItem: deleteListItem,
     waitingListData: getWaitingListData,
-    notifiedListData: getNotifiedListData
+    notifiedListData: getNotifiedListData,
+    updateNotified: changeNotifyStatus
+    
 })(CustomerInfo);

@@ -42,10 +42,10 @@ class Navigation extends Component {
                     <h1 className="large-nav-title">List To Table</h1>
                 </NavLink>)}
 
-//                     {this.props.location.pathname === "/" ? null : (<NavLink to="/">
-//                         <h1 className="small-nav-title">TF</h1>
-//                         <h1 className="large-nav-title">Table Finder</h1>
-//                     </NavLink>)}
+                    {/* {this.props.location.pathname === "/" ? null : (<NavLink to="/">
+                        <h1 className="small-nav-title">TF</h1>
+                        <h1 className="large-nav-title">Table Finder</h1>
+                    </NavLink>)} */}
 
 
                     <div

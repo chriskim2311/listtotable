@@ -8,9 +8,18 @@ import 'materialize-css/dist/js/materialize';
 
 class CustomerInfo extends Component {
     componentDidMount(){
+        const waitingObj = {
+            restaurant_id:'ChIJleVgXPnn3IARUGDd-mGJHYw',
+            status: 1
+        }
+
+        const notifiedObj = {
+            restaurant_id:'ChIJleVgXPnn3IARUGDd-mGJHYw',
+            status: 2
+        }
         // console.log('data after componentdid mount', this.props)
-        this.props.notifiedListData();
-        this.props.waitingListData();
+        this.props.notifiedListData(notifiedObj);
+        this.props.waitingListData(waitingObj);
     }
 
     // componentWillUpdate(){
@@ -30,8 +39,8 @@ class CustomerInfo extends Component {
 
     renderNotifiedListOnDom(){
         // console.log('+++++++++ props:', this.props)
-        const notified = this.props.notified_lis;
-        // console.log('partys from server on customerinfo page',notified)
+        const notified = this.props.notified_list;
+        console.log('partys from server on customerinfo page',notified)
         if(!notified){
             return
         }

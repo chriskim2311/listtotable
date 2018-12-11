@@ -7,8 +7,11 @@ import { getSeatedListData } from '../actions';
 class Seated extends Component {
 
     componentDidMount(){
-       
-        this.props.getSeatedListData();
+        const seatedObj = {
+            restaurant_id:'ChIJleVgXPnn3IARUGDd-mGJHYw',
+            status: 3
+        }
+        this.props.getSeatedListData(seatedObj);
     }
 
     renderSeatedCustomerListOnDom(){

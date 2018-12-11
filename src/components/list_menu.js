@@ -1,12 +1,13 @@
 import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom';
+import '../assets/css/r_list_menu.css';
 
 
 export default props => {
     return (
         <Fragment>
             
-            <div className="row">
+            <div className="row rListMenu">
                 <div className="col s4 left-align ">
                     <Link to="/waiting" className="btn blue">WAITING</Link>
                 </div>

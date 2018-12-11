@@ -4,19 +4,42 @@ import {connect} from 'react-redux';
 import Input from './forms_input';
 import '../assets/css/sign_up.css';
 import { userSignUp } from '../actions';
+import Autocomplete from './auto_complete';
 
 
 class SignUpForm extends Component {
+    state = {
+        restaurant_id: null
+    }
+
+
+    componentDidMount(){
+        // var address = null;
+        var input = document.getElementById('address');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        var address= null
+        autocomplete.addListener('place_changed', () => {
+        var place = autocomplete.getPlace();
+        address = place.place_id
+        this.setState({
+            restaurant_id: address
+        })
+        })
+        
+       
+    }
     handleSignUp = (values) =>{
+
+
+
         const obj = {
-            restaurant_ID: "ChIJleVgXPnn3IARUGDd-mGJHYw",
+            restaurant_ID: this.state.restaurant_id,
             email: values.email,
             password: values.password,
             restaurant_name: values.businessName,
             restaurant_address: values.businessAddress,
             
         }
-
 
         console.log('Sign up', obj);
         this.props.signUp(obj);
@@ -31,8 +54,13 @@ class SignUpForm extends Component {
                         <Field name="businessName" size="s8 offset-s2" label="Business Name" component={Input}/>
                     </div>
                     <div className="row sign_up_row">
-                        
-                        <Field name="businessAddress" label="Business Address" size="s12" component={Input}/>
+                  
+
+
+
+                    {/* <input id= "address" className="input-field" placeholder="Business Address" size="s12"/> */}
+                    {/* <label>Business Address</label> */}
+                        <Field  name="businessAddress" label="Business Address" id = "address" size="s12" component={Autocomplete}/>
                     </div>
                     <div className="row sign_up_row">
                         <Field name="email" label="Business Email" size="s6 offset-s3" component={Input} />  

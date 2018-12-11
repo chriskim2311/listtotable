@@ -9,12 +9,12 @@ import { userSignUp } from '../actions';
 class SignUpForm extends Component {
     handleSignUp = (values) =>{
         const obj = {
-            restaurant_ID: "9",
-            username: "yardhouse",
+            restaurant_ID: "ChIJleVgXPnn3IARUGDd-mGJHYw",
             email: values.email,
             password: values.password,
-            status: 'waiting',
-            comments: 'hello'
+            restaurant_name: values.businessName,
+            restaurant_address: values.businessAddress,
+            
         }
 
 

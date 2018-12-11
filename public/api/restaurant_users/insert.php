@@ -11,12 +11,12 @@ $created = $_POST['created'];
 $restaurant_address = $_POST['restaurant_address'];
 
 
-$query = "INSERT INTO restaurant_users (restaurant_ID, email, password, restaurant_name, created, restaurant_address) VALUES ('$restaurant_ID', '$email', '$password', '$restaurant_name', '$created', '$restaurant_address')";
-
+$query = "INSERT INTO restaurant_users (restaurant_ID, email, password, restaurant_name, restaurant_address) VALUES ('$restaurant_ID', '$email', '$password', '$restaurant_name', '$restaurant_address')";
+$output['query'] = $query;
 if (mysqli_query($conn, $query)){
     $output['success'] = true;
 } else {
-    $output['message'] = 'No Error';
+    $output['message'] = mysqli_error($conn);
 }
 
 ?>

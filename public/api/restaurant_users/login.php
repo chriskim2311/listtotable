@@ -4,7 +4,7 @@ session_start();
 $postdata = file_get_contents('php://input');
 $_POST = json_decode($postdata, true);
 
-$username = addslashes($_POST['email']);
+$email = addslashes($_POST['email']);
 $password = sha1($_POST['password']);
 
 $query = "SELECT * FROM restaurant_users WHERE email = '$email' AND password = '$password'";

@@ -33,13 +33,12 @@ class SignUpForm extends Component {
 
 
         const obj = {
-            restaurant_ID: "9",
-            username: "yardhouse",
+            restaurant_ID: this.state.restaurant_id,
             email: values.email,
             password: values.password,
-            status: 'waiting',
-            comments: 'hello',
-            placeId: this.state.restaurant_id
+            restaurant_name: values.businessName,
+            restaurant_address: values.businessAddress,
+            
         }
 
         console.log('Sign up', obj);

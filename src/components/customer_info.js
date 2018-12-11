@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios'
-import { getWaitingListData, getNotifiedListData } from '../actions';
+import { getWaitingListData, getNotifiedListData, deleteListItem } from '../actions';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 
@@ -75,7 +75,7 @@ class CustomerInfo extends Component {
                                 <button>seat</button>
                             </p>
                         </div>
-                        <div className="col s1">
+                        <div className="col s1" onClick={()=> this.props.deleteListItem(phone)}>
                             <p>del</p>
                         </div>
                     </div>
@@ -88,7 +88,8 @@ class CustomerInfo extends Component {
        
 
         const partys = this.props.waiting_list;
-        // console.log('partys from server on customerinfo page',partys)
+        // console.log('partys on customerinfo page',partys)
+
         if(!partys){
             return
         }
@@ -123,7 +124,7 @@ class CustomerInfo extends Component {
                                 <button>seat</button>
                             </p>
                         </div>
-                        <div className="col s1">
+                        <div className="col s1" onClick={()=> this.props.deleteListItem(phone)}>
                             <p>del</p>
                         </div>
                     </div>
@@ -161,7 +162,7 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps,{
-    
+    deleteListItem: deleteListItem,
     waitingListData: getWaitingListData,
     notifiedListData: getNotifiedListData
 })(CustomerInfo);

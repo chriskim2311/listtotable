@@ -120,7 +120,7 @@ class ListView extends Component {
     }
 
     render() {
-        ++this.childKey;
+       
 
 
         return (

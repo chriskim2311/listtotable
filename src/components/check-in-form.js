@@ -39,6 +39,7 @@ class CheckInForm extends Component{
             wait_end: '2018-11-22 06:00:00',
             table_size: this.state.clientGroupSize,
             comments:this.state.clientComments,
+            status: 'waiting'
         };
         console.log('NEW CLIENT:', dataToSend);
 

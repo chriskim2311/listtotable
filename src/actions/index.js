@@ -22,16 +22,17 @@ export function userSignUp(partner){
                 }
             });
 
-            console.log('Sign up response:', resp)
+            console.log('Sign up response:', partner.restaurant_ID)
            
             if (resp) {
                 dispatch({
-                    type: types.SIGN_UP
+                    type: types.SIGN_UP,
+                    restaurant_ID: partner.restaurant_ID
                 })
             } else {
                 dispatch({
                     type: types.SIGN_UP_ERROR,
-                    error: 'Email alredy in use'
+                    error: 'Email already in use'
                 });
             };
         } catch(err){

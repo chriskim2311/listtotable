@@ -13,7 +13,7 @@ class Seated extends Component {
 
     renderSeatedCustomerListOnDom(){
         const partys = this.props.seated_list
-        console.log('Seatred partys:', partys)
+        console.log('Seated partys:', partys)
         
         if(!partys){
             return

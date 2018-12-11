@@ -8,7 +8,7 @@ $email = addslashes($_POST['email']);
 $password = sha1($_POST['password']);
 
 $query = "SELECT * FROM restaurant_users WHERE email = '$email' AND password = '$password'";
-print($query);
+
 
 $result = mysqli_query($conn, $query);
 if($result){
@@ -16,7 +16,7 @@ if($result){
         $row = mysqli_fetch_assoc($result);
         $token = makeToken();
         $loginQuery = "INSERT INTO connections SET token='$token', r_users_ID'{$row['ID']}'";
-        mysqli_query($db, $loginQuery);
+        mysqli_query($conn, $loginQuery);
         setcookie('phpcookie', $token, time() + (86400 * 30), "/"); // 86400 = 1 day
         $_SESSION['userID'] = $row;
         $output['success'] = true;

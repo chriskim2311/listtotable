@@ -11,7 +11,7 @@ $comments = $_POST['comments'];
 $status = $_POST['status'];
 
 
-$query = "DELETE FROM clients WHERE phone_number = $phone_number";
+$query = "UPDATE clients SET status = 2 WHERE phone_number = '$phone_number'";
 
 if (mysqli_query($conn, $query)){
     $output['success'] = true;

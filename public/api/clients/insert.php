@@ -14,6 +14,7 @@ $table_size = $_POST['table_size'];
 $comments = $_POST['comments'];
 $status = $_POST['status'];
 
+
 $query = "INSERT INTO clients (client_name, phone_number, restaurant_id, restaurant_name, wait_start, wait_notify, wait_end, table_size, comments, status ) VALUES ('$client_name', $phone_number, '$restaurant_id','$restaurant_name','$wait_start', '$wait_notify', '$wait_end', '$table_size', '$comments', '$status' )";
 
 echo $query;

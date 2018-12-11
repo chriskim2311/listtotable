@@ -49,13 +49,17 @@ export function userLogIn(partner){
             
 
             localStorage.setItem('token', resp.data.token);
-            
-            if (resp) {
+            debugger;
+
+            const login = resp.data.success;
+
+            if (login) {
                 dispatch({
                     type: types.LOG_IN
                 })
             } else {
                 dispatch({
+                    
                     type: types.LOG_IN_ERROR,
                     error: 'Invalid email and/or password'
                })

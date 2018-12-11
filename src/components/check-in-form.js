@@ -33,7 +33,7 @@ class CheckInForm extends Component{
         };
 
         const response = await axios.post('/api/tablefinder.php?action=clients&method=getWaiting',
-            {restaurant_id: this.props.restaurant_id,
+            {restaurant_id: this.props.restaurantID,
             status: 1
             });
 
@@ -50,6 +50,7 @@ class CheckInForm extends Component{
             restaurant_name: this.props.restaurantName,
             wait_start: '2018-11-22 06:00:00',
             wait_end: '2018-11-22 06:00:00',
+            wait_notify: '2018-11-22 06:00:00',
             table_size: this.state.clientGroupSize,
             comments:this.state.clientComments,
             status: 'waiting'

@@ -88,7 +88,8 @@ class CustomerInfo extends Component {
        
 
         const partys = this.props.waiting_list;
-        // console.log('partys from server on customerinfo page',partys)
+        // console.log('partys on customerinfo page',partys)
+
         if(!partys){
             return
         }

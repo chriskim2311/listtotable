@@ -24,7 +24,7 @@ class SignUpForm extends Component {
         this.setState({
             restaurant_id: address
         })
-    })
+        })
         
        
     }
@@ -34,11 +34,11 @@ class SignUpForm extends Component {
 
         const obj = {
             restaurant_ID: this.state.restaurant_id,
-            username: "yardhouse",
             email: values.email,
             password: values.password,
-            status: 'waiting',
-            comments: 'hello',
+            restaurant_name: values.businessName,
+            restaurant_address: values.businessAddress,
+            
         }
 
         console.log('Sign up', obj);

@@ -1,5 +1,6 @@
 <?php
 
+
 $method = $_GET['method'];
 
 switch($method) {

@@ -35,11 +35,10 @@ class RestaurantCheckInForm extends Component {
             wait_end: '2018-11-22 06:00:00',
             table_size: this.props.tableSize,
             comments: comments,
+            status: 'waiting'
         }
-        console.log('Sending this data over', sendData)
         this.props.submitCheckIn(sendData)
         this.props.managePopUp()
-        console.log('info send to confrim modal,', this.props.openConfirmation)
         this.props.sendCustomerText(sendData)
     }
     render(){

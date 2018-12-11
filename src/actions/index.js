@@ -91,7 +91,7 @@ export function getSeatedListData(){
     return async function(dispatch){
         const resp = await axios.post('/api/tablefinder.php?action=clients&method=getSeated');
         
-        console.log('getSeated acsios call response', resp);
+        console.log('Seated call response', resp);
         
         dispatch({
             type: types.GET_SEATED_LIST_DATA,
@@ -106,7 +106,7 @@ export function getNotifiedListData(){
     return async function(dispatch){
         const resp = await axios.post('/api/tablefinder.php?action=clients&method=getNotified');
         
-        console.log('getNotified acsios call response', resp);
+        console.log('Notified call response:', resp);
         
         dispatch({
             type: types.GET_NOTIFIED_LIST_DATA,
@@ -114,6 +114,16 @@ export function getNotifiedListData(){
         });
     }
 }
+
+// export function deleteListItem() {
+//     return async function(dispatch) {
+//         const resp = await axios.delete('')
+
+//         dispatch({
+
+//         })
+//     }
+// }
 
 // axios.post(
 //     ).then(resp =>{
@@ -133,14 +143,12 @@ export function getNotifiedListData(){
 //     })
 
 export function customerCheckInIncrement () {
-
     return {
         type: types.INCREMENT
     }
 } 
 
 export function customerCheckInDecrement () {
-
     return {
         type: types.DECREMENT
     }

@@ -29,9 +29,9 @@ class CustomerInfo extends Component {
     }
 
     renderNotifiedListOnDom(){
-        console.log('+++++++++ props:', this.props)
+        // console.log('+++++++++ props:', this.props)
         const notified = this.props.notified_lis;
-        console.log('partys from server on customerinfo page',notified)
+        // console.log('partys from server on customerinfo page',notified)
         if(!notified){
             return
         }
@@ -143,7 +143,7 @@ class CustomerInfo extends Component {
 
 
 function mapStateToProps(state){
-    console.log('Redux State:', state);
+    // console.log('Redux State:', state);
 
     return {
         waiting_list: state.waitingList.waitingList,

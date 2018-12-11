@@ -12,7 +12,7 @@ $restaurant_name = $_POST['restaurant_name'];
 $created = $_POST['created'];
 $restaurant_address = $_POST['restaurant_address'];
 
-$query = "UPDATE restaurant_users SET username = '$username' WHERE email = '$email'";
+$query = "UPDATE restaurant_users SET email = '$email' WHERE restaurant_ID = '$restaurant_ID'";
 
 if (mysqli_query($conn, $query)){
     $output['success'] = true;

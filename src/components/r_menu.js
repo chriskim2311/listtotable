@@ -46,7 +46,7 @@ class RNavMenu extends Component{
         )
     }
     render(){
-        console.log('user auth:', this.props.auth)
+        // console.log('user auth:', this.props.auth)
         return (
             <Fragment>
                 <li>

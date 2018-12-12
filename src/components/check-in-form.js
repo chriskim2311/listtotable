@@ -41,7 +41,7 @@ class CheckInForm extends Component{
             restaurant_name: this.props.restaurantName,
             table_size: this.state.clientGroupSize,
             comments:this.state.clientComments,
-
+            // wait_start: "",
             status: 1
         };
 

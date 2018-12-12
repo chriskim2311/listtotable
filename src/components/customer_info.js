@@ -81,6 +81,7 @@ class CustomerInfo extends Component {
 
         const notifiedList = notified.map((current, index) => {
             const name = current.client_name;
+
             const partyOf = current.table_size
             const phone = current.phone_number;
             const ID = current.ID;
@@ -90,6 +91,7 @@ class CustomerInfo extends Component {
 
 
             return (
+
                 <div key={index}>
                     <div className="row yellow">
                         <div className="col s1">
@@ -114,7 +116,11 @@ class CustomerInfo extends Component {
                                 <button onClick={() => this.props.updatedSeated(ID)} >seat</button>
                             </p>
                         </div>
-                        <div className="col s1" onClick={() => this.props.deleteListItem(phone)}>
+
+                        <div className="col s1" onClick={()=> this.props.deleteListItem(ID)}>
+
+
+
                             <p>del</p>
                         </div>
 
@@ -133,6 +139,7 @@ renderCustomerListOnDom(){
 
     const partys = this.props.waiting_list;
     // console.log('partys on customerinfo page',partys)
+
 
     if (!partys) {
         return
@@ -174,13 +181,14 @@ renderCustomerListOnDom(){
                             <button onClick={() => this.props.updatedSeated(ID)}  >seat</button>
                         </p>
                     </div>
-                    <div className="col s1" onClick={() => this.props.deleteListItem(phone)}>
+                    <div className="col s1" onClick={() => this.props.deleteListItem(ID)}>
                         <p>del</p>
                     </div>
                     <div className="">
                         <div className="col s12">
                             Added {waitTimeSinceAdded} minutes ago
                             </div>
+
                     </div>
                 </div>
             </div>

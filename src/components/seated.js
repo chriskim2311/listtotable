@@ -26,6 +26,7 @@ class Seated extends Component {
             const name = current.client_name;
             const partyOf = current.table_size;
             const phone = current.phone_number;
+            const ID = current.ID
             
             return(
                 <div key={index}>
@@ -40,7 +41,7 @@ class Seated extends Component {
                                 <li>{phone}</li>
                             </ul>
                         </div>
-                        <div className="col s1" onClick={()=> this.props.deleteListItem(phone)}>
+                        <div className="col s1" onClick={()=> this.props.deleteListItem(ID)}>
                             <p>del</p>
                         </div>
                     </div>

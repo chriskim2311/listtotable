@@ -144,6 +144,21 @@ export function changeNotifyStatus(restaurantName, ID, phone){
 
 }
 
+export function changeSeatedStatus( ID){
+    return async function(dispatch){
+        const resp = await axios.post('/api/tablefinder.php?action=clients&method=updateNotified', 
+        {
+            ID: ID
+        });
+        console.log(' UPDATE SEATED call response:', resp);
+        dispatch({
+            type: types.UPDATE_SEATED_LIST_DATA,
+            // clients: resp.data.clients
+        });
+    }
+
+}
+
 // export function deleteListItem() {
 //     return async function(dispatch) {
 //         const resp = await axios.delete('')

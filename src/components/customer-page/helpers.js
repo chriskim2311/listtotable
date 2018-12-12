@@ -140,10 +140,8 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
                         config.color = 'red';
                     }
                     createColoredMarker(config);
-
                     console.warn("This is our current loadCount ", loadCount);
                     if (loadCount === results.length) {
-                        console.warn("We have all of our markers loaded ");
                         loadingDisplay();
                     }
                 });

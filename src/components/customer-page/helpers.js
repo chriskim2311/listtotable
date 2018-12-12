@@ -78,7 +78,8 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
             location: centerLocation,
             radius: '2000',
             type: ['restaurant'],
-            keyword: restaurantInput || ""
+            // keyword: restaurantInput || ""
+            keyword: "Yard House"
         }
         infowindow = new google.maps.InfoWindow();
         service = new google.maps.places.PlacesService(map);
@@ -102,7 +103,7 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
             // var priceLevel = results[i].price_level
 
             // if (priceLevel >= 2) {
-                var placeId = String(results[i].place_id);
+                let placeId = String(results[i].place_id);
                 var place = results[i]
                 
                 // console.log("PLACEEEE:",place)

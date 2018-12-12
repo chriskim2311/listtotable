@@ -23,8 +23,12 @@ class RNavMenu extends Component{
                         <Link to="/waiting">Waiting</Link>
                     </li>
                     <li>
+                        <Link to="/notified">Notified</Link>
+                    </li>
+                    <li>
                         <Link to="/seated">Seated</Link>
                     </li>
+
                     <li>
                         <Link to="/check-in">Check-In</Link>
                     </li>

@@ -16,7 +16,7 @@ class RConfirmationModal extends Component {
                 <div className="basic-modal" onClick={this.close}>
                     <div onClick={e => e.stopPropagation()} className="basic-modal-content">
                         <Link to="/check-in"onClick={this.close} className="basic-modal-close">X</Link>
-                        <p>Thank you, your reservation is confirmed! There are 3 tables ahead of you.</p>
+                        <p>Thank you, your reservation is confirmed!</p>
                     </div>
                 </div>
             )

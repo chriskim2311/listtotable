@@ -37,10 +37,15 @@ class RestaurantCheckInForm extends Component {
             comments: comments,
             status: 'waiting'
         }
+        
         this.props.submitCheckIn(sendData)
         this.props.managePopUp()
         this.props.sendCustomerText(sendData)
     }
+
+
+
+
     render(){
         const { handleSubmit } = this.props
         return (

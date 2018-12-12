@@ -61,8 +61,9 @@ class CustomerInfo extends Component {
 
         const notifiedList = notified.map((current, index) => {
             const name = current.client_name;
-            const partyOf = current.table_size
-            const phone = current.phone_number
+            const partyOf = current.table_size;
+            const phone = current.phone_number;
+            const ID = current.ID;
         
             return(
                 <div key={index}>
@@ -89,7 +90,7 @@ class CustomerInfo extends Component {
                                 <button>seat</button>
                             </p>
                         </div>
-                        <div className="col s1" onClick={()=> this.props.deleteListItem(phone)}>
+                        <div className="col s1" onClick={()=> this.props.deleteListItem(ID)}>
                             <p>del</p>
                         </div>
                     </div>
@@ -140,7 +141,7 @@ class CustomerInfo extends Component {
                                 <button>seat</button>
                             </p>
                         </div>
-                        <div className="col s1" onClick={()=> this.props.deleteListItem(phone)}>
+                        <div className="col s1" onClick={()=> this.props.deleteListItem(ID)}>
                             <p>del</p>
                         </div>
                     </div>

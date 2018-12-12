@@ -150,12 +150,12 @@ export function changeNotifyStatus(restaurantName, ID, phone){
 
 //         dispatch({
 
-export function deleteListItem(phone) {
-    console.log("DELETE PHONE #: ", phone);
+export function deleteListItem(ID) {
+    console.log("DELETE PHONE #: ", ID);
     return async function(dispatch) {
         const resp = await axios.post('/api/tablefinder.php?action=clients&method=delete', 
         {
-            phone_number: phone
+            ID: ID 
         });
         
 

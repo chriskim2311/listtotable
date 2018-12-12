@@ -45,8 +45,8 @@
     padding: 0;
 }
 
- .btn-small:hover, .btn-small:focus {
-    background-color: #577d9c; 
+.btn-small:hover .btn-small:focus {
+    background-color:#053E66;
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly]) {
@@ -208,4 +208,26 @@ a {
     width: 100%; 
     height: 60%;
     margin-top: 20%;
+}
+
+.customerPage {
+    height: 100%;
+    width: 100%; 
+}
+
+.customLocation {
+    height: 100%;
+}
+
+.customLocationButton {
+    display: flex; 
+    justify-content: center;
+}
+
+.customLocationContainer {
+    display:flex; 
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

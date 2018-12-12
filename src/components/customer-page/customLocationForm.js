@@ -69,7 +69,7 @@ class CustomLocationForm extends Component{
         // console.log('info being changed', this.state);
         return (
             <Fragment>
-                <div className="container">
+                <div className="customLocationContainer container">
                     <form onSubmit={this.handleSubmit}>
                         <div className="row">
 
@@ -83,10 +83,10 @@ class CustomLocationForm extends Component{
                             </div>
                         </div>
                     </form>
-                    <div>
+                    <div className="customLocationButton">
                         <button
                             onClick= {this.handleSubmit}
-                            className="submitButton btn btn-large"
+                            className=" btn btn-large"
                             type="submit"
                             name="action"
                         >SUBMIT</button>

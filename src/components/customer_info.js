@@ -30,21 +30,23 @@ class CustomerInfo extends Component {
     }
 
 
-    getWaitTime(startTime){
-        //GETTING THE NEW DATE AND TIME IN MILLISECONDS
+    convertTime(inputString){
+        //GET NEW DATE AND TIME IN MILLISECONDS
         var newDate = new Date();
         var newTime = newDate.getTime();
 
-        //CONVERTING THE OLD TIME TO MILLISECONDS
-        var timeStamp = "2018-11-21 07:00:00";
+        //CONVERT OLD TIME TO MILLISECONDS
+        var timeStamp = inputString;
         var oldTime = new Date(timeStamp).getTime();
 
-        //THE DIFFERENCE
+        //DIFFERENCE
         var difference = newTime - oldTime;
 
-        //CONVERT FROM MILLISECONDS TO SECONDS TO MINUTES
+        //CONVERT MILLISECONDS TO SECONDS TO MINUTES
         var seconds = Math.floor(difference / 1000);
         var minutes = Math.floor(seconds / 60);
+
+        //RESULT
         return minutes;
     }
 
@@ -60,6 +62,9 @@ class CustomerInfo extends Component {
             const name = current.client_name;
             const partyOf = current.table_size;
             const phone = current.phone_number;
+            const timeWhenNotified = current.wait_notify;
+            const waitTimeSinceNotified = this.convertTime(timeWhenNotified);
+            console.log("TIME SINCE NOTIFIED:", waitTimeSinceNotified);
         
             return(
                 <div key={index}>
@@ -89,6 +94,11 @@ class CustomerInfo extends Component {
                         <div className="col s1">
                             <p>del</p>
                         </div>
+                        <div className="">
+                            <div className="col s12">
+                                Notified {waitTimeSinceNotified} minutes ago
+                            </div>
+                        </div>
                     </div>
                 </div>
             )
@@ -108,12 +118,10 @@ class CustomerInfo extends Component {
             const name = current.client_name;
             const partyOf = current.table_size;
             const phone = current.phone_number;
-            const startTime = current.wait_start;
-            const waitTime = this.getWaitTime(startTime);
-            console.log("THIS IS THE WAIT THE TIME:", waitTime);
+            const timeWhenAdded = current.wait_start;
+            const waitTimeSinceAdded = this.convertTime(timeWhenAdded);
+            console.log("TIME SINCE ADDED:", waitTimeSinceAdded);
 
-
-        
             return(
                 <div className="blue" key={index}>
                     <div className="row ">
@@ -147,20 +155,14 @@ class CustomerInfo extends Component {
                             </div>
                             <div className="">
                                 <div className="col s12">
-                                    {waitTime} minutes ago
+                                    Added {waitTimeSinceAdded} minutes ago
                                 </div>
                             </div>
-                            {/*<div className="">*/}
-                                {/*<div className="col s12">*/}
-                                    {/*more more stuff*/}
-                                {/*</div>*/}
-                            {/*</div>*/}
                         </div>
                     </div>
-                    {/*<p>lwekjfhwelrigfhwelriufghwerliugfhs</p>*/}
                 </div>
             )
-        })
+        });
         return customerList;
     
         }

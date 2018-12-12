@@ -11,8 +11,8 @@ class ListView extends Component {
         restaurants: null
     }
     async componentDidUpdate(prevProps) {
-        console.log('========PREV PROPS=========', prevProps);
-        console.log('========PROPS=========', this.props);
+        // console.log('========PREV PROPS=========', prevProps);
+        // console.log('========PROPS=========', this.props);
         const prevData = prevProps.retrieveRestaurantData;
         const data = this.props.retrieveRestaurantData;
 
@@ -20,14 +20,14 @@ class ListView extends Component {
         if ((!prevData && data) || ((prevData && data) && prevData.length !== data.length)) {
             const list = await this.buildRestaurantsList(data);
 
-            console.log('LIST OF ELEMENTS:', list);
+            // console.log('LIST OF ELEMENTS:', list);
         }
     }
 
     async buildRestaurantsList(results) {
         const list = await Promise.all(results.map(async (current) => {
 
-            const price = current.price_level;
+            let price = current.price_level;
             const address = current.vicinity;
             const name = current.name;
             const rating = current.rating;
@@ -36,6 +36,15 @@ class ListView extends Component {
             const latLng = current.geometry.location;
 
             if (price >= 2) {
+                if ( price == 2) {
+                    price = '$$'
+                }
+                else if ( price == 3 ) {
+                    price = '$$$'
+                }
+                else {
+                    price = '$$$$'
+                }
                 const restaurantData = await getRestaurantData(places, latLng, location)
 
                 // console.log("HOURSSSS",busyHour)
@@ -77,7 +86,7 @@ class ListView extends Component {
                                         <div className="distance"><span className="boldText">Distance: </span>{distance} </div>
                                     </div>
                                     <div className="icons">
-                                        <div className="dollarSigns">{price}$</div>
+                                        <div className="dollarSigns">{price}</div>
                                         <Link to={`/reservation-info/${name}/${current.place_id}`} className="addButton">
                                             <img src={addButton} />
                                         </Link>
@@ -96,7 +105,7 @@ class ListView extends Component {
             return null;
         }));
 
-        console.log('=======LIST========', list);
+        // console.log('=======LIST========', list);
 
         this.setState({
             restaurants: list

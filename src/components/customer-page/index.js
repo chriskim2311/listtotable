@@ -14,6 +14,7 @@ import Navigation from '../hamburgerAndBack'
 import { renderBusyTimes } from './helpers';
 import '../../assets/css/customerPg.css';
 import ConfirmationModal from '../confirmationModal';
+import loadingGif from '../../assets/images/loadingFood.gif';
 // import ReactDOM from 'react-dom'
 
 
@@ -32,7 +33,8 @@ class CustomerPg extends Component {
             mapRef: null,
             currentLocation: null,
             geolocation: null,
-            position: null
+            position: null,
+            loading: true
         }
     }
 
@@ -88,6 +90,13 @@ class CustomerPg extends Component {
         })
     }
 
+    loadingDisplay = () => {
+        this.setState({
+            loading: false
+        });
+        console.warn("WE DID THE THING");
+    }
+
     toggleMap = () => {
         this.setState({
             map: true,
@@ -114,7 +123,7 @@ class CustomerPg extends Component {
 
 
     render() {
-        const { map, list, restaurantType, search } = this.state
+        const { map, list, loading, restaurantType, search } = this.state
         return (
            
 
@@ -165,35 +174,37 @@ class CustomerPg extends Component {
                 </div>
 
             </div>
-            <div id = 'map ' className="BottomContainer" >
-            {this.currentGeolocation()}
-                {
-                    this.state.geolocation ?
-                    <div className="borderContainer">
-                            <Geolocation
-                                map={map}
-                                search={search}
-                                restaurantType={restaurantType}
-                                retrieveRestaurantData={this.retrieveRestaurantData}
-                                clearSearch={this.clearSearchItem}
-                                position={this.state.position} />
-                            <ListView 
-                                list={list}
-                                currentLocation={this.state.currentLocation}
-                                mapRef={this.state.mapRef}
-                                retrieveRestaurantData={this.state.restaurantData}
-                                key={this.childKey} />
-                       </div>
-                        
-                        :
-                        <CustomLocationForm
-                        retrieveRestaurantData={this.retrieveRestaurantData}
-                        geolocationAttained={this.geolocationAttained}
-                        />
-                }
-
-
-            </div>
+            <div id = 'map ' className={ loading ? "hidden" : "BottomContainer" }>
+                {this.currentGeolocation()}
+                    {
+                        this.state.geolocation ?
+                        <div className="borderContainer">
+                                <Geolocation
+                                    map={map}
+                                    search={search}
+                                    restaurantType={restaurantType}
+                                    retrieveRestaurantData={this.retrieveRestaurantData}
+                                    loadingDisplay={this.loadingDisplay}
+                                    clearSearch={this.clearSearchItem}
+                                    position={this.state.position} />
+                                <ListView 
+                                    list={list}
+                                    currentLocation={this.state.currentLocation}
+                                    mapRef={this.state.mapRef}
+                                    retrieveRestaurantData={this.state.restaurantData}
+                                    key={this.childKey} />
+                        </div>
+                            
+                            :
+                            <CustomLocationForm
+                            retrieveRestaurantData={this.retrieveRestaurantData}
+                            geolocationAttained={this.geolocationAttained}
+                            />
+                    }
+                </div>
+                <div className={loading ? "loading-spinner" : "hidden"}>
+                    <img src={loadingGif}/>
+                </div>
 
             </Fragment >
         )

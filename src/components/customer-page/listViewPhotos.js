@@ -17,8 +17,8 @@ class ListViewPhotos extends Component {
     }
 
     componentDidUpdate(prevProps, prevState){
-        console.log('Previous Props', prevProps)
-        console.log('Current Props', this.props)
+        // console.log('Previous Props', prevProps)
+        // console.log('Current Props', this.props)
         const { mapRef, placeId } = this.props;
         const prevPlaceId = prevProps.placeId;
         
@@ -40,8 +40,8 @@ class ListViewPhotos extends Component {
 
     savePhotosFromGoogle = (results, status) => {
         var photosArray = results['photos']
-        console.log(results['name'])
-        console.log('Photos in retrieve function', photosArray);
+        // console.log(results['name'])
+        // console.log('Photos in retrieve function', photosArray);
 
         this.setState({
             photos: [...photosArray]

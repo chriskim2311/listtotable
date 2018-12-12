@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios'
 
-import { getWaitingListData, getNotifiedListData, changeNotifyStatus, deleteListItem } from '../actions';
+import { getWaitingListData, getNotifiedListData, changeNotifyStatus, deleteListItem, changeSeatedStatus } from '../actions';
 
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
@@ -82,10 +82,15 @@ class CustomerInfo extends Component {
         const notifiedList = notified.map((current, index) => {
             const name = current.client_name;
             const partyOf = current.table_size
+
+            const phone = current.phone_number;
+            const ID = current.ID;
+
             const phone = current.phone_number
             const timeWhenNotified = current.wait_notify;
             const waitTimeSinceNotified = this.convertTime(timeWhenNotified);
             console.log("TIME SINCE NOTIFIED:", waitTimeSinceNotified);
+
         
             return(
                 <div key={index}>
@@ -109,7 +114,7 @@ class CustomerInfo extends Component {
                         </div>
                         <div className="col s2">
                             <p>
-                                <button>seat</button>
+                                <button onClick={()=>this.props.updatedSeated(ID)} >seat</button>
                             </p>
                         </div>
                         <div className="col s1" onClick={()=> this.props.deleteListItem(phone)}>
@@ -169,7 +174,7 @@ class CustomerInfo extends Component {
                         </div>
                         <div className="col s2">
                             <p>
-                                <button>seat</button>
+                                <button onClick={()=>this.props.updatedSeated(ID)}  >seat</button>
                             </p>
                         </div>
                         <div className="col s1" onClick={()=> this.props.deleteListItem(phone)}>
@@ -218,7 +223,8 @@ export default connect(mapStateToProps,{
     deleteListItem: deleteListItem,
     waitingListData: getWaitingListData,
     notifiedListData: getNotifiedListData,
-    updateNotified: changeNotifyStatus
+    updateNotified: changeNotifyStatus,
+    updatedSeated: changeSeatedStatus
     
 
 })(CustomerInfo);

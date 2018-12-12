@@ -49,6 +49,26 @@ class CustomerInfo extends Component {
         })
     }
 
+    convertTime(inputString){
+        //GET NEW DATE AND TIME IN MILLISECONDS
+        var newDate = new Date();
+        var newTime = newDate.getTime();
+
+        //CONVERT OLD TIME TO MILLISECONDS
+        var timeStamp = inputString;
+        var oldTime = new Date(timeStamp).getTime();
+
+        //DIFFERENCE
+        var difference = newTime - oldTime;
+
+        //CONVERT MILLISECONDS TO SECONDS TO MINUTES
+        var seconds = Math.floor(difference / 1000);
+        var minutes = Math.floor(seconds / 60);
+
+        //RESULT
+        return minutes;
+    }
+
     renderNotifiedListOnDom(){
         // console.log('+++++++++ props:', this.props)
         const notified = this.props.notified_list;
@@ -63,6 +83,9 @@ class CustomerInfo extends Component {
             const name = current.client_name;
             const partyOf = current.table_size
             const phone = current.phone_number
+            const timeWhenNotified = current.wait_notify;
+            const waitTimeSinceNotified = this.convertTime(timeWhenNotified);
+            console.log("TIME SINCE NOTIFIED:", waitTimeSinceNotified);
         
             return(
                 <div key={index}>
@@ -92,6 +115,11 @@ class CustomerInfo extends Component {
                         <div className="col s1" onClick={()=> this.props.deleteListItem(phone)}>
                             <p>del</p>
                         </div>
+                        div className="">
+                            <div className="col s12">
+                                Notified {waitTimeSinceNotified} minutes ago
+                            </div>
+                        </div>
                     </div>
                 </div>
             )
@@ -114,6 +142,10 @@ class CustomerInfo extends Component {
             const phone = current.phone_number
             const restaurantName = current.restaurant_name;
             const ID = current.ID;
+            const timeWhenAdded = current.wait_start;
+            const waitTimeSinceAdded = this.convertTime(timeWhenAdded);
+            console.log("TIME SINCE ADDED:", waitTimeSinceAdded);
+
         
             return(
                 <div key={index}>
@@ -142,6 +174,11 @@ class CustomerInfo extends Component {
                         </div>
                         <div className="col s1" onClick={()=> this.props.deleteListItem(phone)}>
                             <p>del</p>
+                        </div>
+                        <div className="">
+                            <div className="col s12">
+                                Added {waitTimeSinceAdded} minutes ago
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -183,4 +220,5 @@ export default connect(mapStateToProps,{
     notifiedListData: getNotifiedListData,
     updateNotified: changeNotifyStatus
     
+
 })(CustomerInfo);

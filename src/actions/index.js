@@ -50,7 +50,7 @@ export function userLogIn(partner){
             
 
             localStorage.setItem('token', resp.data.token);
-            debugger;
+           
 
             const login = resp.data.success;
 
@@ -83,7 +83,7 @@ export function getWaitingListData(param){
     return async function(dispatch){
         const resp = await axios.post('/api/tablefinder.php?action=clients&method=getWaiting', param);
         
-        // console.log('server resp after api call', resp);
+        console.log('server resp after api call', resp);
         
         dispatch({
             type: types.GET_WAITING_LIST_DATA,
@@ -120,15 +120,67 @@ export function getNotifiedListData(param){
     }
 }
 
+
+export function changeNotifyStatus(restaurantName, ID, phone){
+    return async function(dispatch){
+        console.log("PHONEEEE", phone)
+        const resp = await axios.post('/api/tablefinder.php?action=clients&method=updateWaiting', 
+        {
+            ID: ID
+            // status: 'notified'
+        });
+        await axios.post('http://place.kim-chris.com/message/notify',{
+            restaurant: restaurantName,
+            phone_number: phone 
+        })
+        
+        console.log(' UPDATE Notified call response:', resp);
+        
+        dispatch({
+            type: types.UPDATE_NOTIFIED_LIST_DATA,
+            // clients: resp.data.clients
+        });
+    }
+
+}
+
+export function changeSeatedStatus( ID){
+    return async function(dispatch){
+        const resp = await axios.post('/api/tablefinder.php?action=clients&method=updateNotified', 
+        {
+            ID: ID
+        });
+        console.log(' UPDATE SEATED call response:', resp);
+        dispatch({
+            type: types.UPDATE_SEATED_LIST_DATA,
+            // clients: resp.data.clients
+        });
+    }
+
+}
+
 // export function deleteListItem() {
 //     return async function(dispatch) {
 //         const resp = await axios.delete('')
 
 //         dispatch({
 
-//         })
-//     }
-// }
+export function deleteListItem(ID) {
+    console.log("DELETE PHONE #: ", ID);
+    return async function(dispatch) {
+        const resp = await axios.post('/api/tablefinder.php?action=clients&method=delete', 
+        {
+            ID: ID 
+        });
+        
+
+
+        dispatch({
+            type: types.DELETE_CUSTOMER
+            
+        })
+    }
+}
 
 // axios.post(
 //     ).then(resp =>{
@@ -181,7 +233,7 @@ export function customerCheckIn(sendData) {
                 }
             });
             dispatch ({
-                type: types.CHECK_IN,
+                // type: types.CHECK_IN,
                 payload: resp
             })
         } catch(err) {
@@ -200,8 +252,8 @@ export function sendCustomerText(sendData){
                 url: 'http://place.kim-chris.com/message/confirm',
                 method: 'post',
                 data: {
-                    restaurant: restaurant_name,
-                    phone_number: phone_number
+                  restaurant: restaurant_name,
+                  phone_number: phone_number
                 }
             });
             dispatch ({

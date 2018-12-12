@@ -32,28 +32,18 @@ class CheckInForm extends Component{
             restaurantID: this.props.restaurantID
         };
 
-        const response = await axios.post('/api/tablefinder.php?action=clients&method=getWaiting',
-            {restaurant_id: this.props.restaurantID,
-            status: 1
-            });
 
-        console.log(response);
-
-        const peopleAhead = response.data.clients.length;
-
+        
         const sendData = {
             client_name: this.state.clientName,
             phone_number: this.state.clientNumber,
             restaurant_id: this.props.restaurantID,
             restaurant_name: this.props.restaurantName,
-            wait_start: '2018-11-22 06:00:00',
-            wait_end: '2018-11-22 06:00:00',
-            wait_notify: '2018-11-22 06:00:00',
             table_size: this.state.clientGroupSize,
             comments:this.state.clientComments,
-            status: 'waiting'
+            // wait_start: "",
+            status: 1
         };
-        console.log('NEW CLIENT:', dataToSend);
 
         const tableResp = await axios({
             url: '/api/tablefinder.php',
@@ -77,6 +67,17 @@ class CheckInForm extends Component{
         console.log("SENT DATA:",tableResp);
 
 
+        const response = await axios.post('/api/tablefinder.php?action=clients&method=getWaiting',
+        {restaurant_id: this.props.restaurantID,
+        status: 1
+        });
+
+        console.log(response);
+        if(response.data.success){
+        const peopleAhead = response.data.clients.length;
+        
+
+
         this.setState({
             clientName: '',
             clientNumber: '',
@@ -85,8 +86,22 @@ class CheckInForm extends Component{
             dataSaved: true,
             tablesAhead: peopleAhead
         });
-
+    }
+    else{
+        const peopleAhead = 0;
+        this.setState({
+            clientName: '',
+            clientNumber: '',
+            clientComments: '',
+            clientGroupSize: 1,
+            dataSaved: true,
+            tablesAhead: peopleAhead
+        });
+    }
         console.log("CHECKED INNNN:", placeResp);
+
+    
+    
     };
 //     handleSendData(dataToSend){
 
@@ -121,8 +136,8 @@ class CheckInForm extends Component{
                 clientGroupSize: this.state.clientGroupSize -1
             })
         }
-
     }
+    
 
     render (){
         console.log('info being changed', this.state);

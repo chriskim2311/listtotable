@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import RTopMenu from './r_arrowAndMenu';
 import ListMenu from './list_menu';
 import { connect } from 'react-redux';
-import { getSeatedListData } from '../actions';
+import { getSeatedListData, deleteListItem } from '../actions';
 
 class Seated extends Component {
 
@@ -26,6 +26,7 @@ class Seated extends Component {
             const name = current.client_name;
             const partyOf = current.table_size;
             const phone = current.phone_number;
+            const ID = current.ID
             
             return(
                 <div key={index}>
@@ -40,7 +41,7 @@ class Seated extends Component {
                                 <li>{phone}</li>
                             </ul>
                         </div>
-                        <div className="col s1">
+                        <div className="col s1" onClick={()=> this.props.deleteListItem(ID)}>
                             <p>del</p>
                         </div>
                     </div>
@@ -77,5 +78,6 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps, {
+    deleteListItem: deleteListItem,
     getSeatedListData: getSeatedListData
 })(Seated);

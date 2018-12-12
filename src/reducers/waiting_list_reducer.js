@@ -16,6 +16,9 @@ export default (state=DEFAULT_STATE, action) =>{
         case types.GET_SEATED_LIST_DATA:
             console.log('Seated Action:', action);
             return {...state, seatedList: action.clients}
+        case types.UPDATE_NOTIFIED_LIST_DATA:
+            console.log('Updated Notified Action:', action);
+            return {...state, updateNotifiedList: action.clients}
         default:
         return state;
     }

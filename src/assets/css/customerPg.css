@@ -199,3 +199,7 @@ a {
     align-items: center;
 }
 
+.loading-spinner > img {
+    width: 100%; 
+    height: 75%;
+}

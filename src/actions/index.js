@@ -248,17 +248,20 @@ export function sendCustomerText(sendData){
     console.log(phone_number, restaurant_name)
     return async function (dispatch) {
         try {
-            const resp = await axios.post({
+            const resp = await axios({
                 url: 'http://place.kim-chris.com/message/confirm',
-                restaurant: restaurant_name,
-                phone_number: phone_number
+                method: 'post',
+                data: {
+                  restaurant: restaurant_name,
+                  phone_number: phone_number
+                }
             });
             dispatch ({
-                // type: types.CHECK_IN,
+                type: types.CHECK_IN,
                 payload: resp 
             })
         } catch(err) {
-            console.log('customer text error')
+            console.log('customer text error', err)
         }
     }
 }

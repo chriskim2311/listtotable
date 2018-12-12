@@ -55,11 +55,13 @@ class CustomerInfo extends Component {
         var newTime = newDate.getTime();
 
         //CONVERT OLD TIME TO MILLISECONDS
-        var timeStamp = inputString;
+        var timeStamp = inputString + " UTC";
+        console.log(timeStamp);
         var oldTime = new Date(timeStamp).getTime();
 
         //DIFFERENCE
         var difference = newTime - oldTime;
+
 
         //CONVERT MILLISECONDS TO SECONDS TO MINUTES
         var seconds = Math.floor(difference / 1000);

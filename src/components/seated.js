@@ -2,18 +2,21 @@ import React, { Component, Fragment } from 'react';
 import RTopMenu from './r_arrowAndMenu';
 import ListMenu from './list_menu';
 import { connect } from 'react-redux';
-import { getSeatedListData } from '../actions';
+import { getSeatedListData, deleteListItem } from '../actions';
 
 class Seated extends Component {
 
     componentDidMount(){
-       
-        this.props.getSeatedListData();
+        const seatedObj = {
+            restaurant_id:'ChIJleVgXPnn3IARUGDd-mGJHYw',
+            status: 3
+        }
+        this.props.getSeatedListData(seatedObj);
     }
 
     renderSeatedCustomerListOnDom(){
         const partys = this.props.seated_list
-        console.log('Seatred partys:', partys)
+        console.log('Seated partys:', partys)
         
         if(!partys){
             return
@@ -37,7 +40,7 @@ class Seated extends Component {
                                 <li>{phone}</li>
                             </ul>
                         </div>
-                        <div className="col s1">
+                        <div className="col s1" onClick={()=> this.props.deleteListItem(phone)}>
                             <p>del</p>
                         </div>
                     </div>
@@ -74,5 +77,6 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps, {
+    deleteListItem: deleteListItem,
     getSeatedListData: getSeatedListData
 })(Seated);

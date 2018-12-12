@@ -19,7 +19,7 @@ class LogInForm extends Component {
                 <form onSubmit={handleSubmit(this.handleLogIn)}>
                     <div className="row">
                         <div className="col s6 offset-s3">
-                            <Field name="username" label="username" component={Input}/>  
+                            <Field name="email" label="Email" component={Input}/>  
                         </div>
                     </div>
                     <div className="row">

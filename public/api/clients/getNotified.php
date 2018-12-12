@@ -1,6 +1,14 @@
 <?php
 
-$query = "SELECT * FROM clients WHERE status = 2";
+
+$postdata = file_get_contents("php://input");
+$_POST = json_decode($postdata, true);
+
+
+$restaurant_id = $_POST['restaurant_id'];
+$status = $_POST['status'];
+
+$query = "SELECT * FROM clients WHERE status = 2 AND restaurant_id = '$restaurant_id'";
 
 $result = mysqli_query($conn, $query);
 

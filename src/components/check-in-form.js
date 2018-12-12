@@ -18,6 +18,7 @@ class CheckInForm extends Component{
             clientComments: '',
             clientGroupSize: 1,
             dataSaved: false,
+            tablesAhead: null
         }
     }
 
@@ -30,6 +31,16 @@ class CheckInForm extends Component{
             restaurantName: this.props.restaurantName,
             restaurantID: this.props.restaurantID
         };
+
+        const response = await axios.post('/api/tablefinder.php?action=clients&method=getWaiting',
+            {restaurant_id: this.props.restaurantID,
+            status: 1
+            });
+
+        console.log(response);
+
+        const peopleAhead = response.data.clients.length;
+
         const sendData = {
             client_name: this.state.clientName,
             phone_number: this.state.clientNumber,
@@ -37,8 +48,10 @@ class CheckInForm extends Component{
             restaurant_name: this.props.restaurantName,
             wait_start: '2018-11-22 06:00:00',
             wait_end: '2018-11-22 06:00:00',
+            wait_notify: '2018-11-22 06:00:00',
             table_size: this.state.clientGroupSize,
             comments:this.state.clientComments,
+            status: 'waiting'
         };
         console.log('NEW CLIENT:', dataToSend);
 
@@ -63,21 +76,32 @@ class CheckInForm extends Component{
         });
         console.log("SENT DATA:",tableResp);
 
+
         this.setState({
             clientName: '',
             clientNumber: '',
             clientComments: '',
             clientGroupSize: 1,
-            dataSaved: true
+            dataSaved: true,
+            tablesAhead: peopleAhead
         });
-
-       
 
         console.log("CHECKED INNNN:", placeResp);
     };
 //     handleSendData(dataToSend){
 
 // }
+
+    modalReset = () =>{
+        this.setState({
+            clientName: '',
+            clientNumber: '',
+            clientComments: '',
+            clientGroupSize: 1,
+            dataSaved: false,
+            tablesAhead: null
+        });
+    };
 
 
     handleIncrement(){
@@ -170,7 +194,11 @@ class CheckInForm extends Component{
                             type="submit"
                             name="action"
                         >SUBMIT</button>
-                        <ConfirmationModal  saved={dataSaved}/>
+                        <ConfirmationModal
+                            saved={dataSaved}
+                            tablesAhead={this.state.tablesAhead}
+                            modalReset={this.modalReset}
+                        />
                     </div>
 
                 </div>

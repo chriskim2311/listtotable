@@ -13,22 +13,26 @@ class ConfirmationModal extends Component {
 
     open = () => this.setState({isOpen: true});
 
-    close = () => this.setState({isOpen: false});
+    close = () => {
+        this.setState({isOpen: false,});
+        this.props.modalReset();
+    };
 
     componentDidUpdate(prevProps){
+        console.log("previous props", prevProps);
         if(!prevProps.saved && this.props.saved){
             this.open();
         }
     }
 
     render(){
-        console.log('confirmation modal: ', this.props)
+        console.log('confirmation modal: ', this.props);
         if(this.state.isOpen){
             return (
                 <div className="basic-modal" onClick={this.close}>
                     <div onClick={e => e.stopPropagation()} className="basic-modal-content">
                         <div onClick={this.close} className="basic-modal-close">X</div>
-                        <p>Thank you, your reservation is confirmed! There are 3 tables ahead of you.</p>
+                        <p>Thank you, your reservation is confirmed! There are {this.props.tablesAhead} tables ahead of you.</p>
                     </div>
                 </div>
             )

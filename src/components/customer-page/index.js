@@ -169,7 +169,7 @@ class CustomerPg extends Component {
             {this.currentGeolocation()}
                 {
                     this.state.geolocation ?
-                    <Fragment>
+                    <div className="borderContainer">
                             <Geolocation
                                 map={map}
                                 search={search}
@@ -183,7 +183,7 @@ class CustomerPg extends Component {
                                 mapRef={this.state.mapRef}
                                 retrieveRestaurantData={this.state.restaurantData}
                                 key={this.childKey} />
-                       </Fragment>
+                       </div>
                         
                         :
                         <CustomLocationForm

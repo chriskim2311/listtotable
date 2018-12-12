@@ -5,11 +5,12 @@ $postdata = file_get_contents("php://input");
 $_POST = json_decode($postdata, true);
 
 
+$ID = ($_POST['ID']);
+$status = $_POST['status'];
 
-$email = $_POST['email'];
 
 
-$query = "DELETE FROM restaurant_users WHERE email = $email";
+$query = "UPDATE clients SET status = 2 WHERE ID = '$ID'";
 
 if (mysqli_query($conn, $query)){
     $output['success'] = true;

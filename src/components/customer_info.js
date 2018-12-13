@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios'
+import { withRouter } from 'react-router-dom'
 
-import { getWaitingListData, changeNotifyStatus, deleteListItem } from '../actions';
+import { getWaitingListData, changeNotifyStatus, deleteListItem, userLogIn } from '../actions';
 
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
@@ -11,19 +12,29 @@ import "../assets/css/customer_info.css"
 
 
 class CustomerInfo extends Component {
+    // constructor({match, ...props}) {
+    //     super(props);
+    //     console.log(match.params)
+    // }
     componentDidMount() {
+        const restId= localStorage.getItem('restId')
         const waitingObj = {
-            restaurant_id: 'ChIJleVgXPnn3IARUGDd-mGJHYw',
+            restaurant_id: restId,
             status: 1
         }
+        this.props.waitingListData(waitingObj)
+       
 
-        // const notifiedObj = {
-        //     restaurant_id: 'ChIJleVgXPnn3IARUGDd-mGJHYw',
-        //     status: 2
-        // }
-        // console.log('data after componentdid mount', this.props)
-        // this.props.notifiedListData(notifiedObj);
-        this.props.waitingListData(waitingObj);
+        
+        setInterval(()=>{
+            this.props.waitingListData(waitingObj)}, 40000
+        )
+
+
+
+      
+
+      
     }
 
     // componentWillUpdate(){
@@ -143,13 +154,13 @@ class CustomerInfo extends Component {
 
             return (
                 <div key={index} >
-                    <div className="row light-blue ">
+                    <div className="row blue darken-2 ">
                         <div className="col s1">
                             <p>{index + 1}</p>
                         </div>
                         <div className="col s3">
                             <ul>
-                                <li>{name}</li>
+                                <li> {name}</li>
                                 <li>{partyOf}</li>
                                 <li>{phone}</li>
                             </ul>
@@ -165,10 +176,11 @@ class CustomerInfo extends Component {
                         <div className=" col s2">
 
 
-                            <button className="small btn orange waves-effect  waves" onClick={() => this.props.updatedSeated(ID)}  >seat</button>
+                            <button className="small btn orange waves-effect  waves" onClick={() => this.props.updatedSeated(ID) }  >seat</button>
+                           
 
                         </div>
-                        <div className="  col s3 right-align  " onClick={() => this.props.deleteListItem(ID)}>
+                        <div className="  col s3 right-align  " onClick={() => this.props.deleteListItem(ID) }>
                             {/* <i className=" medium material-icons">delete</i> */}
                             <button className="small btn red waves-effect  waves" > <i className=" small material-icons">delete</i></button>
 
@@ -205,11 +217,12 @@ class CustomerInfo extends Component {
 
 
 function mapStateToProps(state) {
-    // console.log('Redux State:', state);
+    console.log('Redux State:', state);
 
     return {
         waiting_list: state.waitingList.waitingList,
         // notified_list: state.waitingList.notifiedList
+        restaurant_ID: state.partner.restaurant_ID
     }
 }
 
@@ -219,6 +232,7 @@ export default connect(mapStateToProps, {
     // notifiedListData: getNotifiedListData,
     updateNotified: changeNotifyStatus,
     // updatedSeated: changeSeatedStatus
+    
 
 
 })(CustomerInfo);

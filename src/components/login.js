@@ -13,7 +13,7 @@ class Login extends Component {
         return (
             <Fragment>
                 <RTopMenu/>
-                <LogInForm/>
+                <LogInForm history={this.props.history}/>
                 <div className="row center">
                     <div className="col s4 offset-s4 ">
                         <Link to="/signup" className="btn grey ">Sign Up</Link>

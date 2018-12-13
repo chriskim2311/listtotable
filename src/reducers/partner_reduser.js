@@ -9,8 +9,10 @@ const DEFAULT_STATE = {
 
 export default (state = DEFAULT_STATE, action) => {
     switch(action.type){
-        case types.LOG_IN:  
+        case types.LOG_IN: 
+             
         case types.SIGN_UP:
+            console.log(action)
             return{ auth: true, restaurant_ID: action.restaurant_ID };;
         case types.LOG_OUT:
             return{ auth: false, restaurant_ID: ''};

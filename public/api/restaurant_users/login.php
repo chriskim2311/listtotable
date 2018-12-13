@@ -20,6 +20,7 @@ if($result){
         setcookie('phpcookie', $token, time() + (86400 * 30), "/"); // 86400 = 1 day
         $_SESSION['userID'] = $row;
         $output['success'] = true;
+        $output['restaurant_ID'] = $row;
     } else {
         $output['errors'] = 'Login unsuccessful';
     }

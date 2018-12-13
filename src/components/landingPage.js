@@ -49,7 +49,7 @@ class LandingPage extends Component{
                                 <Link className ="restaurants" to="/login">restaurants</Link>
                             </button>
                             <button className="guests-button btn btn-large waves-effect waves-light">
-                                <Link className ="guests" to="{set ? "/customer-map" : "/custom-location"}">guests</Link>
+                                <Link className ="guests" to={set ? "/customer-map" : "/custom-location"}>guests</Link>
                             </button>
                         </div>
                     </div>

@@ -40,6 +40,7 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
     // }
     showRestaurants(config, retrieveRestaurantData, loadingDisplay);
     function showRestaurants(config, retrieveRestaurantData, loadingDisplay){
+        debugger
         const restaurantInput = config.restaurantType
         const position = config.position
         const locations = config.locations
@@ -78,8 +79,8 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
             location: centerLocation,
             radius: '2000',
             type: ['restaurant'],
-            // keyword: restaurantInput || ""
-            keyword: "Yard House"
+            keyword: restaurantInput || ""
+            // keyword: "Yard House"
         }
         infowindow = new google.maps.InfoWindow();
         service = new google.maps.places.PlacesService(map);

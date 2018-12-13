@@ -1,4 +1,6 @@
 export default {
+    CHECK_CURRENT_POSITION: 'check_current_position',
+    GET_CURRENT_POSITION: 'get_current_position',
     GET_WAITING_LIST_DATA: 'get_waiting_list_data',
     GET_NOTIFIED_LIST_DATA: 'get_notified_list_data',
     GET_SEATED_LIST_DATA: 'get_seated_list_data',
@@ -7,6 +9,7 @@ export default {
     LOG_IN:'log_in',
     LOG_IN_ERROR: 'log_in_error',
     LOG_OUT: 'log_out',
+    SET_CURRENT_POSITION: 'set_current_position',
     SIGN_UP: 'sign_up',
     SIGN_UP_ERROR: 'sign_up_error',
     CHECK_IN: 'check_in',

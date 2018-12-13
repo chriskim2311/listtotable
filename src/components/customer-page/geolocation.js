@@ -34,11 +34,28 @@ class Geolocation extends Component {
         // config[this.props.retrieveRestaurantData] = this.props.retrieveRestaurantData
         
         // renderBusyTimes(restaurantType, this.props.retrieveRestaurantData, position);
+        
         renderBusyTimes(config, this.props.retrieveRestaurantData, this.props.loadingDisplay)
+    }
 
-
+     componentDidUpdate(prevProps){
+         console.log('previous props', prevProps)
+         console.log('current props', this.props)
+         if (prevProps.position == '' && !!this.props.position) {
+             const config = {
+                 position: null, 
+                 restaurantType: null
+                }
+                config.position = this.props.position;
+                config.restaurantType = this.state.restaurantType;
+                
+                debugger;
+                renderBusyTimes(config, this.props.retrieveRestaurantData, this.props.loadingDisplay)
+         }
+        
     }
     render() {
+        
         // console.log("map props:", this.props)
         return (
             <div id = "map" className={`mapBottomContainer ${this.props.map ? "" : "hidden"}`}></div>

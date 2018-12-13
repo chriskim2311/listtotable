@@ -14,9 +14,10 @@ $comments = $_POST['comments'];
 $status = $_POST['status'];
 
 
+
 $query = "INSERT INTO clients (client_name, phone_number, restaurant_id, restaurant_name, wait_start, table_size, comments, status ) VALUES ('$client_name', $phone_number, '$restaurant_id','$restaurant_name', NOW(), '$table_size', '$comments', '$status' )";
 
-echo $query;
+
 
 if (mysqli_query($conn, $query)){
 $output['success'] = true;

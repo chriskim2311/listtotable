@@ -32,8 +32,8 @@ class CustomLocationForm extends Component{
 
     handleSubmit= (event) =>{
         var config= {}
-        console.log("custom location props",this.props);
-        console.log("STATE:", this.state)
+        // console.log("custom location props",this.props);
+        // console.log("STATE:", this.state)
         // debugger;
         event.preventDefault();
         const geocoder = new google.maps.Geocoder();
@@ -44,16 +44,16 @@ class CustomLocationForm extends Component{
             const locations = {};
             if (status === 'OK') {
 
-                console.log("RESULTS", results)
+                // console.log("RESULTS", results)
                 var lat = results[0].geometry.location.lat();
                 var long = results[0].geometry.location.lng();
                 locations.lat = lat;
                 locations.lng = long;
-                console.log(lat, long);
+                // console.log(lat, long);
                 config= {locations}
                 config.locations = locations
-                console.log(locations)
-                console.log(config)
+                // console.log(locations)
+                // console.log(config)
 
             geolocationAttained(locations);
             }
@@ -65,11 +65,11 @@ class CustomLocationForm extends Component{
 
     render(){
         
-        console.log("custom location props",this.props);
-        console.log('info being changed', this.state);
+        // console.log("custom location props",this.props);
+        // console.log('info being changed', this.state);
         return (
             <Fragment>
-                <div className="container">
+                <div className="customLocationContainer container">
                     <form onSubmit={this.handleSubmit}>
                         <div className="row">
 
@@ -83,10 +83,10 @@ class CustomLocationForm extends Component{
                             </div>
                         </div>
                     </form>
-                    <div>
+                    <div className="customLocationButton">
                         <button
                             onClick= {this.handleSubmit}
-                            className="submitButton btn btn-large"
+                            className=" btn btn-large"
                             type="submit"
                             name="action"
                         >SUBMIT</button>

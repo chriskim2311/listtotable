@@ -20,6 +20,8 @@ import CustomerPg from './customer-page';
 import Team from './team';
 import About from './about';
 import auth from '../hoc/auth';
+import Notified from './notified'
+
 
 
 
@@ -41,9 +43,11 @@ class App extends Component {
                 <Route path="/check-in" component={auth(RCheckIn)}/>
                 <Route path="/seated" component={auth(Seated)}/>
                 <Route path="/signup" component={auth(SignUp, '/waiting', false)}/>
+                <Route path="/notified" component={auth(Notified)}/>
                 <Route path="/r_menu" component={RMenu}/>
                 <Route path="/about" component={About}/>
                 <Route path="/team" component={Team}/>
+            
          
                 <Route path="/customer-map" component={CustomerPg} />
 

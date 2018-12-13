@@ -38,14 +38,9 @@ class Navigation extends Component {
 
 
                 {this.props.location.pathname === "/" ? null : (<NavLink to="/">
-                    <h1 className="small-nav-title">LTT</h1>
-                    <h1 className="large-nav-title">List To Table</h1>
+                    <div className="small-nav-title">LTT</div>
+                    {/* <h1 className="large-nav-title">List To Table</h1> */}
                 </NavLink>)}
-
-                    {/* {this.props.location.pathname === "/" ? null : (<NavLink to="/">
-                        <h1 className="small-nav-title">TF</h1>
-                        <h1 className="large-nav-title">Table Finder</h1>
-                    </NavLink>)} */}
 
 
                     <div
@@ -63,9 +58,6 @@ class Navigation extends Component {
                         </li>
                         <li>
                             <Link to="/customer-map">Map</Link>
-                        </li>
-                        <li>
-                            <Link to="/reservation-info">Check-In</Link>
                         </li>
                         <li>
                             <Link to="/about">About</Link>

@@ -3,7 +3,7 @@ import addButton from '../../assets/images/plus.png';
 import { Link } from 'react-router-dom';
 import '../../assets/css/helper.css';
 
-export function renderBusyTimes(config, retrieveRestaurantData) {
+export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) {
    
 //    const restaurantInput = config.restaurantType
 //    const position = config.position
@@ -15,7 +15,7 @@ export function renderBusyTimes(config, retrieveRestaurantData) {
     var retrieveRestaurantData = retrieveRestaurantData
 
 
-    console.log(config)
+    // console.log(config)
     var map;
     var service;
     var infowindow;
@@ -38,8 +38,8 @@ export function renderBusyTimes(config, retrieveRestaurantData) {
     //     }
     //     console.log("FLAG:", this.state)
     // }
-    showRestaurants(config, retrieveRestaurantData);
-    function showRestaurants(config, retrieveRestaurantData){
+    showRestaurants(config, retrieveRestaurantData, loadingDisplay);
+    function showRestaurants(config, retrieveRestaurantData, loadingDisplay){
         const restaurantInput = config.restaurantType
         const position = config.position
         const locations = config.locations
@@ -55,11 +55,11 @@ export function renderBusyTimes(config, retrieveRestaurantData) {
             // var long = results[0].geometry.location.lng();
             // locations.lat = lat;
             // locations.lng = long;
-            console.log("LOCATIONS", locations)
+            // console.log("LOCATIONS", locations)
             var latitude = locations.lat;
             var longitude = locations.lng;
             var centerLocation = new google.maps.LatLng(latitude, longitude);
-            console.log("COOORRDSSSS", latitude, longitude)
+            // console.log("COOORRDSSSS", latitude, longitude)
         }
         // var centerLocation = new google.maps.LatLng(latitude, longitude);
         // console.log(centerLocation)
@@ -78,25 +78,32 @@ export function renderBusyTimes(config, retrieveRestaurantData) {
             location: centerLocation,
             radius: '2000',
             type: ['restaurant'],
-            keyword: restaurantInput || ""
+            // keyword: restaurantInput || ""
+            keyword: "Yard House"
         }
         infowindow = new google.maps.InfoWindow();
         service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, (results, status) => {
-            restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation);
+            restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation, loadingDisplay);
         });
     }
-    function restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation) {
+    function restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation, loadingDisplay) {
         var bounds = new google.maps.LatLngBounds();
         retrieveRestaurantData(results, map, centerLocation);
 
         console.log('RESUlTS', results)
 
-        for (var i = 0; i < results.length; i++) {
-            var priceLevel = results[i].price_level
+        results = results.filter((restaurant) => {
+            return restaurant.price_level >= 2;
+        });
 
-            if (priceLevel >= 2) {
-                var placeId = String(results[i].place_id);
+        let loadCount = 0;
+
+        for (var i = 0; i < results.length; i++) {
+            // var priceLevel = results[i].price_level
+
+            // if (priceLevel >= 2) {
+                let placeId = String(results[i].place_id);
                 var place = results[i]
                 
                 // console.log("PLACEEEE:",place)
@@ -107,18 +114,21 @@ export function renderBusyTimes(config, retrieveRestaurantData) {
 
                     place_id: placeId,
                 }).then( (resp) => {
+                    loadCount++;
+     
                     // console.log("placeeeee:", resp)
-                    console.log('Phootooooooos:', photo)
+                    // console.log('Phootooooooos:', photo)
                     var date = new Date()
                     var day = date.getDay();
                     var time = (date.getHours()) - 6;
-                    var results = resp
-                    var busyHour = resp.data.data.week[day].hours[time].percentage
-                    var location = resp.data.data.location
+                    if (resp.data.data.status === 'ok') {
+                        var busyHour = resp.data.data.week[day].hours[time].percentage;
+                    }
+                    var location = resp.data.data.location;
                     // console.log(location)
                     // console.log(busyHour)
                     var config = {
-                        map, location, results, placeId, photo
+                        map, location, resp, placeId, photo
                     }
 
                     if (busyHour < 30) {
@@ -131,13 +141,17 @@ export function renderBusyTimes(config, retrieveRestaurantData) {
                         config.color = 'red';
                     }
                     createColoredMarker(config);
+                    console.warn("This is our current loadCount ", loadCount);
+                    if (loadCount === results.length) {
+                        loadingDisplay();
+                    }
                 });
-            }
+            // }
         }
     }
 
     function createColoredMarker(config) {
-        const { map,location, results, color, placeId, photo } = config;
+        const { map,location, resp, color, placeId, photo } = config;
 
         var iconUrl = null;
 
@@ -164,9 +178,9 @@ export function renderBusyTimes(config, retrieveRestaurantData) {
         });
         google.maps.event.addListener(marker, 'click', function() {
             // var photo = photo
-            console.log('photo', photo)
-            var name = results.data.data.name
-            var address = results.data.data.formatted_address
+            // console.log('photo', photo)
+            var name = resp.data.data.name
+            var address = resp.data.data.formatted_address
 
             infowindow.setContent(
                 '<div class="marker">' + 

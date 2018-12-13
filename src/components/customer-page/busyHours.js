@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export async function getRestaurantData(places, latLng, location) {
 
-    console.log("PROPSSSS:", location)
+    // console.log("PROPSSSS:", location)
     const resp = await axios.post('http://place.kim-chris.com/busy-hours', { place_id: places });
     var date = new Date()
     var day = date.getDay();
@@ -44,7 +44,7 @@ export async function getRestaurantData(places, latLng, location) {
     const long2 = latLng.lng();
 
     var origin1 = { lat: lat1, lng: long1 };
-    console.log("ORIGIN:", origin1)
+    // console.log("ORIGIN:", origin1)
     var destination1 = { lat: lat2, lng: long2 }
     var service = new google.maps.DistanceMatrixService();
 
@@ -67,7 +67,7 @@ export async function getRestaurantData(places, latLng, location) {
 
             var distance = response.rows[0].elements[0].distance.text
             restaurantData.distance = distance
-            console.log("DISTANCEEEEE:", distance)
+            // console.log("DISTANCEEEEE:", distance)
             resolve()
 
         }

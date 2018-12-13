@@ -59,9 +59,9 @@ class Navigation extends Component {
                         <li>
                             <Link to="/customer-map">Map</Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link to="/reservation-info">Check-In</Link>
-                        </li>
+                        </li> */}
                         <li>
                             <Link to="/about">About</Link>
                         </li>

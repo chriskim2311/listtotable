@@ -20,7 +20,7 @@ import CustomerPg from './customer-page';
 import Team from './team';
 import About from './about';
 import auth from '../hoc/auth';
-
+import CustomLocationForm from './customer-page/customLocationForm';
 
 
 
@@ -47,10 +47,9 @@ class App extends Component {
          
                 <Route path="/customer-map" component={CustomerPg} />
 
+                <Route path ="/custom-location" component={CustomLocationForm}/> 
 
-                {/* <div className="app">
-                    <Test/>
-                </div> */}
+                
             </React.Fragment>
 
         )

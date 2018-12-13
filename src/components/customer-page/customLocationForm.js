@@ -1,7 +1,11 @@
 import React, {Component, Fragment} from 'react';
+import { connect } from 'react-redux';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
+import Navigation from '../hamburgerAndBack'
+import { Link } from 'react-router-dom'
 
+import { setCurrentPosition } from '../../actions';
 
 class CustomLocationForm extends Component{
     constructor(props){
@@ -40,28 +44,45 @@ class CustomLocationForm extends Component{
         const address = this.state.cityLocation;
         const {retrieveRestaurantData, geolocationAttained} = this.props;
         // const location = {};
-        geocoder.geocode({'address': address}, function(results, status) {
-            const locations = {};
-            if (status === 'OK') {
+        // geocoder.geocode({'address': address}, function(results, status) {
+        //     const locations = {};
+        //     if (status === 'OK') {
 
-                // console.log("RESULTS", results)
-                var lat = results[0].geometry.location.lat();
-                var long = results[0].geometry.location.lng();
-                locations.lat = lat;
-                locations.lng = long;
-                // console.log(lat, long);
-                config= {locations}
-                config.locations = locations
-                // console.log(locations)
-                // console.log(config)
+        //         // console.log("RESULTS", results)
+        //         var lat = results[0].geometry.location.lat();
+        //         var long = results[0].geometry.location.lng();
+        //         locations.lat = lat;
+        //         locations.lng = long;
+        //         // console.log(lat, long);
+        //         config= {locations}
+        //         config.locations = locations
+        //         // console.log(locations)
+        //         // console.log(config)
+        //     // geolocationAttained(locations);
+        //     }
+        // });
 
-            geolocationAttained(locations);
-            }
-        });
+        geocoder.geocode({address}, this.geodudeResponse);
+
         this.setState({
             cityLocation: '',
         });
     };
+
+    geodudeResponse = (results, status) => {
+        const location = {};
+        
+        if (status === 'OK') {
+
+            // console.log("RESULTS", results)
+            var lat = results[0].geometry.location.lat();
+            var long = results[0].geometry.location.lng();
+            location.lat = lat;
+            location.lng = long;
+
+            this.props.setCurrentPosition(location);
+        }
+    }
 
     render(){
         
@@ -69,6 +90,7 @@ class CustomLocationForm extends Component{
         // console.log('info being changed', this.state);
         return (
             <Fragment>
+                <Navigation />
                 <div className="customLocationContainer container">
                     <form onSubmit={this.handleSubmit}>
                         <div className="row">
@@ -89,7 +111,7 @@ class CustomLocationForm extends Component{
                             className=" btn btn-large"
                             type="submit"
                             name="action"
-                        >SUBMIT</button>
+                        ><Link to="/customer-map">SUBMIT</Link></button>
                     </div>
                 </div>
             </Fragment>
@@ -97,4 +119,12 @@ class CustomLocationForm extends Component{
     }
 }
 
-export default CustomLocationForm;
+function mapStateToProps(state) {
+    return {
+        position: state.position.position
+    }
+}
+
+export default connect(mapStateToProps, {
+    setCurrentPosition
+})(CustomLocationForm);

@@ -265,3 +265,23 @@ export function sendCustomerText(sendData){
         }
     }
 }
+
+export function checkCurrentPosition() {
+    return {
+        type: types.CHECK_CURRENT_POSITION
+    }
+}
+
+export function setCurrentPosition(position) {
+    return {
+        type: types.SET_CURRENT_POSITION,
+        payload: position
+    }
+}
+
+export function getCurrentPosition() {
+    return {
+        type: types.GET_CURRENT_POSITION,
+        // payload: // TODO DO I NEED THIS?
+    }
+}

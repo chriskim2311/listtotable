@@ -50,13 +50,17 @@ export function userLogIn(partner){
             
 
             localStorage.setItem('token', resp.data.token);
+            
            
 
             const login = resp.data.success;
+           
 
             if (login) {
+                localStorage.setItem('restId',resp.data.restaurant_ID.restaurant_ID )
                 dispatch({
-                    type: types.LOG_IN
+                    type: types.LOG_IN,
+                    restaurant_ID: resp.data.restaurant_ID.restaurant_ID
                 })
             } else {
                 dispatch({
@@ -73,6 +77,7 @@ export function userLogIn(partner){
 
 export function userLogOut(){
     localStorage.removeItem('token');
+    localStorage.removeItem('restId');
 
     return {
         type: types.LOG_OUT
@@ -234,6 +239,7 @@ export function customerCheckIn(sendData) {
             });
             dispatch ({
                 // type: types.CHECK_IN,
+                
                 payload: resp
             })
         } catch(err) {

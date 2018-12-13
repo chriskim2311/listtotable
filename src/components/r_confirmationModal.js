@@ -11,12 +11,13 @@ class RConfirmationModal extends Component {
     };
 
     render(){
+        const restId= localStorage.getItem('restId')
         if(this.props.openConfirmation){
             return (
                 <div className="basic-modal" onClick={this.close}>
                     <div onClick={e => e.stopPropagation()} className="basic-modal-content">
-                        <Link to="/check-in"onClick={this.close} className="basic-modal-close">X</Link>
-                        <p>Thank you, your reservation is confirmed! There are 3 tables ahead of you.</p>
+                        <Link to={`/check-in/${restId}`}onClick={this.close} className="basic-modal-close">X</Link>
+                        <p>Thank you, your reservation is confirmed!</p>
                     </div>
                 </div>
             )

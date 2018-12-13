@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize';
 import '../assets/css/landingPage.css';
-import tfLogo from '../assets/images/logo.png';
+import logo from '../assets/images/list-to-table-logo-white.png';
 import { Link } from 'react-router-dom';
-
 import { checkCurrentPosition, setCurrentPosition } from '../actions';
 
 class LandingPage extends Component{
@@ -13,7 +14,6 @@ class LandingPage extends Component{
             currentLocation: '',
         }
     }
-
     componentDidMount() {
         // this.props.checkCurrentPosition();
         this.geolocation();
@@ -29,21 +29,33 @@ class LandingPage extends Component{
         x.innerHTML = "Geolocation is not supported by this browser.";
         }
     }
+
     render() {  
         // this.geolocation()
         const { set } = this.props;
         console.warn(set)
         return (
             <Fragment> 
-                <div className='tfContainer'>
-                    <div className="tf">List To Table</div>
+                <div className="landingPageContainer">
+                    <div className='logoContainer'>
+                        <img src={logo}/>
+                    </div>
+                    <div className='titleContainer'>
+                        <div className="title">List To Table</div>
+                    </div>
+                    <div className="buttonsContainer">
+                        <div className='buttonsBox'>
+                            <button className="restaurants-button btn btn-large waves-effect waves-light">
+                                <Link className ="restaurants" to="/login">restaurants</Link>
+                            </button>
+                            <button className="guests-button btn btn-large waves-effect waves-light">
+                                <Link className ="guests" to="{set ? "/customer-map" : "/custom-location"}">guests</Link>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="bottomSpacer">
+                    </div>
                 </div>
-                <div className='clientContainer'>
-                    <Link className ="client" id="customer" to={set ? "/customer-map" : "/custom-location"}>Customer</Link>
-                    <img className ="tfLogo" src={tfLogo}/>
-                    <Link className ="client" id="restaurant" to="/login">Restaurant</Link>
-                </div>
-                }
             </Fragment>
         )
     }

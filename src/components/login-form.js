@@ -10,6 +10,16 @@ class LogInForm extends Component {
         console.log('log in Values:', values);
         this.props.logIn(values);
     }
+
+    componentDidUpdate(){
+        const { history, restId } = this.props;
+
+        if(restId){
+            console.log('Redirect with rest id of:', restId);
+            history.push(`/waiting/${restId}`);
+        }
+    }
+
     render(){
 
     
@@ -58,8 +68,10 @@ LogInForm = reduxForm({
 })(LogInForm);
 
 function mapStateToProps(state){
+    console.log('Login State:', state);
     return{
-        logInError: state.partner.logInError
+        logInError: state.partner.logInError,
+        restId: state.partner.restaurant_ID
     }
 }
 

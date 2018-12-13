@@ -38,12 +38,12 @@ class App extends Component {
 
                 <Route path="/reservation-info/:name/:id" component={ReservationInfo}/>
 
-                <Route path="/login" component={auth(Login, '/waiting', false)}/>
-                <Route path="/waiting" component={auth(Waiting)}/>
-                <Route path="/check-in" component={auth(RCheckIn)}/>
-                <Route path="/seated" component={auth(Seated)}/>
+                <Route path="/login" component={Login}/>
+                <Route path="/waiting/:rest_id" component={auth(Waiting)}/>
+                <Route path="/check-in/:rest_id" component={auth(RCheckIn)}/>
+                <Route path="/seated/:rest_id" component={auth(Seated)}/>
                 <Route path="/signup" component={auth(SignUp, '/waiting', false)}/>
-                <Route path="/notified" component={auth(Notified)}/>
+                <Route path="/notified/:rest_id" component={auth(Notified)}/>
                 <Route path="/r_menu" component={RMenu}/>
                 <Route path="/about" component={About}/>
                 <Route path="/team" component={Team}/>

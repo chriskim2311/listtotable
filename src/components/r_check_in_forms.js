@@ -25,14 +25,13 @@ class RestaurantCheckInForm extends Component {
     }
 
     completeCheckIn = (values) =>{
+        const restId= localStorage.getItem('restId')
         const { enterName, phoneNumber, comments } = values 
         const sendData = { 
             client_name: enterName,
             phone_number: phoneNumber,
-            restaurant_id: 'ChIJleVgXPnn3IARUGDd-mGJHYw',
-            restaurant_name: 'Yard House',
-            wait_start: '2018-11-22 06:00:00',
-            wait_end: '2018-11-22 06:00:00',
+            restaurant_id: restId,
+            // restaurant_name: 'Yard House',
             table_size: this.props.tableSize,
             comments: comments,
             status: 'waiting'

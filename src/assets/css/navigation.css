@@ -6,7 +6,7 @@
 	align-items: center;
 	box-sizing: border-box;
 	padding: 0 0.9em;
-    background-color: #024771;
+    background-color: #3C4452;
     font-size: 1.4rem;
 }
 
@@ -23,7 +23,7 @@
 	display: flex;
 	justify-content: center;
 	flex-flow: column wrap;
-	background-color: #024771;
+	background-color: #3C4452;
 	border-radius: 50%;
 	transform: translate(100%, 0);
 	transition: transform 0.75s cubic-bezier(0.77, 0.2, 0.05, 1),

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import { getNotifiedListData, deleteListItem, changeSeatedStatus } from '../actions';
@@ -10,13 +10,17 @@ import "../assets/css/customer_info.css"
 
 class NotifiedCustomerInfo extends Component {
     componentDidMount() {
-
+        const restId= localStorage.getItem('restId')
         const notifiedObj = {
-            restaurant_id: 'ChIJleVgXPnn3IARUGDd-mGJHYw',
+            restaurant_id: restId,
             status: 2
         }
-        // console.log('data after componentdid mount', this.props)
-        this.props.notifiedListData(notifiedObj);
+        this.props.notifiedListData(notifiedObj)
+        
+        setInterval(()=>{
+            this.props.notifiedListData(notifiedObj)}, 40000
+        )
+        
     }
 
     convertTime(inputString) {
@@ -44,6 +48,12 @@ class NotifiedCustomerInfo extends Component {
     renderNotifiedListOnDom() {
         // console.log('+++++++++ props:', this.props)
         const notified = this.props.notified_list;
+        // const restId= localStorage.getItem('restId')
+        
+        //  const notifiedObj1 = {
+        //     restaurant_id: restId,
+        //     status: 2
+        // }
 
         // console.log('partys from server on customerinfo page',notified)
 
@@ -85,7 +95,7 @@ class NotifiedCustomerInfo extends Component {
                         {/* </div> */}
                         <div className=" col s2 center" >
 
-                            <button className="btn-small orange  waves-effect  waves" onClick={() => this.props.updatedSeated(ID)}> SEAT</button>
+                            <button className="btn-small orange  waves-effect  waves" onClick={() =>  this.props.updatedSeated(ID)}> SEAT</button>
                             {/* <img src={seat} /> */}
                             {/* <button onClick={() => this.props.updatedSeated(ID)} >seat</button> */}
 
@@ -126,17 +136,19 @@ class NotifiedCustomerInfo extends Component {
 
 
 function mapStateToProps(state) {
-    // console.log('Redux State:', state);
+    console.log('Redux State:', state);
 
     return {
         // waiting_list: state.waitingList.waitingList,
-        notified_list: state.waitingList.notifiedList
+        notified_list: state.waitingList.notifiedList,
+        restId: state.partner.restaurant_ID
     }
 }
 
 export default connect(mapStateToProps, {
     deleteListItem: deleteListItem,
     notifiedListData: getNotifiedListData,
-    updatedSeated: changeSeatedStatus
+    updatedSeated: changeSeatedStatus,
+    
 
 })(NotifiedCustomerInfo);

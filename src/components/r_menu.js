@@ -16,21 +16,25 @@ import { userLogOut } from '../actions';
 class RNavMenu extends Component{
     renderLinks = () => {
         const {auth, logOut} = this.props;
+        console.log("ITEMMMM",localStorage.getItem('restId'))
+
         if(auth){
+            const restId= localStorage.getItem('restId')
+           
             return(
                 <Fragment>
                     <li>
-                        <Link to="/waiting">Waiting</Link>
+                        <Link to={`/waiting/${restId}`}>Waiting</Link>
                     </li>
                     <li>
-                        <Link to="/notified">Notified</Link>
+                        <Link to={`/notified/${restId}`}>Notified</Link>
                     </li>
                     <li>
-                        <Link to="/seated">Seated</Link>
+                        <Link to={`/seated/${restId}`}>Seated</Link>
                     </li>
 
                     <li>
-                        <Link to="/check-in">Check-In</Link>
+                        <Link to={`/check-in/${restId}`}>Check-In</Link>
                     </li>
                     <li>
                         <button onClick={logOut} className="green btn">Log Out</button>
@@ -50,7 +54,7 @@ class RNavMenu extends Component{
         )
     }
     render(){
-        // console.log('user auth:', this.props.auth)
+        // console.log('user auth:', this.props)
         return (
             <Fragment>
                 <li>

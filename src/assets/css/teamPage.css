@@ -1,0 +1,44 @@
+.teamPage {
+    width: 100%;
+    height: 90%;
+}
+
+.teamHeader{
+    height: 15%;
+    background-color: rebeccapurple;
+}
+
+.teamMembers {
+    height: 85%; 
+}
+
+.individualRow {
+    display: flex; 
+    height: 25%; 
+}
+
+.photoIcon {
+    width: 40%; 
+    background-color: aquamarine;
+}
+
+.descriptionContainer {
+    width: 60%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+}
+
+.socialMediaIconContainer {
+    display: flex;
+    justify-content: center; 
+}
+
+.socialMediaIcon {
+    width: 10%; 
+}
+
+.socialMediaIcon > img {
+    width: 70%; 
+}

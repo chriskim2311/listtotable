@@ -12,7 +12,6 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
 
     showRestaurants(config, retrieveRestaurantData, loadingDisplay);
     function showRestaurants(config, retrieveRestaurantData, loadingDisplay) {
-        debugger
         const restaurantInput = config.restaurantType
         const position = config.position
         const locations = config.locations

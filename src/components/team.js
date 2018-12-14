@@ -1,10 +1,11 @@
 
 import React, { Component } from 'react';
 import Navigation from './hamburgerAndBack';
-import '../assets/css/teamPage.css';
+import '../assets/css/teampage.css';
 import portfolio from '../assets/images/socialMedia/portfolio.png';
 import github from '../assets/images/socialMedia/github.png'; 
 import linkedIn from '../assets/images/socialMedia/linkedIn.png';
+import andyP from '../assets/images/headshots/andyP.JPG';
 
 
 export default class Team extends Component {
@@ -17,7 +18,7 @@ export default class Team extends Component {
                 LinkedIn: 'https://www.linkedin.com/in/christopher-kim-71898949/',
                 Github: 'https://github.com/chriskim2311',
                 Portfolio: 'Kim-Chris.com',
-                Photo: '',
+                Photo: andyP,
             },
             {
                 Name: 'Andy Park',
@@ -25,7 +26,7 @@ export default class Team extends Component {
                 LinkedIn: 'https://www.linkedin.com/in/andypark105/',
                 Github: 'https://github.com/apark105',
                 Portfolio: 'andyjpark.com',
-                Photo: '',
+                Photo: andyP,
             },
             {
                 Name: 'Sasha Dykun',
@@ -33,7 +34,7 @@ export default class Team extends Component {
                 LinkedIn: 'https://www.linkedin.com/in/sasha-oleksandr-dykun-442b04171/',
                 Github: 'https://github.com/sashadykun',
                 Portfolio: 'http://sashadykun.com',
-                Photo: '',
+                Photo: andyP,
             },
             {
                 Name: 'Andrew Ouatu',
@@ -41,7 +42,7 @@ export default class Team extends Component {
                 LinkedIn: 'https://www.linkedin.com/in/andrew-ouatu-776774b4/',
                 Github: 'https://github.com/andrewouatu',
                 Portfolio: '',
-                Photo: '',
+                Photo: andyP,
             },
             {
                 Name: 'Michael Chu',
@@ -49,7 +50,7 @@ export default class Team extends Component {
                 LinkedIn: 'https://www.linkedin.com/in/michaeljchu/',
                 Github: 'https://github.com/mchu79',
                 Portfolio: '',
-                Photo: '',
+                Photo: andyP,
             },
             {
                 Name: 'Andy Ong',
@@ -57,16 +58,16 @@ export default class Team extends Component {
                 LinkedIn: 'https://www.linkedin.com/in/andy-ong/',
                 Github: 'github.com/Breathics',
                 Portfolio: '',
-                Photo: '',
+                Photo: andyP,
             },
         ]
         const individualRow = memberInfos.map((memberInfo) => {
             
-            const { Name, Title, LinkedIn, Github, Portfolio } = memberInfo
+            const { Name, Title, LinkedIn, Github, Portfolio, Photo } = memberInfo
             return (
                 <div className="individualRow">
                     <div className="photoIcon">
-                        some image
+                        <img src={Photo} alt=""/>
                     </div>
                     <div className="descriptionContainer">
                         <div className="individualName">{Name}</div>

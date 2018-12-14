@@ -45,10 +45,10 @@ class LandingPage extends Component{
                     </div>
                     <div className="buttonsContainer">
                         <div className='buttonsBox'>
-                            <button className="restaurants-button btn btn-large waves-effect waves-light">
+                            <button id="restaurants-button" className="btn btn-large waves-effect waves-light">
                                 <Link className ="restaurants" to="/login">restaurants</Link>
                             </button>
-                            <button className="guests-button btn btn-large waves-effect waves-light">
+                            <button id="guests-button" className="btn btn-large waves-effect waves-light">
                                 <Link className ="guests" to={set ? "/customer-map" : "/custom-location"}>guests</Link>
                             </button>
                         </div>

@@ -62,12 +62,12 @@ body{
      align-items: flex-end;
  }
 
-.restaurants-button{
+#restaurants-button{
     background-color: #EE6C4D;
     width: 45%;
 }
 
-.guests-button{
+#guests-button{
     background-color: #98C1D9;
     width: 45%;
 }

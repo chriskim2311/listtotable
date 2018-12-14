@@ -25,7 +25,7 @@ class ListView extends Component {
     }
 
     async buildRestaurantsList(results) {
-        const list = await Promise.all(results.map(async (current) => {
+        const list = await Promise.all(results.map(async (current, index) => {
 
             let price = current.price_level;
             const address = current.vicinity;
@@ -75,7 +75,7 @@ class ListView extends Component {
                         break;
                 }
                 return (
-                    <div className="restaurantBubble">
+                    <div key={index} className="restaurantBubble">
                         <div className="headerTitle">{name}</div>
                         <div className="bottomInfo">
                             <div className="timeInfo"><img src={iconUrl} /></div>

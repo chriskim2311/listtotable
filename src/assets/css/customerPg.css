@@ -45,7 +45,10 @@
     padding: 0;
 }
 
-.btn-small:hover .btn-small:focus {
+.btn-small:hover {
+    background-color:#3D5A80;
+} 
+.btn-small:focus {
     background-color:#3D5A80;
 }
 

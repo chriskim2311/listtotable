@@ -1,5 +1,6 @@
-.container {
-    overflow: auto
+.restaurantContainer {
+    height: 75%; 
+    background-color: #EFEFEF;  
 }
 .TopContainer {
     width: 100%;

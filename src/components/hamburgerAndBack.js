@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import "../assets/css/navigation.css";
 import { NavLink, withRouter, Link } from "react-router-dom";
+import logo from '../assets/images/list-to-table-logo-white.png';
 
 
 
@@ -35,11 +36,11 @@ class Navigation extends Component {
                         arrow_back
                         </i>
 
-
-
                 {this.props.location.pathname === "/" ? null : (<NavLink to="/">
-                    <div className="small-nav-title">LTT</div>
-                    {/* <h1 className="large-nav-title">List To Table</h1> */}
+                    <div className="small-nav-title">
+                        <img src={logo}/>
+                    </div>
+                     <h1 className="large-nav-title">List To Table</h1>
                 </NavLink>)}
 
 

@@ -111,7 +111,7 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
                 let photo = results[i]['photos'][0].getUrl()
                 
                 
-                axios.post('http://place.kim-chris.com/busy-hours', {
+                axios.post('https://place.kim-chris.com/busy-hours', {
 
                     place_id: placeId,
                 }).then( (resp) => {

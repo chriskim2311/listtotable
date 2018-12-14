@@ -3,7 +3,7 @@ import axios from 'axios';
 export async function getRestaurantData(places, latLng, location) {
 
     // console.log("PROPSSSS:", location)
-    const resp = await axios.post('http://place.kim-chris.com/busy-hours', { place_id: places });
+    const resp = await axios.post('https://place.kim-chris.com/busy-hours', { place_id: places });
     var date = new Date()
     var day = date.getDay();
     var time = (date.getHours()) - 6;

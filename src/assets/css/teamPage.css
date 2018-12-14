@@ -1,3 +1,4 @@
+
 .teamPage {
     width: 100%;
     height: 90%;
@@ -5,7 +6,11 @@
 
 .teamHeader{
     height: 15%;
-    background-color: rebeccapurple;
+    font-family: 'Special Elite', cursive;
+    font-size: 12vmin;
+    justify-content: center;
+    display: flex;
+    align-items: center;
 }
 
 .teamMembers {
@@ -19,7 +24,10 @@
 
 .photoIcon {
     width: 40%; 
-    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
 }
 
 .descriptionContainer {
@@ -32,7 +40,7 @@
 
 .socialMediaIconContainer {
     display: flex;
-    justify-content: center; 
+    justify-content: space-evenly; 
 }
 
 .socialMediaIcon {
@@ -40,5 +48,21 @@
 }
 
 .socialMediaIcon > img {
-    width: 70%; 
+    width: 90%; 
+}
+
+.individualName {
+    font-size: 5vmin;
+    font-weight: 800;
+}
+
+.individualTitle {
+    font-size: 5vmin;
+    font-style: italic;
+}
+
+.photoIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

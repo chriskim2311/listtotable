@@ -12,14 +12,6 @@ export default class Team extends Component {
     teamInfo = () => {
         const memberInfos = [
             {
-                Name: 'Andy Ong',
-                Title: 'Project Manager',
-                LinkedIn: 'https://www.linkedin.com/in/andy-ong/',
-                Github: '',
-                Email: '',
-                Photo: '',
-            },
-            {
                 Name: 'Chris Kim',
                 Title: 'Project Lead',
                 LinkedIn: 'https://www.linkedin.com/in/christopher-kim-71898949/',
@@ -58,7 +50,15 @@ export default class Team extends Component {
                 Github: '',
                 Email: '',
                 Photo: '',
-            }
+            },
+            {
+                Name: 'Andy Ong',
+                Title: 'Project Manager',
+                LinkedIn: 'https://www.linkedin.com/in/andy-ong/',
+                Github: '',
+                Email: '',
+                Photo: '',
+            },
         ]
         const individualRow = memberInfos.map((memberInfo) => {
             debugger

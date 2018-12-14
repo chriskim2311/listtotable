@@ -19,7 +19,7 @@ class NotifiedCustomerInfo extends Component {
 
         setInterval(() => {
             this.props.notifiedListData(notifiedObj)
-        }, 40000
+        }, 10000
         )
 
     }

@@ -134,7 +134,7 @@ export function changeNotifyStatus(restaurantName, ID, phone){
             ID: ID
             // status: 'notified'
         });
-        await axios.post('http://place.kim-chris.com/message/notify',{
+        await axios.post('https://place.kim-chris.com/message/notify',{
             restaurant: restaurantName,
             phone_number: phone 
         })

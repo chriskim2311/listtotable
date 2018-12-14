@@ -60,7 +60,7 @@ class CheckInForm extends Component{
             
         });
         
-        const placeResp =  axios.post('http://place.kim-chris.com/message/confirm',{
+        const placeResp =  axios.post('https://place.kim-chris.com/message/confirm',{
             restaurant: this.props.restaurantName,
             phone_number: this.state.clientNumber
         });

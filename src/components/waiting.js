@@ -12,8 +12,8 @@ class Waiting extends Component {
 
 
             <Fragment>
-            <div className="TopContainer">
             <RTopMenu />
+            <div className="TopContainer">
             <ListMenu />
             </div>
             <div className="bottomContainer">

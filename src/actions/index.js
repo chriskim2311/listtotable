@@ -255,7 +255,7 @@ export function sendCustomerText(sendData){
     return async function (dispatch) {
         try {
             const resp = await axios({
-                url: 'http://place.kim-chris.com/message/confirm',
+                url: 'https://place.kim-chris.com/message/confirm',
                 method: 'post',
                 data: {
                   restaurant: restaurant_name,

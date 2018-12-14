@@ -86,7 +86,7 @@ class ListView extends Component {
                                         <div className="distance"><span className="boldText">Distance: </span>{distance} </div>
                                     </div>
                                     <div className="icons">
-                                        <div className="dollarSigns">{price}</div>
+                                        <div className="dollarSignsContainer"><div className="dollarSigns">{price}</div></div>
                                         <Link to={`/reservation-info/${name}/${current.place_id}`} className="addButton">
                                             <img src={addButton} />
                                         </Link>

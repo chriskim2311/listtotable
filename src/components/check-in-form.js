@@ -145,9 +145,9 @@ class CheckInForm extends Component{
 
         return (
             <Fragment>
-                <div className="container">
+                <div className="restaurantContainer">
 
-                    <form onSubmit={this.handleSubmit}>
+                    <form className="formStyle" onSubmit={this.handleSubmit}>
                          <div className="row">
                              <div className="input-field col s10 center-align offset-s1">
                                  <input
@@ -175,7 +175,7 @@ class CheckInForm extends Component{
 
                     <div className="tableInfoContainer">
                         <button
-                            className="decrementButton"
+                            id="decrementButton"
                             onClick={() => this.handleDecrement()}
                         >
                             <img src={removeButton}/>
@@ -184,7 +184,7 @@ class CheckInForm extends Component{
                         <div className="tableInputBox">{this.state.clientGroupSize}</div>
 
                         <button
-                            className="incrementButton"
+                            id="incrementButton"
                             value={this.state.clientGroupSize}
                             onClick={() => this.handleIncrement()}
                         >
@@ -192,7 +192,7 @@ class CheckInForm extends Component{
                         </button>
                     </div>
 
-                    <div className="commentsContainer">
+                    <div id="commentsContainer">
                         <textarea
                             className="commentsBox"
                             placeholder="Comments"

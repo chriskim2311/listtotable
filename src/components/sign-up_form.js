@@ -19,15 +19,18 @@ class SignUpForm extends Component {
         var autocomplete = new google.maps.places.Autocomplete(input);
         var address= null
         autocomplete.addListener('place_changed', () => {
-        var place = autocomplete.getPlace();
-        address = place.place_id
-        this.setState({
-            restaurant_id: address
-        })
-        })
-        
+            var place = autocomplete.getPlace();
+            address = place.place_id
+            this.setState({
+                restaurant_id: address
+            })
+            
+        })    
        
     }
+
+    
+
     handleSignUp = (values) =>{
 
 

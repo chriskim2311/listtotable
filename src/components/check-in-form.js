@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 import '../assets/css/reservationInfo.css';
-import addButton from "../assets/images/addbutton.png";
+import addButton from "../assets/images/addbutton.svg";
 import removeButton from "../assets/images/removeButton.svg";
 import ConfirmationModal from "./confirmationModal";
 // import Axios from '../../../frontend/to-do-list/node_modules/axios';

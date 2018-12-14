@@ -10,10 +10,11 @@
 }
 
 .basic-modal-content {
-    background-color: white;
+    background-color: #3C4452;
+    color: white;
     border-radius: 20px;
     margin: auto;
-    padding: 25px;
+    padding: 10px;
     position: relative;
     width: 75%;
     height: 20%;
@@ -21,24 +22,20 @@
 }
 
 .basic-modal-content p{
-    font-size: 120%;
+    font-size: 5vmin;
 }
 
 .basic-modal-close {
     height: 30px;
     width: 30px;
-    line-height: 30px;
+    line-height: 13px;
     display: inline-block;
     position: absolute;
     top: 10px;
     right: 10px;
     border-radius: 50%;
     font-weight: bold;
-    color: #dedede;
+    color: #98C1D9;
     cursor: pointer;
-}
-
-.basic-modal-close:hover {
-    color: #ff0000;
-    background-color: #dedede;
+    font-size: 5vmin;
 }

@@ -32,8 +32,7 @@ class ConfirmationModal extends Component {
                 <div className="basic-modal" onClick={this.close}>
                     <div onClick={e => e.stopPropagation()} className="basic-modal-content">
                         <div onClick={this.close} className="basic-modal-close">X</div>
-                        <p>Thank you, <br/>
-                            your reservation is confirmed! There are {this.props.tablesAhead} tables ahead of you.</p>
+                        <p>Thank you, your reservation is confirmed! There are {this.props.tablesAhead} tables ahead of you.</p>
                     </div>
                 </div>
             )

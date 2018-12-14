@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import Navigation from './hamburgerAndBack';
-import '../assets/css/teampage.css';
+import '../assets/css/teamPage.css';
 import portfolio from '../assets/images/socialMedia/portfolio.png';
 import github from '../assets/images/socialMedia/github.png'; 
 import linkedIn from '../assets/images/socialMedia/linkedIn.png';

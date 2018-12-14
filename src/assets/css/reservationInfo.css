@@ -68,3 +68,28 @@
     top: 20%;
     left: 30%;
 }
+
+.btn, .btn-large, .btn-small {
+    text-decoration: none;
+    color: #fff;
+    background-color: #3D5A80;
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+}
+
+.btn:focus, .btn-large:focus, .btn-small:focus, .btn-floating:focus {
+    background-color: #3D5A80;
+}
+
+.btn:hover, .btn-large:hover, .btn-small:hover {
+    background-color: #3D5A80;
+}
+
+button:focus {
+    outline: none;
+    background-color: #3D5A80;
+}
+

@@ -5,7 +5,6 @@ import '../assets/css/reservationInfo.css';
 import addButton from "../assets/images/addbutton.svg";
 import removeButton from "../assets/images/removeButton.svg";
 import ConfirmationModal from "./confirmationModal";
-// import Axios from '../../../frontend/to-do-list/node_modules/axios';
 import axios from 'axios';
 
 class CheckInForm extends Component{
@@ -41,7 +40,6 @@ class CheckInForm extends Component{
             restaurant_name: this.props.restaurantName,
             table_size: this.state.clientGroupSize,
             comments:this.state.clientComments,
-            // wait_start: "",
             status: 1
         };
 
@@ -64,20 +62,15 @@ class CheckInForm extends Component{
             restaurant: this.props.restaurantName,
             phone_number: this.state.clientNumber
         });
-        console.log("SENT DATA:",tableResp);
-
 
         const response = await axios.post('/api/tablefinder.php?action=clients&method=getWaiting',
         {restaurant_id: this.props.restaurantID,
         status: 1
         });
 
-        console.log(response);
         if(response.data.success){
         const peopleAhead = response.data.clients.length;
         
-
-
         this.setState({
             clientName: '',
             clientNumber: '',
@@ -98,14 +91,7 @@ class CheckInForm extends Component{
             tablesAhead: peopleAhead
         });
     }
-        console.log("CHECKED INNNN:", placeResp);
-
-    
-    
     };
-//     handleSendData(dataToSend){
-
-// }
 
     modalReset = () =>{
         this.setState({
@@ -117,7 +103,6 @@ class CheckInForm extends Component{
             tablesAhead: null
         });
     };
-
 
     handleIncrement(){
         this.setState({
@@ -140,7 +125,6 @@ class CheckInForm extends Component{
     
 
     render (){
-        console.log('info being changed', this.state);
         const { dataSaved } = this.state;
 
         return (

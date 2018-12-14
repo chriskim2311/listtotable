@@ -11,22 +11,15 @@ class ListView extends Component {
         restaurants: null
     }
     async componentDidUpdate(prevProps) {
-        // console.log('========PREV PROPS=========', prevProps);
-        // console.log('========PROPS=========', this.props);
         const prevData = prevProps.retrieveRestaurantData;
         const data = this.props.retrieveRestaurantData;
-
-
         if ((!prevData && data) || ((prevData && data) && prevData.length !== data.length)) {
             const list = await this.buildRestaurantsList(data);
-
-            // console.log('LIST OF ELEMENTS:', list);
         }
     }
 
     async buildRestaurantsList(results) {
         const list = await Promise.all(results.map(async (current, index) => {
-
             let price = current.price_level;
             const address = current.vicinity;
             const name = current.name;
@@ -36,23 +29,20 @@ class ListView extends Component {
             const latLng = current.geometry.location;
 
             if (price >= 2) {
-                if ( price == 2) {
+                if (price == 2) {
                     price = '$$'
                 }
-                else if ( price == 3 ) {
+                else if (price == 3) {
                     price = '$$$'
                 }
                 else {
                     price = '$$$$'
                 }
                 const restaurantData = await getRestaurantData(places, latLng, location)
-
-                // console.log("HOURSSSS",busyHour)
                 const busyHour = restaurantData.busyHour
                 const distance = restaurantData.distance
                 var color = ''
                 var iconUrl = null;
-
 
                 if (busyHour < 30) {
                     color = 'green';
@@ -105,18 +95,13 @@ class ListView extends Component {
             return null;
         }));
 
-        // console.log('=======LIST========', list);
-
         this.setState({
             restaurants: list
         });
     }
 
     restaurantListRender() {
-
         const { restaurants } = this.state;
-
-
         var distanceCoords = []
         if (!restaurants) {
             return null;
@@ -129,17 +114,12 @@ class ListView extends Component {
     }
 
     render() {
-       
-
-
         return (
             <div className={`listBottomContainer ${this.props.list ? "" : "hidden"}`}>
                 {this.restaurantListRender()}
-
             </div>
         )
     }
-
 }
 
 export default ListView; 

@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios';
-
 import { renderBusyTimes } from './helpers';
 
 
@@ -12,53 +10,31 @@ class Geolocation extends Component {
         }
     }
 
-    // getLocation()
-    // componentDidUpdate(){
-    //     const { search, clearSearch } = this.props;
-    //     console.log("UPDATE")
-
-    //     if (search) {
-    //         renderBusyTimes(this.props.restaurantType, this.props.retrieveRestaurantData, clearSearch);
-
-    //     }
-    // }
     componentDidMount() {
-        // const position = this.props.postion;
-        // const restaurantType = this.state.restaurantType;
         const position = null;
         const restaurantType = null;
 
-        const config = {position, restaurantType}
+        const config = { position, restaurantType }
         config.position = this.props.position;
         config.restaurantType = this.state.restaurantType;
-        // config[this.props.retrieveRestaurantData] = this.props.retrieveRestaurantData
-        
-        // renderBusyTimes(restaurantType, this.props.retrieveRestaurantData, position);
-        
         renderBusyTimes(config, this.props.retrieveRestaurantData, this.props.loadingDisplay)
     }
 
-     componentDidUpdate(prevProps){
-         console.log('previous props', prevProps)
-         console.log('current props', this.props)
-         if (prevProps.position == '' && !!this.props.position) {
-             const config = {
-                 position: null, 
-                 restaurantType: null
-                }
-                config.position = this.props.position;
-                config.restaurantType = this.state.restaurantType;
-                
-                debugger;
-                renderBusyTimes(config, this.props.retrieveRestaurantData, this.props.loadingDisplay)
-         }
-        
+    componentDidUpdate(prevProps) {
+        if (prevProps.position == '' && !!this.props.position) {
+            const config = {
+                position: null,
+                restaurantType: null
+            }
+            config.position = this.props.position;
+            config.restaurantType = this.state.restaurantType;
+            renderBusyTimes(config, this.props.retrieveRestaurantData, this.props.loadingDisplay)
+        }
+
     }
     render() {
-        
-        // console.log("map props:", this.props)
         return (
-            <div id = "map" className={`mapBottomContainer ${this.props.map ? "" : "hidden"}`}></div>
+            <div id="map" className={`mapBottomContainer ${this.props.map ? "" : "hidden"}`}></div>
         )
     }
 }

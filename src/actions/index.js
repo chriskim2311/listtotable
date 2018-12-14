@@ -26,6 +26,7 @@ export function userSignUp(partner){
            
             if (resp) {
                 localStorage.setItem('restId', partner.restaurant_ID);
+                localStorage.setItem('token', resp.data.token);
                 dispatch({
                     type: types.SIGN_UP,
                     restaurant_ID: partner.restaurant_ID

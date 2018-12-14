@@ -10,9 +10,22 @@
     font-size: 1.4rem;
 }
 
-.small-nav-title { 
-	font-size: 12vmin;
+.active{
+	width: 35%;
+	display: flex;
+	justify-content: center;
 }
+
+.small-nav-title{
+	width: 55%;
+	display: flex;
+	align-items: center;
+}
+
+.small-nav-title img{
+	width: 100%;
+}
+
 
 .navbar ul {
 	position: fixed;

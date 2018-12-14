@@ -137,8 +137,8 @@ class CustomerPg extends Component {
             <Fragment>
             {/* {this.currentGeolocation()} */}
                 <div className='customerPage'>
+                    <Navigation />
                     <div className="topContainer">
-                        <Navigation />
                         <div className="foodSearchHeader">
                             <div className="foodSearchBar">
                                 <form onSubmit={this.handleSearchItem}>

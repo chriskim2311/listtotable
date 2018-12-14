@@ -15,8 +15,13 @@
     margin: auto;
     padding: 25px;
     position: relative;
-    width: 40%;
+    width: 75%;
+    height: 20%;
     z-index: 1;
+}
+
+.basic-modal-content p{
+    font-size: 120%;
 }
 
 .basic-modal-close {

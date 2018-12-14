@@ -35,13 +35,13 @@ class Seated extends Component {
 
             return (
                 <div key={index} className= "container"  >
-                    <div className="row #0d47a1 blue darken-2 z-depth-3">
+                    <div className="row #546e7a blue-grey darken-1">
                         <div className="col s1">
                             <p>{index + 1}</p>
                         </div>
                         <div className="col s6 ">
                             <ul>
-                                <li className= "white-text name " >Name: {name}</li>
+                                <li className= "white-text name " >{name}</li>
                                 <li className= "white-text table ">Table Size: {partyOf}</li>
                                 <li className= "white-text phone">Phone: {phone}</li>
                                 <li className= "white-text comments">Comments: {comments}</li>
@@ -55,7 +55,7 @@ class Seated extends Component {
 
                         <div className="  delete  " onClick={() => this.props.deleteListItem(ID) }>
                     
-                            <button className="small btn red waves-effect  waves" > <i className=" small material-icons">delete</i></button>
+                            <button className="small btn waves-effect  waves #e57373 red lighten-2" > <i className=" small material-icons">delete</i></button>
 
                         </div>
                     </div>

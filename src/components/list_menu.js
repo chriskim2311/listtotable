@@ -15,13 +15,13 @@ export default props => {
             <div className="row rListMenu">
            
                 <div className="col s4 center  ">
-                    <Link to={`/waiting/${restId}`} className="btn-small blue  ">WAITING</Link>
+                    <Link to={`/waiting/${restId}`} className="btn-small #b0bec5 blue-grey lighten-3">WAITING</Link>
                 </div>
                 <div className="col s4 center ">
-                    <Link to={`/notified/${restId}`} className="btn-small blue">NOTIFIED</Link>
+                    <Link to={`/notified/${restId}`} className="btn-small #78909c blue-grey lighten-1">NOTIFIED</Link>
                 </div>
                 <div className="col s4 center ">
-                    <Link  to={`/seated/${restId}`} className="btn-small blue">SEATED</Link>
+                    <Link  to={`/seated/${restId}`} className="btn-small #546e7a blue-grey darken-1">SEATED</Link>
                 </div>
                 {/* <div className="col s4 center ">
                     <Link to="/check-in" className="btn-small blue">CHECK-IN</Link>

@@ -28,7 +28,7 @@ class LogInForm extends Component {
             <Fragment>  
                 <form onSubmit={handleSubmit(this.handleLogIn)}>
                     <div className="row">
-                        <div className="col s6 offset-s3">
+                        <div className="col s8 offset-s2">
                             <Field name="email" label="Email" component={Input}/>  
                         </div>
                     </div>

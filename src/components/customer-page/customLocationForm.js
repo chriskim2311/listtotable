@@ -36,34 +36,11 @@ class CustomLocationForm extends Component{
 
     handleSubmit= (event) =>{
         var config= {}
-        // console.log("custom location props",this.props);
-        // console.log("STATE:", this.state)
-        // debugger;
         event.preventDefault();
         const geocoder = new google.maps.Geocoder();
         const address = this.state.cityLocation;
         const {retrieveRestaurantData, geolocationAttained} = this.props;
-        // const location = {};
-        // geocoder.geocode({'address': address}, function(results, status) {
-        //     const locations = {};
-        //     if (status === 'OK') {
-
-        //         // console.log("RESULTS", results)
-        //         var lat = results[0].geometry.location.lat();
-        //         var long = results[0].geometry.location.lng();
-        //         locations.lat = lat;
-        //         locations.lng = long;
-        //         // console.log(lat, long);
-        //         config= {locations}
-        //         config.locations = locations
-        //         // console.log(locations)
-        //         // console.log(config)
-        //     // geolocationAttained(locations);
-        //     }
-        // });
-
         geocoder.geocode({address}, this.geodudeResponse);
-
         this.setState({
             cityLocation: '',
         });
@@ -71,10 +48,7 @@ class CustomLocationForm extends Component{
 
     geodudeResponse = (results, status) => {
         const location = {};
-        
         if (status === 'OK') {
-
-            // console.log("RESULTS", results)
             var lat = results[0].geometry.location.lat();
             var long = results[0].geometry.location.lng();
             location.lat = lat;
@@ -86,8 +60,6 @@ class CustomLocationForm extends Component{
 
     render(){
         
-        // console.log("custom location props",this.props);
-        // console.log('info being changed', this.state);
         return (
             <Fragment>
                 <Navigation />

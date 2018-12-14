@@ -9,7 +9,7 @@
 .restaurantBubble {
     height: 50%;
     width: 100%;
-    border: #3C4452 1px groove;
+    border: #3C4452 2px groove;
 }
 
 .headerTitle {
@@ -41,18 +41,19 @@
 }
 
 .timeInfo {
-    width: 10%; 
+    width: 14%; 
+    height: 75%;
     display: flex;
     align-items: center; 
     justify-content: center;
 }
 
 .timeInfo > img {
-    width: 75%; 
+    width: 55%; 
 }
 
 .restaurantInfoContainer {
-    width: 90%;
+    width: 85%;
     height: 100%;
 }
 
@@ -84,11 +85,15 @@
     overflow: hidden;
 }
 
-.dollarSigns {
+.dollarSignsContainer {
     width: 80%;
+}
+
+.dollarSigns {
+    width: 95%;
     display: flex;
     justify-content: flex-end;
-    font-size: 4vmin;
+    font-size: 5vmin;
 }
 
 .addButton {

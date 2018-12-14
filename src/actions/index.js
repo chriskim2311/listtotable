@@ -25,6 +25,7 @@ export function userSignUp(partner){
             console.log('Sign up response:', partner.restaurant_ID)
            
             if (resp) {
+                localStorage.setItem('restId', partner.restaurant_ID);
                 dispatch({
                     type: types.SIGN_UP,
                     restaurant_ID: partner.restaurant_ID

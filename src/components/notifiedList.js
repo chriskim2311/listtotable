@@ -78,10 +78,10 @@ class NotifiedCustomerInfo extends Component {
 
                 <div key={index} className="container">
  
-                    <div className="row blue z-depth-3">
+                    <div className="row #78909c blue-grey lighten-1">
                     <div className="col s12">
-                <button className="btn-small orange  waves-effect  waves offset-s5 col s3" onClick={() => this.props.updatedSeated(ID)}> SEAT</button>
-                <button className="btn-small red  waves-effect  waves offset-s1 col s3 " onClick={() => this.props.deleteListItem(ID)}><i className=" small material-icons">delete</i></button>
+                <button className="btn-small waves-effect  waves offset-s5 col s3 #ffcc80 orange lighten-3" onClick={() => this.props.updatedSeated(ID)}> SEAT</button>
+                <button className="btn-small waves-effect  waves offset-s1 col s3 #e57373 red lighten-2" onClick={() => this.props.deleteListItem(ID)}><i className=" small material-icons">delete</i></button>
                 
                 
                 
@@ -91,7 +91,7 @@ class NotifiedCustomerInfo extends Component {
                         </div>
                         <div className="col s8">
                             <ul>
-                                <li className="white-text name " >Name: {name}</li>
+                                <li className="white-text name " >{name}</li>
                                 <li className="white-text table ">Table Size: {partyOf}</li>
                                 <li className="white-text phone">Phone: {phone}</li>
                                 <li className="white-text comments">Comments: {comments}</li>

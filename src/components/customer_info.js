@@ -155,12 +155,14 @@ class CustomerInfo extends Component {
 
             return (
                 <div key={index} >
-                    <div className="row blue darken-2 ">
+                    <div className="row #b0bec5 blue-grey lighten-3">
                     <div className="col s12">
-                    <button className="small btn waves-effect  waves offset-s1 col s3 center"
+                    <button className="small btn waves-effect  waves offset-s1 col s3 center #a5d6a7 green lighten-3"
                                 onClick={() => this.props.updateNotified(restaurantName, ID, phone)}>notify</button>
+
                      <button className="small btn orange waves-effect  waves offset-s1 col s3 center" onClick={() => this.props.updatedSeated(ID) }  >seat</button>
                     <button className="small btn red waves-effect  waves offset-s1 col s3 center" onClick={() => this.props.deleteListItem(ID) } > <i className=" small material-icons">delete</i></button>
+
                     
                     
                     </div>
@@ -171,7 +173,7 @@ class CustomerInfo extends Component {
                         </div>
                         <div className="col s8">
                             <ul>
-                            <li className= "white-text name " >Name: {name}</li>
+                            <li className= "white-text name " >{name}</li>
                                 <li className= "white-text table ">Table Size: {partyOf}</li>
                                 <li className= "white-text phone">Phone: {phone}</li>
                                 {/* <li className= "white-text comments">Comments: {comments}</li> */}

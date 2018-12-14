@@ -3,8 +3,6 @@ import "../assets/css/navigation.css";
 import { NavLink, withRouter, Link } from "react-router-dom";
 import logo from '../assets/images/list-to-table-logo-white.png';
 
-
-
 class Navigation extends Component {
     constructor(props) {
         super(props);

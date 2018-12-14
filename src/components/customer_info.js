@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
 
-import { getWaitingListData, changeNotifyStatus, deleteListItem, userLogIn } from '../actions';
+import { getWaitingListData, changeSeatedStatus, changeNotifyStatus, deleteListItem, userLogIn } from '../actions';
 
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
@@ -27,7 +27,7 @@ class CustomerInfo extends Component {
 
         
         setInterval(()=>{
-            this.props.waitingListData(waitingObj)}, 40000
+            this.props.waitingListData(waitingObj)}, 10000
         )
 
 
@@ -159,8 +159,10 @@ class CustomerInfo extends Component {
                     <div className="col s12">
                     <button className="small btn waves-effect  waves offset-s1 col s3 center #a5d6a7 green lighten-3"
                                 onClick={() => this.props.updateNotified(restaurantName, ID, phone)}>notify</button>
-                    <button className="small btn waves-effect  waves offset-s1 col s3 center #ffcc80 orange lighten-3" onClick={() => this.props.updatedSeated(ID) }  >seat</button>
-                    <button className="small btn waves-effect  waves offset-s1 col s3 center #e57373 red lighten-2" > <i className=" small material-icons">delete</i></button>
+
+                     <button className="small btn orange waves-effect  waves offset-s1 col s3 center" onClick={() => this.props.updatedSeated(ID) }  >seat</button>
+                    <button className="small btn red waves-effect  waves offset-s1 col s3 center" onClick={() => this.props.deleteListItem(ID) } > <i className=" small material-icons">delete</i></button>
+
                     
                     
                     </div>
@@ -247,7 +249,7 @@ export default connect(mapStateToProps, {
     waitingListData: getWaitingListData,
     // notifiedListData: getNotifiedListData,
     updateNotified: changeNotifyStatus,
-    // updatedSeated: changeSeatedStatus
+    updatedSeated: changeSeatedStatus
     
 
 

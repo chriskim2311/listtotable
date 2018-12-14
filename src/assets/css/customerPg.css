@@ -37,7 +37,7 @@
 }
 
 .search {
-    background-color: #053E66;
+    background-color: #3D5A80;
     color: white;
     width: 75%;
     height: 50%;
@@ -46,12 +46,12 @@
 }
 
 .btn-small:hover .btn-small:focus {
-    background-color:#053E66;
+    background-color:#3D5A80;
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly]) {
-    border-bottom: 1.5px solid #053E66;
-    box-shadow: 0 1px 0 0 #053E66;
+    border-bottom: 1.5px solid #3D5A80;
+    box-shadow: 0 1px 0 0 #3D5A80;
     margin: 0;
     padding: 0;
     color: black; 
@@ -101,12 +101,13 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
 .mapButton {
     width: 50%;
     height:100%;
-    background-color: black;
+    background-color: #3D5A80;
     color: white;
     border: black 1px solid; 
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 8px 0 0 8px;
 }
 .mapButton1 {
     width: 50%;
@@ -117,6 +118,8 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 8px 0 0 8px;
+
 }
 .listButton {
     width: 50%;
@@ -126,17 +129,20 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 0 8px 8px 0;
 }
 
 .listButton1  {
     width: 50%;
     height:100%;
-    background-color: black;
+    background-color: #3D5A80;
     color: white;
     border: black 1px solid; 
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 0 8px 8px 0;
+
 }
 
 a {
@@ -197,6 +203,8 @@ a {
     height: 100%;
     display: flex;
     align-items: center;
+    background-color: rgb(237 235 232);
+    overflow: scroll;
 }
 
 .loading-spinner {

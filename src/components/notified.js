@@ -9,8 +9,9 @@ class Notified extends Component {
     render() {
         return (
             <Fragment>
+                 <RTopMenu />
                 <div className="TopContainer">
-                    <RTopMenu />
+                   
                     <ListMenu />
                 </div>
                 <div className="bottomContainer">

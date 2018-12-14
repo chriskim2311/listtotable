@@ -149,44 +149,60 @@ class CustomerInfo extends Component {
             const ID = current.ID;
             const timeWhenAdded = current.wait_start;
             const waitTimeSinceAdded = this.convertTime(timeWhenAdded);
+            const comments = current.comments
             console.log("TIME SINCE ADDED:", waitTimeSinceAdded);
 
 
             return (
                 <div key={index} >
                     <div className="row blue darken-2 ">
+                    <div className="col s12">
+                    <button className="small btn waves-effect  waves offset-s1 col s3 center"
+                                onClick={() => this.props.updateNotified(restaurantName, ID, phone)}>notify</button>
+                     <button className="small btn orange waves-effect  waves offset-s1 col s3 center" onClick={() => this.props.updatedSeated(ID) }  >seat</button>
+                    <button className="small btn red waves-effect  waves offset-s1 col s3 center" > <i className=" small material-icons">delete</i></button>
+                    
+                    
+                    </div>
+
+                    <div className="row">
                         <div className="col s1">
                             <p>{index + 1}</p>
                         </div>
-                        <div className="col s3">
+                        <div className="col s8">
                             <ul>
-                                <li> {name}</li>
-                                <li>{partyOf}</li>
-                                <li>{phone}</li>
+                            <li className= "white-text name " >Name: {name}</li>
+                                <li className= "white-text table ">Table Size: {partyOf}</li>
+                                <li className= "white-text phone">Phone: {phone}</li>
+                                {/* <li className= "white-text comments">Comments: {comments}</li> */}
                             </ul>
                         </div>
-                        <div className=" col s3 ">
+                        {/* <div className= "offset-s3 col s4 white-text comments">Comments: {comments}</div> */}
+
+                        </div>
+                        {/* <div className=" col s3 ">
 
                             {/* <i className=" material-icons">send</i> */}
-                            <button className="small btn waves-effect  waves"
-                                onClick={() => this.props.updateNotified(restaurantName, ID, phone)}>notify</button>
+                            {/* <button className="small btn waves-effect  waves" */}
+                                {/* // onClick={() => this.props.updateNotified(restaurantName, ID, phone)}>notify</button> */}
 
 
-                        </div>
-                        <div className=" col s2">
+                        {/* </div> */}
+                        {/* <div className=" col s2"> */}
 
 
-                            <button className="small btn orange waves-effect  waves" onClick={() => this.props.updatedSeated(ID) }  >seat</button>
+                            {/* <button className="small btn orange waves-effect  waves" onClick={() => this.props.updatedSeated(ID) }  >seat</button> */}
                            
 
-                        </div>
-                        <div className="  col s3 right-align  " onClick={() => this.props.deleteListItem(ID) }>
+                        {/* </div> */}
+                        {/* <div className="  col s3 right-align  " onClick={() => this.props.deleteListItem(ID) }> */}
                             {/* <i className=" medium material-icons">delete</i> */}
-                            <button className="small btn red waves-effect  waves" > <i className=" small material-icons">delete</i></button>
+                            {/* <button className="small btn red waves-effect  waves" > <i className=" small material-icons">delete</i></button> */}
 
-                        </div>
+                        {/* </div>  */}
                         <div className="">
-                            <div className="col s12">
+                            <div className="col s12 white-text">
+                            <div className= "white-text comments">Comments: {comments}</div>
                                 Added {waitTimeSinceAdded} minutes ago
                             </div>
 

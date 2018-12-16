@@ -24,17 +24,14 @@ class SignUpForm extends Component {
             this.setState({
                 restaurant_id: address
             })
-            
+           
         })    
        
     }
 
     
 
-    handleSignUp = (values) =>{
-
-
-
+    handleSignUp = async (values) =>{
         const obj = {
             restaurant_ID: this.state.restaurant_id,
             email: values.email,
@@ -45,7 +42,9 @@ class SignUpForm extends Component {
         }
 
         console.log('Sign up', obj);
-        this.props.signUp(obj);
+        const restId = await this.props.signUp(obj);
+
+        this.props.history.push(`/waiting/${restId}`);
     }
     render(){
 

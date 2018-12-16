@@ -36,7 +36,7 @@ class App extends Component {
                 <Route path="/waiting/:rest_id" component={auth(Waiting)}/>
                 <Route path="/check-in/:rest_id" component={auth(RCheckIn)}/>
                 <Route path="/seated/:rest_id" component={auth(Seated)}/>
-                <Route path="/signup" component={auth(SignUp, `/waiting/${localStorage.getItem('restId')}`, false)}/>
+                <Route path="/signup" component={SignUp}/>
                 <Route path="/notified/:rest_id" component={auth(Notified)}/>
                 <Route path="/r_menu" component={RMenu}/>
                 <Route path="/about" component={About}/>

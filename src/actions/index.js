@@ -22,7 +22,7 @@ export function userSignUp(partner){
                 }
             });
 
-            console.log('Sign up response:', partner.restaurant_ID)
+            console.log('Sign up response:', resp);
            
             if (resp) {
                 localStorage.setItem('restId', partner.restaurant_ID);
@@ -31,6 +31,7 @@ export function userSignUp(partner){
                     type: types.SIGN_UP,
                     restaurant_ID: partner.restaurant_ID
                 })
+                return partner.restaurant_ID;
             } else {
                 dispatch({
                     type: types.SIGN_UP_ERROR,

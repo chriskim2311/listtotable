@@ -10,7 +10,7 @@ class SignUp extends Component {
         return(
             <Fragment>
                 <RTopMenu/>       
-                <SignUpForm />
+                <SignUpForm history={this.props.history} />
             </Fragment>
             
         );

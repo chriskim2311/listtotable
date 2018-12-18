@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import Input from './forms_input';
 import '../assets/css/sign_up.css';
 import { userSignUp } from '../actions';
-import Autocomplete from './auto_complete';
 
+ 
 
 class SignUpForm extends Component {
     state = {
@@ -52,17 +52,13 @@ class SignUpForm extends Component {
         return(
             <Fragment>
                 <form onSubmit={handleSubmit(this.handleSignUp)}>
-                    <div className="row sign_up_row">
-                        <Field name="businessName" size="s8 offset-s2" label="Business Name" component={Input}/>
-                    </div>
+                   
                     <div className="row sign_up_row">
                   
-
-
-
-                    {/* <input id= "address" className="input-field" placeholder="Business Address" size="s12"/> */}
-                    {/* <label>Business Address</label> */}
-                        <Field  name="businessAddress" label="Business Address" id = "address" size="s12" component={Autocomplete}/>
+                        <Field  name="address" label="" size="s12" component={Input}/>
+                    </div>
+                    <div className="row sign_up_row">
+                        <Field name="businessName" size="s8 offset-s2" label="Business Name" component={Input}/>
                     </div>
                     <div className="row sign_up_row">
                         <Field name="email" label="Business Email" size="s6 offset-s3" component={Input} />  
@@ -84,7 +80,7 @@ class SignUpForm extends Component {
 }
 
 function validate(values){
-    const { confirmPassword, email, password, phone, businessName, businessAddress} = values;
+    const { confirmPassword, email, password, businessName, address} = values;
     const error = {};
     
     if(!email){
@@ -95,8 +91,8 @@ function validate(values){
         error.businessName = 'Please enter Business Name'
     }
 
-    if(!businessAddress){
-        error.businessAddress = 'Please enter Business address'
+    if(!address){
+        error.address = 'Please input Restaurant Name and choose correct address'
     }
 
     if(!password){

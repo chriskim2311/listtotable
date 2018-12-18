@@ -10,20 +10,20 @@ import {customerCheckIn} from '../actions';
 import {sendCustomerText} from '../actions';
 import {managePopUp} from '../actions'
 import RConfirmationModal from "./r_confirmationModal"
-
+import Autocomplete from './auto_complete';
 
 class RestaurantCheckInForm extends Component {
-    renderInput = (props) => {
-        // console.log('render', props)
-        const {input, label, size} = props
-        return (
-            <div className={`input-field col ${size} center-align offset-s1`}>
-                <input {...input} type="text"/>
-                <label htmlFor="">{label}</label>
-            </div>
-        )
-    }
-
+    // renderInput = (props) => {
+    //     // console.log('render', props)
+    //     const {input, label, size} = props
+    //     return (
+    //         <div className={`input-field col ${size} center-align offset-s1`}>
+    //             <input {...input} type="text"/>
+    //             <label htmlFor="">{label}</label>
+    //         </div>
+    //     )
+    // }
+ 
     completeCheckIn = (values) =>{
         const restId= localStorage.getItem('restId')
         const { enterName, phoneNumber, comments } = values 

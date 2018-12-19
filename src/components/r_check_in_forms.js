@@ -10,31 +10,21 @@ import {customerCheckIn} from '../actions';
 import {sendCustomerText} from '../actions';
 import {managePopUp} from '../actions'
 import RConfirmationModal from "./r_confirmationModal"
-import Autocomplete from './auto_complete';
+import Input from './forms_input';
 
 class RestaurantCheckInForm extends Component {
-    // renderInput = (props) => {
-    //     // console.log('render', props)
-    //     const {input, label, size} = props
-    //     return (
-    //         <div className={`input-field col ${size} center-align offset-s1`}>
-    //             <input {...input} type="text"/>
-    //             <label htmlFor="">{label}</label>
-    //         </div>
-    //     )
-    // }
- 
+
     completeCheckIn = (values) =>{
         const restId= localStorage.getItem('restId')
-        const { enterName, phoneNumber, comments } = values 
+        const { enterName, phone, comments } = values 
         const sendData = { 
             client_name: enterName,
-            phone_number: phoneNumber,
+            phone_number: phone,
             restaurant_id: restId,
             // restaurant_name: 'Yard House',
             table_size: this.props.tableSize,
             comments: comments,
-            status: 'waiting'
+            status: 1
         }
         
         this.props.submitCheckIn(sendData)
@@ -46,15 +36,15 @@ class RestaurantCheckInForm extends Component {
 
 
     render(){
-        const { handleSubmit } = this.props
+        const { handleSubmit, signUpError } = this.props
         return (
             <div>
                 <form onSubmit={handleSubmit(this.completeCheckIn)} >
                     <div className="row">
-                        <Field name="enterName" size="s10" label="Enter Name" component={this.renderInput} />
+                        <Field name="enterName" size="s10" label="Enter Name" component={Input} />
                     </div>
                     <div className="row">
-                        <Field name="phoneNumber" size="s10" label="Phone Number" component={this.renderInput} />
+                        <Field name="phone" size="s10" label="Phone Number" component={Input} />
                     </div>
                     <div className="tableSizeTitle">Table Size</div>
                     <div className="tableInfoContainer">

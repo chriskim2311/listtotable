@@ -9,7 +9,8 @@ import { userSignUp } from '../actions';
 
 class SignUpForm extends Component {
     state = {
-        restaurant_id: null
+        restaurant_id: null,
+        restaurant_address: null
     }
 
 
@@ -17,12 +18,16 @@ class SignUpForm extends Component {
         // var address = null;
         var input = document.getElementById('address');
         var autocomplete = new google.maps.places.Autocomplete(input);
-        var address= null
+        var address= null;
+        var restaurant_address = null;
         autocomplete.addListener('place_changed', () => {
             var place = autocomplete.getPlace();
-            address = place.place_id
+            // console.log('PLASE:', place);
+            address = place.place_id;
+            restaurant_address = place.formatted_address;
             this.setState({
-                restaurant_id: address
+                restaurant_id: address,
+                restaurant_address: restaurant_address
             })
            
         })    
@@ -32,22 +37,23 @@ class SignUpForm extends Component {
     
 
     handleSignUp = async (values) =>{
+        // console.log('++++++++++++values+++++++++++', values)
         const obj = {
             restaurant_ID: this.state.restaurant_id,
             email: values.email,
             password: values.password,
             restaurant_name: values.businessName,
-            restaurant_address: values.businessAddress,
+            restaurant_address: this.state.restaurant_address,
             
         }
 
-        console.log('Sign up', obj);
+        // console.log('Sign up', obj);
         const restId = await this.props.signUp(obj);
 
         this.props.history.push(`/waiting/${restId}`);
     }
     render(){
-        console.log('sign up props ', this.props)
+        // console.log('sign up props ', this.props)
     const { handleSubmit, signUpError } = this.props
         return(
             <Fragment>

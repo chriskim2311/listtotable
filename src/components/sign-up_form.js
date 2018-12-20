@@ -47,7 +47,7 @@ class SignUpForm extends Component {
         this.props.history.push(`/waiting/${restId}`);
     }
     render(){
-
+        console.log('sign up props ', this.props)
     const { handleSubmit, signUpError } = this.props
         return(
             <Fragment>

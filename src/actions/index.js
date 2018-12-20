@@ -23,9 +23,10 @@ export function userSignUp(partner){
             });
 
             console.log('Sign up response:', resp);
-           
-            if (resp) {
+           const signUp = resp.data.success;
+            if (signUp) {
                 localStorage.setItem('restId', partner.restaurant_ID);
+                localStorage.setItem('restName', partner.restaurant_name);
                 localStorage.setItem('token', resp.data.token);
                 dispatch({
                     type: types.SIGN_UP,
@@ -45,7 +46,7 @@ export function userSignUp(partner){
 }
 
 export function userLogIn(partner){
-    console.log("user log in called:");
+    // console.log("user log in called:");
     return async function(dispatch){
         try{
             const resp =await axios.post('/api/tablefinder.php?action=restaurant_users&method=login', partner);
@@ -53,17 +54,19 @@ export function userLogIn(partner){
             
 
             localStorage.setItem('token', resp.data.token);
-            
            
-
             const login = resp.data.success;
            
 
             if (login) {
-                localStorage.setItem('restId',resp.data.restaurant_ID.restaurant_ID )
+                localStorage.setItem('restId', resp.data.restaurant_ID.restaurant_ID );
+                localStorage.setItem('restName', resp.data.restaurant_ID.restaurant_name);
+
+                
                 dispatch({
                     type: types.LOG_IN,
-                    restaurant_ID: resp.data.restaurant_ID.restaurant_ID
+                    restaurant_ID: resp.data.restaurant_ID.restaurant_ID,
+                    restaurant_name: resp.data.restaurant_ID.restaurant_name
                 })
             } else {
                 dispatch({
@@ -81,6 +84,7 @@ export function userLogIn(partner){
 export function userLogOut(){
     localStorage.removeItem('token');
     localStorage.removeItem('restId');
+    localStorage.removeItem('restName');
 
     return {
         type: types.LOG_OUT

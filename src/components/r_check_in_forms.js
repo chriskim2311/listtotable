@@ -15,13 +15,15 @@ import Input from './forms_input';
 class RestaurantCheckInForm extends Component {
 
     completeCheckIn = (values) =>{
-        const restId= localStorage.getItem('restId')
+        const restId= localStorage.getItem('restId');
+        const restName= localStorage.getItem('restName');
+        
         const { enterName, phone, comments } = values 
         const sendData = { 
             client_name: enterName,
             phone_number: phone,
             restaurant_id: restId,
-            // restaurant_name: 'Yard House',
+            restaurant_name: restName,
             table_size: this.props.tableSize,
             comments: comments,
             status: 1
@@ -36,7 +38,7 @@ class RestaurantCheckInForm extends Component {
 
 
     render(){
-        const { handleSubmit, signUpError } = this.props
+        const { handleSubmit, error } = this.props
         return (
             <div>
                 <form onSubmit={handleSubmit(this.completeCheckIn)} >
@@ -69,7 +71,7 @@ class RestaurantCheckInForm extends Component {
                         </div>
                     </div>
                     <div className="col s6 center">
-                        <button onClick={handleSubmit(this.completeCheckIn)}className="btn blue">Submit</button>
+                        <button type="submit" className="btn waves-effect waves-light blue darken-3">Submit</button>
                         <RConfirmationModal/>
                     </div>
                 </form>
@@ -86,7 +88,9 @@ RestaurantCheckInForm = reduxForm({
 (RestaurantCheckInForm); 
 
 function mapStateToProps(state) {
+    console.log('state from mapstateto props:', state)
     return {
+
         tableSize: state.customer.table_size,
     }
 }

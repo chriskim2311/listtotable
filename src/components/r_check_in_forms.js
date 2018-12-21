@@ -80,10 +80,27 @@ class RestaurantCheckInForm extends Component {
     }
 }
 
+function validate(values){
+    const {enterName, phone} = values;
+    const error =[];
 
+    const phoneRegex =/^(1*)[ -]*([0-9]{3})([ -]*)([0-9]{3})([ -]*)([0-9]{4})$|^[(]([0-9]{3})[)]([ -]*)([0-9]{3})([ -]*)([0-9]{4})$/;
+
+    if(!enterName){
+        error.enterName = 'Please enter your name';
+    }
+
+    if(!phone){
+        error.phone = 'Please enter Phone number';
+    } else if(!phoneRegex.test(phone)){
+        error.phone = 'Please enter 10 digits phone number starting with area cod';
+    }
+    return error;
+}
 
 RestaurantCheckInForm = reduxForm({
-    form: 'check-in'
+    form: 'check-in',
+    validate: validate
 })
 (RestaurantCheckInForm); 
 
@@ -92,6 +109,7 @@ function mapStateToProps(state) {
     return {
 
         tableSize: state.customer.table_size,
+        
     }
 }
 

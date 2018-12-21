@@ -1,0 +1,14 @@
+.not-found-container {
+    display: flex;
+    height: calc(100vh - 64px);
+
+   
+}
+.not-found-container > div {
+    margin: auto;
+    text-align: center;
+}
+
+.not-found-body i {
+    font-size: 3em;
+}

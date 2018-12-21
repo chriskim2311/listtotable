@@ -67,7 +67,7 @@ class SignUpForm extends Component {
                         <Field name="businessName" size="s8 offset-s2" label="Business Name" component={Input}/>
                     </div>
                     <div className="row sign_up_row">
-                        <Field name="email" label="Business Email" size="s6 offset-s3" component={Input} />  
+                        <Field type="email" name="email" label="Business Email" size="s6 offset-s3" component={Input} />  
                     </div> 
                     <div className="row sign_up_row">
                         <Field name="password" label="Create Password" type="password" size="s6" component={Input}/>
@@ -89,8 +89,12 @@ function validate(values){
     const { confirmPassword, email, password, businessName, address} = values;
     const error = {};
     
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
     if(!email){
         error.email = 'Please enter Your email'
+    } else if (!emailRegex.test(email)){
+        error.email = 'Please enter a valid email';
     }
    
     if(!businessName){

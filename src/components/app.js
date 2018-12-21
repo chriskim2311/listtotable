@@ -5,7 +5,7 @@ import Test from './test';
 import LandingPage from './landingPage';
 import '../assets/css/landingPage.css';
 import tfLogo from '../assets/images/logo.png';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import ReservationInfo from "./reservationInfo";
 import Login from './login';
 import ListMenu from './list_menu';
@@ -20,7 +20,7 @@ import About from './about';
 import auth from '../hoc/auth';
 import CustomLocationForm from './customer-page/customLocationForm';
 import Notified from './notified'
-
+import NotFound from './404/'
 
 
 
@@ -28,7 +28,7 @@ import Notified from './notified'
 class App extends Component {
     render() {
         return (
-            <React.Fragment>
+            <Switch>
 
                 <Route exact path="/" component={LandingPage} />
                 <Route path="/reservation-info/:name/:id" component={ReservationInfo}/>
@@ -43,8 +43,9 @@ class App extends Component {
                 <Route path="/team" component={Team}/>
                 <Route path="/customer-map" component={CustomerPg} />
                 <Route path ="/custom-location" component={CustomLocationForm}/> 
+                <Route component={NotFound}/>
 
-            </React.Fragment>
+            </Switch>
 
         )
     }

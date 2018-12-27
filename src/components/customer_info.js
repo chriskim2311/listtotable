@@ -152,6 +152,8 @@ class CustomerInfo extends Component {
             const comments = current.comments
             console.log("TIME SINCE ADDED:", waitTimeSinceAdded);
 
+            console.log("PHONEEEEEE", current)
+
 
             return (
                 <div key={index} >

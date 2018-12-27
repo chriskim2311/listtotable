@@ -1,6 +1,28 @@
 import types from './types';
 import axios from 'axios';
 
+export const checkAuth = () => async dispatch => {
+    try {
+        const resp = await axios.get('/api/auth.php');
+
+        // console.log('Check Auth Resp:', resp);
+
+        if(resp.data.auth){
+            dispatch({
+                type: types.AUTH_CONFIRM,
+                restaurant_ID: resp.data.restaurant_ID
+            });
+        } else {
+            dispatch({
+                type: types.AUTH_FAILURE
+            });
+        }
+
+    } catch(err){
+        // console.log('Check Auth Error:', err);
+    }
+}
+
 
 
 export function userSignUp(partner){
@@ -22,7 +44,7 @@ export function userSignUp(partner){
                 }
             });
 
-            console.log('Sign up response:', resp);
+            // console.log('Sign up response:', resp);
            const signUp = resp.data.success;
             if (signUp) {
                 localStorage.setItem('restId', partner.restaurant_ID);
@@ -40,7 +62,7 @@ export function userSignUp(partner){
                 });
             };
         } catch(err){
-            console.log("Server Error");
+            // console.log("Server Error");
         }
     }
 }
@@ -50,7 +72,7 @@ export function userLogIn(partner){
     return async function(dispatch){
         try{
             const resp =await axios.post('/api/tablefinder.php?action=restaurant_users&method=login', partner);
-            console.log('Sign in Response', resp);
+            // console.log('Sign in Response', resp);
             
 
             localStorage.setItem('token', resp.data.token);
@@ -76,7 +98,7 @@ export function userLogIn(partner){
                })
             }
         } catch(err){
-            console.log("Server error");
+            // console.log("Server error");
         }   
     }
 }
@@ -95,7 +117,7 @@ export function getWaitingListData(param){
     return async function(dispatch){
         const resp = await axios.post('/api/tablefinder.php?action=clients&method=getWaiting', param);
         
-        console.log('server resp after api call', resp);
+        // console.log('server resp after api call', resp);
         
         dispatch({
             type: types.GET_WAITING_LIST_DATA,
@@ -108,7 +130,7 @@ export function getSeatedListData(param){
     return async function(dispatch){
         const resp = await axios.post('/api/tablefinder.php?action=clients&method=getSeated', param);
         
-        console.log('Seated call response', resp);
+        // console.log('Seated call response', resp);
         
         dispatch({
             type: types.GET_SEATED_LIST_DATA,
@@ -123,7 +145,7 @@ export function getNotifiedListData(param){
     return async function(dispatch){
         const resp = await axios.post('/api/tablefinder.php?action=clients&method=getNotified', param);
         
-        console.log('Notified call response:', resp);
+        // console.log('Notified call response:', resp);
         
         dispatch({
             type: types.GET_NOTIFIED_LIST_DATA,
@@ -135,7 +157,7 @@ export function getNotifiedListData(param){
 
 export function changeNotifyStatus(restaurantName, ID, phone){
     return async function(dispatch){
-        console.log("PHONEEEE", phone)
+        // console.log("PHONEEEE", phone)
         const resp = await axios.post('/api/tablefinder.php?action=clients&method=updateWaiting', 
         {
             ID: ID
@@ -146,7 +168,7 @@ export function changeNotifyStatus(restaurantName, ID, phone){
             phone_number: phone 
         })
         
-        console.log(' UPDATE Notified call response:', resp);
+        // console.log(' UPDATE Notified call response:', resp);
         
         dispatch({
             type: types.UPDATE_NOTIFIED_LIST_DATA,
@@ -178,7 +200,7 @@ export function changeSeatedStatus( ID){
 //         dispatch({
 
 export function deleteListItem(ID) {
-    console.log("DELETE PHONE #: ", ID);
+    // console.log("DELETE PHONE #: ", ID);
     return async function(dispatch) {
         const resp = await axios.post('/api/tablefinder.php?action=clients&method=delete', 
         {
@@ -250,15 +272,15 @@ export function customerCheckIn(sendData) {
                 payload: resp
             })
         } catch(err) {
-            console.log('Axios server error');
+            // console.log('Axios server error');
         }
     }
 }
 
 export function sendCustomerText(sendData){
-    console.log('send text', sendData)
+    // console.log('send text', sendData)
     const {phone_number, restaurant_name} = sendData
-    console.log(phone_number, restaurant_name)
+    // console.log(phone_number, restaurant_name)
     return async function (dispatch) {
         try {
             const resp = await axios({
@@ -274,7 +296,7 @@ export function sendCustomerText(sendData){
                 payload: resp 
             })
         } catch(err) {
-            console.log('customer text error', err)
+            // console.log('customer text error', err)
         }
     }
 }

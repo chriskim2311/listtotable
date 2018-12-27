@@ -7,14 +7,19 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
 import think from './middleware/think';
 import types from './actions/types';
+import { checkAuth } from './actions';
 
 
 const store = createStore(rootReducer, {}, applyMiddleware(think));
 
-if(localStorage.getItem('token')){
+
+
+if(document.cookie.match(/PHPSESSID/)){
     store.dispatch({
         type: types.LOG_IN
     })
+
+    checkAuth()(store.dispatch);
 }
 
 ReactDOM.render(

@@ -26,9 +26,9 @@ class CustomerInfo extends Component {
        
 
         
-        setInterval(()=>{
-            this.props.waitingListData(waitingObj)}, 10000
-        )
+        // setInterval(()=>{
+        //     this.props.waitingListData(waitingObj)}, 10000
+        // )
 
 
 

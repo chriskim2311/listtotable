@@ -37,7 +37,7 @@ class SignUpForm extends Component {
     
 
     handleSignUp = async (values) =>{
-        // console.log('++++++++++++values+++++++++++', values)
+        console.log('++++++++++++values+++++++++++', values)
         const obj = {
             restaurant_ID: this.state.restaurant_id,
             email: values.email,

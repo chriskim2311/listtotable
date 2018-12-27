@@ -1,4 +1,6 @@
 export default {
+    AUTH_CONFIRM: 'auth_confirm',
+    AUTH_FAILURE: 'auth_failure',
     CHECK_CURRENT_POSITION: 'check_current_position',
     GET_CURRENT_POSITION: 'get_current_position',
     GET_WAITING_LIST_DATA: 'get_waiting_list_data',

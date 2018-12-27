@@ -9,8 +9,8 @@ const DEFAULT_STATE = {
 
 export default (state = DEFAULT_STATE, action) => {
     switch(action.type){
-        case types.LOG_IN: 
-             
+        case types.AUTH_CONFIRM:
+        case types.LOG_IN:      
         case types.SIGN_UP:
             console.log(action)
             return{ auth: true, restaurant_ID: action.restaurant_ID };;
@@ -20,6 +20,8 @@ export default (state = DEFAULT_STATE, action) => {
             return{ auth: false, logInError: action.error, signUpError: ''};
         case types.SIGN_UP_ERROR:
             return{ ...DEFAULT_STATE, signUpError: action.error};
+        case types.AUTH_FAILURE:
+            return {...DEFAULT_STATE};
         default:
         return state;
     }

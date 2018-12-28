@@ -10,7 +10,6 @@ $output = [
 
 $action = $_GET['action'];
 
-
 switch($action) {
     case 'restaurants':
         require_once('restaurants/index.php');

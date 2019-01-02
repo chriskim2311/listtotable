@@ -12,6 +12,7 @@ class LandingPage extends Component{
         super(props);
         this.state = {
             currentLocation: '',
+            loadSpinner: false
         }
     }
     componentDidMount() {
@@ -20,19 +21,33 @@ class LandingPage extends Component{
     }
 
    geolocation = () => {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            this.props.setCurrentPosition(position)     
-        })
-    }
-     else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                this.props.setCurrentPosition(position) 
+            })
         }
+        else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        if ( this.props.set == true ) {
+            this.loadSpinner(); 
+        }
+        else {
+            this.loadSpinner(); 
+        }
+    }
+    loadSpinner = () => {
+        setTimeout(() => {
+            this.setState({
+                loadSpinner: true
+            })
+        }, 4000);
     }
 
     render() {  
         // this.geolocation()
         const { set } = this.props;
+        const { loadSpinner } = this.state; 
         console.warn(set)
         return (
             <Fragment> 
@@ -49,6 +64,11 @@ class LandingPage extends Component{
                                 <Link className ="restaurants" to="/login">restaurants</Link>
                             </button>
                             <button id="guests-button" className="btn btn-large waves-effect waves-light">
+                                <div className={ loadSpinner ? "hideSpinner" : "spinner"}>
+                                    <div className={ loadSpinner ? "hideSpinner" : "bounce1"}></div>
+                                    <div className={ loadSpinner ? "hideSpinner" : "bounce2"}></div>
+                                    <div className={ loadSpinner ? "hideSpinner" : "bounce3"}></div>
+                                </div>
                                 <Link className ="guests" to={set ? "/customer-map" : "/custom-location"}>guests</Link>
                             </button>
                         </div>

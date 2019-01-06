@@ -111,3 +111,95 @@ button:focus {
     background-color: #3D5A80;
 }
 
+/* Desktops */
+@media (min-width: 1281px) {
+    
+}
+
+/* Laptops/Desktops */
+@media (min-width: 1025px) and (max-width: 1280px) {
+   
+}
+
+/* Tablets, Ipads, Portrait */
+@media (min-width: 768px) /*and (max-width: 1024px)*/ {
+    #incrementButton{
+        display: inline-block;
+        width: 150px;
+        height: 80%;
+        vertical-align: top;
+        position: relative;
+        background-color: #EFEFEF;
+        border: none;
+    }
+    #decrementButton{
+        display: inline-block;
+        width: 150px;
+        height: 80%;
+        position: relative;
+        background-color: #EFEFEF;
+        border: none;
+    }
+    .tableInputBox {
+        display: inline-block;
+        width: 300px;
+        vertical-align: top;
+        text-align: center;
+        font-size: 9vmin;
+        border: solid 1px black;
+        border-radius: 15px;
+    }
+    .tableSizeTitle {
+        text-align: center;
+        font-size: 5vmin;
+    }
+    #decrementButton img{
+        position: relative;
+        width: 50px;
+    }
+    #incrementButton img{
+        position: relative;
+        width: 50px;
+    }
+}
+
+@media (min-width: 571px) and (max-width: 767px) {
+    .tableInputBox {
+        display: inline-block;
+        width: 225px;
+        vertical-align: top;
+        text-align: center;
+        font-size: 9vmin;
+        border: solid 1px black;
+        border-radius: 15px;
+    }
+    #incrementButton{
+        display: inline-block;
+        width: 150px;
+        height: 80%;
+        vertical-align: top;
+        position: relative;
+        background-color: #EFEFEF;
+        border: none;
+    }
+    #decrementButton{
+        display: inline-block;
+        width: 150px;
+        height: 80%;
+        position: relative;
+        background-color: #EFEFEF;
+        border: none;
+    }
+    .tableSizeTitle {
+        text-align: center;
+        font-size: 5vmin;
+    }
+    #decrementButton img{
+        position: relative;
+        width: 50px;
+    }
+    #incrementButton img{
+        position: relative;
+        width: 50px;
+    }
+}

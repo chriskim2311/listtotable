@@ -135,3 +135,39 @@ body{
       transform: scale(1.0);
     }
   }
+
+  .headContainer {
+      width: 100%; 
+      height: 24%;
+      position: relative;
+  }
+
+.divLogo {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+}
+
+.divLogo > img {
+    width: 50%;
+}
+
+.navigationHeader {
+    width: 100%;
+    height: 50%;
+    background-color: #3C4452;
+}
+.titleLogo {
+    height:50%; 
+    background-color: blue;
+}
+
+.detailContainer {
+    width: 100%;
+    height: 76%;
+    background-color:white;
+}
+
+.nav-wrapper {
+    line-height: 86px;
+}

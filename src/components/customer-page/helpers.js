@@ -16,18 +16,33 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
         const position = config.position
         const locations = config.locations
 
+        console.log("1",position,"2", locations)
+
+if(position == 0 && locations == undefined){ 
+        var latitude = localStorage.getItem('latitude')
+        var longitude = localStorage.getItem('longitude')
+        console.log(latitude,longitude)
+        var centerLocation = new google.maps.LatLng(latitude, longitude);
+        console.log("THE CENTER", centerLocation)
+}
+
         if (position) {
             var latitude = position.lat || position.coords.latitude;
             var longitude = position.lng || position.coords.longitude;
+            console.log(latitude,longitude)
+
             var centerLocation = new google.maps.LatLng(latitude, longitude);
         }
 
         if (locations) {
             var latitude = locations.lat;
             var longitude = locations.lng;
+            console.log(latitude,longitude)
             var centerLocation = new google.maps.LatLng(latitude, longitude);
 
         }
+
+    
 
         map = new google.maps.Map(document.getElementById('map'), {
             center: { lat: latitude, lng: longitude },
@@ -45,12 +60,14 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
             type: ['restaurant'],
             keyword: restaurantInput || ""
         }
+        console.log(request)
         infowindow = new google.maps.InfoWindow();
         service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, (results, status) => {
             restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation, loadingDisplay);
         });
     }
+    
     function restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation, loadingDisplay) {
         var bounds = new google.maps.LatLngBounds();
         retrieveRestaurantData(results, map, centerLocation);

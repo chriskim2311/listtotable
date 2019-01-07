@@ -23,6 +23,9 @@ class LandingPage extends Component{
    geolocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
+                console.log(position)
+                localStorage.setItem("latitude", position.coords.latitude)
+                localStorage.setItem("longitude", position.coords.longitude)
                 this.props.setCurrentPosition(position) 
             })
         }

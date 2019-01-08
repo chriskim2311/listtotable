@@ -7,6 +7,7 @@ import logo from '../assets/images/list-to-table-logo-white.png';
 import { Link } from 'react-router-dom';
 import { checkCurrentPosition, setCurrentPosition } from '../actions';
 import Media from 'react-media';
+import guestStack from '../assets/images/guestStack.png'
 
 class LandingPage extends Component{
     constructor(props) {
@@ -80,9 +81,38 @@ class LandingPage extends Component{
                                                 </ul>
                                             </div>
                                         </nav>
-                                        <div className="titleLogo"></div>    
                                     </div>
-                                    <div className="detailContainer"></div>
+                                    <div className="detailContainer">
+                                        <div className="appInfo">
+                                            <div className="appTitle">
+                                                List To Table
+                                            </div>
+                                            <div className="appDetailsCont">
+                                                <div className="appDetails">
+                                                    An Application that is built for those who no longer want to wait in line and check-in remotely! 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="appImg">
+                                            <img src={guestStack} alt=""/>
+                                        </div>
+                                    </div>
+                                    <div className="startCont">Let's Get Started</div>
+                                    <div className="guestRestButton">
+                                        <div className="buttonsBox">
+                                            <button id="restaurants-button" className="btn btn-large waves-effect waves-light">
+                                                <Link className ="restaurants" to="/login">restaurants</Link>
+                                            </button>
+                                            <button id="guests-button" className="btn btn-large waves-effect waves-light">
+                                                <div className={ loadSpinner ? "hideSpinner" : "spinner"}>
+                                                    <div className={ loadSpinner ? "hideSpinner" : "bounce1"}></div>
+                                                    <div className={ loadSpinner ? "hideSpinner" : "bounce2"}></div>
+                                                    <div className={ loadSpinner ? "hideSpinner" : "bounce3"}></div>
+                                                </div>
+                                                <Link className ="guests" to={set ? "/customer-map" : "/custom-location"}>guests</Link>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </Fragment>
                             ) : (
                                 <Fragment>

@@ -138,14 +138,16 @@ body{
 
   .headContainer {
       width: 100%; 
-      height: 24%;
+      height: 120px;
       position: relative;
+      background-color: #d5e1e9;
   }
 
 .divLogo {
-    width: 25%;
-    height: 100%;
+    width: 280px;
     position: absolute;
+    margin-top: -12px;
+    margin-left: 20px;
 }
 
 .divLogo > img {
@@ -153,21 +155,102 @@ body{
 }
 
 .navigationHeader {
-    width: 100%;
-    height: 50%;
+    /* width: 100%;
+    height: 50%; */
     background-color: #3C4452;
-}
-.titleLogo {
-    height:50%; 
-    background-color: blue;
 }
 
 .detailContainer {
     width: 100%;
-    height: 76%;
-    background-color:white;
+    height: 60%;
+    display: flex;
+}
+
+.guestRestButton {
+    width: 100%;
+    height: 18%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .nav-wrapper {
-    line-height: 86px;
+    /* line-height: 86px; */
 }
+
+.appInfo {
+    width: 50%;
+    height: 100%;
+
+}
+
+.appTitle {
+    height: 20%;
+    font-size: 4vmin; 
+    font-family: 'Special Elite', cursive;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.appDetailsCont {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center; 
+}
+
+.appDetails {
+    width: 80%;
+    font-size: 3vmin; 
+    font-family: 'Amatic SC', cursive;
+}
+
+.appImg {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.appImg > img {
+    width: 290px;
+    height: 355px;
+
+}
+
+.startCont {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    font-size: 4vmin;
+    /* font-family: 'Special Elite', cursive; */
+       /*font-family: 'Julius Sans One', sans-serif;*/
+    /*font-family: 'Amatic SC', cursive;*/
+    font-family: 'Cabin Sketch', cursive;
+}
+
+@media (min-width: 545px) {
+    .landingPageContainer {
+        background-color: #d5e1e9;
+        overflow: hidden;
+    }
+    .buttonsBox {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #guests-button {
+        background-color: #98C1D9;
+        width: 30%;
+    }
+    #restaurants-button {
+        background-color: #EE6C4D;
+        width: 30%;
+        margin-right: 2%;
+    }
+}   

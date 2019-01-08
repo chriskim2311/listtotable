@@ -118,7 +118,10 @@ button:focus {
 
 /* Laptops/Desktops */
 @media (min-width: 1025px) and (max-width: 1280px) {
-   
+    .tableSizeTitle {
+        text-align: center;
+        font-size: 5vmin;
+    }
 }
 
 /* Tablets, Ipads, Portrait */
@@ -150,8 +153,11 @@ button:focus {
         border-radius: 15px;
     }
     .tableSizeTitle {
-        text-align: center;
-        font-size: 5vmin;
+            text-align: center;
+            font-size: 7vmin;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
     }
     #decrementButton img{
         position: relative;

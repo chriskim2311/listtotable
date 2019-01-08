@@ -111,6 +111,7 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
     justify-content: center;
     align-items: center;
     border-radius: 8px 0 0 8px;
+    cursor: pointer;
 }
 .mapButton1 {
     width: 50%;
@@ -122,7 +123,7 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
     justify-content: center;
     align-items: center;
     border-radius: 8px 0 0 8px;
-
+    cursor: pointer;
 }
 .listButton {
     width: 50%;
@@ -133,6 +134,7 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
     justify-content: center;
     align-items: center;
     border-radius: 0 8px 8px 0;
+    cursor: pointer;
 }
 
 .listButton1  {
@@ -145,7 +147,7 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
     justify-content: center;
     align-items: center;
     border-radius: 0 8px 8px 0;
-
+    cursor: pointer;
 }
 
 a {
@@ -241,4 +243,21 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+
+
+
+@media (min-width: 768px) {
+    .loading-spinner{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loading-spinner > img {
+        height: 365px;
+        width: 770px;
+        margin-top: 0;
+    }
 }

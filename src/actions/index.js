@@ -1,5 +1,7 @@
 import types from './types';
 import axios from 'axios';
+import { messageComfirmUrl, messageNotifyUrl } from '../config';
+
 
 export const checkAuth = () => async dispatch => {
     try {
@@ -163,7 +165,7 @@ export function changeNotifyStatus(restaurantName, ID, phone){
             ID: ID
             // status: 'notified'
         });
-        await axios.post('https://place.kim-chris.com/message/notify',{
+        await axios.post(`${messageNotifyUrl}`,{
             restaurant: restaurantName,
             phone_number: phone 
         })
@@ -284,7 +286,7 @@ export function sendCustomerText(sendData){
     return async function (dispatch) {
         try {
             const resp = await axios({
-                url: 'https://place.kim-chris.com/message/confirm',
+                url: `${messageComfirmUrl}`,
                 method: 'post',
                 data: {
                   restaurant: restaurant_name,

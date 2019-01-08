@@ -201,12 +201,13 @@ body{
     align-items: flex-start;
     justify-content: center;
     text-align: center; 
+    flex-wrap: wrap;
 }
 
 .appDetails {
     width: 80%;
-    font-size: 3vmin; 
-    font-family: 'Amatic SC', cursive;
+    font-size: 2vmin; 
+    /* font-family: 'Amatic SC', cursive; */
 }
 
 .appImg {
@@ -220,6 +221,11 @@ body{
     width: 290px;
     height: 355px;
 
+}
+
+.video > iframe { 
+    width: 500px; 
+    height: 315px;
 }
 
 .startCont {
@@ -254,3 +260,4 @@ body{
         margin-right: 2%;
     }
 }   
+

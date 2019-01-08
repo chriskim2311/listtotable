@@ -2,3 +2,6 @@
 .DS_Store
 node_modules
 public/api/config/mysqlConnect.php
+
+src/config/*.js
+!src/config/index.js

@@ -7,7 +7,7 @@ import logo from '../assets/images/list-to-table-logo-white.png';
 import { Link } from 'react-router-dom';
 import { checkCurrentPosition, setCurrentPosition } from '../actions';
 
-class LandingPage extends Component{
+class LandingPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,23 +20,23 @@ class LandingPage extends Component{
         this.geolocation();
     }
 
-   geolocation = () => {
+    geolocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 console.log(position)
                 localStorage.setItem("latitude", position.coords.latitude)
                 localStorage.setItem("longitude", position.coords.longitude)
-                this.props.setCurrentPosition(position) 
+                this.props.setCurrentPosition(position)
             })
         }
         else {
             x.innerHTML = "Geolocation is not supported by this browser.";
-            }
-        if ( this.props.set == true ) {
-            this.loadSpinner(); 
+        }
+        if (this.props.set == true) {
+            this.loadSpinner();
         }
         else {
-            this.loadSpinner(); 
+            this.loadSpinner();
         }
     }
     loadSpinner = () => {
@@ -47,16 +47,16 @@ class LandingPage extends Component{
         }, 4000);
     }
 
-    render() {  
+    render() {
         // this.geolocation()
         const { set } = this.props;
-        const { loadSpinner } = this.state; 
+        const { loadSpinner } = this.state;
         console.warn(set)
         return (
-            <Fragment> 
+            <Fragment>
                 <div className="landingPageContainer">
                     <div className='logoContainer'>
-                        <img src={logo}/>
+                        <img src={logo} />
                     </div>
                     <div className='titleContainer'>
                         <div className="title">List To Table</div>
@@ -64,15 +64,15 @@ class LandingPage extends Component{
                     <div className="buttonsContainer">
                         <div className='buttonsBox'>
                             <button id="restaurants-button" className="btn btn-large waves-effect waves-light">
-                                <Link className ="restaurants" to="/login">restaurants</Link>
+                                <Link className="restaurants" to="/login">restaurants</Link>
                             </button>
                             <button id="guests-button" className="btn btn-large waves-effect waves-light">
-                                <div className={ loadSpinner ? "hideSpinner" : "spinner"}>
-                                    <div className={ loadSpinner ? "hideSpinner" : "bounce1"}></div>
-                                    <div className={ loadSpinner ? "hideSpinner" : "bounce2"}></div>
-                                    <div className={ loadSpinner ? "hideSpinner" : "bounce3"}></div>
+                                <div className={loadSpinner ? "hideSpinner" : "spinner"}>
+                                    <div className={loadSpinner ? "hideSpinner" : "bounce1"}></div>
+                                    <div className={loadSpinner ? "hideSpinner" : "bounce2"}></div>
+                                    <div className={loadSpinner ? "hideSpinner" : "bounce3"}></div>
                                 </div>
-                                <Link className ="guests" to={set ? "/customer-map" : "/custom-location"}>guests</Link>
+                                <Link className="guests" to={set ? "/customer-map" : "/custom-location"}>guests</Link>
                             </button>
                         </div>
                     </div>

@@ -16,10 +16,19 @@ class Navigation extends Component {
 
     goBack() {
         if (this.props.history.length < 3) {
+            // console.log("HISTORYYYYYY",this.props.history)
             this.props.history.replace("/");
-        } else {
-            this.props.history.goBack();
         }
+        if (this.props.history.length >= 3) {
+            // console.log("HISTORYYYYYY",this.props.history)
+
+            this.props.history.push("/")
+
+        }
+        // else {
+        // console.log("HISTORYYYYYY",this.props.history)
+        // this.props.history.goBack();
+        // }
     }
 
     toggleMenu() {
@@ -34,12 +43,12 @@ class Navigation extends Component {
                         arrow_back
                         </i>
 
-                {this.props.location.pathname === "/" ? null : (<NavLink to="/">
-                    <div className="small-nav-title">
-                        <img src={logo}/>
-                    </div>
-                     <h1 className="large-nav-title">List To Table</h1>
-                </NavLink>)}
+                    {this.props.location.pathname === "/" ? null : (<NavLink to="/">
+                        <div className="small-nav-title">
+                            <img src={logo} />
+                        </div>
+                        <h1 className="large-nav-title">List To Table</h1>
+                    </NavLink>)}
 
 
                     <div
@@ -52,7 +61,7 @@ class Navigation extends Component {
                     </div>
 
                     <ul className={this.state.showNavMenu ? "show" : ""} onClick={this.toggleMenu}>
-                    <li>
+                        <li>
                             <Link to="/">Home</Link>
                         </li>
                         <li>
@@ -73,7 +82,7 @@ class Navigation extends Component {
                     </div>
                 </nav>
             </Fragment>
-            
+
         );
     }
 }

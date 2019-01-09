@@ -9,7 +9,7 @@ import { checkCurrentPosition, setCurrentPosition } from '../actions';
 import Media from 'react-media';
 import guestStack from '../assets/images/guestStack.png'
 
-class LandingPage extends Component{
+class LandingPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,20 +22,23 @@ class LandingPage extends Component{
         this.geolocation();
     }
 
-   geolocation = () => {
+    geolocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
-                this.props.setCurrentPosition(position) 
+                console.log(position)
+                localStorage.setItem("latitude", position.coords.latitude)
+                localStorage.setItem("longitude", position.coords.longitude)
+                this.props.setCurrentPosition(position)
             })
         }
         else {
             x.innerHTML = "Geolocation is not supported by this browser.";
-            }
-        if ( this.props.set == true ) {
-            this.loadSpinner(); 
+        }
+        if (this.props.set == true) {
+            this.loadSpinner();
         }
         else {
-            this.loadSpinner(); 
+            this.loadSpinner();
         }
     }
     loadSpinner = () => {
@@ -46,12 +49,13 @@ class LandingPage extends Component{
         }, 4000);
     }
 
-    render() {  
+    render() {
         // this.geolocation()
         const { set } = this.props;
-        const { loadSpinner } = this.state; 
+        const { loadSpinner } = this.state;
         console.warn(set)
         return (
+
             <Fragment> 
                 
                 <div className="landingPageContainer">

@@ -96,7 +96,7 @@ class LandingPage extends Component {
                                                     An Application that is built for those who no longer want to wait in line and check-in remotely! 
                                                 </div>
                                                 <div className="video">
-                                                    <iframe src="https://www.youtube.com/embed/mQsg-bIs6f4?controls=0?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ACRca4GOY3o?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>                                                
                                                 </div>                                   
                                             </div>
                                         </div>

@@ -185,8 +185,8 @@ body{
 }
 
 .appTitle {
-    height: 20%;
-    font-size: 4vmin; 
+    height: 15%;
+    font-size: 50px; 
     font-family: 'Special Elite', cursive;
     width: 100%;
     display: flex;
@@ -195,7 +195,7 @@ body{
 }
 
 .appDetailsCont {
-    height: 80%;
+    height: 85%;
     width: 100%;
     display: flex;
     align-items: flex-start;
@@ -225,7 +225,7 @@ body{
 
 .video > iframe { 
     width: 500px; 
-    height: 315px;
+    height: 281px;
 }
 
 .startCont {
@@ -239,6 +239,51 @@ body{
     font-family: 'Cabin Sketch', cursive;
 }
 
+@media (min-width: 1281px  ) {
+    .appImg > img {
+        width: 365px;
+        height: 430px;
+    }
+}
+
+@media (min-width: 1025px) and (max-width:1280px ) {
+    .appInfo {
+        width: 50%;
+        height: 100%;
+    
+    }
+    .appImg {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .appImg > img {
+        width: 290px;
+        height: 355px;
+    
+    }
+    
+    .video > iframe { 
+        width: 500px; 
+        height: 281px;
+    }
+}
+
+@media (min-width: 545px) and (max-width: 1024px) {
+   
+    .appImg {
+        display: none;
+    }
+    .appInfo {
+        width: 100%;
+    }
+    .appDetails {
+        width: 80%;
+        font-size: 3vmin;
+    }
+}
 @media (min-width: 545px) {
     .landingPageContainer {
         background-color: #d5e1e9;

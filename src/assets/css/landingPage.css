@@ -74,15 +74,15 @@ body{
 
 .guests {
     text-align: center;
-    height:20%;
-    width: 80%;
+    height:100%;
+    width: 100%;
     color: white;
 }
 
 .restaurants{
     text-align: center;
-    height:20%;
-    width: 80%;
+    height:100%;
+    width: 100%;
     color: white;
 }
 
@@ -237,6 +237,12 @@ body{
        /*font-family: 'Julius Sans One', sans-serif;*/
     /*font-family: 'Amatic SC', cursive;*/
     font-family: 'Cabin Sketch', cursive;
+}
+
+
+
+.btn-large {
+    padding: 0;
 }
 
 @media (min-width: 1281px  ) {

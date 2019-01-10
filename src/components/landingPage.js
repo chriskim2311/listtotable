@@ -96,7 +96,7 @@ class LandingPage extends Component {
                                                     An Application that is built for those who no longer want to wait in line and check-in remotely! 
                                                 </div>
                                                 <div className="video">
-                                                    <iframe src="https://www.youtube.com/embed/mQsg-bIs6f4?controls=0?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                                                    <iframe src="https://www.youtube.com/embed/ACRca4GOY3o?autoplay=1&loop=1&playlist=ACRca4GOY3o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>                                                
                                                 </div>                                   
                                             </div>
                                         </div>
@@ -107,17 +107,25 @@ class LandingPage extends Component {
                                     <div className="startCont">Let's Get Started</div>
                                     <div className="guestRestButton">
                                         <div className="buttonsBox">
-                                            <button id="restaurants-button" className="btn btn-large waves-effect waves-light">
-                                                <Link className ="restaurants" to="/login">restaurants</Link>
-                                            </button>
-                                            <button id="guests-button" className="btn btn-large waves-effect waves-light">
-                                                <div className={ loadSpinner ? "hideSpinner" : "spinner"}>
-                                                    <div className={ loadSpinner ? "hideSpinner" : "bounce1"}></div>
-                                                    <div className={ loadSpinner ? "hideSpinner" : "bounce2"}></div>
-                                                    <div className={ loadSpinner ? "hideSpinner" : "bounce3"}></div>
+                                        <button id="restaurants-button" className="btn btn-large waves-effect waves-light">
+                                            <Link className ="restaurants" to="/login">
+                                                    <div>
+                                                        restaurants
+                                                    </div>
+                                            </Link>
+                                        </button>
+                                        <button id="guests-button" className="btn btn-large waves-effect waves-light">
+                                            <div className={ loadSpinner ? "hideSpinner" : "spinner"}>
+                                                <div className={ loadSpinner ? "hideSpinner" : "bounce1"}></div>
+                                                <div className={ loadSpinner ? "hideSpinner" : "bounce2"}></div>
+                                                <div className={ loadSpinner ? "hideSpinner" : "bounce3"}></div>
+                                            </div>
+                                            <Link className ="guests" to={set ? "/customer-map" : "/custom-location"}>
+                                                <div>
+                                                    guests
                                                 </div>
-                                                <Link className ="guests" to={set ? "/customer-map" : "/custom-location"}>guests</Link>
-                                            </button>
+                                            </Link>
+                                        </button>
                                         </div>
                                     </div>
                                 </Fragment>
@@ -132,7 +140,11 @@ class LandingPage extends Component {
                                     <div className="buttonsContainer">
                                         <div className='buttonsBox'>
                                             <button id="restaurants-button" className="btn btn-large waves-effect waves-light">
-                                                <Link className ="restaurants" to="/login">restaurants</Link>
+                                                <Link className ="restaurants" to="/login">
+                                                <div>
+                                                    restaurants
+                                                </div>
+                                                </Link>
                                             </button>
                                             <button id="guests-button" className="btn btn-large waves-effect waves-light">
                                                 <div className={ loadSpinner ? "hideSpinner" : "spinner"}>
@@ -140,7 +152,11 @@ class LandingPage extends Component {
                                                     <div className={ loadSpinner ? "hideSpinner" : "bounce2"}></div>
                                                     <div className={ loadSpinner ? "hideSpinner" : "bounce3"}></div>
                                                 </div>
-                                                <Link className ="guests" to={set ? "/customer-map" : "/custom-location"}>guests</Link>
+                                                <Link className ="guests" to={set ? "/customer-map" : "/custom-location"}>
+                                                    <div>
+                                                        guests
+                                                    </div>
+                                                </Link>
                                             </button>
                                         </div>
                                     </div>

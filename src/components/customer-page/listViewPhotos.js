@@ -43,6 +43,7 @@ class ListViewPhotos extends Component {
 
     displayPhotosFromGoogle() {
         const { photos } = this.state;
+        debugger
         return photos.map((photo, index) => {
             let photoUrl = photo.getUrl();
             return <img src={photoUrl} key={index} />

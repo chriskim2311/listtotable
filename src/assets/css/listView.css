@@ -252,8 +252,44 @@
     }
 }
 
-@media (min-width: 651px) and (max-width: 767px) {
-   
+@media (min-width: 481px) and (max-width: 767px) {
+   .boldText {
+        font-weight: 700;
+        font-size: 3.0vmin;
+    }
+    .headerTitle {
+        font-size: 4vmin;
+        font-weight: 625;
+        text-align: center;
+        height: 15%;
+        width: 100%;
+        overflow: hidden;
+    }
+    .restaurantInfo {
+        width: 100%;
+        height: 60%;
+        display: flex;
+        font-size: 3vmin;
+    }
+    .address {
+        width: 100%;
+        height: 40%;
+        font-size: 3vmin;
+        overflow: hidden;
+    }
+    .timeInfo > img {
+        width: 8vmin;
+    }
+    .addButton > img {
+        /* width: 85%; */
+        width: 8vmin;
+        height: 8vmin;
+        /* height: 40%; */
+    }
+    .bottomPicInfo > img {
+        width: 255px;
+        border-right: 2px solid white;
+    }
 }
 
 /* Low Res Tablets, Mobile Phones (Landscape) */

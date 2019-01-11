@@ -37,3 +37,23 @@
     font-size: 5vmin;
     text-align: center;
 }
+
+
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .tableSizeTitle {
+        font-size: 5vmin;
+    }
+}
+
+@media (min-width: 768px) {
+    .tableSizeTitle {
+        font-size: 6.5vmin;
+    }
+}
+
+@media (min-width: 571px) and (max-width: 767px) {
+    .tableSizeTitle {
+        font-size: 5vmin;
+    }
+}

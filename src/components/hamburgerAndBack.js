@@ -19,16 +19,16 @@ class Navigation extends Component {
             // console.log("HISTORYYYYYY",this.props.history)
             this.props.history.replace("/");
         }
-        if (this.props.history.length >= 3) {
-            // console.log("HISTORYYYYYY",this.props.history)
+        // if (this.props.history.length >= 3) {
+        //     // console.log("HISTORYYYYYY",this.props.history)
 
-            this.props.history.push("/")
+        //     this.props.history.push("/")
 
-        }
-        // else {
-        // console.log("HISTORYYYYYY",this.props.history)
-        // this.props.history.goBack();
         // }
+        else {
+        console.log("HISTORYYYYYY",this.props.history)
+        this.props.history.goBack();
+        }
     }
 
     toggleMenu() {

@@ -69,7 +69,7 @@ class CheckInForm extends Component{
         });
 
         if(response.data.success){
-        const peopleAhead = response.data.clients.length;
+        const peopleAhead = response.data.clients.length -1;
         
         this.setState({
             clientName: '',

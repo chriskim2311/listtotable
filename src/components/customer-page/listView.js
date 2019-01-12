@@ -25,7 +25,7 @@ class ListView extends Component {
             const name = current.name;
             const rating = current.rating;
             const places = current.place_id;
-            const location = this.props.currentLocation
+            const location = this.props.currentLocation;
             const latLng = current.geometry.location;
 
             if (price >= 2) {

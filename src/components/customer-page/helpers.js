@@ -1,6 +1,6 @@
 import axios from 'axios';
 import addButton from '../../assets/images/plus.png';
-import { Link } from 'react-router-dom';
+import { NavLink, withRouter, Link } from "react-router-dom";
 import '../../assets/css/helper.css';
 
 export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) {
@@ -9,14 +9,64 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
     var map;
     var service;
     var infowindow;
+    var queryPairs = {};
 
-    showRestaurants(config, retrieveRestaurantData, loadingDisplay);
+    getQueryParts()
+    function getQueryParts() {
+
+        window.location.href
+            .slice(window.location.href.indexOf('?') + 1)
+            .split('&')
+            .forEach(pair => {
+                var pairData = pair.split('=');
+                queryPairs[pairData[0]] = pairData[1];
+            });
+        console.log(queryPairs)
+        return queryPairs
+
+    }
+
+    showRestaurants(config, retrieveRestaurantData, loadingDisplay, queryPairs);
     function showRestaurants(config, retrieveRestaurantData, loadingDisplay) {
         const restaurantInput = config.restaurantType
         const position = config.position
         const locations = config.locations
+        var latitude = parseFloat(queryPairs.lat)
+        var longitude = parseFloat(queryPairs.long)
+        var centerLocation = new google.maps.LatLng(latitude, longitude);
 
-        console.log("1", position, "2", locations, "STUFFFF", restaurantInput)
+        // console.log("1", position, "2", locations, "STUFFFF", restaurantInput)
+        // console.log(window.location.href)
+        // var url_string = window.location.href //window.location.href
+        // var url = new URL(url_string);
+        // console.log(url.searchParams)
+        // var latitude = url.searchParams.get("lat");
+        // var longitude = url.searchParams.get("long");
+        // console.log("LAT", latitude, "long", longitude)
+        // getQueryParts()
+
+        // function getQueryParts(){
+        //     var queryPairs = {};
+        //     window.location.href
+        //       .slice( window.location.href.indexOf('?')+1)
+        //       .split('&')
+        //       .forEach( pair => { 
+        //             var pairData = pair.split('=');
+        //             queryPairs[pairData[0]] = pairData[1];
+        //       });
+        //       console.log(queryPairs)
+
+        //       var latitude = queryPairs.lat
+        //       var longitude = queryPairs.long
+        //       var centerLocation = new google.maps.LatLng(latitude, longitude);
+        //       return latitude, longitude, centerLocation
+
+        // }
+
+        // var latitude = queryPairs.lat
+        // var longitude = queryPairs.long
+        // var centerLocation = new google.maps.LatLng(latitude, longitude);
+
 
         // if(position == 0 && locations == undefined){ 
         //         var latitude = localStorage.getItem('latitude')
@@ -26,24 +76,24 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
         //         console.log("THE CENTER", centerLocation)
         // }
 
-        if (position) {
-            var latitude = position.lat || position.coords.latitude;
-            var longitude = position.lng || position.coords.longitude;
+        // if (position) {
+        //     var latitude = position.lat || position.coords.latitude;
+        //     var longitude = position.lng || position.coords.longitude;
 
-            console.log(latitude, longitude)
+        //     console.log(latitude, longitude)
 
-            var centerLocation = new google.maps.LatLng(latitude, longitude);
+        //     var centerLocation = new google.maps.LatLng(latitude, longitude);
 
 
-        }
+        // }
 
-        if (locations) {
-            var latitude = locations.lat;
-            var longitude = locations.lng;
-            console.log(latitude, longitude)
-            var centerLocation = new google.maps.LatLng(latitude, longitude);
+        // if (locations) {
+        //     var latitude = locations.lat;
+        //     var longitude = locations.lng;
+        //     console.log(latitude, longitude)
+        //     var centerLocation = new google.maps.LatLng(latitude, longitude);
 
-        }
+        // }
 
         // else  {
         //     if (navigator.geolocation) {
@@ -91,6 +141,7 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
         let loadCount = 0;
 
         for (var i = 0; i < results.length; i++) {
+
             let placeId = String(results[i].place_id);
             let photo = results[i]['photos'][0].getUrl()
             axios.post('https://place.kim-chris.com/busy-hours', {

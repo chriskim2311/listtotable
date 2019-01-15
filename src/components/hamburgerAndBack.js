@@ -43,12 +43,15 @@ class Navigation extends Component {
                         arrow_back
                         </i>
 
-                    {this.props.location.pathname === "/" ? null : (<NavLink to="/">
-                        <div className="small-nav-title">
-                            <img src={logo} />
-                        </div>
-                        <h1 className="large-nav-title">List To Table</h1>
-                    </NavLink>)}
+                    {this.props.location.pathname === "/" ? null : (
+                        <Fragment>
+                            <div className="small-nav-title">
+                                <img src={logo} />
+                            </div>
+                            <h1 className="large-nav-title">List To Table</h1>
+                        </Fragment>
+                        
+                   )}
 
 
                     <div

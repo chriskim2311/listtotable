@@ -4,6 +4,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 import Navigation from '../hamburgerAndBack'
 import { Link } from 'react-router-dom'
+import '../../assets/css/customLocationForm.css';
 
 import { setCurrentPosition } from '../../actions';
 

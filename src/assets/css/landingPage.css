@@ -233,10 +233,10 @@ body{
     display: flex;
     justify-content: center;
     font-size: 4vmin;
-    /* font-family: 'Special Elite', cursive; */
+    font-family: 'Special Elite', cursive;
        /*font-family: 'Julius Sans One', sans-serif;*/
     /*font-family: 'Amatic SC', cursive;*/
-    font-family: 'Cabin Sketch', cursive;
+    /* font-family: 'Cabin Sketch', cursive; */
 }
 
 

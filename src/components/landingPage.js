@@ -14,7 +14,9 @@ class LandingPage extends Component {
         super(props);
         this.state = {
             currentLocation: '',
-            loadSpinner: false
+            loadSpinner: false,
+            lat: null,
+            long: null
         }
     }
     componentDidMount() {
@@ -26,8 +28,11 @@ class LandingPage extends Component {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 console.log(position)
-                localStorage.setItem("latitude", position.coords.latitude)
-                localStorage.setItem("longitude", position.coords.longitude)
+
+                this.setState({
+                    lat: position.coords.latitude,
+                    long: position.coords.longitude
+                })
                 this.props.setCurrentPosition(position)
             })
         }
@@ -53,6 +58,8 @@ class LandingPage extends Component {
         // this.geolocation()
         const { set } = this.props;
         const { loadSpinner } = this.state;
+        var lat = this.state.lat;
+        var long = this.state.long
         console.warn(set)
         return (
 
@@ -74,7 +81,7 @@ class LandingPage extends Component {
                                                         <Link to="/">Home</Link>
                                                     </li>
                                                     <li>
-                                                        <Link to="/customer-map">Map</Link>
+                                                        <Link to={`/customer-map/?lat=${lat}&long=${long}`}>Map</Link>
                                                     </li>
                                                     <li>
                                                         <Link to="/about">About</Link>
@@ -96,7 +103,7 @@ class LandingPage extends Component {
                                                     An Application that is built for those who no longer want to wait in line and check-in remotely! 
                                                 </div>
                                                 <div className="video">
-                                                    <iframe src="https://www.youtube.com/embed/ACRca4GOY3o?autoplay=1&loop=1&playlist=ACRca4GOY3o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>                                                
+                                                    <iframe src="https://www.youtube.com/embed/ACRca4GOY3o?autoplay=1&loop=1&playlist=ACRca4GOY3o" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen={true}></iframe>                                                
                                                 </div>                                   
                                             </div>
                                         </div>
@@ -120,7 +127,7 @@ class LandingPage extends Component {
                                                 <div className={ loadSpinner ? "hideSpinner" : "bounce2"}></div>
                                                 <div className={ loadSpinner ? "hideSpinner" : "bounce3"}></div>
                                             </div>
-                                            <Link className ="guests" to={set ? "/customer-map" : "/custom-location"}>
+                                            <Link className ="guests" to={set ? `/customer-map/?lat=${lat}&long=${long}` : "/custom-location"}>
                                                 <div>
                                                     guests
                                                 </div>
@@ -152,7 +159,7 @@ class LandingPage extends Component {
                                                     <div className={ loadSpinner ? "hideSpinner" : "bounce2"}></div>
                                                     <div className={ loadSpinner ? "hideSpinner" : "bounce3"}></div>
                                                 </div>
-                                                <Link className ="guests" to={set ? "/customer-map" : "/custom-location"}>
+                                                <Link className ="guests" to={set ? `/customer-map/?lat=${lat}&long=${long}` : "/custom-location"}>
                                                     <div>
                                                         guests
                                                     </div>

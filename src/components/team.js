@@ -65,17 +65,23 @@ export default class Team extends Component {
             
             const { Name, Title, LinkedIn, Github, Portfolio, Photo } = memberInfo
             return (
-                <div className="individualRow">
-                    <div className="photoIcon">
-                        <img src={Photo} alt=""/>
-                    </div>
-                    <div className="descriptionContainer">
-                        <div className="individualName">{Name}</div>
-                        <div className="individualTitle">{Title}</div>
-                        <div className="socialMediaIconContainer">
-                            <div className="socialMediaIcon"><a href={Github}><img className="smIcon" src={github}/></a></div>
-                            <div className="socialMediaIcon"><a href={LinkedIn}><img className="smIcon" src={linkedIn}/></a></div>
-                            <div className="socialMediaIcon"><a href={Portfolio}><img className="smIcon" src={portfolio}/></a></div>
+                <div className="col">
+                    
+                    <div className="card horizontal">
+                        <div className="card-image center">
+                            <img src={Photo} alt=""/>
+                        </div>
+                        <div className="card-stacked">
+                            <div className="card-content">
+                                <h2 className="individualName center header">{Name}</h2>
+                                <div className="individualTitle row center">{Title}</div>
+                                <div className="socialMediaIconContainer card-action">
+                                    <div className="socialMediaIcon"><a href={Github}><img className="smIcon" src={github}/></a></div>
+                                    <div className="socialMediaIcon"><a href={LinkedIn}><img className="smIcon" src={linkedIn}/></a></div>
+                                    <div className="socialMediaIcon"><a href={Portfolio}><img className="smIcon" src={portfolio}/></a></div>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>

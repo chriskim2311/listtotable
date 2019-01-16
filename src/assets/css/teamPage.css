@@ -13,6 +13,7 @@
     align-items: center;
 }
 
+
 .teamMembers {
     height: 85%; 
     overflow: scroll;
@@ -46,6 +47,13 @@
 .socialMediaIconContainer {
     display: flex;
     justify-content: space-evenly; 
+}
+
+.portfolio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .socialMediaIcon {

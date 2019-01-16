@@ -6,6 +6,7 @@ import portfolio from '../assets/images/socialMedia/portfolio.png';
 import github from '../assets/images/socialMedia/github.png'; 
 import linkedIn from '../assets/images/socialMedia/linkedIn.png';
 import andyP from '../assets/images/headshots/andyP.JPG';
+import team from '../assets/images/headshots/team.JPG';
 
 
 export default class Team extends Component {
@@ -18,7 +19,7 @@ export default class Team extends Component {
                 LinkedIn: 'https://www.linkedin.com/in/christopher-kim-71898949/',
                 Github: 'https://github.com/chriskim2311',
                 Portfolio: 'Kim-Chris.com',
-                Photo: andyP,
+                Photo: team,
             },
             {
                 Name: 'Andy Park',
@@ -34,7 +35,7 @@ export default class Team extends Component {
                 LinkedIn: 'https://www.linkedin.com/in/sasha-oleksandr-dykun-442b04171/',
                 Github: 'https://github.com/sashadykun',
                 Portfolio: 'http://sashadykun.com',
-                Photo: andyP,
+                Photo: team,
             },
             {
                 Name: 'Andrew Ouatu',
@@ -42,7 +43,7 @@ export default class Team extends Component {
                 LinkedIn: 'https://www.linkedin.com/in/andrew-ouatu-776774b4/',
                 Github: 'https://github.com/andrewouatu',
                 Portfolio: '',
-                Photo: andyP,
+                Photo: team,
             },
             {
                 Name: 'Michael Chu',
@@ -50,7 +51,7 @@ export default class Team extends Component {
                 LinkedIn: 'https://www.linkedin.com/in/michaeljchu/',
                 Github: 'https://github.com/mchu79',
                 Portfolio: '',
-                Photo: andyP,
+                Photo: team,
             },
             {
                 Name: 'Andy Ong',
@@ -76,11 +77,15 @@ export default class Team extends Component {
                                 <h2 className="individualName center header">{Name}</h2>
                                 <div className="individualTitle row center">{Title}</div>
                                 <div className="socialMediaIconContainer card-action">
-                                    <div className="socialMediaIcon"><a href={Github}><img className="smIcon" src={github}/></a></div>
-                                    <div className="socialMediaIcon"><a href={LinkedIn}><img className="smIcon" src={linkedIn}/></a></div>
-                                    <div className="socialMediaIcon"><a href={Portfolio}><img className="smIcon" src={portfolio}/></a></div>
+                                    <div className="socialMediaIcon "><a href={Github} target="_blank"><img className="smIcon" src={github}/></a></div>
+                                    <div className="socialMediaIcon "><a href={LinkedIn} target="_blank"><img className="smIcon" src={linkedIn}/></a></div>
+                                    <div className=" portfolio"><a   href={Portfolio} target="_blank">Portfolio</a></div>
                                 </div>
-                            </div>
+                                
+                                    
+                                </div>
+
+                            
                             
                         </div>
                     </div>

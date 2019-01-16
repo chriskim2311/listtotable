@@ -77,7 +77,7 @@ export function userLogIn(partner){
             // console.log('Sign in Response', resp);
             
 
-            localStorage.setItem('token', resp.data.token);
+            // localStorage.setItem('token', resp.data.token);
            
             const login = resp.data.success;
            
@@ -106,7 +106,7 @@ export function userLogIn(partner){
 }
 
 export function userLogOut(){
-    localStorage.removeItem('token');
+    // localStorage.removeItem('token');
     localStorage.removeItem('restId');
     localStorage.removeItem('restName');
 

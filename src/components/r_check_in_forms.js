@@ -39,13 +39,13 @@ class RestaurantCheckInForm extends Component {
     render(){
         const { handleSubmit, error } = this.props
         return (
-            <div className="r_checking">
+            <div className="r_checking container">
                 <form onSubmit={handleSubmit(this.completeCheckIn)} >
-                    <div className="row">
-                        <Field name="enterName" size="s10" label="Enter Name" component={Input} />
+                    <div className="row center">
+                        <Field name="enterName" size="s8 offset-s2" label="Enter Name" component={Input} />
                     </div>
-                    <div className="row">
-                        <Field name="phone" size="s10" label="Phone Number" component={Input} />
+                    <div className="row center">
+                        <Field name="phone" size="s8 offset-s2" label="Phone Number" component={Input} />
                     </div>
                     <div className="tableSizeTitle row">Table Size</div>
                     <div className="tableInfoContainer center row">

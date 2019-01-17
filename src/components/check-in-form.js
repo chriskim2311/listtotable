@@ -20,7 +20,7 @@ class CheckInForm extends Component{
             tablesAhead: null
         }
     }
-
+ 
     handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -154,28 +154,32 @@ class CheckInForm extends Component{
                             </div>
                         </div>
                     </form>
+                    <div className="col s12 center">
+                    <div className="tableSizeTitle row">Table Size</div>
 
-                    <div className="tableSizeTitle">Table Size</div>
-
-                    <div className="tableInfoContainer">
-                        <button
+                     
+                    
+                   
+                        <button className=" btn btn-floating btn-large waves-effect waves-light blue darken-2"
                             id="decrementButton"
                             onClick={() => this.handleDecrement()}
                         >
-                            <img src={removeButton}/>
+                            {/* <img src={removeButton}/> */}
+                            <i class="material-icons">remove_circle_outline</i>
                         </button>
 
-                        <div className="tableInputBox">{this.state.clientGroupSize}</div>
+                        <div className="tableInputBox col s6 ">{this.state.clientGroupSize}</div>
 
-                        <button
+                        <button className="btn btn-floating btn-large waves-effect waves-light blue darken-2"
                             id="incrementButton"
                             value={this.state.clientGroupSize}
                             onClick={() => this.handleIncrement()}
                         >
-                            <img src={addButton}/>
+                            {/* <img src={addButton}/> */}
+                            <i class="material-icons">add_circle_outline</i>
                         </button>
                     </div>
-
+                    
                     <div id="commentsContainer">
                         <textarea
                             className="commentsBox"
@@ -186,10 +190,10 @@ class CheckInForm extends Component{
                         </textarea>
                     </div>
 
-                    <div className="submitButtonBox">
+                    <div className="submitButtonBox center">
                         <button
                             onClick={this.handleSubmit}
-                            className="submitButton btn btn-large"
+                            className="submitButton btn blue darken-2"
                             type="submit"
                             name="action"
                         >SUBMIT</button>

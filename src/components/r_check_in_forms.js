@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form'; 
 import {connect} from 'react-redux'; 
 import '../assets/css/r_check_in.css';
-import addButton from "../assets/images/addbutton.svg";
-import removeButton from "../assets/images/removeButton.svg";
+
 import {customerCheckInIncrement} from '../actions';
 import {customerCheckInDecrement} from '../actions';
 import {customerCheckIn} from '../actions';
@@ -40,7 +39,7 @@ class RestaurantCheckInForm extends Component {
     render(){
         const { handleSubmit, error } = this.props
         return (
-            <div>
+            <div className="r_checking">
                 <form onSubmit={handleSubmit(this.completeCheckIn)} >
                     <div className="row">
                         <Field name="enterName" size="s10" label="Enter Name" component={Input} />
@@ -48,21 +47,24 @@ class RestaurantCheckInForm extends Component {
                     <div className="row">
                         <Field name="phone" size="s10" label="Phone Number" component={Input} />
                     </div>
-                    <div className="tableSizeTitle">Table Size</div>
-                    <div className="tableInfoContainer">
+                    <div className="tableSizeTitle row">Table Size</div>
+                    <div className="tableInfoContainer center row">
                         <button
                             type="button"
-                            className="decrementButton"
+                            className="decrementButton btn btn-floating btn-large waves-effect waves-light blue darken-2"
                             onClick={this.props.Decrement}>
-                            <img src={removeButton}/>
+                            {/* <img src={removeButton}/> */}
+                            <i class="material-icons">remove_circle_outline</i>
                         </button>
 
                         <div className="tableInputBox">{this.props.tableSize}</div>
                         <button 
                             type ="button"
-                            className="incrementButton"
+                            className=" btn btn-floating btn-large waves-effect waves-light blue darken-2"
                             onClick={this.props.Increment}>
-                            <img src={addButton}/>
+                            {/* <img src={addButton}/> */}
+                            <i class="material-icons">add_circle_outline</i>
+
                         </button>
                     </div>
                     <div className="row text-align center">

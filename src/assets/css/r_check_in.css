@@ -1,31 +1,40 @@
 .tableSizeTitle{
     text-align: center;
-    font-size: 7vmin;
+    font-size: 5vmin;
 }
-.incrementButton{
+.tableInputBox {
+    display: inline-block;
+    width: 40%;
+    vertical-align: top;
+    text-align: center;
+    font-size: 10.5vmin;
+    border: solid 1px black;
+    border-radius: 15px;
+}
+/* .incrementButton{
     display: inline-block;
     width: 30%;
     height: 100%;
     vertical-align: top;
     position: relative;
-}
+} */
 
-.incrementButton img{
+/* .incrementButton img{
     position: relative;
     width: 75%;
-}
+} */
 
-.decrementButton{
+/* .decrementButton{
     display: inline-block;
     width: 30%;
     height: 100%;
     position: relative;
-}
+} */
 
-.decrementButton img{
+/* .decrementButton img{
     position: relative;
     width: 75%;
-}
+} */
 
 .commentsContainer{
     margin: 0 10%;
@@ -39,8 +48,8 @@
 }
 
 
-
-@media (min-width: 1025px) and (max-width: 1280px) {
+/* 
+ @media (min-width: 1025px) and (max-width: 1280px) {
     .tableSizeTitle {
         font-size: 5vmin;
     }
@@ -56,4 +65,4 @@
     .tableSizeTitle {
         font-size: 5vmin;
     }
-}
+}  */

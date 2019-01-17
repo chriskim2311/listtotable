@@ -36,7 +36,7 @@
 }
 
 .bottomPicInfo > img {
-    width: 50%;
+    width: 100px;
     border-right: 2px solid white; 
 }
 
@@ -246,10 +246,10 @@
         height: 8vmin;
         /* height: 40%; */
     }
-    .bottomPicInfo > img {
+    /* .bottomPicInfo > img {
         width: 255px;
         border-right: 2px solid white;
-    }
+    } */
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
@@ -286,10 +286,10 @@
         height: 8vmin;
         /* height: 40%; */
     }
-    .bottomPicInfo > img {
+    /* .bottomPicInfo > img {
         width: 255px;
         border-right: 2px solid white;
-    }
+    } */
 }
 
 /* Low Res Tablets, Mobile Phones (Landscape) */

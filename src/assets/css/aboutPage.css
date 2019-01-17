@@ -6,10 +6,14 @@
     height: 90%;
 }
 
+.description{
+    text-align: center;
+}
+
 
 @media (min-height:450px) and (min-width:600px )  {
     .technology {
-        width:50%
+        width:40%
     }
 
 

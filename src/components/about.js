@@ -13,10 +13,11 @@ export default class About extends Component {
             <React.Fragment>
                 <Navigation />
                 <div className="about">
-                <h1>About</h1>
-                <p>List to Table is a dual interface web based application with remote wait list check-in functionality and popular times information. The application aims to help customers avoid long wait times and utilize their time more efficiently while giving restaurants a quick and more organized wait list!
-
-                </p>
+                <h3>About</h3>
+                <div className="description">List to Table is a dual interface web based application with remote wait list check-in functionality and popular times information. 
+                    The application aims to help customers avoid long wait times and utilize their time more efficiently while giving restaurants a quick 
+                    and more organized wait list.
+                </div>
 
                 <h3>Technologies Used:</h3>
                 <div className=" technology row">

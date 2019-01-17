@@ -14,9 +14,11 @@ export default class About extends Component {
                 <Navigation />
                 <div className="about">
                 <h3>About</h3>
-                <div className="description">List to Table is a dual interface web based application with remote wait list check-in functionality and popular times information. 
-                    The application aims to help customers avoid long wait times and utilize their time more efficiently while giving restaurants a quick 
-                    and more organized wait list.
+                <div className="description row center">
+                    <p className="col s12 m8 offset-m2 l6 offset-l3">List to Table is a dual interface web based application with remote wait list check-in functionality and popular times information. 
+                        The application aims to help customers avoid long wait times and utilize their time more efficiently while giving restaurants a quick 
+                        and more organized wait list.
+                    </p>
                 </div>
 
                 <h3>Technologies Used:</h3>

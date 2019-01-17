@@ -7,14 +7,11 @@
 }
 
 .description{
-    text-align: center;
+    text-align: justify;
 }
-
 
 @media (min-height:450px) and (min-width:600px )  {
     .technology {
         width:40%
     }
-
-
 }

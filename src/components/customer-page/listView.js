@@ -19,6 +19,7 @@ class ListView extends Component {
     }
 
     async buildRestaurantsList(results) {
+
         const list = await Promise.all(results.map(async (current, index) => {
             let price = current.price_level;
             const address = current.vicinity;
@@ -27,7 +28,7 @@ class ListView extends Component {
             const places = current.place_id;
             const location = this.props.currentLocation;
             const latLng = current.geometry.location;
-
+  
             if (price >= 2) {
                 if (price == 2) {
                     price = '$$'
@@ -64,6 +65,7 @@ class ListView extends Component {
                         iconUrl = 'https://i.imgur.com/i9AQAax.png';
                         break;
                 }
+                
                 return (
                     <div key={index} className="restaurantBubble">
                         <div className="headerTitle">{name}</div>

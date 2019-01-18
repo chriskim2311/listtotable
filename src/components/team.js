@@ -68,9 +68,9 @@ export default class Team extends Component {
             
             const { Name, Title, LinkedIn, Github, Portfolio, Photo } = memberInfo
             return (
-                <div key={index} className="col">
+                <div key={index} className="col s12 m6 l6">
                     
-                    <div className="card horizontal">
+                    <div className="card ">
                         <div className="card-image center">
                             <img src={Photo} alt=""/>
                         </div>
@@ -105,7 +105,7 @@ export default class Team extends Component {
             <Navigation/>
             <div className="teamPage">
                 <div className="teamHeader">Meet The Team</div>
-                <div className="teamMembers">
+                <div className="teamMembers row">
                    {this.teamInfo()}
                 </div>
             </div>

@@ -23,7 +23,11 @@ class Seated extends Component {
         
 
         if (!partys) {
-            return
+            return (
+                <div className="center">
+                    <h1>For now 'SEATED' list is empty!</h1>
+                </div>
+            )
         }
 
         const seatedCustomerList = partys.map((current, index) => {

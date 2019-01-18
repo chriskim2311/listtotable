@@ -20,7 +20,7 @@ class Seated extends Component {
 
     renderSeatedCustomerListOnDom() {
         const partys = this.props.seated_list
-        console.log('Seated partys:', partys)
+        
 
         if (!partys) {
             return
@@ -47,9 +47,7 @@ class Seated extends Component {
                                 <li className= "white-text comments">Comments: {comments}</li>
                             </ul>
                         </div>
-                        {/* <div className="offset-s2 col s2 delete  " onClick={() => this.props.deleteListItem(ID)}>
-                            <i className=" small material-icons red-text ">delete</i>
-                        </div> */}
+                        
 
 
 
@@ -86,9 +84,8 @@ class Seated extends Component {
 }
 
 
-
 function mapStateToProps(state) {
-    console.log('redux state for seated:', state)
+    
 
     return {
         seated_list: state.waitingList.seatedList

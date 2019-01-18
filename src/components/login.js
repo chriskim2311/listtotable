@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom'
-
 import LogInForm from './login-form';
 import RTopMenu from './r_arrowAndMenu';
 

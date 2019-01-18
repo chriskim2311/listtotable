@@ -65,22 +65,5 @@ class Navigation extends Component {
 }
 
 export default withRouter(Navigation); //withRouter will pass updated match, location, and history props to the wrapped component whenever it renders.
-// export default () => (
-//     <React.Fragment>
-//          <div className="row headArrowAndMenu">
-//             <div className="col s6 left-align">
-//                 <img src={arrow} alt=""/>
-//             </div>
-//             <div className="col s6 right-align">
-//                 <Link to="/r_menu">
-//                     <img className="  responsive-img" src={menu} alt=""/>
-//                 </Link>
-//             </div>
-//         </div>
-//     </React.Fragment>
-  
-        
-    
-// )
 
 

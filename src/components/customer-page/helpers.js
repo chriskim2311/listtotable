@@ -21,7 +21,7 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
                 var pairData = pair.split('=');
                 queryPairs[pairData[0]] = pairData[1];
             });
-        console.log(queryPairs)
+        
         return queryPairs
 
     }
@@ -124,7 +124,7 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
             type: ['restaurant'],
             keyword: restaurantInput || ""
         }
-        console.log(request)
+        
         infowindow = new google.maps.InfoWindow({ maxWidth: 190 });
         service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, (results, status) => {

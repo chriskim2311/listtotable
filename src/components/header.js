@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import '../assets/css/header.css';
 import menu from "../assets/images/headermenu.svg";
 
-function Header(props){
+const Header = (props) =>{
     return (
         <Fragment>
             <div className="header">

@@ -1,10 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-
 import { getNotifiedListData, deleteListItem, changeSeatedStatus } from '../actions';
-
-import 'materialize-css/dist/css/materialize.min.css';
-import 'materialize-css/dist/js/materialize';
 import "../assets/css/customer_info.css"
 
 
@@ -47,16 +43,9 @@ class NotifiedCustomerInfo extends Component {
     }
 
     renderNotifiedListOnDom() {
-        // console.log('+++++++++ props:', this.props)
+        
         const notified = this.props.notified_list;
-        // const restId= localStorage.getItem('restId')
-
-        //  const notifiedObj1 = {
-        //     restaurant_id: restId,
-        //     status: 2
-        // }
-
-        // console.log('partys from server on customerinfo page',notified)
+        
 
         if (!notified) {
             return
@@ -71,7 +60,7 @@ class NotifiedCustomerInfo extends Component {
             const timeWhenNotified = current.wait_notify;
             const waitTimeSinceNotified = this.convertTime(timeWhenNotified);
             const comments = current.comments
-            console.log("TIME SINCE NOTIFIED:", waitTimeSinceNotified);
+            
 
 
             return (
@@ -97,27 +86,7 @@ class NotifiedCustomerInfo extends Component {
                                 <li className="white-text comments">Comments: {comments}</li>
                             </ul>
                         </div>
-                        {/* <div className="col s2 "> */}
-                        {/* <p>
-                            <button
-                                onClick={this.handleNotifyssss}>notify</button>
-                        </p> */}
-
-                        {/* </div> */}
-                        {/* <div className=" col s2 center" > */}
-
-                            {/* <button className="btn-small orange  waves-effect  waves" onClick={() => this.props.updatedSeated(ID)}> SEAT</button> */}
-                            {/* <img src={seat} /> */}
-                            {/* <button onClick={() => this.props.updatedSeated(ID)} >seat</button> */}
-
-                         {/* </div> */}
-
-                        {/* <div className="offset-s1 col s2 " > */}
-                            {/* <button className="btn-small red  waves-effect  waves" onClick={() => this.props.deleteListItem(ID)}>DELETE</button> */}
-                            {/* <i className=" medium  material-icons">delete</i> */}
-
-
-                        {/* </div> */}
+                       
 
                         <div className="col s12 white-text">
                             <div className="white-text comments">Comments: {comments}</div>
@@ -148,10 +117,10 @@ class NotifiedCustomerInfo extends Component {
 
 
 function mapStateToProps(state) {
-    console.log('Redux State:', state);
+    
 
     return {
-        // waiting_list: state.waitingList.waitingList,
+        
         notified_list: state.waitingList.notifiedList,
         restId: state.partner.restaurant_ID
     }

@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import 'materialize-css/dist/css/materialize.min.css';
-import 'materialize-css/dist/js/materialize';
 import greenTimer from '../../assets/images/greenTime.png';
 import redTimer from '../../assets/images/redTime.png';
 import yellowTimer from '../../assets/images/yellowTime.png';
@@ -65,7 +63,7 @@ class CustomerPg extends Component {
         this.setState({
             loading: false
         });
-        console.warn("WE DID THE THING");
+        
     }
 
     toggleMap = () => {

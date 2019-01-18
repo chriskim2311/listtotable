@@ -50,7 +50,7 @@ class CustomerInfo extends Component {
 
         //CONVERT OLD TIME TO MILLISECONDS
         var timeStamp = inputString + " UTC";
-        console.log(timeStamp);
+        
         var oldTime = new Date(timeStamp).getTime();
 
         //DIFFERENCE
@@ -134,7 +134,7 @@ class CustomerInfo extends Component {
 
 
         const partys = this.props.waiting_list;
-        // console.log('partys on customerinfo page',partys)
+        
 
 
         if (!partys) {
@@ -150,9 +150,9 @@ class CustomerInfo extends Component {
             const timeWhenAdded = current.wait_start;
             const waitTimeSinceAdded = this.convertTime(timeWhenAdded);
             const comments = current.comments
-            console.log("TIME SINCE ADDED:", waitTimeSinceAdded);
+            
 
-            console.log("PHONEEEEEE", current)
+            
 
 
             return (
@@ -237,7 +237,7 @@ class CustomerInfo extends Component {
 
 
 function mapStateToProps(state) {
-    console.log('Redux State:', state);
+    
 
     return {
         waiting_list: state.waitingList.waitingList,

@@ -19,14 +19,14 @@ class ConfirmationModal extends Component {
     };
 
     componentDidUpdate(prevProps){
-        console.log("previous props", prevProps);
+        
         if(!prevProps.saved && this.props.saved){
             this.open();
         }
     }
 
     render(){
-        console.log('confirmation modal: ', this.props);
+        
         if(this.state.isOpen){
             return (
                 <div className="basic-modal" onClick={this.close}>

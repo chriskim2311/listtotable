@@ -3,11 +3,13 @@ import Navigation from './hamburgerAndBack';
 import '../assets/css/teamPage.css';
 import github from '../assets/images/socialMedia/github.png'; 
 import linkedIn from '../assets/images/socialMedia/linkedIn.png';
-import andyP from '../assets/images/headshots/andyP.JPG';
+import Andrew from '../assets/images/headshots/andrew-small.jpg';
 import team from '../assets/images/headshots/team.JPG';
 import Sasha from '../assets/images/headshots/sasha-s.jpg';
 import Mike from '../assets/images/headshots/michael-small.jpg';
 import Chris from '../assets/images/headshots/chris-b.jpg';
+import Andy from '../assets/images/headshots/andy.jpg';
+import AndyO from '../assets/images/headshots/andy-2019.jpg';
 
 export default class Team extends Component {
 
@@ -27,7 +29,7 @@ export default class Team extends Component {
                 LinkedIn: 'https://www.linkedin.com/in/andypark105/',
                 Github: 'https://github.com/apark105',
                 Portfolio: 'andyjpark.com',
-                Photo: andyP,
+                Photo: Andy,
             },
             {
                 Name: 'Sasha Dykun',
@@ -43,7 +45,7 @@ export default class Team extends Component {
                 LinkedIn: 'https://www.linkedin.com/in/andrew-ouatu-776774b4/',
                 Github: 'https://github.com/andrewouatu',
                 Portfolio: '',
-                Photo: team,
+                Photo: Andrew,
             },
             {
                 Name: 'Mike Chu',
@@ -59,7 +61,7 @@ export default class Team extends Component {
                 LinkedIn: 'https://www.linkedin.com/in/andy-ong/',
                 Github: 'github.com/Breathics',
                 Portfolio: '',
-                Photo: andyP,
+                Photo: AndyO,
             },
         ]
         const individualRow = memberInfos.map((memberInfo, index) => {

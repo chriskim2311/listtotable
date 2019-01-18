@@ -53,8 +53,7 @@ class RestaurantCheckInForm extends Component {
                             type="button"
                             className="decrementButton btn btn-floating btn-large waves-effect waves-light blue darken-2"
                             onClick={this.props.Decrement}>
-                            {/* <img src={removeButton}/> */}
-                            <i class="material-icons">remove_circle_outline</i>
+                            <i className="material-icons">remove_circle_outline</i>
                         </button>
 
                         <div className="tableInputBox">{this.props.tableSize}</div>
@@ -62,8 +61,8 @@ class RestaurantCheckInForm extends Component {
                             type ="button"
                             className=" btn btn-floating btn-large waves-effect waves-light blue darken-2"
                             onClick={this.props.Increment}>
-                            {/* <img src={addButton}/> */}
-                            <i class="material-icons">add_circle_outline</i>
+                            
+                            <i className="material-icons">add_circle_outline</i>
 
                         </button>
                     </div>
@@ -107,7 +106,7 @@ RestaurantCheckInForm = reduxForm({
 (RestaurantCheckInForm); 
 
 function mapStateToProps(state) {
-    console.log('state from mapstateto props:', state)
+    
     return {
 
         tableSize: state.customer.table_size,

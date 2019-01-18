@@ -7,7 +7,7 @@ import { userLogIn } from '../actions'
 class LogInForm extends Component {
     handleLogIn = (values) => {
         
-        console.log('log in Values:', values);
+        
         this.props.logIn(values);
     }
 
@@ -15,7 +15,7 @@ class LogInForm extends Component {
         const { history, restId } = this.props;
 
         if(restId){
-            console.log('Redirect with rest id of:', restId);
+            
             history.push(`/waiting/${restId}`);
         }
     }

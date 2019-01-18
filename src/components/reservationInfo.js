@@ -5,10 +5,10 @@ import Navigation from "./hamburgerAndBack"
 
 class ReservationInfo extends Component{
     render (){
-        console.log("Props from the linked component ", this.props);
+        
         const { name, id } = this.props.match.params;
 
-        console.log('Place ID:', id);
+        
 
         return (
             <React.Fragment>

@@ -1,14 +1,14 @@
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 import React, {Component} from 'react';
-import Test from './test';
+
 import LandingPage from './landingPage';
 import '../assets/css/landingPage.css';
-import tfLogo from '../assets/images/logo.png';
+
 import {Route, Switch} from 'react-router-dom';
 import ReservationInfo from "./reservationInfo";
 import Login from './login';
-import ListMenu from './list_menu';
+
 import Waiting from './waiting';
 import RCheckIn from './r_check-in';
 import Seated from './seated';

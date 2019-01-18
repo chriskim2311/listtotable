@@ -2,14 +2,7 @@ import React, { Component, Fragment } from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userLogOut } from '../actions';
-// import '../assets/css/r_menu.css';
-// import logo from '../assets/images/r_logo.png';
-// import checkIn from '../assets/images/checkin.png'
-// import waiting from '../assets/images/clock.png'
-// import contactUs from '../assets/images/Contact-Me.jpg'
-// import seated from '../assets/images/table.png'
-// import account from '../assets/images/account.png'
-// import home from '../assets/images/home.png'
+
 
 
 

@@ -2,8 +2,7 @@ import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/css/r_list_menu.css';
 
-import 'materialize-css/dist/css/materialize.min.css';
-import 'materialize-css/dist/js/materialize';
+
 
 
 export default props => {

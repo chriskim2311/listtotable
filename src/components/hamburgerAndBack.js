@@ -26,7 +26,7 @@ class Navigation extends Component {
 
         // }
         else {
-        console.log("HISTORYYYYYY",this.props.history)
+        
         this.props.history.goBack();
         }
     }

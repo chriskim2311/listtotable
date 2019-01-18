@@ -3,8 +3,6 @@ import PhoneInput, { formatPhoneNumber, isValidPhoneNumber } from '../react-phon
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 import '../assets/css/reservationInfo.css';
-import addButton from "../assets/images/addbutton.svg";
-import removeButton from "../assets/images/removeButton.svg";
 import ConfirmationModal from "./confirmationModal";
 import axios from 'axios';
 

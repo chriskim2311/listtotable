@@ -1,13 +1,13 @@
-
 import React, { Component } from 'react';
 import Navigation from './hamburgerAndBack';
 import '../assets/css/teamPage.css';
-import portfolio from '../assets/images/socialMedia/portfolio.png';
 import github from '../assets/images/socialMedia/github.png'; 
 import linkedIn from '../assets/images/socialMedia/linkedIn.png';
 import andyP from '../assets/images/headshots/andyP.JPG';
 import team from '../assets/images/headshots/team.JPG';
-
+import Sasha from '../assets/images/headshots/sasha-s.jpg';
+import Mike from '../assets/images/headshots/michael-small.jpg';
+import Chris from '../assets/images/headshots/chris-b.jpg';
 
 export default class Team extends Component {
 
@@ -19,7 +19,7 @@ export default class Team extends Component {
                 LinkedIn: 'https://www.linkedin.com/in/christopher-kim-71898949/',
                 Github: 'https://github.com/chriskim2311',
                 Portfolio: 'Kim-Chris.com',
-                Photo: team,
+                Photo: Chris,
             },
             {
                 Name: 'Andy Park',
@@ -35,7 +35,7 @@ export default class Team extends Component {
                 LinkedIn: 'https://www.linkedin.com/in/sasha-oleksandr-dykun-442b04171/',
                 Github: 'https://github.com/sashadykun',
                 Portfolio: 'http://sashadykun.com',
-                Photo: team,
+                Photo: Sasha,
             },
             {
                 Name: 'Andrew Ouatu',
@@ -46,12 +46,12 @@ export default class Team extends Component {
                 Photo: team,
             },
             {
-                Name: 'Michael Chu',
+                Name: 'Mike Chu',
                 Title: 'Back-End Developer',
                 LinkedIn: 'https://www.linkedin.com/in/michaeljchu/',
                 Github: 'https://github.com/mchu79',
                 Portfolio: '',
-                Photo: team,
+                Photo: Mike,
             },
             {
                 Name: 'Andy Ong',
@@ -62,11 +62,11 @@ export default class Team extends Component {
                 Photo: andyP,
             },
         ]
-        const individualRow = memberInfos.map((memberInfo) => {
+        const individualRow = memberInfos.map((memberInfo, index) => {
             
             const { Name, Title, LinkedIn, Github, Portfolio, Photo } = memberInfo
             return (
-                <div className="col">
+                <div key={index} className="col">
                     
                     <div className="card horizontal">
                         <div className="card-image center">

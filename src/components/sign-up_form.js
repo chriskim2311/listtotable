@@ -15,14 +15,14 @@ class SignUpForm extends Component {
 
 
     componentDidMount(){
-        // var address = null;
+        
         var input = document.getElementById('address');
         var autocomplete = new google.maps.places.Autocomplete(input);
         var address= null;
         var restaurant_address = null;
         autocomplete.addListener('place_changed', () => {
             var place = autocomplete.getPlace();
-            // console.log('PLASE:', place);
+            
             address = place.place_id;
             restaurant_address = place.formatted_address;
             this.setState({
@@ -37,7 +37,7 @@ class SignUpForm extends Component {
     
 
     handleSignUp = async (values) =>{
-        console.log('++++++++++++values+++++++++++', values)
+        
         const obj = {
             restaurant_ID: this.state.restaurant_id,
             email: values.email,
@@ -47,13 +47,13 @@ class SignUpForm extends Component {
             
         }
 
-        // console.log('Sign up', obj);
+        
         const restId = await this.props.signUp(obj);
 
         this.props.history.push(`/waiting/${restId}`);
     }
     render(){
-        // console.log('sign up props ', this.props)
+       
     const { handleSubmit, signUpError } = this.props
         return(
             <Fragment>

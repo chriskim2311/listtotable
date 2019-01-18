@@ -48,7 +48,11 @@ class NotifiedCustomerInfo extends Component {
         
 
         if (!notified) {
-            return
+            return (
+                <div className="center">
+                    <h4>For now 'NOTIFIED' list is empty!</h4>
+                </div>
+            )
         }
 
         const notifiedList = notified.map((current, index) => {

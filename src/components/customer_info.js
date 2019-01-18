@@ -56,7 +56,11 @@ class CustomerInfo extends Component {
 
 
         if (!partys) {
-            return
+            return (
+                <div className="center">
+                    <h4>For now 'NEW CUSTOMERS' list is empty!</h4>
+                </div>
+            )
         }
 
         const customerList = partys.map((current, index) => {

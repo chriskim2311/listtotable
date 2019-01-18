@@ -3,13 +3,13 @@ import Navigation from './hamburgerAndBack';
 import '../assets/css/teamPage.css';
 import github from '../assets/images/socialMedia/github.png'; 
 import linkedIn from '../assets/images/socialMedia/linkedIn.png';
-import Andrew from '../assets/images/headshots/andrew-small.jpg';
-import team from '../assets/images/headshots/team.JPG';
-import Sasha from '../assets/images/headshots/sasha-s.jpg';
-import Mike from '../assets/images/headshots/michael-small.jpg';
-import Chris from '../assets/images/headshots/chris-b.jpg';
-import Andy from '../assets/images/headshots/andy.jpg';
-import AndyO from '../assets/images/headshots/andy-2019.jpg';
+import Andrew from '../assets/images/headshots/andrew.jpg';
+
+import Sasha from '../assets/images/headshots/sasha.jpg';
+import Mike from '../assets/images/headshots/michael.jpg';
+import Chris from '../assets/images/headshots/chris.jpg';
+import Andy from '../assets/images/headshots/andys.jpg';
+import AndyO from '../assets/images/headshots/andy.jpg';
 
 export default class Team extends Component {
 
@@ -71,7 +71,7 @@ export default class Team extends Component {
                 <div key={index} className="col s12 m6 l6">
                     
                     <div className="card ">
-                        <div className="card-image center">
+                        <div className="card-image center circle">
                             <img src={Photo} alt=""/>
                         </div>
                         <div className="card-stacked">

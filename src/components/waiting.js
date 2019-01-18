@@ -14,11 +14,11 @@ class Waiting extends Component {
             <Fragment>
             <RTopMenu />
             <div className="TopContainer">
-            <ListMenu />
+                <ListMenu />
             </div>
             <div className="bottomContainer">
                 <CustomerInfo/>
-                </div>
+            </div>
             </Fragment>
         )
     }

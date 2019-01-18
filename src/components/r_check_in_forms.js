@@ -51,7 +51,7 @@ class RestaurantCheckInForm extends Component {
                     <div className="tableInfoContainer center row">
                         <button
                             type="button"
-                            className="decrementButton btn btn-floating btn-large waves-effect waves-light blue darken-2"
+                            className="decrementButton btn btn-floating btn-large waves-effect waves-light blue-grey darken-3"
                             onClick={this.props.Decrement}>
                             <i className="material-icons">remove_circle_outline</i>
                         </button>
@@ -59,7 +59,7 @@ class RestaurantCheckInForm extends Component {
                         <div className="tableInputBox">{this.props.tableSize}</div>
                         <button 
                             type ="button"
-                            className=" btn btn-floating btn-large waves-effect waves-light blue darken-2"
+                            className=" btn btn-floating btn-large waves-effect waves-light blue-grey darken-3"
                             onClick={this.props.Increment}>
                             
                             <i className="material-icons">add_circle_outline</i>
@@ -72,7 +72,7 @@ class RestaurantCheckInForm extends Component {
                         </div>
                     </div>
                     <div className="col s6 center">
-                        <button type="submit" className="btn waves-effect waves-light blue darken-3">Submit</button>
+                        <button type="submit" className="btn waves-effect waves-light blue-grey darken-3">Submit</button>
                         <RConfirmationModal/>
                     </div>
                 </form>

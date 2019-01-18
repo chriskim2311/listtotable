@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PhoneInput, { formatPhoneNumber, isValidPhoneNumber } from '../react-phone-number-input'
-import 'materialize-css/dist/css/materialize.min.css';
-import 'materialize-css/dist/js/materialize';
+
 import '../assets/css/reservationInfo.css';
 import ConfirmationModal from "./confirmationModal";
 import axios from 'axios';
@@ -133,7 +132,7 @@ class CheckInForm extends Component{
                 <div className="restaurantContainer">
                     <form className="formStyle" onSubmit={this.handleSubmit}>
                          <div className="row">
-                             <div className="input-field col s10 center-align offset-s1">
+                             <div className="input-field col s10 center-align offset-s1  ">
                                  <input
                                      type="text"
                                      value={this.state.clientName}
@@ -170,7 +169,7 @@ class CheckInForm extends Component{
                      
                     
                    
-                        <button className=" btn btn-floating btn-large waves-effect waves-light blue darken-2"
+                        <button className=" btn btn-floating btn-large waves-effect waves-light blue-grey darken-3"
                             id="decrementButton"
                             onClick={() => this.handleDecrement()}
                         >
@@ -180,7 +179,7 @@ class CheckInForm extends Component{
 
                         <div className="tableInputBox col s6 ">{this.state.clientGroupSize}</div>
 
-                        <button className="btn btn-floating btn-large waves-effect waves-light blue darken-2"
+                        <button className="btn btn-floating btn-large waves-effect waves-light  blue-grey darken-3"
                             id="incrementButton"
                             value={this.state.clientGroupSize}
                             onClick={() => this.handleIncrement()}
@@ -203,7 +202,7 @@ class CheckInForm extends Component{
                     <div className="submitButtonBox center">
                         <button
                             onClick={this.handleSubmit}
-                            className="submitButton btn blue darken-2"
+                            className="submitButton btn blue-grey darken-3"
                             type="submit"
                             name="action"
                         >SUBMIT</button>

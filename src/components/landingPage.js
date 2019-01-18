@@ -80,9 +80,9 @@ class LandingPage extends Component {
                                                     <li>
                                                         <Link to="/">Home</Link>
                                                     </li>
-                                                    <li>
+                                                    {/* <li>
                                                         <Link to={`/customer-map/?lat=${lat}&long=${long}`}>Map</Link>
-                                                    </li>
+                                                    </li> */}
                                                     <li>
                                                         <Link to="/about">About</Link>
                                                     </li>

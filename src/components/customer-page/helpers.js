@@ -1,7 +1,9 @@
 import axios from 'axios';
 import addButton from '../../assets/images/plus.png';
 import { NavLink, withRouter, Link } from "react-router-dom";
+import Fragment from 'react'
 import '../../assets/css/helper.css';
+
 
 export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) {
 
@@ -133,6 +135,13 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
     }
 
     function restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation, loadingDisplay) {
+      console.log("RESULTS", results)
+        if(results.length == 0) {
+          alert("No Results Please Try Again!")
+      }
+      
+      
+      
         var bounds = new google.maps.LatLngBounds();
         retrieveRestaurantData(results, map, centerLocation);
         results = results.filter((restaurant) => {

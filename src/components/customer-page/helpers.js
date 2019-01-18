@@ -125,7 +125,7 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
             keyword: restaurantInput || ""
         }
         console.log(request)
-        infowindow = new google.maps.InfoWindow();
+        infowindow = new google.maps.InfoWindow({ maxWidth: 190 });
         service = new google.maps.places.PlacesService(map);
         service.nearbySearch(request, (results, status) => {
             restaurantIconRender(results, status, retrieveRestaurantData, map, centerLocation, loadingDisplay);

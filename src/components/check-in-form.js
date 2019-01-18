@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PhoneInput, { formatPhoneNumber, isValidPhoneNumber } from '../react-phone-number-input'
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 import '../assets/css/reservationInfo.css';
@@ -6,6 +7,7 @@ import addButton from "../assets/images/addbutton.svg";
 import removeButton from "../assets/images/removeButton.svg";
 import ConfirmationModal from "./confirmationModal";
 import axios from 'axios';
+
 
 class CheckInForm extends Component{
     constructor(props){
@@ -122,15 +124,15 @@ class CheckInForm extends Component{
             })
         }
     }
+
     
 
     render (){
         const { dataSaved } = this.state;
-
+        const { value } = this.state
         return (
             <Fragment>
                 <div className="restaurantContainer">
-
                     <form className="formStyle" onSubmit={this.handleSubmit}>
                          <div className="row">
                              <div className="input-field col s10 center-align offset-s1">
@@ -145,12 +147,22 @@ class CheckInForm extends Component{
 
                         <div className="row">
                             <div className="input-field col s10 center-align offset-s1">
-                                <input
+                                {/* <input
                                     type="text"
                                     value={this.state.clientNumber}
                                     onChange={event => this.setState({clientNumber: event.target.value})}
-                                />
-                                <label>Enter Number</label>
+                                /> */}
+                                <div>
+
+                                </div>
+                               <PhoneInput
+                               country = "US"
+  placeholder="Enter phone number"
+  value={this.state.clientNumber}
+  onChange={value => this.setState({clientNumber: value}) }
+  error={ this.state.clientNumber ? (isValidPhoneNumber(this.state.clientNumber) ? undefined : 'Invalid phone number') : 'Phone number required' }
+
+  />
                             </div>
                         </div>
                     </form>
@@ -165,7 +177,7 @@ class CheckInForm extends Component{
                             onClick={() => this.handleDecrement()}
                         >
                             {/* <img src={removeButton}/> */}
-                            <i class="material-icons">remove_circle_outline</i>
+                            <i className="material-icons">remove_circle_outline</i>
                         </button>
 
                         <div className="tableInputBox col s6 ">{this.state.clientGroupSize}</div>
@@ -176,7 +188,7 @@ class CheckInForm extends Component{
                             onClick={() => this.handleIncrement()}
                         >
                             {/* <img src={addButton}/> */}
-                            <i class="material-icons">add_circle_outline</i>
+                            <i className="material-icons">add_circle_outline</i>
                         </button>
                     </div>
                     
@@ -211,5 +223,14 @@ class CheckInForm extends Component{
 }
 
 export default CheckInForm;
+
+
+
+
+
+
+
+
+
 
 

@@ -212,7 +212,9 @@ export function renderBusyTimes(config, retrieveRestaurantData, loadingDisplay) 
                 '<div class="marker">' +
                 '<div class="photoCheckInBox">' +
                 `<img src='${photo}' class="photoMarker" >` +
-                `<button> <a href="/reservation-info/${name}/${placeId}">Check In!</button>` +
+                `<div> <a href="/reservation-info/${name}/${placeId}">` +
+                `<button> Check In!</button>` +
+                '</div>'+
                 '</div>' +
                 '<div class="infoBorder">' +
                 '<div class="infoContainer">' +

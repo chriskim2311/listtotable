@@ -1,3 +1,10 @@
+body {
+    width: auto;
+}
+#root {
+    height: 100%;
+    width: 100%
+;}
 
 .teamPage {
     width: 100%;
@@ -16,7 +23,7 @@
 
 .teamMembers {
     height: 85%; 
-    overflow: scroll;
+    overflow-y: a;
 }
 
 .individualRow {
@@ -86,6 +93,3 @@
 }
 
 
-img{
-    max-height: 290px;
-}

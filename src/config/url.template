@@ -1,0 +1,5 @@
+export default { 
+    busyHoursUrl: "busy hours api",
+    messageNotifyUrl: "url to totify ready",
+    messageConfirmUrl: "url to confirm check-in"
+}

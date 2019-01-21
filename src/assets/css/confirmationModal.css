@@ -1,0 +1,41 @@
+.basic-modal {
+    background-color: rgba(0, 0, 0, .7);
+    display: flex;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1000;
+}
+
+.basic-modal-content {
+    background-color: #3C4452;
+    color: white;
+    border-radius: 20px;
+    margin: auto;
+    padding: 10px;
+    position: relative;
+    width: 75%;
+    /* height: 20%; */
+    z-index: 1;
+}
+
+.basic-modal-content p{
+    font-size: 5vmin;
+}
+
+.basic-modal-close {
+    height: 30px;
+    width: 30px;
+    line-height: 13px;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+    font-weight: bold;
+    color: #98C1D9;
+    cursor: pointer;
+    font-size: 5vmin;
+}

@@ -1,0 +1,263 @@
+#root {
+    margin: 0;
+    width: 100vw;
+    height: 100vh; 
+}
+
+.topContainer {
+    width: 100%;
+    height: 20%;
+    background-color: #EFEFEF
+}
+
+.foodSearchHeader {
+    height: 50%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.foodSearchBar {
+    width: 70%; 
+    height: 100%; 
+}
+
+.searchButton {
+    width: 30%;
+    height: 100%;  
+}
+
+.inputFood {
+    text-align: center;
+}
+
+.searchButton {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.search {
+    background-color: #3D5A80;
+    color: white;
+    width: 75%;
+    height: 50%;
+    font-size: 2vmax;
+    padding: 0;
+}
+
+.btn-small:hover {
+    background-color:#3D5A80;
+} 
+.btn-small:focus {
+    background-color:#3D5A80;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1.5px solid #3D5A80;
+    box-shadow: 0 1px 0 0 #3D5A80;
+    margin: 0;
+    padding: 0;
+    color: black; 
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px){ 
+    input[type=text]:not(.browser-default) {
+        border-bottom: 1.2px solid black;
+        width: 100%;
+        height: 3rem;
+    }
+}
+@media only screen and (min-width: 480px){ 
+    input[type=text]:not(.browser-default) {
+        border-bottom: 1.2px solid black;
+        width: 100%;
+        height: 2.0rem;
+    }
+    .search {
+        background-color: #053E66;
+        color: white;
+        width: 55%;
+        height: 80%;
+        font-size: 2vmax;
+    }
+}
+
+.legendHeader {
+    height: 35%; 
+    display: flex;
+    flex-wrap: wrap;
+}
+.toggleDisplayContainer {
+    width: 40%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggleDisplay {
+    display: flex;
+    flex-direction: row;
+    height: 85%;
+    width: 95%;
+}
+.mapButton {
+    width: 50%;
+    height:100%;
+    background-color: #3D5A80;
+    color: white;
+    border: black 1px solid; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+}
+.mapButton1 {
+    width: 50%;
+    height:100%;
+    background-color: white;
+    color: black;
+    border: black 1px solid; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+}
+.listButton {
+    width: 50%;
+    height:100%;
+    background-color: white;
+    border: black 1px solid; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+}
+
+.listButton1  {
+    width: 50%;
+    height:100%;
+    background-color: #3D5A80;
+    color: white;
+    border: black 1px solid; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+}
+
+a {
+    color:black;
+}
+
+.legendTimeContainer {
+    width: 60%; 
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* background-color: #577d9c; */
+}
+
+.legendTime {
+    height: 60%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.greenTime, .redTime, .yellowTime  {
+    max-width: 25%;
+    max-height: 85%;
+}
+
+
+.BottomContainer {
+    width: 100%;
+    height: 70%; 
+}
+
+.bottomContainer > img {
+    width: 100%; 
+}
+
+.legendDetails {
+    height: 40%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+}
+.hidden {
+    display: none;
+}
+
+.mapBottomContainer {
+    position: absolute;
+    width: 100%;
+    height: 70%;
+}
+
+.borderContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: rgb(237 235 232);
+    overflow: scroll;
+}
+
+.loading-spinner {
+    height: 70%;
+    background-color: white
+}
+
+.loading-spinner > img {
+    width: 100%; 
+    height: 60%;
+    margin-top: 20%;
+}
+
+.customerPage {
+    height: 100%;
+    width: 100%; 
+}
+
+.customLocation {
+    height: 100%;
+}
+
+.customLocationButton {
+    display: flex; 
+    justify-content: center;
+}
+
+.customLocationContainer {
+    display:flex; 
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+
+@media (min-width: 768px) {
+    .loading-spinner{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loading-spinner > img {
+        height: 365px;
+        width: 770px;
+        margin-top: 0;
+    }
+}

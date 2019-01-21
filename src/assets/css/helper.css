@@ -1,0 +1,30 @@
+.marker {
+    display:flex;
+}
+.infoBorder {
+    width: 60%;
+    display: flex;
+    justify-content: flex-end;
+}
+.infoContainer {
+    width: 90%;
+}
+
+.photoMarker {
+    width: 100%;
+    height: 60%;
+}
+
+.photoCheckInBox {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.photoCheckInBox > button {
+    height: 40%;
+}
+
+.bold {
+    font-weight: 700;
+}

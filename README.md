@@ -8,7 +8,7 @@
 - Chris Kim - Project Lead
 - Andy Park - Front-End Developer
 - Sasha Dykun - Front-End Developer
-- Andrew Oautu - Front-End Developer
+- Andrew Ouatu - Front-End Developer
 - Michael Chu - Back-End Devleoper
 - Andy Ong - Project Manager
 

@@ -16,6 +16,15 @@ class Seated extends Component {
             status: 3
         }
         this.props.getSeatedListData(seatedObj);
+
+
+       this.interval =  setInterval(() => {
+            this.props.getSeatedListData(seatedObj)
+        }, 10000
+        )
+    }
+    componentWillUnmount() {
+      clearInterval(this.interval)
     }
 
     renderSeatedCustomerListOnDom() {

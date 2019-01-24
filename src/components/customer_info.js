@@ -17,12 +17,16 @@ class CustomerInfo extends Component {
         }
         this.props.waitingListData(waitingObj)
 
-        setInterval(() => {
+        this.interval =  setInterval(() => {
             this.props.waitingListData(waitingObj)
         }, 10000
         )
-           
     }
+    componentWillUnmount() {
+      clearInterval(this.interval)
+    }
+           
+    
 
     // componentWillUpdate(){
     //     this.props.waitingListData();

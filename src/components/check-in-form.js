@@ -42,6 +42,12 @@ class CheckInForm extends Component{
             status: 1
         };
 
+        if( sendData.client_name == '' || sendData.phone_number == '' ) {
+            alert("Please Complete Form")
+            return
+        }
+
+
         const tableResp = await axios({
             url: '/api/tablefinder.php',
             method: 'POST',

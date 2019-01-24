@@ -10,6 +10,7 @@ import {sendCustomerText} from '../actions';
 import {managePopUp} from '../actions'
 import RConfirmationModal from "./r_confirmationModal"
 import Input from './forms_input';
+import {reset} from 'redux-form';
 
 class RestaurantCheckInForm extends Component {
 
@@ -27,20 +28,21 @@ class RestaurantCheckInForm extends Component {
             comments: comments,
             status: 1
         }
-        
+
+        reset('myForm')
         this.props.submitCheckIn(sendData)
         this.props.managePopUp()
         this.props.sendCustomerText(sendData)
+        
     }
 
 
 
-
     render(){
-        const { handleSubmit, error } = this.props
+        const { handleSubmit, error, resetForm } = this.props
         return (
             <div className="r_checking container">
-                <form onSubmit={handleSubmit(this.completeCheckIn)} >
+                <form name="myForm" onSubmit={handleSubmit(this.completeCheckIn)} >
                     <div className="row center">
                         <Field name="enterName" size="s8 offset-s2" label="Enter Name" component={Input} />
                     </div>

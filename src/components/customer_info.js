@@ -16,12 +16,27 @@ class CustomerInfo extends Component {
             status: 1
         }
         this.props.waitingListData(waitingObj)
+
+        setInterval(() => {
+            this.props.waitingListData(waitingObj)
+        }, 10000
+        )
            
     }
 
     // componentWillUpdate(){
     //     this.props.waitingListData();
     // }
+
+    handleSubmit(restaurantName, ID, phone) {
+        this.props.updateNotified(restaurantName, ID, phone)
+        // const restId= localStorage.getItem('restId')
+        // const waitingObj = {
+        //     restaurant_id: restId,
+        //     status: 1
+        // }
+        this.renderCustomerListOnDom();
+    }
 
 
 
@@ -82,7 +97,9 @@ class CustomerInfo extends Component {
                     <div className="row #b0bec5 blue-grey lighten-3">
                         <div className="col s12">
                             <button className="small btn waves-effect  waves offset-s1 col s3 center #a5d6a7 green lighten-3"
-                                onClick={() => this.props.updateNotified(restaurantName, ID, phone)}>notify</button>
+                                onClick={() => this.handleSubmit(restaurantName, ID, phone)}
+            
+                                >notify</button>
                             <button className="small btn orange waves-effect  waves offset-s1 col s3 center" onClick={() => this.props.updatedSeated(ID) }  >seat</button>
                             <button className="small btn red waves-effect  waves offset-s1 col s3 center" onClick={() => this.props.deleteListItem(ID) } > <i className=" small material-icons">delete</i></button>                   
                         </div>

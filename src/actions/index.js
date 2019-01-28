@@ -75,8 +75,7 @@ export function userLogIn(partner){
         try{
             const resp =await axios.post('/api/tablefinder.php?action=restaurant_users&method=login', partner);
             // console.log('Sign in Response', resp);
-            
-
+        
             // localStorage.setItem('token', resp.data.token);
            
             const login = resp.data.success;

@@ -13,9 +13,25 @@ class ListView extends Component {
     async componentDidUpdate(prevProps) {
         const prevData = prevProps.retrieveRestaurantData;
         const data = this.props.retrieveRestaurantData;
+        if(prevData.length == 0 || data.length == 0) {
+            debugger
+            this.emptyList()
+        }
         if ((!prevData && data) || ((prevData && data) && prevData.length !== data.length)) {
             const list = await this.buildRestaurantsList(data);
         }
+        
+
+    }
+
+
+    emptyList() {
+        return(
+            
+                <div key={index} className="restaurantBubble">
+                <h1>Empty List</h1>
+                </div>
+        )
     }
 
     async buildRestaurantsList(results) {

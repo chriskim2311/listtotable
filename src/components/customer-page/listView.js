@@ -13,30 +13,24 @@ class ListView extends Component {
     async componentDidUpdate(prevProps) {
         const prevData = prevProps.retrieveRestaurantData;
         const data = this.props.retrieveRestaurantData;
-        if(prevData.length == 0 || data.length == 0) {
-            debugger
-            this.emptyList()
-        }
         if ((!prevData && data) || ((prevData && data) && prevData.length !== data.length)) {
+            console.log("DATA", data)
             const list = await this.buildRestaurantsList(data);
         }
-        
-
-    }
-
-
-    emptyList() {
-        return(
-            
-                <div key={index} className="restaurantBubble">
-                <h1>Empty List</h1>
-                </div>
-        )
     }
 
     async buildRestaurantsList(results) {
+        if (results.length == 0) {
+            const list=  <h1>Empty List Search Again!</h1>
+            this.setState({
+                restaurants: list
+            });
+            return
+        }
 
         const list = await Promise.all(results.map(async (current, index) => {
+
+
             let price = current.price_level;
             const address = current.vicinity;
             const name = current.name;

@@ -114,25 +114,29 @@ class LandingPage extends Component {
                                     <div className="startCont">Let's Get Started</div>
                                     <div className="guestRestButton">
                                         <div className="buttonsBox">
-                                        <button id="restaurants-button" className="btn btn-large waves-effect waves-light">
-                                            <Link className ="restaurants" to="/login">
+                                        <Link id="restaurants-button" className ="restaurantszn btn-large waves-effect waves-light" to="/login">
+                                            
+                                           
                                                     <div>
                                                         restaurants
                                                     </div>
-                                            </Link>
-                                        </button>
-                                        <button id="guests-button" className="btn btn-large waves-effect waves-light">
+                                            
+                                            
+                                        </Link>
+                                        <Link id="guests-button" className ="guests btn btn-large waves-effect waves-light" to={set ? `/customer-map/?lat=${lat}&long=${long}` : "/custom-location"}>
+                                        
                                             <div className={ loadSpinner ? "hideSpinner" : "spinner"}>
                                                 <div className={ loadSpinner ? "hideSpinner" : "bounce1"}></div>
                                                 <div className={ loadSpinner ? "hideSpinner" : "bounce2"}></div>
                                                 <div className={ loadSpinner ? "hideSpinner" : "bounce3"}></div>
                                             </div>
-                                            <Link className ="guests" to={set ? `/customer-map/?lat=${lat}&long=${long}` : "/custom-location"}>
+                                            
                                                 <div>
-                                                    guests
+                                                    {loadSpinner ? "guests" : ""}
                                                 </div>
-                                            </Link>
-                                        </button>
+                                            
+                                        
+                                        </Link>
                                         </div>
                                     </div>
                                 </Fragment>
@@ -146,25 +150,29 @@ class LandingPage extends Component {
                                     </div>
                                     <div className="buttonsContainer">
                                         <div className='buttonsBox'>
-                                            <button id="restaurants-button" className="btn btn-large waves-effect waves-light">
-                                                <Link className ="restaurants" to="/login">
+                                            <Link  id="restaurants-button" className ="restaurants btn btn-large waves-effect waves-light" to="/login">
+                                                
+                                                
                                                 <div>
                                                     restaurants
                                                 </div>
-                                                </Link>
-                                            </button>
-                                            <button id="guests-button" className="btn btn-large waves-effect waves-light">
+                                                
+                                                
+                                            </Link>
+                                            <Link id="guests-button" className ="guests btn btn-large waves-effect waves-light" to={set ? `/customer-map/?lat=${lat}&long=${long}` : "/custom-location"}>
+                                                
                                                 <div className={ loadSpinner ? "hideSpinner" : "spinner"}>
                                                     <div className={ loadSpinner ? "hideSpinner" : "bounce1"}></div>
                                                     <div className={ loadSpinner ? "hideSpinner" : "bounce2"}></div>
                                                     <div className={ loadSpinner ? "hideSpinner" : "bounce3"}></div>
                                                 </div>
-                                                <Link className ="guests" to={set ? `/customer-map/?lat=${lat}&long=${long}` : "/custom-location"}>
+                                                
                                                     <div>
-                                                        guests
+                                                        {loadSpinner ? "guests" : ""}
                                                     </div>
-                                                </Link>
-                                            </button>
+                                                
+                                               
+                                            </Link>
                                         </div>
                                     </div>
                                     <div className="bottomSpacer">

@@ -15,6 +15,7 @@
 ### Technologies Used:
 - HTML 
 - CSS
+- MaterializeCSS
 - JavaScript
 - React/Redux
 - PHP/MySQL

@@ -1,0 +1,215 @@
+
+.tableSizeTitle{
+    text-align: center;
+    font-size: 6.5vmin;
+    height:10%;
+}
+
+.tableInfoContainer{
+    display: flex; 
+    align-items: flex-start; 
+    justify-content: center;
+    height: 20%;
+}
+.restaurantContainer {
+    overflow: auto;
+}
+/* .formStyle {
+    height:37%; 
+} */
+
+.tableInputBox{
+    display: inline-block;
+    width: 40%;
+    vertical-align: top;
+    text-align: center;
+    font-size: 12.5vmin;
+    border: solid 1px black;
+    border-radius: 15px;
+}
+
+/* #incrementButton{
+    display: inline-block;
+    width: 18%;
+    height: 80%;
+    vertical-align: top;
+    position: relative;
+    background-color: #EFEFEF;
+    border: none;
+} */
+
+/* #incrementButton img{
+    position: relative;
+    width: 75%;
+} */
+
+/* #decrementButton{
+    display: inline-block;
+    width: 18%;
+    height: 80%;
+    position: relative;
+    background-color: #EFEFEF;
+    border: none;
+}
+
+#decrementButton img{
+    position: relative;
+    width: 75%;
+} */
+
+#commentsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%; 
+}
+
+.commentsBox{
+    height: 80%;
+    font-size: 5vmin;
+    text-align: center;
+    width: 80%;
+}
+.react-phone-number-input__icon {
+    display: none;
+}
+
+/* .submitButtonBox{
+    display: block;
+    position: relative;
+    margin: 0 10%;
+    height: 15%;
+    width: 100%; 
+    height: 17%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* .submitButton{
+    width: 20%; 
+} */
+
+/* .btn, .btn-large, .btn-small {
+    text-decoration: none;
+    color: #fff;
+    background-color: #3D5A80;
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+} */
+
+/* .btn:focus, .btn-large:focus, .btn-small:focus, .btn-floating:focus {
+    background-color: #3D5A80;
+} */
+
+/* .btn:hover, .btn-large:hover, .btn-small:hover {
+    background-color: #3D5A80;
+} */
+
+/* button:focus {
+    outline: none;
+    background-color: #3D5A80;
+} */
+
+/* Desktops */
+/* @media (min-width: 1281px) {
+    
+} */
+
+/* Laptops/Desktops */
+/* @media (min-width: 1025px) and (max-width: 1280px) {
+    .tableSizeTitle {
+        text-align: center;
+        font-size: 5vmin;
+    }
+} */
+
+/* Tablets, Ipads, Portrait */
+/* @media (min-width: 768px) and (max-width: 1024px) { */
+    /* #incrementButton{
+        display: inline-block;
+        width: 150px;
+        height: 80%;
+        vertical-align: top;
+        position: relative;
+        background-color: #EFEFEF;
+        border: none;
+    }
+    #decrementButton{
+        display: inline-block;
+        width: 150px;
+        height: 80%;
+        position: relative;
+        background-color: #EFEFEF;
+        border: none;
+    }
+    .tableInputBox {
+        display: inline-block;
+        width: 300px;
+        vertical-align: top;
+        text-align: center;
+        font-size: 9vmin;
+        border: solid 1px black;
+        border-radius: 15px;
+    }
+    .tableSizeTitle {
+            text-align: center;
+            font-size: 6.5vmin;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+    }
+    #decrementButton img{
+        position: relative;
+        width: 50px;
+    }
+    #incrementButton img{
+        position: relative;
+        width: 50px;
+    }
+} */
+
+/* @media (min-width: 571px) and (max-width: 767px) {
+    .tableInputBox {
+        display: inline-block;
+        width: 225px;
+        vertical-align: top;
+        text-align: center;
+        font-size: 9vmin;
+        border: solid 1px black;
+        border-radius: 15px;
+    } */
+    /* #incrementButton{
+        display: inline-block;
+        width: 150px;
+        height: 80%;
+        vertical-align: top;
+        position: relative;
+        background-color: #EFEFEF;
+        border: none;
+    }
+    #decrementButton{
+        display: inline-block;
+        width: 150px;
+        height: 80%;
+        position: relative;
+        background-color: #EFEFEF;
+        border: none;
+    }
+    .tableSizeTitle {
+        text-align: center;
+        font-size: 5vmin;
+    }
+    #decrementButton img{
+        position: relative;
+        width: 50px;
+    }
+    #incrementButton img{
+        position: relative;
+        width: 50px;
+    }
+} */
+

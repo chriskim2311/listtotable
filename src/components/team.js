@@ -36,7 +36,7 @@ export default class Team extends Component {
                 Title: 'Front-End Developer',
                 LinkedIn: 'https://www.linkedin.com/in/sasha-oleksandr-dykun-442b04171/',
                 Github: 'https://github.com/sashadykun',
-                Portfolio: 'http://sashadykun.com',
+                Portfolio: 'https://sashadykun.com',
                 Photo: Sasha,
             },
             {

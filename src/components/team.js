@@ -20,7 +20,7 @@ export default class Team extends Component {
                 Title: 'Project Lead',
                 LinkedIn: 'https://www.linkedin.com/in/christopher-kim-71898949/',
                 Github: 'https://github.com/chriskim2311',
-                Portfolio: 'Kim-Chris.com',
+                Portfolio: 'https://Kim-Chris.com',
                 Photo: Chris,
             },
             {
@@ -28,7 +28,7 @@ export default class Team extends Component {
                 Title: 'Front-End Developer',
                 LinkedIn: 'https://www.linkedin.com/in/andypark105/',
                 Github: 'https://github.com/apark105',
-                Portfolio: 'andyjpark.com',
+                Portfolio: 'https://andyjpark.com',
                 Photo: Andy,
             },
             {

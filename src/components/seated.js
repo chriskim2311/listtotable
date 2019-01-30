@@ -47,7 +47,7 @@ class Seated extends Component {
         if (!partys) {
             return (
                 <div className="center">
-                    <h1>For now 'SEATED' list is empty!</h1>
+                    <h4>For now 'SEATED' list is empty!</h4>
                 </div>
             )
         }

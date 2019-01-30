@@ -26,9 +26,9 @@ class CustomerInfo extends Component {
         // }, 10000
         // )
     }
-    componentWillUnmount() {
-      clearInterval(this.interval)
-    }
+    // componentWillUnmount() {
+    //   clearInterval(this.interval)
+    // }
            
     
 

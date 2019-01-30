@@ -8,6 +8,10 @@ import "../assets/css/customer_info.css"
 
 
 class CustomerInfo extends Component {
+    state= {
+        preventButtonClick: false
+
+    }
     
     componentDidMount() {
         const restId= localStorage.getItem('restId')
@@ -17,10 +21,10 @@ class CustomerInfo extends Component {
         }
         this.props.waitingListData(waitingObj)
 
-        this.interval =  setInterval(() => {
-            this.props.waitingListData(waitingObj)
-        }, 10000
-        )
+        // this.interval =  setInterval(() => {
+        //     this.props.waitingListData(waitingObj)
+        // }, 10000
+        // )
     }
     componentWillUnmount() {
       clearInterval(this.interval)
@@ -32,14 +36,29 @@ class CustomerInfo extends Component {
     //     this.props.waitingListData();
     // }
 
-    handleSubmit(restaurantName, ID, phone) {
-        this.props.updateNotified(restaurantName, ID, phone)
+   async handleSubmit(restaurantName, ID, phone) {
+       this.setState({
+           preventButtonClick: true
+       })
+        await this.props.updateNotified(restaurantName, ID, phone)
         // const restId= localStorage.getItem('restId')
         // const waitingObj = {
         //     restaurant_id: restId,
         //     status: 1
         // }
-        this.renderCustomerListOnDom();
+        // this.renderCustomerListOnDom();
+        this.setState({
+            preventButtonClick: false
+        })
+        window.location.reload();
+    }
+    handleSeated(){
+        this.props.updatedSeated(ID)
+        window.location.reload();
+    }
+    handleDelete(){
+        this.props.deleteListItem(ID)
+        window.location.reload();
     }
 
 
@@ -81,6 +100,7 @@ class CustomerInfo extends Component {
                 </div>
             )
         }
+        const {preventButtonClick}= this.state
 
         const customerList = partys.map((current, index) => {
             const name = current.client_name;
@@ -100,12 +120,12 @@ class CustomerInfo extends Component {
                 <div key={index} >
                     <div className="row #b0bec5 blue-grey lighten-3">
                         <div className="col s12">
-                            <button className="small btn waves-effect  waves offset-s1 col s3 center #a5d6a7 green lighten-3"
+                            <button disabled={preventButtonClick} className="small btn waves-effect  waves offset-s1 col s3 center #a5d6a7 green lighten-3"
                                 onClick={() => this.handleSubmit(restaurantName, ID, phone)}
             
                                 >notify</button>
-                            <button className="small btn orange waves-effect  waves offset-s1 col s3 center" onClick={() => this.props.updatedSeated(ID) }  >seat</button>
-                            <button className="small btn red waves-effect  waves offset-s1 col s3 center" onClick={() => this.props.deleteListItem(ID) } > <i className=" small material-icons">delete</i></button>                   
+                            <button className="small btn orange waves-effect  waves offset-s1 col s3 center" onClick={() => this.handleSeated(ID) }  >seat</button>
+                            <button className="small btn red waves-effect  waves offset-s1 col s3 center" onClick={() => this.handleDelete(ID) } > <i className=" small material-icons">delete</i></button>                   
                         </div>
 
                     <div className="row">

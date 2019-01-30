@@ -8,6 +8,12 @@ import 'materialize-css/dist/js/materialize';
 import "../assets/css/seated.css"
 
 class Seated extends Component {
+    constructor(props) {
+        super(props);
+    this.state = {
+        delete: false
+    }
+}
 
     componentDidMount() {
         const restId= localStorage.getItem('restId')
@@ -25,6 +31,13 @@ class Seated extends Component {
     }
     componentWillUnmount() {
       clearInterval(this.interval)
+    }
+
+
+
+    handleSubmit(ID){
+        this.props.deleteListItem(ID)
+        window.location.reload();
     }
 
     renderSeatedCustomerListOnDom() {
@@ -64,7 +77,7 @@ class Seated extends Component {
 
 
 
-                        <div className="  delete  " onClick={() => this.props.deleteListItem(ID) }>
+                        <div className= "delete "  onClick={() => this.handleSubmit(ID) }>
                     
                             <button className="small btn waves-effect  waves #e57373 red lighten-2" > <i className=" small material-icons">delete</i></button>
 

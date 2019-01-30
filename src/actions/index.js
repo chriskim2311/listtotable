@@ -129,7 +129,7 @@ export function getWaitingListData(param){
 
 export function getSeatedListData(param){
     return async function(dispatch){
-        const resp = await axios.post('/api/tablefinder.php?action=clients&method=getSeated', param);
+        const resp = await axios.post('/api/tablefinder.php?action=clients&method=getSeated', param)
         
         // console.log('Seated call response', resp);
         

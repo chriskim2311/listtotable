@@ -13,15 +13,15 @@ class NotifiedCustomerInfo extends Component {
         }
         this.props.notifiedListData(notifiedObj)
 
-        this.interval = setInterval(() => {
-            this.props.notifiedListData(notifiedObj)
-        }, 10000
-        )
+        // this.interval = setInterval(() => {
+        //     this.props.notifiedListData(notifiedObj)
+        // }, 10000
+        // )
 
     }
-    componentWillUnmount() {
-        clearInterval(this.interval)
-    }
+    // componentWillUnmount() {
+    //     clearInterval(this.interval)
+    // }
 
     convertTime(inputString) {
         //GET NEW DATE AND TIME IN MILLISECONDS

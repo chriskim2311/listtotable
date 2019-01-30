@@ -24,14 +24,14 @@ class Seated extends Component {
         this.props.getSeatedListData(seatedObj);
 
 
-       this.interval =  setInterval(() => {
-            this.props.getSeatedListData(seatedObj)
-        }, 10000
-        )
+    //    this.interval =  setInterval(() => {
+    //         this.props.getSeatedListData(seatedObj)
+    //     }, 10000
+    //     )
     }
-    componentWillUnmount() {
-      clearInterval(this.interval)
-    }
+    // componentWillUnmount() {
+    //   clearInterval(this.interval)
+    // }
 
 
 

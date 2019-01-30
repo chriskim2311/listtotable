@@ -52,11 +52,11 @@ class CustomerInfo extends Component {
         })
         window.location.reload();
     }
-    handleSeated(){
+    handleSeated(ID){
         this.props.updatedSeated(ID)
         window.location.reload();
     }
-    handleDelete(){
+    handleDelete(ID){
         this.props.deleteListItem(ID)
         window.location.reload();
     }

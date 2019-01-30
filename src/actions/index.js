@@ -164,17 +164,25 @@ export function changeNotifyStatus(restaurantName, ID, phone){
             ID: ID
             // status: 'notified'
         });
-        await axios.post(`${messageNotifyUrl}`,{
+        try{ await axios.post(`${messageNotifyUrl}`,{
             restaurant: restaurantName,
             phone_number: phone 
         })
-        
-        // console.log(' UPDATE Notified call response:', resp);
-        
         dispatch({
             type: types.UPDATE_NOTIFIED_LIST_DATA,
             // clients: resp.data.clients
         });
+    } 
+    catch(err){
+            
+    }
+        
+        // console.log(' UPDATE Notified call response:', resp);
+        
+        // dispatch({
+        //     type: types.UPDATE_NOTIFIED_LIST_DATA,
+        //     // clients: resp.data.clients
+        // });
     }
 
 }

@@ -74,14 +74,14 @@ body{
 
 .guests {
     text-align: center;
-    height:100%;
+    /* height:100%; */
     width: 100%;
     color: white;
 }
 
 .restaurants{
     text-align: center;
-    height:100%;
+    /* height:100%; */
     width: 100%;
     color: white;
 }

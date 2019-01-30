@@ -45,6 +45,17 @@ class NotifiedCustomerInfo extends Component {
         return minutes;
     }
 
+    handleSeated(ID){
+        this.props.updatedSeated(ID)
+        window.location.reload();
+    }
+    handleDelete(ID){
+        this.props.deleteListItem(ID)
+        window.location.reload();
+    }
+
+
+
     renderNotifiedListOnDom() {
         
         const notified = this.props.notified_list;
@@ -76,8 +87,8 @@ class NotifiedCustomerInfo extends Component {
  
                     <div className="row #78909c blue-grey lighten-1">
                     <div className="col s12">
-                <button className="btn-small waves-effect  waves offset-s5 col s3 #ffcc80 orange lighten-3" onClick={() => this.props.updatedSeated(ID)}> SEAT</button>
-                <button className="btn-small waves-effect  waves offset-s1 col s3 #e57373 red lighten-2" onClick={() => this.props.deleteListItem(ID)}><i className=" small material-icons">delete</i></button>
+                <button className="btn-small waves-effect  waves offset-s5 col s3 #ffcc80 orange lighten-3" onClick={() => this.handleSeated(ID)}> SEAT</button>
+                <button className="btn-small waves-effect  waves offset-s1 col s3 #e57373 red lighten-2" onClick={() => this.handleDelete(ID)}><i className=" small material-icons">delete</i></button>
                 
                 
                 

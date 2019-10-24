@@ -7,8 +7,6 @@ import "../assets/css/customer_info.css"
 class Waiting extends Component {
     render(){
         return(
-
-
             <Fragment>
             <RTopMenu />
             <div className="TopContainer">

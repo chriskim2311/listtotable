@@ -28,13 +28,15 @@ class ListViewPhotos extends Component {
             placeId: placeID
         };
         service = new google.maps.places.PlacesService(mapRef);
-        service.getDetails(request, (results, status) => {
-
-            this.savePhotosFromGoogle(results, status);
+        service.getDetails(request, (results) => {
+            this.savePhotosFromGoogle(results);
         });
     }
 
     savePhotosFromGoogle = (results, status) => {
+        if(!results){
+            return
+        }
         var photosArray = results['photos']
         this.setState({
             photos: [...photosArray]

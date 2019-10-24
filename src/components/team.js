@@ -12,7 +12,6 @@ import Andy from '../assets/images/headshots/andys.jpg';
 import AndyO from '../assets/images/headshots/andy.jpg';
 
 export default class Team extends Component {
-
     teamInfo = () => {
         const memberInfos = [
             {

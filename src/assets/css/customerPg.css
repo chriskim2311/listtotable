@@ -160,7 +160,6 @@ a {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    /* background-color: #577d9c; */
 }
 
 .legendTime {
@@ -169,11 +168,13 @@ a {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    text-align: center;
 }
 
 .greenTime, .redTime, .yellowTime  {
-    max-width: 25%;
-    max-height: 85%;
+    width: 30px;
+    height:30px;
+
 }
 
 

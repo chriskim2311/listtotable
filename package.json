@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@google/maps": "^0.5.5",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "busy-hours": "0.0.5",
     "cors": "^2.8.5",
